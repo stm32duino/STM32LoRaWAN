@@ -354,7 +354,7 @@ TimerTime_t RegionCommonUpdateBandTimeOff( bool joined, Band_t* bands,
         // Check if the band is ready for transmission. Its ready,
         // when the duty cycle is off, or the TimeCredits of the band
         // is higher than the credit costs for the transmission.
-        if( ( bands[i].TimeCredits > creditCosts ) ||
+        if( ( bands[i].TimeCredits >= creditCosts ) ||
             ( ( dutyCycleEnabled == false ) && ( joined == true ) ) )
         {
             bands[i].ReadyForTransmission = true;
@@ -368,7 +368,7 @@ TimerTime_t RegionCommonUpdateBandTimeOff( bool joined, Band_t* bands,
             // for the next transmission.
             bands[i].ReadyForTransmission = false;
 
-            if( bands[i].MaxTimeCredits > creditCosts )
+            if( bands[i].MaxTimeCredits >= creditCosts )
             {
                 // The band can only be taken into account, if the maximum credits
                 // of the band are higher than the credit costs.
@@ -565,9 +565,7 @@ void RegionCommonRxBeaconSetup( RegionCommonRxBeaconSetupParams_t* rxBeaconSetup
                        1, 0, 10, rxBeaconSetupParams->SymbolTimeout, true, rxBeaconSetupParams->BeaconSize, false, 0, 0, false, rxContinuous );
 
     Radio.Rx( rxBeaconSetupParams->RxTime );
-    /* ST_WORKAROUND_BEGIN: Print Beacon parameters */
-    MW_LOG(TS_ON, VLEVEL_M, "RX_BC on freq %u Hz at DR %d\r\n", (unsigned)rxBeaconSetupParams->Frequency, rxBeaconSetupParams->BeaconDatarate );
-    /* ST_WORKAROUND_END */
+    MW_LOG(TS_ON, VLEVEL_M, "RX_BC on freq %d Hz at DR %d\r\n", rxBeaconSetupParams->Frequency, rxBeaconSetupParams->BeaconDatarate );
 }
 
 void RegionCommonCountNbOfEnabledChannels( RegionCommonCountNbOfEnabledChannelsParams_t* countNbOfEnabledChannelsParams,
@@ -697,23 +695,21 @@ uint32_t RegionCommonGetBandwidth( uint32_t drIndex, const uint32_t* bandwidths 
     }
 }
 
-/* ST_WORKAROUND_BEGIN: Print Tx/Rx config */
 void RegionCommonRxConfigPrint(LoRaMacRxSlot_t rxSlot, uint32_t frequency, int8_t dr)
 {
     if ( rxSlot < RX_SLOT_NONE )
     {
-        MW_LOG(TS_ON, VLEVEL_M,  "RX_%s on freq %u Hz at DR %d\r\n", EventRXSlotStrings[rxSlot], (unsigned)frequency, dr );
+        MW_LOG(TS_ON, VLEVEL_M,  "RX_%s on freq %d Hz at DR %d\r\n", EventRXSlotStrings[rxSlot], frequency, dr );
     }
     else
     {
-        MW_LOG(TS_ON, VLEVEL_M,  "RX on freq %u Hz at DR %d\r\n", (unsigned)frequency, dr );
+        MW_LOG(TS_ON, VLEVEL_M,  "RX on freq %d Hz at DR %d\r\n", frequency, dr );
     }
 }
 
 void RegionCommonTxConfigPrint(uint32_t frequency, int8_t dr)
 {
-    MW_LOG(TS_ON, VLEVEL_M,  "TX on freq %u Hz at DR %d\r\n", (unsigned)frequency, dr );
+    MW_LOG(TS_ON, VLEVEL_M,  "TX on freq %d Hz at DR %d\r\n", frequency, dr );
 }
-/* ST_WORKAROUND_END */
 
 #pragma GCC diagnostic pop

@@ -125,6 +125,7 @@ LoRaMacClassBEvents_t LoRaMacClassBEvents = { .Value = 0 };
  */
 static LoRaMacClassBCtx_t Ctx;
 
+#if (defined( LORAMAC_VERSION ) && (( LORAMAC_VERSION == 0x01000400 ) || ( LORAMAC_VERSION == 0x01010100 )))
 /*
  * Beacon transmit time precision in milliseconds.
  * The usage of these values shall be determined by the
@@ -132,6 +133,7 @@ static LoRaMacClassBCtx_t Ctx;
  * As the time base is milli seconds, the precision will be either 0 ms or 1 ms.
  */
 static const uint8_t BeaconPrecTimeValue[4] = { 0, 1, 1, 1 };
+#endif /* LORAMAC_VERSION */
 
 /*!
  * Data structure which holds the parameters which needs to be stored
@@ -142,7 +144,6 @@ static LoRaMacClassBNvmData_t* ClassBNvm;
 // The CRC calculation follows CRC16-CCITT
 static const uint16_t polynom = 0x1021;
 
-/* ST_WORKAROUND_BEGIN: Move timer function (ClassB specific) */
 /*!
  * \brief Computes the temperature compensation for a period of time on a
  *        specific temperature.
@@ -188,7 +189,6 @@ static TimerTime_t TimerTempCompensation( TimerTime_t period, int16_t temperatur
   // Calculate the resulting period
   return ( TimerTime_t ) interim;
 }
-/* ST_WORKAROUND_END */
 
 /*!
  * Computes the Ping Offset
@@ -324,7 +324,7 @@ static void CalculateBeaconRxWindowConfig( RxConfigParams_t* rxConfig, uint16_t 
 {
     GetPhyParams_t getPhy;
     PhyParam_t phyParam;
-#if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000400 ))
+#if (defined( LORAMAC_VERSION ) && (( LORAMAC_VERSION == 0x01000400 ) || ( LORAMAC_VERSION == 0x01010100 )))
     uint32_t maxRxError = 0;
 #endif /* LORAMAC_VERSION */
 
@@ -347,7 +347,7 @@ static void CalculateBeaconRxWindowConfig( RxConfigParams_t* rxConfig, uint16_t 
                                         Ctx.LoRaMacClassBParams.LoRaMacParams->SystemMaxRxError,
                                         rxConfig );
     }
-#elif (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000400 ))
+#elif (defined( LORAMAC_VERSION ) && (( LORAMAC_VERSION == 0x01000400 ) || ( LORAMAC_VERSION == 0x01010100 )))
         // Compare and assign the maximum between the region specific rx error window time
         // and time precision received from beacon frame format.
         maxRxError = MAX( Ctx.LoRaMacClassBParams.LoRaMacParams->SystemMaxRxError,
@@ -498,6 +498,14 @@ static void GetTemperature( LoRaMacClassBCallback_t *callbacks, BeaconContext_t 
     }
 }
 
+static void OnClassBMacProcessNotify( void )
+{
+    if( Ctx.LoRaMacClassBCallbacks.MacProcessNotify != NULL )
+    {
+        Ctx.LoRaMacClassBCallbacks.MacProcessNotify( );
+    }
+}
+
 static void InitClassB( void )
 {
     GetPhyParams_t getPhy;
@@ -520,7 +528,7 @@ static void InitClassB( void )
     phyParam = RegionGetPhyParam( *Ctx.LoRaMacClassBParams.LoRaMacRegion, &getPhy );
     ClassBNvm->PingSlotCtx.Datarate = ( int8_t )( phyParam.Value );
 
-#if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000400 ))
+#if (defined( LORAMAC_VERSION ) && (( LORAMAC_VERSION == 0x01000400 ) || ( LORAMAC_VERSION == 0x01010100 )))
     // Setup default FPending bit
     ClassBNvm->PingSlotCtx.FPendingSet = 0;
 #endif /* LORAMAC_VERSION */
@@ -651,7 +659,7 @@ static uint16_t CalcPingPeriod( uint8_t pingNb )
     return CLASSB_BEACON_WINDOW_SLOTS / pingNb;
 }
 
-#if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000400 ))
+#if (defined( LORAMAC_VERSION ) && (( LORAMAC_VERSION == 0x01000400 ) || ( LORAMAC_VERSION == 0x01010100 )))
 static bool CheckSlotPriority( uint32_t currentAddress, uint8_t currentFPendingSet, uint8_t currentIsMulticast,
                                uint32_t address, uint8_t fPendingSet, uint8_t isMulticast )
 {
@@ -791,11 +799,7 @@ void LoRaMacClassBBeaconTimerEvent( void* context )
     Ctx.BeaconCtx.TimeStamp = TimerGetCurrentTime( );
     TimerStop( &Ctx.BeaconTimer );
     LoRaMacClassBEvents.Events.Beacon = 1;
-
-    if( Ctx.LoRaMacClassBCallbacks.MacProcessNotify != NULL )
-    {
-        Ctx.LoRaMacClassBCallbacks.MacProcessNotify( );
-    }
+    OnClassBMacProcessNotify( );
 #endif /* LORAMAC_CLASSB_ENABLED */
 }
 
@@ -805,8 +809,9 @@ static void LoRaMacClassBProcessBeacon( void )
     bool activateTimer = false;
     TimerTime_t beaconEventTime = 1;
     RxConfigParams_t beaconRxConfig;
-    TimerTime_t currentTime = Ctx.BeaconCtx.TimeStamp;
-
+    TimerTime_t beaconTimestamp = Ctx.BeaconCtx.TimeStamp;
+ 
+    MW_LOG(TS_ON, VLEVEL_H, "Process beacon state Entry %d\r\n", Ctx.BeaconState);
     // Beacon state machine
     switch( Ctx.BeaconState )
     {
@@ -831,10 +836,11 @@ static void LoRaMacClassBProcessBeacon( void )
 
                     if( Ctx.BeaconCtx.BeaconTimingDelay > 0 )
                     {
-                        if( SysTimeToMs( Ctx.BeaconCtx.NextBeaconRx ) > currentTime )
+                        uint32_t now = TimerGetCurrentTime( );
+                        if( SysTimeToMs( Ctx.BeaconCtx.NextBeaconRx ) > now )
                         {
                             // Calculate the time when we expect the next beacon
-                            beaconEventTime = TimerTempCompensation( SysTimeToMs( Ctx.BeaconCtx.NextBeaconRx ) - currentTime, Ctx.BeaconCtx.Temperature );
+                            beaconEventTime = TimerTempCompensation( SysTimeToMs( Ctx.BeaconCtx.NextBeaconRx ) - now, Ctx.BeaconCtx.Temperature );
 
                             if( ( int32_t ) beaconEventTime > beaconRxConfig.WindowOffset )
                             {
@@ -926,7 +932,7 @@ static void LoRaMacClassBProcessBeacon( void )
             Ctx.BeaconCtx.Ctrl.BeaconAcquired = 0;
 
             // Verify if the maximum beacon less period has been elapsed
-            if( ( currentTime - SysTimeToMs( Ctx.BeaconCtx.LastBeaconRx ) ) > CLASSB_MAX_BEACON_LESS_PERIOD )
+            if( ( beaconTimestamp - SysTimeToMs( Ctx.BeaconCtx.LastBeaconRx ) ) > CLASSB_MAX_BEACON_LESS_PERIOD )
             {
                 Ctx.BeaconState = BEACON_STATE_LOST;
             }
@@ -934,7 +940,7 @@ static void LoRaMacClassBProcessBeacon( void )
             {
                 // Handle beacon miss
                 beaconEventTime = UpdateBeaconState( LORAMAC_EVENT_INFO_STATUS_BEACON_NOT_FOUND,
-                                                     Ctx.BeaconCtx.BeaconWindowMovement, currentTime );
+                                                     Ctx.BeaconCtx.BeaconWindowMovement, beaconTimestamp );
 
                 // Setup next state
                 Ctx.BeaconState = BEACON_STATE_IDLE;
@@ -950,7 +956,7 @@ static void LoRaMacClassBProcessBeacon( void )
 
             // Handle beacon reception
             beaconEventTime = UpdateBeaconState( LORAMAC_EVENT_INFO_STATUS_BEACON_LOCKED,
-                                                 0, currentTime );
+                                                 0, beaconTimestamp );
 
             // Setup the MLME confirm for the MLME_BEACON_ACQUISITION
             if( Ctx.LoRaMacClassBParams.LoRaMacFlags->Bits.MlmeReq == 1 )
@@ -971,15 +977,15 @@ static void LoRaMacClassBProcessBeacon( void )
             activateTimer = true;
             GetTemperature( &Ctx.LoRaMacClassBCallbacks, &Ctx.BeaconCtx );
             beaconEventTime = Ctx.BeaconCtx.NextBeaconRxAdjusted - Radio.GetWakeupTime( );
-            currentTime = TimerGetCurrentTime( );
+            uint32_t now = TimerGetCurrentTime( );
 
             // The goal is to calculate beaconRxConfig.WindowTimeout and beaconRxConfig.WindowOffset
             CalculateBeaconRxWindowConfig( &beaconRxConfig, Ctx.BeaconCtx.SymbolTimeout );
 
-            if( beaconEventTime > currentTime )
+            if( beaconEventTime > now )
             {
                 Ctx.BeaconState = BEACON_STATE_GUARD;
-                beaconEventTime -= currentTime;
+                beaconEventTime -= now;
                 beaconEventTime = TimerTempCompensation( beaconEventTime, Ctx.BeaconCtx.Temperature );
 
                 if( ( int32_t ) beaconEventTime > beaconRxConfig.WindowOffset )
@@ -1040,7 +1046,7 @@ static void LoRaMacClassBProcessBeacon( void )
             break;
         }
     }
-    MW_LOG(TS_ON, VLEVEL_H, "beacon state %d\r\n", Ctx.BeaconState);
+    MW_LOG(TS_ON, VLEVEL_H, "Process beacon state Exit %d\r\n", Ctx.BeaconState);
 
     if( activateTimer == true )
     {
@@ -1055,10 +1061,7 @@ void LoRaMacClassBPingSlotTimerEvent( void* context )
 #if ( LORAMAC_CLASSB_ENABLED == 1 )
     LoRaMacClassBEvents.Events.PingSlot = 1;
 
-    if( Ctx.LoRaMacClassBCallbacks.MacProcessNotify != NULL )
-    {
-        Ctx.LoRaMacClassBCallbacks.MacProcessNotify( );
-    }
+    OnClassBMacProcessNotify( );
 #endif /* LORAMAC_CLASSB_ENABLED */
 }
 
@@ -1067,7 +1070,7 @@ static void LoRaMacClassBProcessPingSlot( void )
 {
     static RxConfigParams_t pingSlotRxConfig;
     TimerTime_t pingSlotTime = 0;
-#if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000400 ))
+#if (defined( LORAMAC_VERSION ) && (( LORAMAC_VERSION == 0x01000400 ) || ( LORAMAC_VERSION == 0x01010100 )))
     uint32_t maxRxError = 0;
     bool slotHasPriority = false;
 #endif /* LORAMAC_VERSION */
@@ -1097,7 +1100,7 @@ static void LoRaMacClassBProcessPingSlot( void )
                                                      Ctx.LoRaMacClassBParams.LoRaMacParams->MinRxSymbols,
                                                      Ctx.LoRaMacClassBParams.LoRaMacParams->SystemMaxRxError,
                                                      &pingSlotRxConfig );
-#elif (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000400 ))
+#elif (defined( LORAMAC_VERSION ) && (( LORAMAC_VERSION == 0x01000400 ) || ( LORAMAC_VERSION == 0x01010100 )))
                     // Compare and assign the maximum between the region specific rx error window time
                     // and time precision received from beacon frame format.
                     maxRxError = MAX( Ctx.LoRaMacClassBParams.LoRaMacParams->SystemMaxRxError ,
@@ -1147,7 +1150,7 @@ static void LoRaMacClassBProcessPingSlot( void )
 
                 pingSlotRxConfig.Datarate = ClassBNvm->PingSlotCtx.Datarate;
                 pingSlotRxConfig.DownlinkDwellTime = Ctx.LoRaMacClassBParams.LoRaMacParams->DownlinkDwellTime;
-                pingSlotRxConfig.RepeaterSupport = Ctx.LoRaMacClassBParams.LoRaMacParams->RepeaterSupport; /* ST_WORKAROUND: keep repeater feature */
+                pingSlotRxConfig.RepeaterSupport = Ctx.LoRaMacClassBParams.LoRaMacParams->RepeaterSupport;
                 pingSlotRxConfig.Frequency = frequency;
                 pingSlotRxConfig.RxContinuous = false;
                 pingSlotRxConfig.RxSlot = RX_SLOT_WIN_CLASS_B_PING_SLOT;
@@ -1170,7 +1173,7 @@ static void LoRaMacClassBProcessPingSlot( void )
                 TimerSetValue( &Ctx.PingSlotTimer, CLASSB_PING_SLOT_WINDOW );
                 TimerStart( &Ctx.PingSlotTimer );
             }
-#elif (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000400 ))
+#elif (defined( LORAMAC_VERSION ) && (( LORAMAC_VERSION == 0x01000400 ) || ( LORAMAC_VERSION == 0x01010100 )))
             if( Ctx.PingSlotCtx.NextMulticastChannel != NULL )
             {
                 // Verify, if the unicast has priority.
@@ -1195,7 +1198,7 @@ static void LoRaMacClassBProcessPingSlot( void )
 
                 pingSlotRxConfig.Datarate = ClassBNvm->PingSlotCtx.Datarate;
                 pingSlotRxConfig.DownlinkDwellTime = Ctx.LoRaMacClassBParams.LoRaMacParams->DownlinkDwellTime;
-                pingSlotRxConfig.RepeaterSupport = Ctx.LoRaMacClassBParams.LoRaMacParams->RepeaterSupport; /* ST_WORKAROUND: keep repeater feature */
+                pingSlotRxConfig.RepeaterSupport = Ctx.LoRaMacClassBParams.LoRaMacParams->RepeaterSupport;
                 pingSlotRxConfig.Frequency = frequency;
                 pingSlotRxConfig.RxContinuous = false;
                 pingSlotRxConfig.RxSlot = RX_SLOT_WIN_CLASS_B_PING_SLOT;
@@ -1236,10 +1239,7 @@ void LoRaMacClassBMulticastSlotTimerEvent( void* context )
 #if ( LORAMAC_CLASSB_ENABLED == 1 )
     LoRaMacClassBEvents.Events.MulticastSlot = 1;
 
-    if( Ctx.LoRaMacClassBCallbacks.MacProcessNotify != NULL )
-    {
-        Ctx.LoRaMacClassBCallbacks.MacProcessNotify( );
-    }
+    OnClassBMacProcessNotify( );
 #endif /* LORAMAC_CLASSB_ENABLED */
 }
 
@@ -1250,7 +1250,7 @@ static void LoRaMacClassBProcessMulticastSlot( void )
     TimerTime_t multicastSlotTime = 0;
     TimerTime_t slotTime = 0;
     MulticastCtx_t *cur = Ctx.LoRaMacClassBParams.MulticastChannels;
-#if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000400 ))
+#if (defined( LORAMAC_VERSION ) && (( LORAMAC_VERSION == 0x01000400 ) || ( LORAMAC_VERSION == 0x01010100 )))
     uint32_t maxRxError = 0;
     bool slotHasPriority = false;
 #endif /* LORAMAC_VERSION */
@@ -1271,7 +1271,7 @@ static void LoRaMacClassBProcessMulticastSlot( void )
         case PINGSLOT_STATE_CALC_PING_OFFSET:
         {
             // Compute all offsets for every multicast slots
-            for( uint8_t i = 0; i < LORAMAC_MAX_MC_CTX; i++ ) /* ST_WORKAROUND: reduced LORAMAC_MAX_MC_CTX */
+            for( uint8_t i = 0; i < LORAMAC_MAX_MC_CTX; i++ )
             {
                 ComputePingOffset( Ctx.BeaconCtx.BeaconTime.Seconds,
                                    cur->ChannelParams.Address,
@@ -1313,7 +1313,7 @@ static void LoRaMacClassBProcessMulticastSlot( void )
                                                     Ctx.LoRaMacClassBParams.LoRaMacParams->MinRxSymbols,
                                                     Ctx.LoRaMacClassBParams.LoRaMacParams->SystemMaxRxError,
                                                     &multicastSlotRxConfig );
-#elif (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000400 ))
+#elif (defined( LORAMAC_VERSION ) && (( LORAMAC_VERSION == 0x01000400 ) || ( LORAMAC_VERSION == 0x01010100 )))
                     // Compare and assign the maximum between the region specific rx error window time
                     // and time precision received from beacon frame format.
                     maxRxError = MAX( Ctx.LoRaMacClassBParams.LoRaMacParams->SystemMaxRxError ,
@@ -1354,7 +1354,7 @@ static void LoRaMacClassBProcessMulticastSlot( void )
             }
 
             // Apply frequency
-            frequency = Ctx.PingSlotCtx.NextMulticastChannel->ChannelParams.RxParams.ClassB.Frequency;
+            frequency = Ctx.PingSlotCtx.NextMulticastChannel->ChannelParams.RxParams.Params.ClassB.Frequency;
 
             // Restore the floor plan frequency if there is no individual frequency assigned
             if( frequency == 0 )
@@ -1367,9 +1367,9 @@ static void LoRaMacClassBProcessMulticastSlot( void )
 #if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000300 ))
             Ctx.MulticastSlotState = PINGSLOT_STATE_RX;
 
-            multicastSlotRxConfig.Datarate = Ctx.PingSlotCtx.NextMulticastChannel->ChannelParams.RxParams.ClassB.Datarate;
+            multicastSlotRxConfig.Datarate = Ctx.PingSlotCtx.NextMulticastChannel->ChannelParams.RxParams.Params.ClassB.Datarate;
             multicastSlotRxConfig.DownlinkDwellTime = Ctx.LoRaMacClassBParams.LoRaMacParams->DownlinkDwellTime;
-            multicastSlotRxConfig.RepeaterSupport = Ctx.LoRaMacClassBParams.LoRaMacParams->RepeaterSupport; /* ST_WORKAROUND: keep repeater feature */
+            multicastSlotRxConfig.RepeaterSupport = Ctx.LoRaMacClassBParams.LoRaMacParams->RepeaterSupport;
             multicastSlotRxConfig.Frequency = frequency;
             multicastSlotRxConfig.RxContinuous = false;
             multicastSlotRxConfig.RxSlot = RX_SLOT_WIN_CLASS_B_MULTICAST_SLOT;
@@ -1393,7 +1393,7 @@ static void LoRaMacClassBProcessMulticastSlot( void )
             {
                 Radio.Rx( 0 ); // Continuous mode
             }
-#elif (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000400 ))
+#elif (defined( LORAMAC_VERSION ) && (( LORAMAC_VERSION == 0x01000400 ) || ( LORAMAC_VERSION == 0x01010100 )))
             // Verify, if the unicast has priority.
             slotHasPriority = CheckSlotPriority( Ctx.PingSlotCtx.NextMulticastChannel->ChannelParams.Address, Ctx.PingSlotCtx.NextMulticastChannel->FPendingSet, 1,
                                                  *Ctx.LoRaMacClassBParams.LoRaMacDevAddr, ClassBNvm->PingSlotCtx.FPendingSet, 0 );
@@ -1413,7 +1413,7 @@ static void LoRaMacClassBProcessMulticastSlot( void )
 
                 Ctx.MulticastSlotState = PINGSLOT_STATE_RX;
 
-                multicastSlotRxConfig.Datarate = Ctx.PingSlotCtx.NextMulticastChannel->ChannelParams.RxParams.ClassB.Datarate;
+                multicastSlotRxConfig.Datarate = Ctx.PingSlotCtx.NextMulticastChannel->ChannelParams.RxParams.Params.ClassB.Datarate;
                 multicastSlotRxConfig.DownlinkDwellTime = Ctx.LoRaMacClassBParams.LoRaMacParams->DownlinkDwellTime;
                 multicastSlotRxConfig.Frequency = frequency;
                 multicastSlotRxConfig.RxContinuous = false;
@@ -1508,7 +1508,7 @@ bool LoRaMacClassBRxBeacon( uint8_t *payload, uint16_t size )
                 Ctx.LoRaMacClassBParams.MlmeIndication->BeaconInfo.GwSpecific.InfoDesc = payload[phyParam.BeaconFormat.Rfu1Size + 4 + 2];
                 memcpy1( Ctx.LoRaMacClassBParams.MlmeIndication->BeaconInfo.GwSpecific.Info, &payload[phyParam.BeaconFormat.Rfu1Size + 4 + 2 + 1], 6 );
             }
-#elif (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000400 ))
+#elif (defined( LORAMAC_VERSION ) && (( LORAMAC_VERSION == 0x01000400 ) || ( LORAMAC_VERSION == 0x01010100 )))
             // A beacon frame is defined as:
             // Bytes: |  x   |   1   |  4   |  2   |     7      |  y   |  2   |
             //        |------|-------|------|------|------------|------|------|
@@ -1905,7 +1905,7 @@ void LoRaMacClassBDeviceTimeAns( void )
 #if ( LORAMAC_CLASSB_ENABLED == 1 )
 
     SysTime_t nextBeacon = SysTimeGet( );
-    uint32_t currentTimeMs = SysTimeToMs( nextBeacon );
+    TimerTime_t currentTimeMs = SysTimeToMs( nextBeacon );
 
     nextBeacon.Seconds = nextBeacon.Seconds + ( 128 - ( nextBeacon.Seconds % 128 ) );
     nextBeacon.SubSeconds = 0;
@@ -2021,13 +2021,13 @@ void LoRaMacClassBSetMulticastPeriodicity( MulticastCtx_t* multicastChannel )
 #if ( LORAMAC_CLASSB_ENABLED == 1 )
     if( multicastChannel != NULL )
     {
-        multicastChannel->PingNb = CalcPingNb( multicastChannel->ChannelParams.RxParams.ClassB.Periodicity );
+        multicastChannel->PingNb = CalcPingNb( multicastChannel->ChannelParams.RxParams.Params.ClassB.Periodicity );
         multicastChannel->PingPeriod = CalcPingPeriod( multicastChannel->PingNb );
     }
 #endif /* LORAMAC_CLASSB_ENABLED */
 }
 
-#if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000400 ))
+#if (defined( LORAMAC_VERSION ) && (( LORAMAC_VERSION == 0x01000400 ) || ( LORAMAC_VERSION == 0x01010100 )))
 void LoRaMacClassBSetFPendingBit( uint32_t address, uint8_t fPendingSet )
 {
 #if ( LORAMAC_CLASSB_ENABLED == 1 )
