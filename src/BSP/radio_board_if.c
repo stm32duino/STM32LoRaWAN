@@ -36,6 +36,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "radio_board_if.h"
+#include "mw_log_conf.h"
 #include "Arduino.h"
 
 /* Board configuration --------------------------------------------------------*/
@@ -105,9 +106,22 @@ int32_t RBI_DeInit(void)
   return 0;
 }
 
+static const char *ConfigToString(RBI_Switch_TypeDef Config)
+{
+  switch (Config) {
+    case RBI_SWITCH_OFF: return "OFF";
+    case RBI_SWITCH_RX: return "RX";
+    case RBI_SWITCH_RFO_LP: return "RFO_LP";
+    case RBI_SWITCH_RFO_HP: return "RFO_HP";
+    default: return "INVALID";
+  }
+}
+
 int32_t RBI_ConfigRFSwitch(RBI_Switch_TypeDef Config)
 {
+  MW_LOG(TS_OFF, VLEVEL_M, "Configuring RFSwitch for %s\r\n", ConfigToString(Config));
   for (unsigned i = 0; i < LORAWAN_RFSWITCH_PIN_COUNT; ++i) {
+    MW_LOG(TS_OFF, VLEVEL_M, "> Setting pin %u to %u\r\n", lorawan_rfswitch_pins[i], lorawan_rfswitch_values[Config][i]);
     digitalWrite(lorawan_rfswitch_pins[i], lorawan_rfswitch_values[Config][i]);
   }
   return 0;
