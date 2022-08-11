@@ -1087,12 +1087,27 @@ uint64_t STM32LoRaWAN::builtinDevEUI() {
 
 void STM32LoRaWAN::MacMcpsConfirm(McpsConfirm_t* c) {
   // Called after an Mcps request (data TX) when the stack becomes idle again (so after RX windows)
-  (void)c;
+  core_debug(
+    "McpsConfirm: req=%s, status=%s, datarate=%u, power=%d, ack=%u, %s=%u, airtime=%u, upcnt=%u, channel=%u\r\n",
+     toString(c->McpsRequest), toString(c->Status), c->Datarate, c->TxPower,
+     c->AckReceived,
+    #if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000300 ))
+      "retries", c->NbRetries,
+    #elif (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000400 ))
+      "trans", c->NbTrans,
+    #endif /* LORAMAC_VERSION */
+    (unsigned)c->TxTimeOnAir, (unsigned)c->UpLinkCounter, (unsigned)c->Channel);
 }
 
 void STM32LoRaWAN::MacMcpsIndication(McpsIndication_t* i, LoRaMacRxStatus_t* status) {
   // Called on Mcps event (data received or rx aborted), after McpsConfirm
-  (void)status;
+  core_debug(
+    "McpsIndication: ind=%s, status=%s, multicast=%u, port=%u, datarate=%u, pending=%u, size=%u, rxdata=%u, ack=%u, dncnt=%u, devaddr=%08x, rssi=%d, snr=%d, slot=%u\r\n",
+    toString(i->McpsIndication), toString(i->Status), i->Multicast, i->Port,
+    i->RxDatarate, i->FramePending, i->BufferSize, i->RxData,
+    i->AckReceived, i->DownLinkCounter, i->DevAddress,
+    status->Rssi, status->Snr, status->RxSlot);
+
   if ((i->McpsIndication == MCPS_CONFIRMED || i->McpsIndication == MCPS_UNCONFIRMED) && i->Status == LORAMAC_EVENT_INFO_STATUS_OK) {
     instance->add_rx(i->Buffer, i->BufferSize);
     instance->tx_port = i->Port;
@@ -1102,10 +1117,16 @@ void STM32LoRaWAN::MacMcpsIndication(McpsIndication_t* i, LoRaMacRxStatus_t* sta
 void STM32LoRaWAN::MacMlmeConfirm(MlmeConfirm_t* c) {
   // Called when a Mlme request is completed (e.g. join complete or
   // failed, link check answer received, etc.)
-  (void)c;
+  core_debug(
+    "MlmeConfirm: req=%s, status=%s, airtime=%u, margin=%u, gateways=%u\r\n",
+     toString(c->MlmeRequest), toString(c->Status), c->TxTimeOnAir, c->DemodMargin, c->NbGateways);
 }
 
 void STM32LoRaWAN::MacMlmeIndication(MlmeIndication_t* i, LoRaMacRxStatus_t* status) {
   // Called on join accept (and some class B events), after MlmeConfirm
-  (void)i, (void)status;
+  core_debug(
+    "MlmeIndication: ind=%s, status=%s, datarate=%u, dncnt=%u, rssi=%d, snr=%d, slot=%u\r\n",
+    toString(i->MlmeIndication), toString(i->Status),
+    i->RxDatarate, i->DownLinkCounter,
+    status->Rssi, status->Snr, status->RxSlot);
 }
