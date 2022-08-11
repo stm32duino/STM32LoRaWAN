@@ -32,7 +32,7 @@ DOXYFILE_ENCODING      = UTF-8
 # title of most generated pages and in a few other places.
 # The default value is: My Project.
 
-PROJECT_NAME           = "My Project"
+PROJECT_NAME           = STM32LoRaWAN
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number. This
 # could be handy for archiving the generated documentation or if some version
@@ -58,7 +58,7 @@ PROJECT_LOGO           =
 # entered, it will be relative to the location where doxygen was started. If
 # left blank the current directory will be used.
 
-OUTPUT_DIRECTORY       =
+OUTPUT_DIRECTORY       = api-docs
 
 # If the CREATE_SUBDIRS tag is set to YES then doxygen will create 4096 sub-
 # directories (in 2 levels) under the output directory of each output format and
@@ -270,6 +270,12 @@ TAB_SIZE               = 4
 # a double escape (\\{ and \\})
 
 ALIASES                =
+
+ALIASES               += MKRWANApiDifference{1}="\xrefitem extensions \"MKRWAN API difference\" \"Differences to MKRWAN API\" \1"
+ALIASES               += NotInMKRWAN="\MKRWANApiDifference{Not supported by MKRWAN}"
+ALIASES               += NotImplemented="\MKRWANApiDifference{Not implemented by this library}"
+ALIASES               += NotImplemented{1}="\MKRWANApiDifference{Not implemented by this library: \1}"
+ALIASES               += DummyImplementation="\MKRWANApiDifference{Dummy implementation in this library}"
 
 # Set the OPTIMIZE_OUTPUT_FOR_C tag to YES if your project consists of C sources
 # only. Doxygen will then generate output that is more tailored for C. For
@@ -485,7 +491,7 @@ NUM_PROC_THREADS       = 1
 # normally produced when WARNINGS is set to YES.
 # The default value is: NO.
 
-EXTRACT_ALL            = NO
+EXTRACT_ALL            = YES
 
 # If the EXTRACT_PRIVATE tag is set to YES, all private members of a class will
 # be included in the documentation.
@@ -864,7 +870,7 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  =
+INPUT                  = src/
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
