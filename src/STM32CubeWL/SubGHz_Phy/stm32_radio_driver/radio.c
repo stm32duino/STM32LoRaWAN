@@ -830,6 +830,15 @@ static void RadioSetRxConfig( RadioModems_t modem, uint32_t bandwidth,
 #if (RADIO_SIGFOX_ENABLE == 1)
     uint8_t modReg;
 #endif
+    MW_LOG( TS_ON, VLEVEL_M,
+        "Setting RX Config: modem=%s, bandwidth=%u, datarate=%u, coderate=%u bandwithAfc=%u, preambleLen=%u, symbTimeout=%u, fixLen=%u, payloadLen=%u, crcOn=%u, freqHopOn=%u, hopPeriod=%u, iqInverted=%u, rxContinuous=%u\r\n",
+        modem == MODEM_FSK ? "MODEM_FSK" : (modem == MODEM_LORA ? "MODEM_LORA" : "?"),
+        (unsigned)bandwidth, (unsigned)datarate, (unsigned)coderate,
+        (unsigned)bandwidthAfc, (unsigned)preambleLen,
+        (unsigned)symbTimeout, (unsigned)fixLen, (unsigned)payloadLen,
+        (unsigned)crcOn, (unsigned)freqHopOn, (unsigned)hopPeriod,
+        (unsigned)iqInverted, (unsigned)rxContinuous
+    );
     SubgRf.RxContinuous = rxContinuous;
     RFW_DeInit(); /* ST_WORKAROUND: Switch Off FwPacketDecoding by default */
     if( rxContinuous == true )
@@ -1012,6 +1021,15 @@ static void RadioSetTxConfig( RadioModems_t modem, int8_t power, uint32_t fdev,
                               uint8_t hopPeriod, bool iqInverted, uint32_t timeout )
 {
     RFW_DeInit(); /* ST_WORKAROUND: Switch Off FwPacketDecoding by default */
+    MW_LOG( TS_ON, VLEVEL_M,
+        "Setting TX Config: modem=%s, power=%u, fdev=%u, bandwidth=%u, datarate=%u, coderate=%u preambleLen=%u, fixLen=%u, crcOn=%u, freqHopOn=%u, hopPeriod=%u, iqInverted=%u, timeout=%u\r\n",
+        modem == MODEM_FSK ? "MODEM_FSK" : (modem == MODEM_LORA ? "MODEM_LORA" : "?"),
+        (unsigned)power, (unsigned)fdev, (unsigned)bandwidth,
+        (unsigned)datarate, (unsigned)coderate, (unsigned)preambleLen,
+        (unsigned)fixLen, (unsigned)crcOn, (unsigned)freqHopOn,
+        (unsigned)hopPeriod, (unsigned)iqInverted, (unsigned)timeout
+    );
+
     switch( modem )
     {
         case MODEM_FSK:
@@ -1272,6 +1290,11 @@ static void RadioSend( uint8_t *buffer, uint8_t size )
                             IRQ_RADIO_NONE );
     /* ST_WORKAROUND_END */
 
+    MW_LOG( TS_ON, VLEVEL_M, "TX:");
+    for (size_t i = 0; i < size; ++i)
+        MW_LOG( TS_ON, VLEVEL_M, " %02x", buffer[i]);
+    MW_LOG( TS_ON, VLEVEL_M, "\r\n");
+
     /* ST_WORKAROUND_BEGIN : Set the debug pin and update the radio switch */
     /* Set DBG pin */
     DBG_GPIO_RADIO_TX( SET );
@@ -1389,6 +1412,7 @@ static void RadioStandby( void )
 
 static void RadioRx( uint32_t timeout )
 {
+    MW_LOG( TS_ON, VLEVEL_M, "Starting RX\r\n");
     if( 1UL == RFW_Is_Init( ) )
     {
         RFW_ReceiveInit( );
