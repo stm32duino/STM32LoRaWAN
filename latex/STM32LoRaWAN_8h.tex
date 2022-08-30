@@ -1,0 +1,126 @@
+\hypertarget{STM32LoRaWAN_8h}{}\doxysection{src/\+S\+T\+M32\+Lo\+Ra\+W\+AN.h File Reference}
+\label{STM32LoRaWAN_8h}\index{src/STM32LoRaWAN.h@{src/STM32LoRaWAN.h}}
+{\ttfamily \#include \char`\"{}Arduino.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}S\+T\+M32\+Cube\+W\+L/\+Lo\+Ra\+W\+A\+N/\+Mac/\+Lo\+Ra\+Mac.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}S\+T\+M32\+Cube\+W\+L/\+Utilities/timer/stm32\+\_\+timer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}B\+S\+P/mw\+\_\+log\+\_\+conf.\+h\char`\"{}}\newline
+Include dependency graph for S\+T\+M32\+Lo\+Ra\+W\+A\+N.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classSTM32LoRaWAN}{S\+T\+M32\+Lo\+Ra\+W\+AN}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{STM32LoRaWAN_8h_a6f8077b5a9a47075e6c1cbf074efa09f}{\+\_\+lora\+\_\+class}} = Device\+Class\+\_\+t
+\item 
+using \mbox{\hyperlink{STM32LoRaWAN_8h_a6566378ae9e323f83eb13f8698690f80}{Lo\+Ra\+Modem}} = \mbox{\hyperlink{classSTM32LoRaWAN}{S\+T\+M32\+Lo\+Ra\+W\+AN}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24b}{\+\_\+lora\+\_\+band}} \{ \newline
+\mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24bab4942a7a6a4f354c7c02e87acf2c55b0}{A\+S923}} = L\+O\+R\+A\+M\+A\+C\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+A\+S923, 
+\mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba55a54c090dc47ad655b923595c77305f}{A\+U915}} = L\+O\+R\+A\+M\+A\+C\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+A\+U915, 
+\mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24bad745d0affcf2a11ccfc303c751825405}{C\+N470}} = L\+O\+R\+A\+M\+A\+C\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+C\+N470, 
+\mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba8eba65835db374c69d98b2e112ac5476}{C\+N779}} = L\+O\+R\+A\+M\+A\+C\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+C\+N779, 
+\newline
+\mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba88e456cddc659ae20b687243fc43bb45}{E\+U433}} = L\+O\+R\+A\+M\+A\+C\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+E\+U433, 
+\mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba84d1df5c641ca74016c55c4037d30647}{E\+U868}} = L\+O\+R\+A\+M\+A\+C\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+E\+U868, 
+\mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba3d8191fb8847934391dfa5bed57373e5}{K\+R920}} = L\+O\+R\+A\+M\+A\+C\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+K\+R920, 
+\mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba9b735bb989089ac6e5147222d4b1dbd5}{I\+N865}} = L\+O\+R\+A\+M\+A\+C\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+I\+N865, 
+\newline
+\mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba10bdc64d98b87b1bd3371dbc224ec460}{U\+S915}} = L\+O\+R\+A\+M\+A\+C\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+U\+S915, 
+\mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba59f93d8706c7d314cd657d027721e36f}{R\+U864}} = L\+O\+R\+A\+M\+A\+C\+\_\+\+R\+E\+G\+I\+O\+N\+\_\+\+R\+U864
+ \}
+\item 
+enum \mbox{\hyperlink{STM32LoRaWAN_8h_a1fd3d2eb05358dae64890dff0448c69c}{\+\_\+rf\+\_\+mode}} \{ \mbox{\hyperlink{STM32LoRaWAN_8h_a1fd3d2eb05358dae64890dff0448c69cafc5861c4f879b8c6b2bc7f4f35d5db41}{R\+FO}} = 0, 
+\mbox{\hyperlink{STM32LoRaWAN_8h_a1fd3d2eb05358dae64890dff0448c69caa7f13c72b89a2345df433f97ff892a68}{P\+A\+B\+O\+O\+ST}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{STM32LoRaWAN_8h_a6f8077b5a9a47075e6c1cbf074efa09f}\label{STM32LoRaWAN_8h_a6f8077b5a9a47075e6c1cbf074efa09f}} 
+\index{STM32LoRaWAN.h@{STM32LoRaWAN.h}!\_lora\_class@{\_lora\_class}}
+\index{\_lora\_class@{\_lora\_class}!STM32LoRaWAN.h@{STM32LoRaWAN.h}}
+\doxysubsubsection{\texorpdfstring{\_lora\_class}{\_lora\_class}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{STM32LoRaWAN_8h_a6f8077b5a9a47075e6c1cbf074efa09f}{\+\_\+lora\+\_\+class}} =  Device\+Class\+\_\+t}
+
+\mbox{\Hypertarget{STM32LoRaWAN_8h_a6566378ae9e323f83eb13f8698690f80}\label{STM32LoRaWAN_8h_a6566378ae9e323f83eb13f8698690f80}} 
+\index{STM32LoRaWAN.h@{STM32LoRaWAN.h}!LoRaModem@{LoRaModem}}
+\index{LoRaModem@{LoRaModem}!STM32LoRaWAN.h@{STM32LoRaWAN.h}}
+\doxysubsubsection{\texorpdfstring{LoRaModem}{LoRaModem}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{STM32LoRaWAN_8h_a6566378ae9e323f83eb13f8698690f80}{Lo\+Ra\+Modem}} =  \mbox{\hyperlink{classSTM32LoRaWAN}{S\+T\+M32\+Lo\+Ra\+W\+AN}}}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24b}\label{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24b}} 
+\index{STM32LoRaWAN.h@{STM32LoRaWAN.h}!\_lora\_band@{\_lora\_band}}
+\index{\_lora\_band@{\_lora\_band}!STM32LoRaWAN.h@{STM32LoRaWAN.h}}
+\doxysubsubsection{\texorpdfstring{\_lora\_band}{\_lora\_band}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24b}{\+\_\+lora\+\_\+band}}}
+
+Supported regions, to be passed to \mbox{\hyperlink{classSTM32LoRaWAN_acb97fcbe514f6b69319d105b48e54223}{S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::begin()}} to select region-\/specific settings and frequency plan. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AS923@{AS923}!STM32LoRaWAN.h@{STM32LoRaWAN.h}}\index{STM32LoRaWAN.h@{STM32LoRaWAN.h}!AS923@{AS923}}}\mbox{\Hypertarget{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24bab4942a7a6a4f354c7c02e87acf2c55b0}\label{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24bab4942a7a6a4f354c7c02e87acf2c55b0}} 
+A\+S923&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AU915@{AU915}!STM32LoRaWAN.h@{STM32LoRaWAN.h}}\index{STM32LoRaWAN.h@{STM32LoRaWAN.h}!AU915@{AU915}}}\mbox{\Hypertarget{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba55a54c090dc47ad655b923595c77305f}\label{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba55a54c090dc47ad655b923595c77305f}} 
+A\+U915&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CN470@{CN470}!STM32LoRaWAN.h@{STM32LoRaWAN.h}}\index{STM32LoRaWAN.h@{STM32LoRaWAN.h}!CN470@{CN470}}}\mbox{\Hypertarget{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24bad745d0affcf2a11ccfc303c751825405}\label{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24bad745d0affcf2a11ccfc303c751825405}} 
+C\+N470&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CN779@{CN779}!STM32LoRaWAN.h@{STM32LoRaWAN.h}}\index{STM32LoRaWAN.h@{STM32LoRaWAN.h}!CN779@{CN779}}}\mbox{\Hypertarget{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba8eba65835db374c69d98b2e112ac5476}\label{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba8eba65835db374c69d98b2e112ac5476}} 
+C\+N779&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EU433@{EU433}!STM32LoRaWAN.h@{STM32LoRaWAN.h}}\index{STM32LoRaWAN.h@{STM32LoRaWAN.h}!EU433@{EU433}}}\mbox{\Hypertarget{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba88e456cddc659ae20b687243fc43bb45}\label{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba88e456cddc659ae20b687243fc43bb45}} 
+E\+U433&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EU868@{EU868}!STM32LoRaWAN.h@{STM32LoRaWAN.h}}\index{STM32LoRaWAN.h@{STM32LoRaWAN.h}!EU868@{EU868}}}\mbox{\Hypertarget{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba84d1df5c641ca74016c55c4037d30647}\label{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba84d1df5c641ca74016c55c4037d30647}} 
+E\+U868&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KR920@{KR920}!STM32LoRaWAN.h@{STM32LoRaWAN.h}}\index{STM32LoRaWAN.h@{STM32LoRaWAN.h}!KR920@{KR920}}}\mbox{\Hypertarget{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba3d8191fb8847934391dfa5bed57373e5}\label{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba3d8191fb8847934391dfa5bed57373e5}} 
+K\+R920&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IN865@{IN865}!STM32LoRaWAN.h@{STM32LoRaWAN.h}}\index{STM32LoRaWAN.h@{STM32LoRaWAN.h}!IN865@{IN865}}}\mbox{\Hypertarget{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba9b735bb989089ac6e5147222d4b1dbd5}\label{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba9b735bb989089ac6e5147222d4b1dbd5}} 
+I\+N865&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{US915@{US915}!STM32LoRaWAN.h@{STM32LoRaWAN.h}}\index{STM32LoRaWAN.h@{STM32LoRaWAN.h}!US915@{US915}}}\mbox{\Hypertarget{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba10bdc64d98b87b1bd3371dbc224ec460}\label{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba10bdc64d98b87b1bd3371dbc224ec460}} 
+U\+S915&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RU864@{RU864}!STM32LoRaWAN.h@{STM32LoRaWAN.h}}\index{STM32LoRaWAN.h@{STM32LoRaWAN.h}!RU864@{RU864}}}\mbox{\Hypertarget{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba59f93d8706c7d314cd657d027721e36f}\label{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24ba59f93d8706c7d314cd657d027721e36f}} 
+R\+U864&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{STM32LoRaWAN_8h_a1fd3d2eb05358dae64890dff0448c69c}\label{STM32LoRaWAN_8h_a1fd3d2eb05358dae64890dff0448c69c}} 
+\index{STM32LoRaWAN.h@{STM32LoRaWAN.h}!\_rf\_mode@{\_rf\_mode}}
+\index{\_rf\_mode@{\_rf\_mode}!STM32LoRaWAN.h@{STM32LoRaWAN.h}}
+\doxysubsubsection{\texorpdfstring{\_rf\_mode}{\_rf\_mode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{STM32LoRaWAN_8h_a1fd3d2eb05358dae64890dff0448c69c}{\+\_\+rf\+\_\+mode}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RFO@{RFO}!STM32LoRaWAN.h@{STM32LoRaWAN.h}}\index{STM32LoRaWAN.h@{STM32LoRaWAN.h}!RFO@{RFO}}}\mbox{\Hypertarget{STM32LoRaWAN_8h_a1fd3d2eb05358dae64890dff0448c69cafc5861c4f879b8c6b2bc7f4f35d5db41}\label{STM32LoRaWAN_8h_a1fd3d2eb05358dae64890dff0448c69cafc5861c4f879b8c6b2bc7f4f35d5db41}} 
+R\+FO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PABOOST@{PABOOST}!STM32LoRaWAN.h@{STM32LoRaWAN.h}}\index{STM32LoRaWAN.h@{STM32LoRaWAN.h}!PABOOST@{PABOOST}}}\mbox{\Hypertarget{STM32LoRaWAN_8h_a1fd3d2eb05358dae64890dff0448c69caa7f13c72b89a2345df433f97ff892a68}\label{STM32LoRaWAN_8h_a1fd3d2eb05358dae64890dff0448c69caa7f13c72b89a2345df433f97ff892a68}} 
+P\+A\+B\+O\+O\+ST&\\
+\hline
+
+\end{DoxyEnumFields}
