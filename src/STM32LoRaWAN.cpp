@@ -1014,15 +1014,24 @@ void STM32LoRaWAN::beginPacket() {
   tx_ptr = &tx_buf[0];
 }
 
-int STM32LoRaWAN::endPacket(bool confirmed) {
+int STM32LoRaWAN::endPacketAsync(bool confirmed) {
   size_t len = tx_ptr - tx_buf;
   // MKRWAN has more error codes, but those are fairly
   // arbitrary and undocumented, so just return -1 for any error.
   if (!send(tx_buf, len, confirmed))
     return -1;
-
-  // TODO: Block on confirmed and return status?
   return len;
+}
+
+int STM32LoRaWAN::endPacket(bool confirmed) {
+  size_t res = endPacketAsync(confirmed);
+
+  maintainUntilIdle();
+
+  if (confirmed && !lastAck())
+    return -1;
+
+  return res;
 }
 
 size_t STM32LoRaWAN::write(uint8_t c) {
@@ -1129,6 +1138,7 @@ void STM32LoRaWAN::MacMcpsConfirm(McpsConfirm_t* c) {
       "trans", c->NbTrans,
     #endif /* LORAMAC_VERSION */
     (unsigned)c->TxTimeOnAir, (unsigned)c->UpLinkCounter, (unsigned)c->Channel);
+  instance->last_tx_acked = c->AckReceived;
 }
 
 void STM32LoRaWAN::MacMcpsIndication(McpsIndication_t* i, LoRaMacRxStatus_t* status) {
