@@ -605,12 +605,12 @@ class STM32LoRaWAN : public Stream {
       // support of 1.1 and sketches that configure both, only do this
       // if no nwkKey was explicitly configured.
       return mibSetHex("AppKey", MIB_APP_KEY, value)
-             && (this->nwkKeySet || mibSetHex("NwkKey", MIB_NWK_KEY, value));
+             && (this->nwk_key_set || mibSetHex("NwkKey", MIB_NWK_KEY, value));
 
     }
     bool setAppKey(String value) { return setAppKey(value.c_str()); }
     bool setNwkKey(const char* value) {
-      this->nwkKeySet = true;
+      this->nwk_key_set = true;
       return mibSetHex("NwkKey", MIB_NWK_KEY, value);
     }
     bool setNwkKey(String value) { return setNwkKey(value.c_str()); }
@@ -835,7 +835,7 @@ class STM32LoRaWAN : public Stream {
     /** Port for most recently received packet */
     uint8_t rx_port = 0;
 
-    bool nwkKeySet = false;
+    bool nwk_key_set = false;
 
     // Buffer sizes match LORAMAC_PHY_MAXPAYLOAD (but that is not
     // public).
