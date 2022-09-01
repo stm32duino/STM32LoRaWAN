@@ -332,7 +332,7 @@ class STM32LoRaWAN : public Stream {
     bool configureBand(_lora_band band);
     /// @}
 
-    /** @name OTAA join
+    /** @name OTAA Join
      *
      * This method can be used to join the network using the OTAA
      * (over-the-air-activation) method, where the device uses the
@@ -347,19 +347,50 @@ class STM32LoRaWAN : public Stream {
      * string (`String` object or `const char*`), for the EUIs also
      * a raw integer (64-bits).
      *
-     * TODO: Blocking behavior
+     * \MKRWANApiDifference{Timeout parameter omitted (also ommited in MKRWAN_v2)}
+     * \MKRWANApiDifference{Added version that accepts uint64_t appEUI}
+     * \MKRWANApiDifference{Differences in timeout and retry datarate handling}
+     *
+     * These methods will perform multiple join attempts and block until
+     * the join completes succesfully, or a timeout (60 seconds) occurs.
+     *
+     * There are some subtle differences with MKRWAN in how the join
+     * process works:
+     *  - MKRWAN returns directly after the timeout, while this library
+     *    finishes the running join attempt before joinOTAA returns.
+     *  - With MKRWAN the module continues doing join attempts in the
+     *    background, while this library stops attempting them after
+     *    joinOTAA returns.
+     *  - With MKRWAN the module automatically decreases/alternates the
+     *    datarate in a region-specific way for all regions, this
+     *    library uses the configured datarate (with `datarate()`) for
+     *    most regions, but uses fixed datarates (according ot LoRaWAN
+     *    regional parameters) for US915/AU915/AS923.
      * @{ */
     bool joinOTAA(const char *appEui, const char *appKey, const char *devEui) { return setDevEui(devEui) && joinOTAA(appEui, appKey); }
-    bool joinOTAA(const char *appEui, const char *appKey) { return setAppEui(appEui) && setAppKey(appKey) && join(true); }
+    bool joinOTAA(const char *appEui, const char *appKey) { return setAppEui(appEui) && setAppKey(appKey) && joinOTAA(); }
     bool joinOTAA(String appEui, String appKey) { return joinOTAA(appEui.c_str(), appKey.c_str()); }
     bool joinOTAA(String appEui, String appKey, String devEui) { return joinOTAA(appEui.c_str(), appKey.c_str(), devEui.c_str()); }
+    /** \NotInMKRWAN */
     bool joinOTAA(uint64_t appEui, const char* appKey, uint64_t devEui) { return setDevEui(devEui) && joinOTAA(appEui, appKey); }
-    bool joinOTAA(uint64_t appEui, const char* appKey) { return setAppEui(appEui) && setAppKey(appKey) && join(true); }
+    /** \NotInMKRWAN */
+    bool joinOTAA(uint64_t appEui, const char* appKey) { return setAppEui(appEui) && setAppKey(appKey) && joinOTAA(); }
+    /** \NotInMKRWAN */
     bool joinOTAA(uint64_t appEui, String appKey, uint64_t devEui) { return joinOTAA(appEui, appKey.c_str(), devEui); }
+    /** \NotInMKRWAN */
     bool joinOTAA(uint64_t appEui, String appKey) { return joinOTAA(appEui, appKey.c_str()); }
+
+    /**
+     * Perform a join with parameters previously set using after using
+     * setAppEui(), setAppKey() and optionally setDevEui().
+     *
+     * \NotInMKRWAN
+     */
+    bool joinOTAA();
     /// @}
 
-    /** @name ABP join
+
+    /** @name ABP Join
      *
      * This method can be used to join the network using the ABP method,
      * where the session address and keys are preconfigured and no
@@ -375,10 +406,22 @@ class STM32LoRaWAN : public Stream {
      * attacks, otherwise only the first session will work and data will
      * be dropped after the first reset.
      *
+     * \note An ABP join returns immediately, it does not need to wait
+     * for the network, so there is no separate non-blocking/async
+     * version of this method.
+     *
      * @{ */
-    bool joinABP(const char * devAddr, const char * nwkSKey, const char * appSKey) { return setDevAddr(devAddr) && setNwkSKey(nwkSKey) && setAppSKey(appSKey) && join(false); }
+    bool joinABP(const char * devAddr, const char * nwkSKey, const char * appSKey) { return setDevAddr(devAddr) && setNwkSKey(nwkSKey) && setAppSKey(appSKey) && joinABP(); }
     bool joinABP(String devAddr, String nwkSKey, String appSKey) { return joinABP(devAddr.c_str(), nwkSKey.c_str(), appSKey.c_str()); }
-    bool joinABP(uint32_t devAddr, String nwkSKey, String appSKey) { return setDevAddr(devAddr) && setNwkSKey(nwkSKey) && setAppSKey(appSKey) && join(false); }
+    bool joinABP(uint32_t devAddr, String nwkSKey, String appSKey) { return setDevAddr(devAddr) && setNwkSKey(nwkSKey) && setAppSKey(appSKey) && joinABP(); }
+
+    /**
+     * Perform a join with parameters previously set using after using
+     * setDevAddr(), setNwkSKey() and setAppSKey().
+     *
+     * \NotInMKRWAN
+     */
+    bool joinABP();
     /// @}
 
     /// @}
@@ -655,6 +698,36 @@ class STM32LoRaWAN : public Stream {
     operator bool() { return connected(); }
     /// @}
 
+    /** @name Non-blocking (async) methods
+     *
+     * These are variants of other methods that are asynchronous, i.e.
+     * these start an operation and then return immediately without
+     * waiting (blocking) for the operation to complete.
+     *
+     * After calling these methods, the sketch must periodically call
+     * the `maintain()` method to allow any background work to be
+     * performed. This must be done at least until `busy()` returns
+     * false. You can use `maintainUntilBusy()` for this if you no
+     * longer have other things to do while waiting.
+     */
+
+    /**
+     * Do an asynchronous OTAA join using previously configured AppEui,
+     * AppKey and optionally DevEui. This can be used in place of
+     * joinOTAA() when you do not want blocking behavior.
+     *
+     * This initiates a single join attempt (one JoinReq message). After
+     * both receive windows are complete, `busy()` will become false and
+     * the sketch can call `connected()` to see if the join attempt
+     * was succesful. If not, it is up to the sketch to decide on
+     * retries.
+     *
+     * \NotInMKRWAN
+     */
+    bool joinOTAAAsync();
+
+    /// @}
+
     /**
      * @name Dummy implementations
      *
@@ -741,12 +814,6 @@ class STM32LoRaWAN : public Stream {
      */
     static bool failure(const char* fmt, ...);
 
-    /**
-     * Actually perform the join, expects identifiers and keys to be
-     * configured already.
-     */
-    bool join(bool otaa);
-
     /** Empty the rx buffer */
     void clear_rx() { rx_ptr = rx_buf + sizeof(rx_buf); }
 
@@ -777,6 +844,7 @@ class STM32LoRaWAN : public Stream {
     uint8_t rx_buf[255];
     uint8_t *rx_ptr;
 
+    static constexpr uint32_t DEFAULT_JOIN_TIMEOUT = 60000;
 };
 // For MKRWAN compatibility
 using LoRaModem = STM32LoRaWAN;
