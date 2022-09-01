@@ -444,9 +444,21 @@ class STM32LoRaWAN : public Stream {
      * API, where you pass a payload already built into your own buffer.
      * @{ */
     void beginPacket();
+    /**
+     * Finalize and send a packet previously prepared using
+     * beginPacket() and write().
+     *
+     * This blocks until the packet is completely sent an both RX
+     * windows have been completed.
+     *
+     * \return The number of bytes sent when succesful, or -1 when the
+     * packet could not be sent. For confirmed packets, also returns -1
+     * when no confirmation was received (in that case the packet might
+     * still have been sent correctly).
+     *
+     * \MKRWANApiDifference{This library blocks for all packets, not just confirmed packets.}
+     */
     int endPacket(bool confirmed = false);
-    // TODO: Do we want to expose send? Or maybe better a fully non-blocking endPacket() alternative?
-    bool send(const uint8_t *payload, size_t size, bool confirmed);
     /// @}
 
     /** @name Packet reception
@@ -726,6 +738,42 @@ class STM32LoRaWAN : public Stream {
      */
     bool joinOTAAAsync();
 
+    /**
+     * Finalize and asynchronously send a packet. This can be used in
+     * place of `endPacket()` when you do not want blocking behavior.
+     *
+     * The return value only reflects whether the packet could
+     * successfully queued, to see if a confirmed packet was actually
+     * confirmed by the network, call lastAck().
+     *
+     * \NotInMKRWAN
+     */
+    int endPacketAsync(bool confirmed = false);
+
+    /**
+     * Send a packet asynchronously by passing a buffer. This can be
+     * used instead of beginPacket() / write() / endPacket(), when you
+     * prefer building the data to send in an external buffer and do not
+     * want to skip one buffer copy.
+     *
+     * The return value only reflects whether the packet could
+     * successfully queued, to see if a confirmed packet was actually
+     * confirmed by the network, call lastAck().
+     *
+     * \NotInMKRWAN
+     */
+    bool send(const uint8_t *payload, size_t size, bool confirmed);
+
+    /**
+     * Returns true when the most recently transmitted packet has
+     * received a confirmation from the network (if requested). Directly
+     * after transmitting any packet, this will return false and it will
+     * become true when the ack is received (which is, at the latest,
+     * when busy() becomes false again).
+     *
+     * \NotInMKRWAN
+     */
+    uint8_t lastAck() { return last_tx_acked; }
     /// @}
 
     /**
@@ -843,6 +891,8 @@ class STM32LoRaWAN : public Stream {
     uint8_t *tx_ptr;
     uint8_t rx_buf[255];
     uint8_t *rx_ptr;
+
+    bool last_tx_acked = false;
 
     static constexpr uint32_t DEFAULT_JOIN_TIMEOUT = 60000;
 };
