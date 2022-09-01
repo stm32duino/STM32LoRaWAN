@@ -75,34 +75,65 @@ void STM32LoRaWAN::maintainUntilIdle()
   } while(busy());
 }
 
-bool STM32LoRaWAN::join(bool otaa)
+bool STM32LoRaWAN::joinOTAAAsync()
 {
   clear_rx();
 
-  if (otaa) {
-    MlmeReq_t mlmeReq;
+  MlmeReq_t mlmeReq;
+  mlmeReq.Type = MLME_JOIN;
+  // Just use the most recently configured datarate for join
+  mlmeReq.Req.Join.Datarate = getDataRate();
+  mlmeReq.Req.Join.NetworkActivation = ACTIVATION_TYPE_OTAA;
 
-    mlmeReq.Type = MLME_JOIN;
-    // Just use the most recently configured datarate for join
-    mlmeReq.Req.Join.Datarate = getDataRate();
-    mlmeReq.Req.Join.NetworkActivation = ACTIVATION_TYPE_OTAA;
+  // Starts the OTAA join procedure
+  LoRaMacStatus_t res = LoRaMacMlmeRequest(&mlmeReq);
+  if (res != LORAMAC_STATUS_OK)
+    return failure("Join request failed: %s\r\n", toString(res));
 
-    // Starts the OTAA join procedure
-    LoRaMacStatus_t res = LoRaMacMlmeRequest(&mlmeReq);
-    if (res != LORAMAC_STATUS_OK)
-      return failure("Join request failed: %s\r\n", toString(res));
+  return true;
+}
 
-    // TODO: Block for join complete? Timeout?
-    // TODO: Retry joins
-    return true;
-  } else {
-    MibRequestConfirm_t mibReq;
-    mibReq.Param.NetworkActivation = ACTIVATION_TYPE_ABP;
-    if (!mibSet("MIB_NETWORK_ACTIVATION", MIB_NETWORK_ACTIVATION, mibReq))
-      return false;
+bool STM32LoRaWAN::joinOTAA() {
+  unsigned long start = millis();
 
-    return true;
-  }
+  do {
+    // TODO: Should this decrease datarate after a few failed attempts?
+    // MKRWAN has an older version of LoRaMAC-node that handles this
+    // in a region-dependent way (usually decreasing datarate every
+    // 8 attempts). Our newer version of LoRaMAC-node just uses the
+    // configured datarate, except for some regions (US915/AU915/AS923)
+    // where the regional parameters prescribe what datarate to use for
+    // joins.
+    // See https://github.com/Lora-net/LoRaMac-node/commit/bec887dd2414b091fe62277ed57d0166f77a5055
+    // for the change in LoRaMAC-node.
+    //
+    // With a timeout of only 60s, increasing the DR only every
+    // 8 attempts is probably not helpful, so maybe more often? Or maybe
+    // leave it to the sketch to increase DR every batch of 60s? Note
+    // that we (or the sketch) can probably freely just increase the DR
+    // without worrying about region-specific limits, since if we go
+    // outside regional DR limits, the stack will just refuse to set the
+    // DR.
+    // Or maybe use PHY_NEXT_LOWER_TX_DR
+    joinOTAAAsync();
+
+    // TODO: Should this cancel a pending join attempt if the timeout
+    // runs out?
+    maintainUntilIdle();
+  } while (!connected() && (millis() - start < DEFAULT_JOIN_TIMEOUT));
+
+  return connected();
+}
+
+
+bool STM32LoRaWAN::joinABP() {
+  clear_rx();
+  MibRequestConfirm_t mibReq;
+  mibReq.Param.NetworkActivation = ACTIVATION_TYPE_ABP;
+  if (!mibSet("MIB_NETWORK_ACTIVATION", MIB_NETWORK_ACTIVATION, mibReq))
+    return false;
+
+  return true;
 }
 
 bool STM32LoRaWAN::dataRate(uint8_t dr) {
