@@ -285,9 +285,9 @@ int STM32LoRaWAN::getChannelMaskSize(_lora_band band){
 
 bool STM32LoRaWAN::send(const uint8_t *payload, size_t size, bool confirmed) {
   McpsReq_t mcpsReq;
-  mcpsReq.Type = confirmed ? MCPS_CONFIRMED : MCPS_UNCONFIRMED;
 
   if (confirmed) {
+    mcpsReq.Type = MCPS_CONFIRMED;
     // When ADR is used, the datarate passed here is ignored. If not,
     // just pass the current rate, which should be the most recently
     // configured one..
@@ -301,6 +301,7 @@ bool STM32LoRaWAN::send(const uint8_t *payload, size_t size, bool confirmed) {
     mcpsReq.Req.Confirmed.NbTrials = 1;
     #endif /* LORAMAC_VERSION */
   } else {
+    mcpsReq.Type = MCPS_UNCONFIRMED;
     // See comment about datarate above
     mcpsReq.Req.Unconfirmed.Datarate = getDataRate();
     mcpsReq.Req.Unconfirmed.fPort = this->tx_port;
