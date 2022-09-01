@@ -154,7 +154,7 @@ class STM32LoRaWAN : public Stream {
     /**
      * When false is passed, duty cycle limits are no longer checked.
      *
-     * \raisewarning Use with care, disabling duty cycle limits can cause
+     * \warning Use with care, disabling duty cycle limits can cause
      * violations of laws and regulations around use of the RF spectrum!
      */
     bool dutyCycle(bool on);
