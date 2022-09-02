@@ -572,8 +572,6 @@ class STM32LoRaWAN : public Stream {
      * before transmitting a new packet (which is, in class A LoRaWAN,
      * the only time a new packet can be received).
      *
-     * TODO: How does parsePacket fit in?
-     *
      * @{ */
     int read(uint8_t *buf, size_t size);
     virtual int available();
