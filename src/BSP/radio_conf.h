@@ -118,7 +118,6 @@
 
 /* Exported macros -----------------------------------------------------------*/
 #ifndef CRITICAL_SECTION_BEGIN
-  // TODO
   /**
   * @brief macro used to enter the critical section
   */

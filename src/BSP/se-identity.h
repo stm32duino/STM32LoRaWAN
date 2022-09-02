@@ -96,7 +96,6 @@
  ******************************************************************************
  */
 
-// TODO: Set to 1 and preset detected EUI through Mib instead of using the complex callback scheme?
 /*!
  * When set to 1 DevEui is LORAWAN_DEVICE_EUI
  * When set to 0 DevEui is automatically set with a value provided by MCU platform
