@@ -192,19 +192,24 @@ class STM32LoRaWAN : public Stream {
      *
      * These methods allow access to the up and down frame counters.
      *
-     * \note These are *not* currently implemented, since it does not
-     * seem easy to access the frame counters. They might be implemented
-     * in the future with some extra work.
+     * \note Currently setting the framecounters is not supported, since
+     * the underlying LoRaWAN library has no obvious way to set these.
+     * This might be implemented in the future with some extra work.
      *
      * @{ */
 
-    /** \NotImplemented */
-    [[gnu::error("Not implemented in STM32LoRaWAN")]]
-    bool setFCU(uint16_t fcu);
-
-    /** \NotImplemented */
-    [[gnu::error("Not implemented in STM32LoRaWAN")]]
+    /**
+     * Return the frame counter of the most recent uplink messsage that
+     * was completely transmitted (i.e. after the RX windows have
+     * passed).
+     */
     int32_t getFCU();
+
+    /**
+     * Return the frame counter of the most recent downlink messsage that
+     * was received.
+     */
+    int32_t getFCD();
 
     /** \NotImplemented */
     [[gnu::error("Not implemented in STM32LoRaWAN")]]
@@ -212,7 +217,8 @@ class STM32LoRaWAN : public Stream {
 
     /** \NotImplemented */
     [[gnu::error("Not implemented in STM32LoRaWAN")]]
-    int32_t getFCD();
+    bool setFCU(uint16_t fcu);
+
     /// @}
 
     /** @name Channel manipulation
@@ -919,6 +925,8 @@ class STM32LoRaWAN : public Stream {
     uint8_t *rx_ptr;
 
     bool last_tx_acked = false;
+    uint32_t fcnt_up = 0;
+    uint32_t fcnt_down = 0;
 
     static constexpr uint32_t DEFAULT_JOIN_TIMEOUT = 60000;
 };
