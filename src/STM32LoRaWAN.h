@@ -863,6 +863,7 @@ class STM32LoRaWAN : public Stream {
      * Helper that prints an error and then always returns false, to
      * allow for combining reporting and returning in a single line.
      */
+    __attribute__((format(printf, 1, 2)))
     static bool failure(const char *fmt, ...);
 
     /** Empty the rx buffer */
