@@ -78,6 +78,8 @@ void STM32LoRaWAN::maintainUntilIdle()
 bool STM32LoRaWAN::joinOTAAAsync()
 {
   clear_rx();
+  this->fcnt_up = 0;
+  this->fcnt_down = 0;
 
   MlmeReq_t mlmeReq;
   mlmeReq.Type = MLME_JOIN;
@@ -232,27 +234,28 @@ bool STM32LoRaWAN::setRX2Freq(uint32_t freq){
   return mibSetRxChannelParams("RX2Freq", MIB_RX2_CHANNEL, rx);
 }
 
-/* TODO: Implement frame counters
+/* TODO: Implement frame counters setting
  *
  * STM32CubeWL does not seem to have an obvious interface to access
  * these. They are stored by LoRaMacCrypto.c, but the functions to set
  * and query the last values are static (the only non-static one is to
  * complete a 16-bit framecounter with the upper bits).
  *
- * Maybe we can track the latest counter from McpsIndication and
- * McpsConfirm messages? Or through the NVM interface?
+ * Maybe we can set them through the NVM interface somehow?
 bool STM32LoRaWAN::setFCU(uint16_t fcu){
-}
-
-int32_t STM32LoRaWAN::getFCU(){
 }
 
 bool STM32LoRaWAN::setFCD(uint16_t fcd){
 }
+*/
+
+int32_t STM32LoRaWAN::getFCU(){
+  return this->fcnt_up;
+}
 
 int32_t STM32LoRaWAN::getFCD(){
+  return this->fcnt_down;
 }
-*/
 
 bool STM32LoRaWAN::enableChannel(unsigned idx) {
   return modifyChannelEnabled(idx, true);
@@ -1192,6 +1195,7 @@ void STM32LoRaWAN::MacMcpsConfirm(McpsConfirm_t* c) {
     #endif /* LORAMAC_VERSION */
     (unsigned)c->TxTimeOnAir, (unsigned)c->UpLinkCounter, (unsigned)c->Channel);
   instance->last_tx_acked = c->AckReceived;
+  instance->fcnt_up = c->UpLinkCounter;
 }
 
 void STM32LoRaWAN::MacMcpsIndication(McpsIndication_t* i, LoRaMacRxStatus_t* status) {
@@ -1202,6 +1206,8 @@ void STM32LoRaWAN::MacMcpsIndication(McpsIndication_t* i, LoRaMacRxStatus_t* sta
     i->RxDatarate, i->FramePending, i->BufferSize, i->RxData,
     i->AckReceived, i->DownLinkCounter, i->DevAddress,
     status->Rssi, status->Snr, status->RxSlot);
+
+  instance->fcnt_down = i->DownLinkCounter;
 
   if ((i->McpsIndication == MCPS_CONFIRMED || i->McpsIndication == MCPS_UNCONFIRMED) && i->Status == LORAMAC_EVENT_INFO_STATUS_OK) {
     instance->add_rx(i->Buffer, i->BufferSize);
