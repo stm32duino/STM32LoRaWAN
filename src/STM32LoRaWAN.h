@@ -448,8 +448,6 @@ class STM32LoRaWAN : public Stream {
     bool joinABP();
     /// @}
 
-    /// @}
-
     /** @name Packet sending
      *
      * These methods allow sending a data packet.
