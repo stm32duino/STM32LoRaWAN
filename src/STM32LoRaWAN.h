@@ -840,6 +840,7 @@ class STM32LoRaWAN : public Stream {
     static void MacMcpsIndication(McpsIndication_t *McpsIndication, LoRaMacRxStatus_t *RxStatus);
     static void MacMlmeConfirm(MlmeConfirm_t *MlmeConfirm);
     static void MacMlmeIndication(MlmeIndication_t *MlmeIndication, LoRaMacRxStatus_t *RxStatus);
+    static void MacProcessNotify();
 
     static STM32LoRaWAN *instance;
 
@@ -851,12 +852,11 @@ class STM32LoRaWAN : public Stream {
     };
 
     LoRaMacCallback_t LoRaMacCallbacks = {
-      // TODO: Do we need these?
       .GetBatteryLevel = nullptr,
       .GetTemperatureLevel = nullptr,
-      .GetUniqueId = nullptr,
+      .GetUniqueId = nullptr, // Not needed, we just explicitly set the deveui in begin()
       .NvmDataChange = nullptr,
-      .MacProcessNotify = nullptr,
+      .MacProcessNotify = MacProcessNotify,
     };
 
     /** Generate the builtin DevEUI for this board */
@@ -927,6 +927,8 @@ class STM32LoRaWAN : public Stream {
     bool last_tx_acked = false;
     uint32_t fcnt_up = 0;
     uint32_t fcnt_down = 0;
+
+    bool mac_process_pending = false;
 
     static constexpr uint32_t DEFAULT_JOIN_TIMEOUT = 60000;
 };
