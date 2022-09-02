@@ -254,33 +254,66 @@ int32_t STM32LoRaWAN::getFCD(){
 }
 */
 
-
-bool STM32LoRaWAN::sendMask(String newMask){
-  //TODO
+bool STM32LoRaWAN::enableChannel(unsigned idx) {
+  return modifyChannelEnabled(idx, true);
 }
 
-bool STM32LoRaWAN::sendMask(){
-  //TODO
+bool STM32LoRaWAN::disableChannel(unsigned idx) {
+  return modifyChannelEnabled(idx, false);
 }
 
-bool STM32LoRaWAN::enableChannel(int pos){
-  //TODO
+bool STM32LoRaWAN::modifyChannelEnabled(unsigned idx, bool value) {
+  const char *enabledisable = value ? "enable" : "disable";
+  if (idx >= REGION_NVM_MAX_NB_CHANNELS)
+    return failure("Cannot %s channel %u, only %u channels are available\r\n", enabledisable, idx, REGION_NVM_MAX_NB_CHANNELS);
+
+  ChannelParams_t *channels;
+  if (!mibGetPtr("Channels", MIB_CHANNELS, (void**)&channels))
+    return false;
+
+  if (channels[idx].Frequency == 0)
+    return failure("Cannot %s channel %u, channel not defined\r\n", enabledisable, idx);
+
+  uint16_t new_mask[REGION_NVM_CHANNELS_MASK_SIZE];
+  uint16_t* cur_mask;
+  if (!mibGetPtr("ChannelsMask", MIB_CHANNELS_MASK, (void**)&cur_mask))
+    return false;
+
+  // Ensure the channel mask can hold all channels, so the check against
+  // REGION_NVM_MAX_NB_CHANNELS above is sufficient to prevent overflows here.
+  static_assert(REGION_NVM_CHANNELS_MASK_SIZE * 16 <= REGION_NVM_MAX_NB_CHANNELS, "Mask too short for all channels?");
+
+  memcpy(new_mask, cur_mask, sizeof(new_mask));
+  if (value)
+    new_mask[idx / 16] |= 1 << (idx % 16);
+  else
+    new_mask[idx / 16] &= ~(1 << (idx % 16));
+
+  return mibSetPtr("ChannelsMask", MIB_CHANNELS_MASK, (void*)new_mask);
 }
 
-bool STM32LoRaWAN::disableChannel(int pos){
-  //TODO
-}
+bool STM32LoRaWAN::isChannelEnabled(unsigned idx){
+  if (idx >= REGION_NVM_MAX_NB_CHANNELS)
+    return false;
 
-int STM32LoRaWAN::isChannelEnabled(int pos){
-  //TODO
-}
+  ChannelParams_t *channels;
+  if (!mibGetPtr("Channels", MIB_CHANNELS, (void**)&channels))
+    return false;
 
-String STM32LoRaWAN::getChannelMask(){
-  //TODO
-}
+  // Treat unconfigured channels as disabled (even though the enabled
+  // mask defaults to being set).
+  if (channels[idx].Frequency == 0)
+    return 0;
 
-int STM32LoRaWAN::getChannelMaskSize(_lora_band band){
-  //TODO
+  uint16_t* cur_mask;
+  if (!mibGetPtr("ChannelsMask", MIB_CHANNELS_MASK, (void**)&cur_mask))
+    return false;
+
+  // Ensure the channel mask can hold all channels, so the check against
+  // REGION_NVM_MAX_NB_CHANNELS above is sufficient to prevent overflows here.
+  static_assert(REGION_NVM_CHANNELS_MASK_SIZE * 16 <= REGION_NVM_MAX_NB_CHANNELS, "Mask too short for all channels?");
+
+  return cur_mask[idx / 16] & (1 << (idx % 16));
 }
 
 bool STM32LoRaWAN::send(const uint8_t *payload, size_t size, bool confirmed) {
@@ -751,13 +784,36 @@ bool STM32LoRaWAN::mibSetRxChannelParams(const char* name, Mib_t type, RxChannel
   return mibSet(name, type, mibReq);
 }
 
+bool STM32LoRaWAN::mibGetPtr(const char* name, Mib_t type, void **value) {
+  MibRequestConfirm_t mibReq;
+  if (!mibGet(name, type, mibReq))
+    return false;
+
+  switch(type) {
+    case MIB_CHANNELS: *value = mibReq.Param.ChannelList; break;
+    case MIB_CHANNELS_MASK: *value = mibReq.Param.ChannelsMask; break;
+    case MIB_CHANNELS_DEFAULT_MASK: *value = mibReq.Param.ChannelsDefaultMask; break;
+    default: return failure("Internal error: Unknown MIB type: %s / %u\r\n", name, type);
+  }
+  return true;
+}
+
+bool STM32LoRaWAN::mibSetPtr(const char* name, Mib_t type, void *value) {
+  MibRequestConfirm_t mibReq;
+  switch(type) {
+    case MIB_CHANNELS: mibReq.Param.ChannelList = (ChannelParams_t*)value; break;
+    case MIB_CHANNELS_MASK: mibReq.Param.ChannelsMask = (uint16_t*)value; break;
+    case MIB_CHANNELS_DEFAULT_MASK: mibReq.Param.ChannelsDefaultMask = (uint16_t*)value; break;
+    default: return failure("Internal error: Unknown MIB type: %s / %u\r\n", name, type);
+  }
+
+  return mibSet(name, type, mibReq);
+}
+
 /* These MIB types do not have easy getter/setters defined for them yet
  * (but since these were regexed together from LoRaMacInterfaces already, these
  * are left here to maybe put into use in the future.
 
-      case MIB_CHANNELS: mibReq.Param.ChannelList = value; break;
-      case MIB_CHANNELS_MASK: mibReq.Param.ChannelsMask = value; break;
-      case MIB_CHANNELS_DEFAULT_MASK: mibReq.Param.ChannelsDefaultMask = value; break;
       case MIB_MULTICAST_CHANNEL: mibReq.Param.MulticastChannel = value; break;
       case MIB_ANTENNA_GAIN: mibReq.Param.AntennaGain = value; break;
       case MIB_DEFAULT_ANTENNA_GAIN: mibReq.Param.DefaultAntennaGain = value; break;
@@ -767,9 +823,6 @@ bool STM32LoRaWAN::mibSetRxChannelParams(const char* name, Mib_t type, RxChannel
       case MIB_IS_CERT_FPORT_ON: mibReq.Param.IsCertPortOn = value; break;
       case MIB_BEACON_STATE: mibReq.Param.BeaconState = value; break;
 
-      case MIB_CHANNELS: *value = mibReq.Param.ChannelList; break;
-      case MIB_CHANNELS_MASK: *value = mibReq.Param.ChannelsMask; break;
-      case MIB_CHANNELS_DEFAULT_MASK: *value = mibReq.Param.ChannelsDefaultMask; break;
       case MIB_MULTICAST_CHANNEL: *value = mibReq.Param.MulticastChannel; break;
       case MIB_ANTENNA_GAIN: *value = mibReq.Param.AntennaGain; break;
       case MIB_DEFAULT_ANTENNA_GAIN: *value = mibReq.Param.DefaultAntennaGain; break;
