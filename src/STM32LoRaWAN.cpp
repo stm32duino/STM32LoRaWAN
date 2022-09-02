@@ -62,10 +62,18 @@ bool STM32LoRaWAN::begin(_lora_band band)
   return true;
 }
 
+void STM32LoRaWAN::MacProcessNotify()
+{
+  // Called by the stack from an ISR when there is work to do
+  instance->mac_process_pending = true;
+}
+
 void STM32LoRaWAN::maintain()
 {
-  // TODO: Check flag to be set by MacProcessNotify
-  LoRaMacProcess( );
+  if (mac_process_pending) {
+    mac_process_pending = false;
+    LoRaMacProcess( );
+  }
 }
 
 void STM32LoRaWAN::maintainUntilIdle()
