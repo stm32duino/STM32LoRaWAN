@@ -219,16 +219,24 @@ class STM32LoRaWAN : public Stream {
      *
      * These methods allow manipulating the list of enabled channels.
      *
-     * \todo Implement & document
+     * The number of channels that are actually available and defined
+     * and their frequency and other settings are region-dependent.
+     * The fixed frequency regions (US915 and AU915) have 96 fixed
+     * channels, while the other regions have just a couple (up to 16)
+     * of channels defined.
+     *
+     * \note The list of channels will be reset when starting an OTAA
+     * join an when the join completes. Also, the network can send
+     * commands to modify the channel plan (define new channels or
+     * replace them, and enable/disable them), also as part of ADR
+     * messages.
      *
      * @{ */
-    bool sendMask(String newMask);
-    bool sendMask();
-    bool enableChannel(int pos);
-    bool disableChannel(int pos);
-    int isChannelEnabled(int pos);
-    String getChannelMask();
-    int getChannelMaskSize(_lora_band band);
+
+    bool enableChannel(unsigned pos);
+    bool disableChannel(unsigned pos);
+    bool modifyChannelEnabled(unsigned pos, bool value);
+    bool isChannelEnabled(unsigned pos);
     /// @}
 
     /** @name Missing methods
@@ -323,6 +331,22 @@ class STM32LoRaWAN : public Stream {
     /** \NotImplemented{Keys cannot be retrieved} */
     [[gnu::error("Not implemented in STM32LoRaWAN: Keys cannot be retrieved")]]
     String applicationKey();
+
+    /** \NotImplemented{seems to be an internal method in MKRWAN (use enableChannel/disableChannel instead)} */
+    [[gnu::error("Not implemented in STM32LoRaWAN: Internal method in MKRWAN (use enableChannel/disableChannel instead)")]]
+    bool sendMask(String newMask);
+
+    /** \NotImplemented{seems to be an internal method in MKRWAN (use enableChannel/disableChannel instead)} */
+    [[gnu::error("Not implemented in STM32LoRaWAN: Internal method in MKRWAN (use enableChannel/disableChannel instead)")]]
+    bool sendMask();
+
+    /** \NotImplemented{seems to be an internal method in MKRWAN (use enableChannel/disableChannel instead)} */
+    [[gnu::error("Not implemented in STM32LoRaWAN: Internal method in MKRWAN (use enableChannel/disableChannel instead)")]]
+    String getChannelMask();
+
+    /** \NotImplemented{seems to be an internal method in MKRWAN (use enableChannel/disableChannel instead)} */
+    [[gnu::error("Not implemented in STM32LoRaWAN: Internal method in MKRWAN (use enableChannel/disableChannel instead)")]]
+    int getChannelMaskSize(_lora_band band);
 
     /**
      * This could be supported, but needs careful consideration and
@@ -577,6 +601,7 @@ class STM32LoRaWAN : public Stream {
     bool mibGetUint64(const char *name, Mib_t type, uint64_t *value);
     bool mibGetHex(const char *name, Mib_t type, String *value);
     bool mibGetRxChannelParams(const char *name, Mib_t type, RxChannelParams_t *value);
+    bool mibGetPtr(const char *name, Mib_t type, void **value);
     bool mibSet(const char *name, Mib_t type, MibRequestConfirm_t &mibReq);
     bool mibSetBool(const char *name, Mib_t type, bool value);
     bool mibSetUint8(const char *name, Mib_t type, uint8_t value);
@@ -585,6 +610,7 @@ class STM32LoRaWAN : public Stream {
     bool mibSetUint64(const char *name, Mib_t type, uint64_t value);
     bool mibSetHex(const char *name, Mib_t type, const char *value);
     bool mibSetRxChannelParams(const char *name, Mib_t type, RxChannelParams_t value);
+    bool mibSetPtr(const char *name, Mib_t type, void *value);
     size_t mibHexSize(const char *name, Mib_t type);
     /// @}
 
