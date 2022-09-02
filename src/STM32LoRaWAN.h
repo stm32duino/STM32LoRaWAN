@@ -362,7 +362,9 @@ class STM32LoRaWAN : public Stream {
     bool configureBand(_lora_band band);
     /// @}
 
-    /** @name OTAA Join
+    /**
+     * @anchor joinOTAA
+     * @name OTAA Join
      *
      * This method can be used to join the network using the OTAA
      * (over-the-air-activation) method, where the device uses the
@@ -420,7 +422,9 @@ class STM32LoRaWAN : public Stream {
     /// @}
 
 
-    /** @name ABP Join
+    /**
+     * @anchor joinABP
+     * @name ABP Join
      *
      * This method can be used to join the network using the ABP method,
      * where the session address and keys are preconfigured and no
@@ -454,7 +458,9 @@ class STM32LoRaWAN : public Stream {
     bool joinABP();
     /// @}
 
-    /** @name Packet sending
+    /**
+     * @anchor sending
+     * @name Packet sending
      *
      * These methods allow sending a data packet.
      *
@@ -489,7 +495,9 @@ class STM32LoRaWAN : public Stream {
     int endPacket(bool confirmed = false);
     /// @}
 
-    /** @name Packet reception
+    /**
+     * @anchor reception
+     * @name Packet reception
      *
      * These methods are about reception of downlink packets.
      *
@@ -516,7 +524,9 @@ class STM32LoRaWAN : public Stream {
     uint8_t getDownlinkPort() { return rx_port; }
     /// @}
 
-    /** @name Stream/Print writing
+    /**
+     * @anchor print
+     * @name Stream/Print writing
      *
      * These are standard methods defined by the Arduino Stream (or
      * actually its Print superclass) class to allow writing data into
@@ -557,7 +567,9 @@ class STM32LoRaWAN : public Stream {
 
     /// @}
 
-    /** @name Stream reading
+    /**
+     * @anchor stream
+     * @name Stream reading
      *
      * These are standard methods defined by the Arduino Stream class to
      * allow reading received data.
