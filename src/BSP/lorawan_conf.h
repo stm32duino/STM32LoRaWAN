@@ -127,7 +127,6 @@
   */
 #define DISABLE_LORAWAN_RX_WINDOW                       0
 
-// TODO
 /* Exported macro ------------------------------------------------------------*/
 #ifndef CRITICAL_SECTION_BEGIN
 #define CRITICAL_SECTION_BEGIN( )      UTILS_ENTER_CRITICAL_SECTION( )
