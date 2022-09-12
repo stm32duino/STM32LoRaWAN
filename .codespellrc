@@ -1,0 +1,7 @@
+[codespell]
+skip = ./src/STM32CubeWL,./src/BSP/timer_if.*,./api-docs,./.git
+# The presence of these values enables them
+check-filenames =
+check-hidden =
+# In the event of a false positive, add the word in all lower case to this value (comma-separated string)
+ignore-words-list = wan
