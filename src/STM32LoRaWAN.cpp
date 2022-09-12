@@ -43,7 +43,7 @@
 
 // The MKRWAN API has no constants for datarates, so just accepts 0 for
 // DR0. The STM32CubeWL API uses DR_x constants, but they contain just
-// the plan value, so no translation is needed. However, do doublecheck
+// the plain value, so no translation is needed. However, do doublecheck
 // that this is really the case.
 #if DR_0 != 0 || DR_1 != 1 || DR_2 != 2 || DR_3 != 3 || DR_4 != 4 || DR_5 != 5 || DR_6 != 6 || DR_8 != 8 || DR_9 != 9 || DR_10 != 10 || DR_11 != 11 || DR_12 != 12 || DR_13 != 13 || DR_14 != 14 || DR_15 != 15
 #error "Unexpected datarate constants"
