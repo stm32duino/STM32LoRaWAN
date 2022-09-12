@@ -12,6 +12,15 @@ library](https://www.arduino.cc/reference/en/libraries/mkrwan/)
 library should usually work on the other too (but note below for some
 caveats).
 
+## Documentation
+Overview and reference documentation is embedded in the source code.
+Fully generated documentation will be published later, for now you can
+generate it yourself using the [Doxygen](https://doxygen.nl/) tool.
+
+To generate the documentation yourself, simply run the `doxygen` command
+(no options needed) in the root of this repository. This will produce
+HTML documentation in the `api-docs` subdirectory.
+
 ## License
 This library is based on LoRaMac-node developed by semtech, with
 extensive modifications and additions made by STMicroelectronics.
