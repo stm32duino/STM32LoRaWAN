@@ -109,12 +109,12 @@ class STM32LoRaWAN : public Stream {
      * string (`String` object or `const char*`), for the EUIs also
      * a raw integer (64-bits).
      *
-     * \MKRWANApiDifference{Timeout parameter omitted (also ommited in MKRWAN_v2)}
+     * \MKRWANApiDifference{Timeout parameter omitted (also omitted in MKRWAN_v2)}
      * \MKRWANApiDifference{Added version that accepts uint64_t appEUI}
      * \MKRWANApiDifference{Differences in timeout and retry datarate handling}
      *
      * These methods will perform multiple join attempts and block until
-     * the join completes succesfully, or a timeout (60 seconds) occurs.
+     * the join completes successfully, or a timeout (60 seconds) occurs.
      *
      * There are some subtle differences with MKRWAN in how the join
      * process works:
@@ -126,7 +126,7 @@ class STM32LoRaWAN : public Stream {
      *  - With MKRWAN the module automatically decreases/alternates the
      *    datarate in a region-specific way for all regions, this
      *    library uses the configured datarate (with `datarate()`) for
-     *    most regions, but uses fixed datarates (according ot LoRaWAN
+     *    most regions, but uses fixed datarates (according to LoRaWAN
      *    regional parameters) for US915/AU915/AS923.
      * @{ */
     bool joinOTAA(const char *appEui, const char *appKey, const char *devEui) { return setDevEui(devEui) && joinOTAA(appEui, appKey); }
@@ -215,7 +215,7 @@ class STM32LoRaWAN : public Stream {
      * This blocks until the packet is completely sent an both RX
      * windows have been completed.
      *
-     * \return The number of bytes sent when succesful, or -1 when the
+     * \return The number of bytes sent when successful, or -1 when the
      * packet could not be sent. For confirmed packets, also returns -1
      * when no confirmation was received (in that case the packet might
      * still have been sent correctly).
@@ -263,7 +263,7 @@ class STM32LoRaWAN : public Stream {
     virtual int availableForWrite();
 
     /**
-     * This is a no-op, to send writen data, use endPacket(). \DummyImplementation
+     * This is a no-op, to send written data, use endPacket(). \DummyImplementation
      */
     virtual void flush() { }
 
@@ -435,7 +435,7 @@ class STM32LoRaWAN : public Stream {
 
     /**
      * Returns whether connected to the network (i.e. for OTAA
-     * a succesfull join exchange has happened, or for ABP session
+     * a successful join exchange has happened, or for ABP session
      * information has been supplied by calling joinABP).
      */
     bool connected();
@@ -459,7 +459,7 @@ class STM32LoRaWAN : public Stream {
 
     /** @name Radio / transmission configuration
      *
-     * These methods allow configuring various radio and tranmission
+     * These methods allow configuring various radio and transmission
      * parameters.
      *
      * @{ */
@@ -620,14 +620,14 @@ class STM32LoRaWAN : public Stream {
      * @{ */
 
     /**
-     * Return the frame counter of the most recent uplink messsage that
+     * Return the frame counter of the most recent uplink message that
      * was completely transmitted (i.e. after the RX windows have
      * passed).
      */
     int32_t getFCU();
 
     /**
-     * Return the frame counter of the most recent downlink messsage that
+     * Return the frame counter of the most recent downlink message that
      * was received.
      */
     int32_t getFCD();
@@ -697,7 +697,7 @@ class STM32LoRaWAN : public Stream {
      * This initiates a single join attempt (one JoinReq message). After
      * both receive windows are complete, `busy()` will become false and
      * the sketch can call `connected()` to see if the join attempt
-     * was succesful. If not, it is up to the sketch to decide on
+     * was successful. If not, it is up to the sketch to decide on
      * retries.
      *
      * \NotInMKRWAN
