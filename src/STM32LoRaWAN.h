@@ -758,6 +758,27 @@ class STM32LoRaWAN : public Stream {
      */
     void maintainUntilIdle();
 
+    /**
+     * Registers a callback that is called whenever there is some work
+     * to do and the maintain() function must be called soon.
+     *
+     * \warning This callback is called from an interrupt handler, so it
+     * should not do any work and definitely *not* call `maintain()`,
+     * but just set a flag, enable a task, or something similarly short,
+     * and make sure to do that in a interrupt-safe manner.
+     *
+     * When using this callback, it is not needed to call the
+     * `maintain()` method unless this callback is called, allowing
+     * applications to be more efficient, or use sleeping (but care
+     * should be taken to prevent race conditions).
+     *
+     * Only one callback can be active at the same time, so any
+     * previously configured callback is replaced by the new one passed.
+     *
+     * \NotInMKRWAN
+     */
+    void setMaintainNeededCallback(std::function<void(void)> callback);
+
     /// @}
 
 
@@ -998,6 +1019,8 @@ class STM32LoRaWAN : public Stream {
     bool last_tx_acked = false;
     uint32_t fcnt_up = 0;
     uint32_t fcnt_down = 0;
+
+    std::function<void(void)> maintain_needed_callback;
 
     bool mac_process_pending = false;
 
