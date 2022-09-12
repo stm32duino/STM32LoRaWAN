@@ -105,6 +105,8 @@ void STM32LoRaWAN::MacProcessNotify()
 {
   // Called by the stack from an ISR when there is work to do
   instance->mac_process_pending = true;
+  if (instance->maintain_needed_callback)
+    instance->maintain_needed_callback();
 }
 
 void STM32LoRaWAN::maintain()
