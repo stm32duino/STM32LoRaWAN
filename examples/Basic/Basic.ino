@@ -29,6 +29,7 @@ void setup()
     Serial.println("Joined");
   } else {
     Serial.println("Join failed");
+    while (true) /* infinite loop */;
   }
 }
 
