@@ -38,8 +38,11 @@ void send_packet()
   modem.setPort(10);
   modem.beginPacket();
   modem.write(payload, sizeof(payload));
-  modem.endPacket();
-  Serial.println("Sent packet");
+  if (modem.endPacket() == sizeof(payload)) {
+    Serial.println("Sent packet");
+  } else {
+    Serial.println("Failed to send packet");
+  }
 
   if (modem.available()) {
     Serial.print("Received packet on port ");
