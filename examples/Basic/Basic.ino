@@ -18,7 +18,6 @@ void setup()
   Serial.begin(115200);
   Serial.println("Start");
   modem.begin(EU868);
-  modem.dataRate(0); // 0 == slowest == most range
 
   // Configure join method by (un)commenting the right method
   // call, and fill in credentials in that method call.
