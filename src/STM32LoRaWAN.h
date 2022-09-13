@@ -338,6 +338,8 @@ class STM32LoRaWAN : public Stream {
      * You can pass a hex-encoded (MSB-first) string (`String` object or
      * `const char*`), or a raw integer (32-bits for DevAddr and 64-bits
      * for EUIs, keys are too long to be passed as an integer).
+     *
+     * \NotInMKRWAN
      * @{
      */
     bool setDevEui(const char *value) { return mibSetHex("DevEui", MIB_DEV_EUI, value); }
@@ -604,6 +606,7 @@ class STM32LoRaWAN : public Stream {
 
     bool enableChannel(unsigned pos);
     bool disableChannel(unsigned pos);
+    /** \NotInMKRWAN */
     bool modifyChannelEnabled(unsigned pos, bool value);
     bool isChannelEnabled(unsigned pos);
     /// @}
