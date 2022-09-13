@@ -959,19 +959,30 @@ static void ProcessRadioTxDone( void )
     {
         Radio.Sleep( );
     }
+    // XXX: There is a race condition here: If an interrupt (or any
+    // other delay) happens between calculating the offset and actually
+    // setting the timer, the timer will be set too late. In practice,
+    // assuming that an IRQ is rare an also does not take more than
+    // a few ms, this is probably still within the allowed margins. This
+    // could be fixed by disabling interrupts, but that requires
+    // disabling them for quite some time, which probably has more
+    // impact. A proper fix would be to allow setting an absolute
+    // timestamp into a timer instead of relative, but that is a change
+    // best made upstream in Semtech's codebase.
+    uint32_t offset = TimerGetCurrentTime() - TxDoneParams.CurTime;
 #if ( !defined(DISABLE_LORAWAN_RX_WINDOW) || (DISABLE_LORAWAN_RX_WINDOW == 0) )
     // Setup timers
-    TimerSetValue( &MacCtx.RxWindowTimer1, MacCtx.RxWindow1Delay );
+    TimerSetValue( &MacCtx.RxWindowTimer1, MacCtx.RxWindow1Delay - offset );
     TimerStart( &MacCtx.RxWindowTimer1 );
-    TimerSetValue( &MacCtx.RxWindowTimer2, MacCtx.RxWindow2Delay );
+    TimerSetValue( &MacCtx.RxWindowTimer2, MacCtx.RxWindow2Delay - offset );
     TimerStart( &MacCtx.RxWindowTimer2 );
 #else
     if (Nvm.MacGroup2.NetworkActivation == ACTIVATION_TYPE_NONE)
     {
         // Setup timers
-        TimerSetValue( &MacCtx.RxWindowTimer1, MacCtx.RxWindow1Delay );
+        TimerSetValue( &MacCtx.RxWindowTimer1, MacCtx.RxWindow1Delay - offset );
         TimerStart( &MacCtx.RxWindowTimer1 );
-        TimerSetValue( &MacCtx.RxWindowTimer2, MacCtx.RxWindow2Delay );
+        TimerSetValue( &MacCtx.RxWindowTimer2, MacCtx.RxWindow2Delay - offset );
         TimerStart( &MacCtx.RxWindowTimer2 );
     }
     else
