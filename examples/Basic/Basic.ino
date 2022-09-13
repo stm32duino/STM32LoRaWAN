@@ -45,12 +45,12 @@ void send_packet()
   if (modem.available()) {
     Serial.print("Received packet on port ");
     Serial.print(modem.getDownlinkPort());
-    Serial.print(": ");
+    Serial.print(":");
     while (modem.available()) {
       uint8_t b = modem.read();
+      Serial.print(" ");
       Serial.print(b >> 4, HEX);
       Serial.print(b & 0xF, HEX);
-      Serial.print(" ");
     }
     Serial.println();
   }
