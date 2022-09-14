@@ -512,6 +512,11 @@ class STM32LoRaWAN : public Stream {
      * Note that only even values are supported, but an uneven value will
      * be rounded down automatically.
      *
+     * The available options depend on the region (see the TX_POWER
+     * constants in LoRaMacInterfaces.h), but down to -10 dB should be
+     * supported by all regions (but most regions support additional
+     * values, down to -28 dB for some regions).
+     *
      * \NotInMKRWAN
      */
     bool powerdB(int8_t db);
