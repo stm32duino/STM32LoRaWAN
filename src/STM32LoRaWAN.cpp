@@ -397,7 +397,7 @@ bool STM32LoRaWAN::send(const uint8_t *payload, size_t size, bool confirmed) {
   LoRaMacTxInfo_t txInfo;
   if( LoRaMacQueryTxPossible( size, &txInfo ) == LORAMAC_STATUS_LENGTH_ERROR ) {
     if (size > txInfo.CurrentPossiblePayloadSize)
-      return failure("Packet too long, only %s bytes of payload supported at current datarate\r\n", txInfo.CurrentPossiblePayloadSize);
+      return failure("Packet too long, only %u bytes of payload supported at current datarate\r\n", txInfo.CurrentPossiblePayloadSize);
 
     // If the packet would fit, but is still rejected, this means there
     // are pending MAC commands that do not fit in the header along with
