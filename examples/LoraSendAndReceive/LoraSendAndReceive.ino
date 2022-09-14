@@ -1,6 +1,7 @@
 /*
   Lora Send And Receive
-  This sketch demonstrates how to send and receive data with the MKR WAN 1300/1310 LoRa module.
+  This sketch demonstrates how to send and receive data with the
+  STM32LoRaWAN library (also mostly compatible with the MKRWAN library).
   This example code is in the public domain.
 */
 
