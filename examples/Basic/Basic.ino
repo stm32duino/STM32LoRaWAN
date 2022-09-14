@@ -20,10 +20,10 @@ void setup()
 
   // Configure join method by (un)commenting the right method
   // call, and fill in credentials in that method call.
-  modem.joinOTAA(/* AppEui */ "0000000000000000", /* AppKey */ "00000000000000000000000000000000", /* DevEui */ "0000000000000000");
-  //modem.joinABP(/* DevAddr */ "00000000", /* NwkSKey */ "00000000000000000000000000000000", /* AppSKey */ "00000000000000000000000000000000");
+  bool connected = modem.joinOTAA(/* AppEui */ "0000000000000000", /* AppKey */ "00000000000000000000000000000000", /* DevEui */ "0000000000000000");
+  //bool connected = modem.joinABP(/* DevAddr */ "00000000", /* NwkSKey */ "00000000000000000000000000000000", /* AppSKey */ "00000000000000000000000000000000");
 
-  if (modem.connected()) {
+  if (connected) {
     Serial.println("Joined");
   } else {
     Serial.println("Join failed");
