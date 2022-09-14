@@ -785,7 +785,7 @@ class STM32LoRaWAN : public Stream {
      *
      * \NotInMKRWAN
      */
-    void setMaintainNeededCallback(std::function<void(void)> callback);
+    void setMaintainNeededCallback(std::function<void(void)> callback) { this->maintain_needed_callback = callback; }
 
     /// @}
 
