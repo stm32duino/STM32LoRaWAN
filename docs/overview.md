@@ -99,6 +99,36 @@ All examples default to the EU868 frequency plan, so if are in
 a different region, be sure to change the argument to
 STM32LoRaWAN::begin() accordingly.
 
+## Duty cycle limits
+
+In most regions, local regulations limit the amount of airtime that
+a device can use. This is typically expressed in a percentage, for
+example 1% duty cycle means that a device can be transmitting (in
+a given frequncye band) at most 1% of the time.
+
+The default The Things Network frequency plan in EU868 for example has
+channels enabled in two different 1% bands, making the total effective
+duty cycle of the available airtime 2%.
+
+This library accounts for these duty cycle limits in 30 minute
+intervals, meaning that you can never transmit more than (in this
+example) 2% × 30min = 36s in any given period of 30 minutes (sliding
+window). On startup, you get the full 30-minute budget, so you can do
+a big burst of packets, but if you do, the available airtime is reduced
+as soon as you initial budget is used up.
+
+Also note that The Things Network has an additional fair use policy that
+is more strict than the official regulations, but this is not enforced
+by this library.
+
+Rather than relying on the library's duty cycle limits, it is usually
+a good idea to keep these limits in mind when deciding on the
+transmission frequency (and possibly adapt this frequency dynamically
+when the datarate is changed by ADR or manually, which changes the
+airtime of a single packet) to ensure you never cross these limits
+(especially since the library only enforces the official limits, not the
+TTN policy.
+
 ## Differences with MKRWAN
 Where possible, the API offered by this library is identical to the
 MKRWAN library. In some cases, this library offers additional methods
