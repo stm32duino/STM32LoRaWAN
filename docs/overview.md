@@ -90,10 +90,22 @@ The library currently supplies these two examples:
    sketch, configure device credentials in the `joinOTAA()` or
    `joinABP()` calls.
 
- - LoraSendAndReceive is a similar sketch, but is a bit more
+ - LoraSendAndReceive.ino is a similar sketch, but is a bit more
    interactive, so might be a good starting point. This sketch is taken
    (nearly) verbatim from the MKRWAN. Credentials are configured in the
    accompanying `arduino_secrets.h` file.
+
+ - SimpleAsync is similar in structure as Basic.ino, but uses the
+   asynchronous API instead of the regular blocking API. Because of
+   this, it can do other work in parallel with the LoRaWAN operations,
+   in this case the example blinks a LED at the same time.
+
+ - ScheduledAsync is a more complete asynchronous example where the
+   control flow of the code no longer follows the LoRaWAN flow, but the
+   main loop runs a (very, very simple) cooperative scheduler that can
+   alternate between running different tasks whenever they need
+   attention, and the LoRaWAN flow is handled by a simple state machine
+   run inside that scheduler.
 
 All examples default to the EU868 frequency plan, so if are in
 a different region, be sure to change the argument to
