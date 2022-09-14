@@ -109,10 +109,6 @@ class STM32LoRaWAN : public Stream {
      * string (`String` object or `const char*`), for the EUIs also
      * a raw integer (64-bits).
      *
-     * \MKRWANApiDifference{Timeout parameter omitted (also omitted in MKRWAN_v2)}
-     * \MKRWANApiDifference{Added version that accepts uint64_t appEUI}
-     * \MKRWANApiDifference{Differences in timeout and retry datarate handling}
-     *
      * These methods will perform multiple join attempts and block until
      * the join completes successfully, or a timeout (60 seconds) occurs.
      *
@@ -128,6 +124,11 @@ class STM32LoRaWAN : public Stream {
      *    library uses the configured datarate (with `datarate()`) for
      *    most regions, but uses fixed datarates (according to LoRaWAN
      *    regional parameters) for US915/AU915/AS923.
+     *
+     * \MKRWANApiDifference{Timeout parameter omitted (also omitted in MKRWAN_v2)}
+     * \MKRWANApiDifference{Added version that accepts uint64_t appEUI}
+     * \MKRWANApiDifference{Differences in timeout and retry datarate handling}
+     *
      * @{ */
     bool joinOTAA(const char *appEui, const char *appKey, const char *devEui) { return setDevEui(devEui) && joinOTAA(appEui, appKey); }
     bool joinOTAA(const char *appEui, const char *appKey) { return setAppEui(appEui) && setAppKey(appKey) && joinOTAA(); }
