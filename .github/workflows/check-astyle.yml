@@ -1,0 +1,16 @@
+name: Check code formatting with astyle
+
+on:
+  push
+
+jobs:
+  check:
+    name: Check for astyle errors
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: sudo apt install astyle
+      - uses: actions/checkout@v3
+      - run: astyle --project=.astylerc --recursive '*.c' '*.h' '*.ino'
+      # If anything changed, this will fail and show the needed changes
+      - run: git diff --exit-code
