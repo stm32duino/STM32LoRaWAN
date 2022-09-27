@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*
  ---------------------------------------------------------------------------
  Copyright (c) 1998-2008, Brian Gladman, Worcester, UK. All rights reserved.
@@ -934,3 +937,5 @@ void lorawan_aes_decrypt_256( const uint8_t in[N_BLOCK], uint8_t out[N_BLOCK],
 }
 
 #endif
+
+#pragma GCC diagnostic pop

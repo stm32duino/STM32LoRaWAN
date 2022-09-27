@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*!
  * \file      LoRaMacAdr.c
  *
@@ -205,3 +208,5 @@ bool LoRaMacAdrCalcNext( CalcNextAdrParams_t* adrNext, int8_t* drOut, int8_t* tx
     return adrAckReq;
 }
 #endif /* LORAMAC_VERSION */
+
+#pragma GCC diagnostic pop

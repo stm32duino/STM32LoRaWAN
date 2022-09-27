@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*!
  * \file      LoRaMacCrypto.c
  *
@@ -1633,3 +1636,5 @@ LoRaMacCryptoStatus_t LoRaMacCryptoDeriveMcSessionKeyPair( AddressIdentifier_t a
 
     return LORAMAC_CRYPTO_SUCCESS;
 }
+
+#pragma GCC diagnostic pop

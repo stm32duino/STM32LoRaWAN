@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*!
  * \file      LoRaMacCommands.c
  *
@@ -619,3 +622,5 @@ uint8_t LoRaMacCommandsGetCmdSize( uint8_t cid )
     }
     return cidSize;
 }
+
+#pragma GCC diagnostic pop

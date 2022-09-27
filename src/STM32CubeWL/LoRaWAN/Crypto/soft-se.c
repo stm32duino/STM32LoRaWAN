@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*!
  * \file      soft-se.c
  *
@@ -1319,3 +1322,5 @@ uint8_t* SecureElementGetJoinEui( void )
     return SeNvm->JoinEui;
 }
 
+
+#pragma GCC diagnostic pop

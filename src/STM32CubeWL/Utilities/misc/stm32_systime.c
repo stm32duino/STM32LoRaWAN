@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*!
  * \file      stm32_systime.c
  *
@@ -494,3 +497,5 @@ static void CalendarDiv60( uint32_t in, uint32_t* out, uint32_t* remainder )
 /**
   *  @}
   */
+
+#pragma GCC diagnostic pop

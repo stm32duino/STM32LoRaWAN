@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*!
  * \file      RegionBaseUS.c
  *
@@ -149,3 +152,5 @@ uint32_t RegionBaseUSCalcDownlinkFrequency( uint8_t channel, uint32_t frequency,
     // Calculate the frequency
     return frequency + ( channel * stepwidth );
 }
+
+#pragma GCC diagnostic pop

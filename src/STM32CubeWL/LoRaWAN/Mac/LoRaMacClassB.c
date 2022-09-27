@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*!
  * \file      LoRaMacClassB.c
  *
@@ -2081,3 +2084,5 @@ void LoRaMacClassBProcess( void )
     }
 #endif /* LORAMAC_CLASSB_ENABLED */
 }
+
+#pragma GCC diagnostic pop

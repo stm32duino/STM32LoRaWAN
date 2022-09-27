@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*!
  * \file      RegionCN470A26.c
  *
@@ -167,3 +170,5 @@ uint32_t RegionCN470A26GetRx2Frequency( uint8_t joinChannelIndex, bool isOtaaDev
 }
 
 /*! \} defgroup LORAMACCLASSB */
+
+#pragma GCC diagnostic pop

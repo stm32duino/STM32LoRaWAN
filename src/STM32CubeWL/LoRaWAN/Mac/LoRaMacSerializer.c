@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*!
  * \file      LoRaMacSerializer.c
  *
@@ -193,3 +196,5 @@ LoRaMacSerializerStatus_t LoRaMacSerializerData( LoRaMacMessageData_t* macMsg )
 
     return LORAMAC_SERIALIZER_SUCCESS;
 }
+
+#pragma GCC diagnostic pop

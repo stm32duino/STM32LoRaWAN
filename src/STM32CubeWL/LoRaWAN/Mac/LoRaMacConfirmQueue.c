@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*!
  * \file      LoRaMacConfirmQueue.c
  *
@@ -337,3 +340,5 @@ bool LoRaMacConfirmQueueIsFull( void )
         return false;
     }
 }
+
+#pragma GCC diagnostic pop

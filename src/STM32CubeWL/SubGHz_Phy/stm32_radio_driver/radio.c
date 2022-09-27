@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*!
  * \file      radio.c
  *
@@ -2256,3 +2259,5 @@ static int32_t RadioSetTxGenericConfig( GenericModems_t modem, TxConfigGeneric_t
     return -1;
 #endif /* RADIO_GENERIC_CONFIG_ENABLE == 0*/
 }
+
+#pragma GCC diagnostic pop

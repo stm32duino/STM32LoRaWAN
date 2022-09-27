@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*!
  * \file      utilities.c
  *
@@ -157,3 +160,5 @@ uint32_t Crc32Finalize( uint32_t crc )
 {
     return ~crc;
 }
+
+#pragma GCC diagnostic pop
