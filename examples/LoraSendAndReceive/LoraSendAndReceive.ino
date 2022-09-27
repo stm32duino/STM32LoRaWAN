@@ -74,7 +74,7 @@ void loop()
     return;
   }
   char rcv[64];
-  int i = 0;
+  unsigned int i = 0;
   while (modem.available()) {
     rcv[i++] = (char)modem.read();
   }
