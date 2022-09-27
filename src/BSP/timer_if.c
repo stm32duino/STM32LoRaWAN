@@ -376,6 +376,7 @@ void TIMER_IF_DelayMs(uint32_t delay)
 
 void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
 {
+  (void)hrtc; // unused
   /* USER CODE BEGIN HAL_RTC_AlarmAEventCallback */
 
   /* USER CODE END HAL_RTC_AlarmAEventCallback */
@@ -387,6 +388,7 @@ void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
 
 void HAL_RTCEx_SSRUEventCallback(RTC_HandleTypeDef *hrtc)
 {
+  (void)hrtc; // unused
   /* USER CODE BEGIN HAL_RTCEx_SSRUEventCallback */
 
   /* USER CODE END HAL_RTCEx_SSRUEventCallback */
