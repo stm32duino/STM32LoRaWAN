@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*!
  * \file      radio_driver.c
  *
@@ -1223,3 +1226,5 @@ void SUBGRF_GetCFO( uint32_t bitRate, int32_t *cfo)
   /* shift by 5 first to not saturate, cfo_bin on 12bits */
   *cfo = ((int32_t)( cfo_bin * ( fs >> 5 ))) >> ( 12 - 5 );
 }
+
+#pragma GCC diagnostic pop

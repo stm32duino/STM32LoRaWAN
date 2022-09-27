@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*!
  * \file      timer.c
  *
@@ -540,3 +543,5 @@ void TimerInsertNewHeadTimer( UTIL_TIMER_Object_t *TimerObject )
   *  @}
   */
 
+
+#pragma GCC diagnostic pop

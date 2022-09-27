@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*!
  * \file      RegionCommon.c
  *
@@ -712,3 +715,5 @@ void RegionCommonTxConfigPrint(uint32_t frequency, int8_t dr)
     MW_LOG(TS_ON, VLEVEL_M,  "TX on freq %d Hz at DR %d\r\n", frequency, dr );
 }
 /* ST_WORKAROUND_END */
+
+#pragma GCC diagnostic pop

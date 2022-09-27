@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*!
  * \file      LoRaMacParser.c
  *
@@ -128,3 +131,5 @@ LoRaMacParserStatus_t LoRaMacParserData( LoRaMacMessageData_t* macMsg )
 
     return LORAMAC_PARSER_SUCCESS;
 }
+
+#pragma GCC diagnostic pop

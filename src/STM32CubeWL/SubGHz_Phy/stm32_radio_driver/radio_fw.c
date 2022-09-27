@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /**
   ******************************************************************************
   * @file    radio_fw.c
@@ -1100,3 +1103,5 @@ static void RFW_GetPayload( uint8_t Offset, uint8_t Length )
     DBG_GPIO_RADIO_RX(RST);
 }
 #endif /* RFW_ENABLE */
+
+#pragma GCC diagnostic pop

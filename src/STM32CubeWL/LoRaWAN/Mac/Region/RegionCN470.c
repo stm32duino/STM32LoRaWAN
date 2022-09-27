@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*!
  * \file      RegionCN470.c
  *
@@ -1418,3 +1421,5 @@ void RegionCN470RxBeaconSetup( RxBeaconSetup_t* rxBeaconSetup, uint8_t* outDr )
     *outDr = CN470_BEACON_CHANNEL_DR;
 #endif /* REGION_CN470 */
 }
+
+#pragma GCC diagnostic pop

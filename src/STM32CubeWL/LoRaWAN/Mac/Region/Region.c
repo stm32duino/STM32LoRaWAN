@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*!
  * \file      Region.c
  *
@@ -1061,3 +1064,5 @@ Version_t RegionGetVersion( void )
     return version;
 }
 
+
+#pragma GCC diagnostic pop

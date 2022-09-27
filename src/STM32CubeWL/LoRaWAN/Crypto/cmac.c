@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /**************************************************************************
 Copyright (C) 2009 Lander Casado, Philippas Tsigas
 
@@ -151,3 +154,5 @@ void AES_CMAC_Final( uint8_t digest[AES_CMAC_DIGEST_LENGTH], AES_CMAC_CTX* ctx )
     lorawan_aes_encrypt( in, digest, &ctx->rijndael );
     memset1( K, 0, sizeof K );
 }
+
+#pragma GCC diagnostic pop

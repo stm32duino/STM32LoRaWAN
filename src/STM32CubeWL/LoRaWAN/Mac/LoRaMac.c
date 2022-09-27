@@ -1,3 +1,6 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*!
  * \file      LoRaMac.c
  *
@@ -5905,3 +5908,5 @@ LoRaMacStatus_t LoRaMacDeInitialization( void )
         return LORAMAC_STATUS_BUSY;
     }
 }
+
+#pragma GCC diagnostic pop
