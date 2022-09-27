@@ -15,7 +15,6 @@
  * Revised BSD License - https://spdx.org/licenses/BSD-3-Clause.html
  */
 #include <STM32LoRaWAN.h>
-#include <BSP/mw_log_conf.h>
 
 STM32LoRaWAN modem;
 
