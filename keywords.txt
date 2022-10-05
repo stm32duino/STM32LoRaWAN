@@ -1,0 +1,86 @@
+#######################################
+# Syntax Coloring Map For STM32duinoLoRaWAN
+#######################################
+# Class
+#######################################
+
+STM32LoRaWAN	KEYWORD1
+LoRaModem	KEYWORD1
+
+#######################################
+# Methods and Functions
+#######################################
+
+begin	KEYWORD2
+joinOTAA	KEYWORD2
+joinABP	KEYWORD2
+beginPacket	KEYWORD2
+endPacket	KEYWORD2
+write	KEYWORD2
+parsePacket	KEYWORD2
+available	KEYWORD2
+read	KEYWORD2
+peek	KEYWORD2
+flush	KEYWORD2
+connected	KEYWORD2
+init	KEYWORD2
+configureBand	KEYWORD2
+setBaud	KEYWORD2
+autoBaud	KEYWORD2
+version	KEYWORD2
+deviceEUI	KEYWORD2
+maintain	KEYWORD2
+setPort	KEYWORD2
+minPollInterval	KEYWORD2
+poll	KEYWORD2
+factoryDefault	KEYWORD2
+restart	KEYWORD2
+power	KEYWORD2
+dutyCycle	KEYWORD2
+publicNetwork	KEYWORD2
+sleep	KEYWORD2
+changeMode	KEYWORD2
+changeClass	KEYWORD2
+dumb	KEYWORD2
+setADR	KEYWORD2
+dataRate	KEYWORD2
+getDataRate	KEYWORD2
+setADR	KEYWORD2
+getADR	KEYWORD2
+getDevAddr	KEYWORD2
+getNwkSKey	KEYWORD2
+getAppSKey	KEYWORD2
+setFCU	KEYWORD2
+getFCU	KEYWORD2
+setFCD	KEYWORD2
+getFCD	KEYWORD2
+setAppEui	KEYWORD2
+setDevEui	KEYWORD2
+joinOTAAAsync	KEYWORD2
+setDevAddr	KEYWORD2
+setNwkSKey	KEYWORD2
+setAppSKey	KEYWORD2
+joinABPAsync	KEYWORD2
+endPacketAsync	KEYWORD2
+getDownlinkPort	KEYWORD2
+setMaintainNeededCallback	KEYWORD2
+
+#######################################
+# Constants
+#######################################
+
+EU868	LITERAL1
+AS923	LITERAL1
+AU915	LITERAL1
+EU868	LITERAL1
+KR920	LITERAL1
+IN865	LITERAL1
+US915	LITERAL1
+US915_HYBRID	LITERAL1
+
+CLASS_A	LITERAL1
+CLASS_B	LITERAL1
+CLASS_C	LITERAL1
+
+RFO	LITERAL1
+PABOOST	LITERAL1
