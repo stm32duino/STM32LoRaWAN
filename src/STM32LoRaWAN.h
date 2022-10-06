@@ -500,6 +500,7 @@ class STM32LoRaWAN : public Stream {
      *
      * \param mode This parameter is ignored, the mode is automatically
      * determined based on the selected power.
+     * \param index See power(uint8_t) for details.
      */
     bool power(_rf_mode mode, uint8_t index) { (void)mode; return power(index); }
 
@@ -992,8 +993,8 @@ class STM32LoRaWAN : public Stream {
      * Helper that prints an error and then always returns false, to
      * allow for combining reporting and returning in a single line.
      */
-    __attribute__((format(printf, 1, 2)))
-    static bool failure(const char *fmt, ...);
+    static bool failure(const char *fmt, ...)
+    __attribute__((format(printf, 1, 2)));
 
     /** Empty the rx buffer */
     void clear_rx() { rx_ptr = rx_buf + sizeof(rx_buf); }
