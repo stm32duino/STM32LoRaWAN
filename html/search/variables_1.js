@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['loramaccallbacks_250',['LoRaMacCallbacks',['../classSTM32LoRaWAN.html#a8525c0cdda207f7b6d950d34719fc274',1,'STM32LoRaWAN']]],
-  ['loramacprimitives_251',['LoRaMacPrimitives',['../classSTM32LoRaWAN.html#a020df7e51b77237c6f61b35f70295ae4',1,'STM32LoRaWAN']]]
+  ['fcnt_5fdown_272',['fcnt_down',['../classSTM32LoRaWAN.html#a35a745b85482d2373206f1d45c86ba3a',1,'STM32LoRaWAN']]],
+  ['fcnt_5fup_273',['fcnt_up',['../classSTM32LoRaWAN.html#ac96049b0c2393f846cfa650e79b7b3e7',1,'STM32LoRaWAN']]]
 ];

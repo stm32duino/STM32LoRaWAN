@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['rx_5fbuf_253',['rx_buf',['../classSTM32LoRaWAN.html#ac20a82fca09fe79a49b2efb14c3ddf35',1,'STM32LoRaWAN']]],
-  ['rx_5fport_254',['rx_port',['../classSTM32LoRaWAN.html#a1a8d94acf9cfb846f1b90aad4836ae63',1,'STM32LoRaWAN']]],
-  ['rx_5fptr_255',['rx_ptr',['../classSTM32LoRaWAN.html#ad8439dc88e0a8dd52e44f1914bf0a8c3',1,'STM32LoRaWAN']]]
+  ['last_5ftx_5facked_275',['last_tx_acked',['../classSTM32LoRaWAN.html#a490ebe9741d79b68d81f9ea515570cb1',1,'STM32LoRaWAN']]],
+  ['loramaccallbacks_276',['LoRaMacCallbacks',['../classSTM32LoRaWAN.html#a8525c0cdda207f7b6d950d34719fc274',1,'STM32LoRaWAN']]],
+  ['loramacprimitives_277',['LoRaMacPrimitives',['../classSTM32LoRaWAN.html#a020df7e51b77237c6f61b35f70295ae4',1,'STM32LoRaWAN']]]
 ];

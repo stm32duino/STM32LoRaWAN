@@ -4,158 +4,42 @@
 
 {\ttfamily \#include $<$S\+T\+M32\+Lo\+Ra\+W\+A\+N.\+h$>$}
 
-
-
-Inheritance diagram for S\+T\+M32\+Lo\+Ra\+W\+AN\+:
-% FIG 0
-
-
-Collaboration diagram for S\+T\+M32\+Lo\+Ra\+W\+AN\+:
-% FIG 1
 \doxysubsection*{Public Member Functions}
-\begin{DoxyCompactItemize}
+\begin{Indent}\textbf{ Initialization}\par
+{\em \label{classSTM32LoRaWAN_initialization}%
+\Hypertarget{classSTM32LoRaWAN_initialization}%
+}\begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{classSTM32LoRaWAN_acb97fcbe514f6b69319d105b48e54223}{begin}} (\mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24b}{\+\_\+lora\+\_\+band}} band)
-\item 
-void \mbox{\hyperlink{classSTM32LoRaWAN_a2c207de2ede561d57ef26af61991cffa}{maintain}} ()
-\item 
-void \mbox{\hyperlink{classSTM32LoRaWAN_afd305ad1b2327c96fd1bd94c41c6fb46}{maintain\+Until\+Idle}} ()
-\end{DoxyCompactItemize}
-\begin{Indent}\textbf{ Radio / transmission configuration}\par
-{\em These methods allow configuring various radio and tranmission parameters. }\begin{DoxyCompactItemize}
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a5cca097cfdebc2227eb4ff0cb5358084}{data\+Rate}} (uint8\+\_\+t dr)
-\item 
-int \mbox{\hyperlink{classSTM32LoRaWAN_a5d7d806e8ff17f8ebf12cf08af23283b}{get\+Data\+Rate}} ()
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_ad3820664ad2ad9e0cfff299eab1ad786}{power}} (uint8\+\_\+t index)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a149bb7518e6756db8fa60848f2efd527}{power}} (\mbox{\hyperlink{STM32LoRaWAN_8h_a1fd3d2eb05358dae64890dff0448c69c}{\+\_\+rf\+\_\+mode}} mode, uint8\+\_\+t index)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_ac720f4ea2f3efe054908a8f8bdcfc7a5}{powerdB}} (int8\+\_\+t db)
-\item 
-uint8\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_a01ff41259ed00ec882e33eb0e33b72c2}{get\+Port}} ()
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_af342c59031d83d102bc58672f844f64f}{set\+Port}} (uint8\+\_\+t port)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_ae83ea4aa1df9729e17602ee88cd4b607}{set\+A\+DR}} (bool adr)
-\item 
-int \mbox{\hyperlink{classSTM32LoRaWAN_a3b13d9d9db35aaff6fbdcaacf101d14f}{get\+A\+DR}} ()
 \end{DoxyCompactItemize}
 \end{Indent}
-\begin{Indent}\textbf{ Advanced configuration}\par
-{\em These methods allow configuring advanced settings, which are usually not required for normal operation. }\begin{DoxyCompactItemize}
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_acfa79d28cb7254c016cf20604afd1bd8}{duty\+Cycle}} (bool on)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_afc9939a198a3d0f243dd066a72ea2b81}{public\+Network}} (bool public\+Network)
-\item 
-int \mbox{\hyperlink{classSTM32LoRaWAN_aefa9c84b0a9e0169d6a1751d26cab403}{get\+R\+X2\+DR}} ()
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_ae8d43824dddd36b0f41e3be41e7943c9}{set\+R\+X2\+DR}} (uint8\+\_\+t dr)
-\item 
-uint32\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_ad57ef4c3c5076303ee8fa18ab145d5b3}{get\+R\+X2\+Freq}} ()
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a62955c24acd965b504db5e1923f07f65}{set\+R\+X2\+Freq}} (uint32\+\_\+t freq)
-\item 
-int \mbox{\hyperlink{classSTM32LoRaWAN_a72d986af51d931c34a64fd3544e432fc}{getrxfreq}} ()
-\end{DoxyCompactItemize}
-\end{Indent}
-\begin{Indent}\textbf{ Frame counters}\par
-{\em These methods allow access to the up and down frame counters.
+\begin{Indent}\textbf{ O\+T\+AA Join}\par
+{\em \label{classSTM32LoRaWAN_joinOTAA}%
+\Hypertarget{classSTM32LoRaWAN_joinOTAA}%
 
-\begin{DoxyNote}{Note}
-These are {\itshape not} currently implemented, since it does not seem easy to access the frame counters. They might be implemented in the future with some extra work. 
-\end{DoxyNote}
-}\begin{DoxyCompactItemize}
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_ab1f8b82511bb880e253f7bdf4e194023}{set\+F\+CU}} (uint16\+\_\+t fcu)
-\item 
-int32\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_a23c34cb2f59e5c27ea67fe755373bbc5}{get\+F\+CU}} ()
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a29b18acfa3074157c501122b9399d1d1}{set\+F\+CD}} (uint16\+\_\+t fcd)
-\item 
-int32\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_a840faf34c5bcef2a58420095dc78d691}{get\+F\+CD}} ()
-\end{DoxyCompactItemize}
-\end{Indent}
-\begin{Indent}\textbf{ Channel manipulation}\par
-{\em These methods allow manipulating the list of enabled channels.
 
-\begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]Implement \& document\end{DoxyRefDesc}
-}\begin{DoxyCompactItemize}
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_af21b1d27c22c2e94da4ca2d368620c13}{send\+Mask}} (String new\+Mask)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a79915834d3c8812cfd80a08d62382686}{send\+Mask}} ()
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a0ba00b353d6f5cefd0b850a5983604fc}{enable\+Channel}} (int pos)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a4c6d8afc0f5fd9b3c54d01158bf7778e}{disable\+Channel}} (int pos)
-\item 
-int \mbox{\hyperlink{classSTM32LoRaWAN_ac2b17a777db7c77409fa22b7b2109faf}{is\+Channel\+Enabled}} (int pos)
-\item 
-String \mbox{\hyperlink{classSTM32LoRaWAN_a87dedb0a627b82dcf7bba62edbea3713}{get\+Channel\+Mask}} ()
-\item 
-int \mbox{\hyperlink{classSTM32LoRaWAN_a067096f42efcee590a3b0c807a65e07f}{get\+Channel\+Mask\+Size}} (\mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24b}{\+\_\+lora\+\_\+band}} band)
-\end{DoxyCompactItemize}
-\end{Indent}
-\begin{Indent}\textbf{ Missing methods}\par
-{\em These methods are present in M\+K\+R\+W\+AN, but are not implemented in this library (because they are specific to the module-\/based serial approach used by M\+K\+R\+W\+AN, are for testing purposes only or have better A\+PI not tied to the M\+K\+R\+W\+AN AT commands available.
-
-These methods {\itshape are} declared in this library, but marked so the compiler can generate a friendly error message when they are used. }\begin{DoxyCompactItemize}
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a999c98c64e466aedf9fa2e848e684018}{set\+C\+FM}} (bool cfm)
-\item 
-int \mbox{\hyperlink{classSTM32LoRaWAN_a1b8fbaeab4917b93e3f240133835d3e3}{get\+C\+FM}} ()
-\item 
-int \mbox{\hyperlink{classSTM32LoRaWAN_a58632ff20ab6a0f48fa772c827d73cde}{get\+C\+FS}} ()
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a01766fa6242b566fde0010eef9707372}{begin}} (\mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24b}{\+\_\+lora\+\_\+band}} band, uint32\+\_\+t baud, uint16\+\_\+t config=S\+E\+R\+I\+A\+L\+\_\+8\+N2)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a51adb005319aa9c4ccb2f63b246789a1}{auto\+Baud}} (unsigned long timeout=10000L)
-\item 
-void \mbox{\hyperlink{classSTM32LoRaWAN_a9a54edbb78e6b782204b2d37bed84c96}{set\+Baud}} (unsigned long baud)
-\item 
-String \mbox{\hyperlink{classSTM32LoRaWAN_a5c4031e2de24b5f3066603e71e37a2ae}{get\+T\+Conf}} ()
-\item 
-String \mbox{\hyperlink{classSTM32LoRaWAN_a2eb7351c1b7e8ada59ba58e8032c6a83}{set\+T\+Conf}} (String params)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_adadf322fc5419467c8612840c006eaaa}{en\+Ttone}} ()
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a8a715c4ec0ba3a9601a229a8c43d05be}{restart}} ()
-\item 
-void \mbox{\hyperlink{classSTM32LoRaWAN_a79634164ef1e9c2d8c4d4589cbeaf665}{poll}} ()
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a9d332d013d0a2569bc162568adb1bd04}{sleep}} (bool on=true)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a619ee70f32e4ad240c67af514750ffed}{factory\+Default}} ()
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a3eff0f30e2bf1ea1f046c81bcbedecfe}{format}} (bool hex\+Mode)
-\item 
-void \mbox{\hyperlink{classSTM32LoRaWAN_a8a580f36418deb428460d6eee12672ba}{dumb}} ()
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_ac49cddab0119f98ae926e53aa11e16f2}{init}} ()
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a077e0794bb3ac3c199f13e486933417b}{configure\+Class}} (\mbox{\hyperlink{STM32LoRaWAN_8h_a6f8077b5a9a47075e6c1cbf074efa09f}{\+\_\+lora\+\_\+class}} \+\_\+class)
-\item 
-String \mbox{\hyperlink{classSTM32LoRaWAN_a190e38032336a2d69927724fbe872f17}{get\+Nwk\+S\+Key}} ()
-\item 
-String \mbox{\hyperlink{classSTM32LoRaWAN_a0c818ce976451d7ce17f5c4630d109dd}{get\+App\+S\+Key}} ()
-\item 
-String \mbox{\hyperlink{classSTM32LoRaWAN_af5a44ca0779d52ba0ed35235dd92e107}{application\+Key}} ()
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a8c9e66574bd8137330de4067ee3bf2b8}{configure\+Band}} (\mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24b}{\+\_\+lora\+\_\+band}} band)
-\end{DoxyCompactItemize}
-\end{Indent}
-\begin{Indent}\textbf{ O\+T\+AA join}\par
-{\em This method can be used to join the network using the O\+T\+AA (over-\/the-\/air-\/activation) method, where the device uses the credentials specified here to negotiate a session (including session address and encryption keys) with the network by exchanging messages.
+This method can be used to join the network using the O\+T\+AA (over-\/the-\/air-\/activation) method, where the device uses the credentials specified here to negotiate a session (including session address and encryption keys) with the network by exchanging messages.
 
 The app\+E\+UI and app\+Key are mandatory, the dev\+E\+UI can be omitted, in which case the dev\+E\+UI baked into the chip is used.
 
 For both E\+U\+Is and the key, you can pass a hex-\/encoded (M\+S\+B-\/first) string ({\ttfamily String} object or {\ttfamily const char$\ast$}), for the E\+U\+Is also a raw integer (64-\/bits).
 
-T\+O\+DO\+: Blocking behavior }\begin{DoxyCompactItemize}
+These methods will perform multiple join attempts and block until the join completes successfully, or a timeout (60 seconds) occurs.
+
+There are some subtle differences with M\+K\+R\+W\+AN in how the join process works\+:
+\begin{DoxyItemize}
+\item M\+K\+R\+W\+AN returns directly after the timeout, while this library finishes the running join attempt before join\+O\+T\+AA returns.
+\item With M\+K\+R\+W\+AN the module continues doing join attempts in the background, while this library stops attempting them after join\+O\+T\+AA returns.
+\item With M\+K\+R\+W\+AN the module automatically decreases/alternates the datarate in a region-\/specific way for all regions, this library uses the configured datarate (with {\ttfamily datarate()}) for most regions, but uses fixed datarates (according to Lo\+Ra\+W\+AN regional parameters) for U\+S915/\+A\+U915/\+A\+S923.
+\end{DoxyItemize}
+
+\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
+\item[\mbox{\hyperlink{extensions__extensions000001}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Timeout parameter omitted (also omitted in M\+K\+R\+W\+A\+N\+\_\+v2) 
+
+Added version that accepts uint64\+\_\+t app\+E\+UI 
+
+Differences in timeout and retry datarate handling\end{DoxyRefDesc}
+}\begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{classSTM32LoRaWAN_a5e623c2aaee526fdc4720d48ca72ec87}{join\+O\+T\+AA}} (const char $\ast$app\+Eui, const char $\ast$app\+Key, const char $\ast$dev\+Eui)
 \item 
@@ -172,16 +56,25 @@ bool \mbox{\hyperlink{classSTM32LoRaWAN_a9e291fe38487b64834e9e252044a7df4}{join\
 bool \mbox{\hyperlink{classSTM32LoRaWAN_a5d9ea4cf437b233d23b2440463fda6a5}{join\+O\+T\+AA}} (uint64\+\_\+t app\+Eui, String app\+Key, uint64\+\_\+t dev\+Eui)
 \item 
 bool \mbox{\hyperlink{classSTM32LoRaWAN_a27ca1d3572101b8f8a20d7ea4a0ec928}{join\+O\+T\+AA}} (uint64\+\_\+t app\+Eui, String app\+Key)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a36f73d685e3a41c862dfbe82e34f7672}{join\+O\+T\+AA}} ()
 \end{DoxyCompactItemize}
 \end{Indent}
-\begin{Indent}\textbf{ A\+BP join}\par
-{\em This method can be used to join the network using the A\+BP method, where the session address and keys are preconfigured and no exchange with the network is needed before data can be sent.
+\begin{Indent}\textbf{ A\+BP Join}\par
+{\em \label{classSTM32LoRaWAN_joinABP}%
+\Hypertarget{classSTM32LoRaWAN_joinABP}%
+
+
+This method can be used to join the network using the A\+BP method, where the session address and keys are preconfigured and no exchange with the network is needed before data can be sent.
 
 For the address and both keys, you can pass a hex-\/encoded (M\+S\+B-\/first) string ({\ttfamily String} object or {\ttfamily const char$\ast$}), for the address also a raw integer (32-\/bits).
 
 \begin{DoxyWarning}{Warning}
-This library does {\itshape not} preserve frame counters in non-\/volatile storage, so it starts at zero after every reset. This only works when the server disables framecounter-\/based replay attacks, otherwise only the first session will work and data will be dropped after the first reset. 
+This library does {\itshape not} preserve frame counters in non-\/volatile storage, so it starts at zero after every reset. This only works when the server disables framecounter-\/based replay attacks, otherwise only the first session will work and data will be dropped after the first reset.
 \end{DoxyWarning}
+\begin{DoxyNote}{Note}
+An A\+BP join returns immediately, it does not need to wait for the network, so there is no separate non-\/blocking/async version of this method. 
+\end{DoxyNote}
 }\begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{classSTM32LoRaWAN_a02a0f08284de75fec38cd0c574c25e68}{join\+A\+BP}} (const char $\ast$dev\+Addr, const char $\ast$nwk\+S\+Key, const char $\ast$app\+S\+Key)
@@ -189,10 +82,16 @@ bool \mbox{\hyperlink{classSTM32LoRaWAN_a02a0f08284de75fec38cd0c574c25e68}{join\
 bool \mbox{\hyperlink{classSTM32LoRaWAN_a840708f0869c267e9c781c65a7f1c581}{join\+A\+BP}} (String dev\+Addr, String nwk\+S\+Key, String app\+S\+Key)
 \item 
 bool \mbox{\hyperlink{classSTM32LoRaWAN_a28f3375385338d901d558ba063bf4b9b}{join\+A\+BP}} (uint32\+\_\+t dev\+Addr, String nwk\+S\+Key, String app\+S\+Key)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a272accb2e14a24773c90ffc932861412}{join\+A\+BP}} ()
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}\textbf{ Packet sending}\par
-{\em These methods allow sending a data packet.
+{\em \label{classSTM32LoRaWAN_sending}%
+\Hypertarget{classSTM32LoRaWAN_sending}%
+
+
+These methods allow sending a data packet.
 
 After a join was completed, sending a packet consists of calling \mbox{\hyperlink{classSTM32LoRaWAN_a53de6fa3a4971cde2ff3da8331b877dc}{begin\+Packet()}}, writing data to using the Stream write methods, and calling \mbox{\hyperlink{classSTM32LoRaWAN_a816dd9c8b223bda9380971c5a1dab377}{end\+Packet()}} to finish up and send the packet.
 
@@ -203,22 +102,14 @@ The \mbox{\hyperlink{classSTM32LoRaWAN_acd434a7ebbe91a548c010355f7553460}{send()
 void \mbox{\hyperlink{classSTM32LoRaWAN_a53de6fa3a4971cde2ff3da8331b877dc}{begin\+Packet}} ()
 \item 
 int \mbox{\hyperlink{classSTM32LoRaWAN_a816dd9c8b223bda9380971c5a1dab377}{end\+Packet}} (bool confirmed=false)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_acd434a7ebbe91a548c010355f7553460}{send}} (const uint8\+\_\+t $\ast$payload, size\+\_\+t size, bool confirmed)
-\end{DoxyCompactItemize}
-\end{Indent}
-\begin{Indent}\textbf{ Packet reception}\par
-{\em These methods are about reception of downlink packets.
-
-After an uplink packet was fully sent, a received downlink packet can be checked by calling \mbox{\hyperlink{classSTM32LoRaWAN_a56fcc5244fc0df45dbad61654c9ddcff}{parse\+Packet()}} (or simply \mbox{\hyperlink{classSTM32LoRaWAN_a9c28e7976a749ba1871f5df806b21882}{available()}} to see if any bytes are ready to read). If so, the contents of the packet can be read using the Stream read methods. }\begin{DoxyCompactItemize}
-\item 
-int \mbox{\hyperlink{classSTM32LoRaWAN_a56fcc5244fc0df45dbad61654c9ddcff}{parse\+Packet}} ()
-\item 
-uint8\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_aeaa78654443adbfdcad9b3ca268f256b}{get\+Downlink\+Port}} ()
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}\textbf{ Stream/\+Print writing}\par
-{\em These are standard methods defined by the Arduino Stream (or actually its Print superclass) class to allow writing data into a packet being built.
+{\em \label{classSTM32LoRaWAN_print}%
+\Hypertarget{classSTM32LoRaWAN_print}%
+
+
+These are standard methods defined by the Arduino Stream (or actually its Print superclass) class to allow writing data into a packet being built.
 
 In addition to the methods listed here, all methods offered by the Arduino Print class are also available (but at the time of writing, unfortunately not documented by Arduino).
 
@@ -235,17 +126,35 @@ virtual int \mbox{\hyperlink{classSTM32LoRaWAN_a8a8ee4421ec95742d8e3ffc924f7a206
 virtual void \mbox{\hyperlink{classSTM32LoRaWAN_a730063277eca759fda3c67bc144568a1}{flush}} ()
 \end{DoxyCompactItemize}
 \end{Indent}
+\begin{Indent}\textbf{ Packet reception}\par
+{\em \label{classSTM32LoRaWAN_reception}%
+\Hypertarget{classSTM32LoRaWAN_reception}%
+
+
+These methods are about reception of downlink packets.
+
+After an uplink packet was fully sent, a received downlink packet can be checked by calling \mbox{\hyperlink{classSTM32LoRaWAN_a56fcc5244fc0df45dbad61654c9ddcff}{parse\+Packet()}} (or simply \mbox{\hyperlink{classSTM32LoRaWAN_a9c28e7976a749ba1871f5df806b21882}{available()}} to see if any bytes are ready to read). If so, the contents of the packet can be read using the Stream read methods. }\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classSTM32LoRaWAN_a56fcc5244fc0df45dbad61654c9ddcff}{parse\+Packet}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_aeaa78654443adbfdcad9b3ca268f256b}{get\+Downlink\+Port}} ()
+\end{DoxyCompactItemize}
+\end{Indent}
 \begin{Indent}\textbf{ Stream reading}\par
-{\em These are standard methods defined by the Arduino Stream class to allow reading received data.
+{\em \label{classSTM32LoRaWAN_stream}%
+\Hypertarget{classSTM32LoRaWAN_stream}%
+
+
+These are standard methods defined by the Arduino Stream class to allow reading received data.
 
 In addition to the methods listed here, all methods offered by the Arduino Stream class are also available, see \href{https://www.arduino.cc/reference/en/language/functions/communication/stream/}{\texttt{ https\+://www.\+arduino.\+cc/reference/en/language/functions/communication/stream/}}
 
 After a packet is received, the \mbox{\hyperlink{classSTM32LoRaWAN_a9c28e7976a749ba1871f5df806b21882}{available()}} method can be used to query how much bytes are in the packet (or after some bytes were read, how many are left to be read), and various \mbox{\hyperlink{classSTM32LoRaWAN_aa04eea06439708bf70cfa524325f427f}{read()}} versions can be used to read the data.
 
 \begin{DoxyNote}{Note}
-If data is left unread when a new packet is received, the new data will be appended to the unread data and it becomes impossible to query where the first packet ends and the second begins. It is recommended to always fully read any received data before transmitting a new packet (which is, in class A Lo\+Ra\+W\+AN, the only time a new packet can be received).
+If data is left unread when a new packet is received, the new data will be appended to the unread data and it becomes impossible to query where the first packet ends and the second begins. It is recommended to always fully read any received data before transmitting a new packet (which is, in class A Lo\+Ra\+W\+AN, the only time a new packet can be received). 
 \end{DoxyNote}
-T\+O\+DO\+: How does parse\+Packet fit in? }\begin{DoxyCompactItemize}
+}\begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{classSTM32LoRaWAN_ad3dcbfd834bcdfc34b6800e6a29c9134}{read}} (uint8\+\_\+t $\ast$buf, size\+\_\+t size)
 \item 
@@ -256,55 +165,14 @@ virtual int \mbox{\hyperlink{classSTM32LoRaWAN_aa04eea06439708bf70cfa524325f427f
 virtual int \mbox{\hyperlink{classSTM32LoRaWAN_a996f203e1738383edeaa35395e2ba77b}{peek}} ()
 \end{DoxyCompactItemize}
 \end{Indent}
-\begin{Indent}\textbf{ Advanced M\+IB access}\par
-{\em These methods allow direct access to the M\+IB (Mac Information Base) layer of the underlying stack to set and query values. These are only intended for advanced usage, when the regular A\+PI does not provide sufficient access.
-
-
-\begin{DoxyParams}{Parameters}
-{\em name} & Parameter name, only used in error messages \\
-\hline
-\end{DoxyParams}
-}\begin{DoxyCompactItemize}
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_ac46b3ed90b924750c7167c82cf842134}{mib\+Get}} (const char $\ast$name, Mib\+\_\+t type, Mib\+Request\+Confirm\+\_\+t \&mib\+Req)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a2b33336566915f62e15b83f0c3f5d494}{mib\+Get\+Bool}} (const char $\ast$name, Mib\+\_\+t type, bool $\ast$value)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_ad61d878cdc32ac6446af59ad5dadfe11}{mib\+Get\+Uint8}} (const char $\ast$name, Mib\+\_\+t type, uint8\+\_\+t $\ast$value)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a84f788236ebd468599d4a466402cdb3c}{mib\+Get\+Int8}} (const char $\ast$name, Mib\+\_\+t type, int8\+\_\+t $\ast$value)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a961aa074bdb6ab5832245f6eadbd19c5}{mib\+Get\+Uint32}} (const char $\ast$name, Mib\+\_\+t type, uint32\+\_\+t $\ast$value)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a6beae8437b3b6bc619524160c2e6cc75}{mib\+Get\+Uint64}} (const char $\ast$name, Mib\+\_\+t type, uint64\+\_\+t $\ast$value)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a6514cb063c8f6b615f5c2972271babd8}{mib\+Get\+Hex}} (const char $\ast$name, Mib\+\_\+t type, String $\ast$value)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a1faeb797036db8e17c771984765d7ac9}{mib\+Get\+Rx\+Channel\+Params}} (const char $\ast$name, Mib\+\_\+t type, Rx\+Channel\+Params\+\_\+t $\ast$value)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a17e206e013c225aacc949e13cbf89b32}{mib\+Set}} (const char $\ast$name, Mib\+\_\+t type, Mib\+Request\+Confirm\+\_\+t \&mib\+Req)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_ad15b0a38c993256021716d664829de35}{mib\+Set\+Bool}} (const char $\ast$name, Mib\+\_\+t type, bool value)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_aa3ce891c87be01c921ccd030b246aa41}{mib\+Set\+Uint8}} (const char $\ast$name, Mib\+\_\+t type, uint8\+\_\+t value)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a2b7c4552f8160f8811f48ef5d91c546d}{mib\+Set\+Int8}} (const char $\ast$name, Mib\+\_\+t type, int8\+\_\+t value)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_ad32b380d960b7b4d204f1e1af0b54bee}{mib\+Set\+Uint32}} (const char $\ast$name, Mib\+\_\+t type, uint32\+\_\+t value)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a4fd0b9364f8cd9b75113ff5d6c905645}{mib\+Set\+Uint64}} (const char $\ast$name, Mib\+\_\+t type, uint64\+\_\+t value)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a2fa81e8160c6691b1d07ea67e099c38b}{mib\+Set\+Hex}} (const char $\ast$name, Mib\+\_\+t type, const char $\ast$value)
-\item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a82559627e5b7532affd0e0788381867d}{mib\+Set\+Rx\+Channel\+Params}} (const char $\ast$name, Mib\+\_\+t type, Rx\+Channel\+Params\+\_\+t value)
-\item 
-size\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_a5b67c2e0eeb4bce82be136639c705bee}{mib\+Hex\+Size}} (const char $\ast$name, Mib\+\_\+t type)
-\end{DoxyCompactItemize}
-\end{Indent}
 \begin{Indent}\textbf{ Setters for identifiers and keys}\par
 {\em These methods allow setting various identifiers and keys.
 
-You can pass a hex-\/encoded (M\+S\+B-\/first) string ({\ttfamily String} object or {\ttfamily const char$\ast$}), or a raw integer (32-\/bits for Dev\+Addr and 64-\/bits for E\+U\+Is, keys are too long to be passed as an integer). }\begin{DoxyCompactItemize}
+You can pass a hex-\/encoded (M\+S\+B-\/first) string ({\ttfamily String} object or {\ttfamily const char$\ast$}), or a raw integer (32-\/bits for Dev\+Addr and 64-\/bits for E\+U\+Is, keys are too long to be passed as an integer).
+
+\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
+\item[\mbox{\hyperlink{extensions__extensions000010}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN\end{DoxyRefDesc}
+}\begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{classSTM32LoRaWAN_afad4207d0c10a3b8e8ade879b5511b96}{set\+Dev\+Eui}} (const char $\ast$value)
 \item 
@@ -375,6 +243,151 @@ bool \mbox{\hyperlink{classSTM32LoRaWAN_ab3335b40c9a640200c4e3c345859ac80}{busy}
 \mbox{\hyperlink{classSTM32LoRaWAN_aba3b5cbafa87684ebfb2585fd9060912}{operator bool}} ()
 \end{DoxyCompactItemize}
 \end{Indent}
+\begin{Indent}\textbf{ Radio / transmission configuration}\par
+{\em These methods allow configuring various radio and transmission parameters. }\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a5cca097cfdebc2227eb4ff0cb5358084}{data\+Rate}} (uint8\+\_\+t dr)
+\item 
+int \mbox{\hyperlink{classSTM32LoRaWAN_a5d7d806e8ff17f8ebf12cf08af23283b}{get\+Data\+Rate}} ()
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_ad3820664ad2ad9e0cfff299eab1ad786}{power}} (uint8\+\_\+t index)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a149bb7518e6756db8fa60848f2efd527}{power}} (\mbox{\hyperlink{STM32LoRaWAN_8h_a1fd3d2eb05358dae64890dff0448c69c}{\+\_\+rf\+\_\+mode}} mode, uint8\+\_\+t index)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_ac720f4ea2f3efe054908a8f8bdcfc7a5}{powerdB}} (int8\+\_\+t db)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_a01ff41259ed00ec882e33eb0e33b72c2}{get\+Port}} ()
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_af342c59031d83d102bc58672f844f64f}{set\+Port}} (uint8\+\_\+t port)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_ae83ea4aa1df9729e17602ee88cd4b607}{set\+A\+DR}} (bool adr)
+\item 
+int \mbox{\hyperlink{classSTM32LoRaWAN_a3b13d9d9db35aaff6fbdcaacf101d14f}{get\+A\+DR}} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Advanced configuration}\par
+{\em These methods allow configuring advanced settings, which are usually not required for normal operation. }\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_acfa79d28cb7254c016cf20604afd1bd8}{duty\+Cycle}} (bool on)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_afc9939a198a3d0f243dd066a72ea2b81}{public\+Network}} (bool public\+Network)
+\item 
+int \mbox{\hyperlink{classSTM32LoRaWAN_aefa9c84b0a9e0169d6a1751d26cab403}{get\+R\+X2\+DR}} ()
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_ae8d43824dddd36b0f41e3be41e7943c9}{set\+R\+X2\+DR}} (uint8\+\_\+t dr)
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_ad57ef4c3c5076303ee8fa18ab145d5b3}{get\+R\+X2\+Freq}} ()
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a62955c24acd965b504db5e1923f07f65}{set\+R\+X2\+Freq}} (uint32\+\_\+t freq)
+\item 
+int \mbox{\hyperlink{classSTM32LoRaWAN_a72d986af51d931c34a64fd3544e432fc}{getrxfreq}} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Channel manipulation}\par
+{\em These methods allow manipulating the list of enabled channels.
+
+The number of channels that are actually available and defined and their frequency and other settings are region-\/dependent. The fixed frequency regions (U\+S915 and A\+U915) have 96 fixed channels, while the other regions have just a couple (up to 16) of channels defined.
+
+\begin{DoxyNote}{Note}
+The list of channels will be reset when starting an O\+T\+AA join an when the join completes. Also, the network can send commands to modify the channel plan (define new channels or replace them, and enable/disable them), also as part of A\+DR messages. 
+\end{DoxyNote}
+}\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a79c395d41208f191871d04b2b30dd441}{enable\+Channel}} (unsigned pos)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a7d0e9be1e1e7c250928b828baae9e004}{disable\+Channel}} (unsigned pos)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a14df7748a2df407809fa2862da7194be}{modify\+Channel\+Enabled}} (unsigned pos, bool value)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_aa83cf43c08e8faec5a955140ea740eee}{is\+Channel\+Enabled}} (unsigned pos)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Frame counters}\par
+{\em These methods allow access to the up and down frame counters.
+
+\begin{DoxyNote}{Note}
+Currently setting the framecounters is not supported, since the underlying Lo\+Ra\+W\+AN library has no obvious way to set these. This might be implemented in the future with some extra work. 
+\end{DoxyNote}
+}\begin{DoxyCompactItemize}
+\item 
+int32\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_a23c34cb2f59e5c27ea67fe755373bbc5}{get\+F\+CU}} ()
+\item 
+int32\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_a840faf34c5bcef2a58420095dc78d691}{get\+F\+CD}} ()
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a29b18acfa3074157c501122b9399d1d1}{set\+F\+CD}} (uint16\+\_\+t fcd)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_ab1f8b82511bb880e253f7bdf4e194023}{set\+F\+CU}} (uint16\+\_\+t fcu)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Advanced M\+IB access}\par
+{\em These methods allow direct access to the M\+IB (Mac Information Base) layer of the underlying stack to set and query values. These are only intended for advanced usage, when the regular A\+PI does not provide sufficient access.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Parameter name, only used in error messages \\
+\hline
+\end{DoxyParams}
+}\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_ac46b3ed90b924750c7167c82cf842134}{mib\+Get}} (const char $\ast$name, Mib\+\_\+t type, Mib\+Request\+Confirm\+\_\+t \&mib\+Req)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a2b33336566915f62e15b83f0c3f5d494}{mib\+Get\+Bool}} (const char $\ast$name, Mib\+\_\+t type, bool $\ast$value)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_ad61d878cdc32ac6446af59ad5dadfe11}{mib\+Get\+Uint8}} (const char $\ast$name, Mib\+\_\+t type, uint8\+\_\+t $\ast$value)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a84f788236ebd468599d4a466402cdb3c}{mib\+Get\+Int8}} (const char $\ast$name, Mib\+\_\+t type, int8\+\_\+t $\ast$value)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a961aa074bdb6ab5832245f6eadbd19c5}{mib\+Get\+Uint32}} (const char $\ast$name, Mib\+\_\+t type, uint32\+\_\+t $\ast$value)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a6beae8437b3b6bc619524160c2e6cc75}{mib\+Get\+Uint64}} (const char $\ast$name, Mib\+\_\+t type, uint64\+\_\+t $\ast$value)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a6514cb063c8f6b615f5c2972271babd8}{mib\+Get\+Hex}} (const char $\ast$name, Mib\+\_\+t type, String $\ast$value)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a1faeb797036db8e17c771984765d7ac9}{mib\+Get\+Rx\+Channel\+Params}} (const char $\ast$name, Mib\+\_\+t type, Rx\+Channel\+Params\+\_\+t $\ast$value)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a5f59597389f5b7912f00e71c9bbcfec3}{mib\+Get\+Ptr}} (const char $\ast$name, Mib\+\_\+t type, void $\ast$$\ast$value)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a17e206e013c225aacc949e13cbf89b32}{mib\+Set}} (const char $\ast$name, Mib\+\_\+t type, Mib\+Request\+Confirm\+\_\+t \&mib\+Req)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_ad15b0a38c993256021716d664829de35}{mib\+Set\+Bool}} (const char $\ast$name, Mib\+\_\+t type, bool value)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_aa3ce891c87be01c921ccd030b246aa41}{mib\+Set\+Uint8}} (const char $\ast$name, Mib\+\_\+t type, uint8\+\_\+t value)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a2b7c4552f8160f8811f48ef5d91c546d}{mib\+Set\+Int8}} (const char $\ast$name, Mib\+\_\+t type, int8\+\_\+t value)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_ad32b380d960b7b4d204f1e1af0b54bee}{mib\+Set\+Uint32}} (const char $\ast$name, Mib\+\_\+t type, uint32\+\_\+t value)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a4fd0b9364f8cd9b75113ff5d6c905645}{mib\+Set\+Uint64}} (const char $\ast$name, Mib\+\_\+t type, uint64\+\_\+t value)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a2fa81e8160c6691b1d07ea67e099c38b}{mib\+Set\+Hex}} (const char $\ast$name, Mib\+\_\+t type, const char $\ast$value)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a82559627e5b7532affd0e0788381867d}{mib\+Set\+Rx\+Channel\+Params}} (const char $\ast$name, Mib\+\_\+t type, Rx\+Channel\+Params\+\_\+t value)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a3b28a3bc4423bbf5f93cf37f58bfeb4a}{mib\+Set\+Ptr}} (const char $\ast$name, Mib\+\_\+t type, void $\ast$value)
+\item 
+size\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_a5b67c2e0eeb4bce82be136639c705bee}{mib\+Hex\+Size}} (const char $\ast$name, Mib\+\_\+t type)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Non-\/blocking (async) methods}\par
+{\em These are variants of other methods that are asynchronous, i.\+e. these start an operation and then return immediately without waiting (blocking) for the operation to complete.
+
+After calling these methods, the sketch must periodically call the {\ttfamily \mbox{\hyperlink{classSTM32LoRaWAN_a2c207de2ede561d57ef26af61991cffa}{maintain()}}} method to allow any background work to be performed. This must be done at least until {\ttfamily \mbox{\hyperlink{classSTM32LoRaWAN_ab3335b40c9a640200c4e3c345859ac80}{busy()}}} returns false. You can use {\ttfamily \mbox{\hyperlink{classSTM32LoRaWAN_afd305ad1b2327c96fd1bd94c41c6fb46}{maintain\+Until\+Idle()}}} for this if you no longer have other things to do while waiting. }\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a420cf8fb6a886b0e9b950797b1146bba}{join\+O\+T\+A\+A\+Async}} ()
+\item 
+int \mbox{\hyperlink{classSTM32LoRaWAN_a5b979b128f0cd00d4c7a2dcc549af89a}{end\+Packet\+Async}} (bool confirmed=false)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_acd434a7ebbe91a548c010355f7553460}{send}} (const uint8\+\_\+t $\ast$payload, size\+\_\+t size, bool confirmed)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_a44d6abeff4068edf16a0f8d6f98e544f}{last\+Ack}} ()
+\item 
+void \mbox{\hyperlink{classSTM32LoRaWAN_a2c207de2ede561d57ef26af61991cffa}{maintain}} ()
+\item 
+void \mbox{\hyperlink{classSTM32LoRaWAN_afd305ad1b2327c96fd1bd94c41c6fb46}{maintain\+Until\+Idle}} ()
+\item 
+void \mbox{\hyperlink{classSTM32LoRaWAN_aefa957b4339b2da06b292f917ddfed31}{set\+Maintain\+Needed\+Callback}} (std\+::function$<$ void(void)$>$ callback)
+\end{DoxyCompactItemize}
+\end{Indent}
 \begin{Indent}\textbf{ Dummy implementations}\par
 {\em These methods have only dummy implementations, because no meaningful implementations exist and having a dummy implementation is harmless (and also helps to make some examples work without modification). }\begin{DoxyCompactItemize}
 \item 
@@ -383,14 +396,68 @@ String \mbox{\hyperlink{classSTM32LoRaWAN_ab3dd6a10e89c4e94474b85aa4da0a302}{ver
 void \mbox{\hyperlink{classSTM32LoRaWAN_ad98e9a94a0a991742a433ce1dd67ec84}{min\+Poll\+Interval}} (unsigned long)
 \end{DoxyCompactItemize}
 \end{Indent}
+\begin{Indent}\textbf{ Missing methods}\par
+{\em These methods are present in M\+K\+R\+W\+AN, but are not implemented in this library (because they are specific to the module-\/based serial approach used by M\+K\+R\+W\+AN, are for testing purposes only or have better A\+PI not tied to the M\+K\+R\+W\+AN AT commands available.
+
+These methods {\itshape are} declared in this library, but marked so the compiler can generate a friendly error message when they are used. }\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a999c98c64e466aedf9fa2e848e684018}{set\+C\+FM}} (bool cfm)
+\item 
+int \mbox{\hyperlink{classSTM32LoRaWAN_a1b8fbaeab4917b93e3f240133835d3e3}{get\+C\+FM}} ()
+\item 
+int \mbox{\hyperlink{classSTM32LoRaWAN_a58632ff20ab6a0f48fa772c827d73cde}{get\+C\+FS}} ()
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a01766fa6242b566fde0010eef9707372}{begin}} (\mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24b}{\+\_\+lora\+\_\+band}} band, uint32\+\_\+t baud, uint16\+\_\+t config=S\+E\+R\+I\+A\+L\+\_\+8\+N2)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a51adb005319aa9c4ccb2f63b246789a1}{auto\+Baud}} (unsigned long timeout=10000L)
+\item 
+void \mbox{\hyperlink{classSTM32LoRaWAN_a9a54edbb78e6b782204b2d37bed84c96}{set\+Baud}} (unsigned long baud)
+\item 
+String \mbox{\hyperlink{classSTM32LoRaWAN_a5c4031e2de24b5f3066603e71e37a2ae}{get\+T\+Conf}} ()
+\item 
+String \mbox{\hyperlink{classSTM32LoRaWAN_a2eb7351c1b7e8ada59ba58e8032c6a83}{set\+T\+Conf}} (String params)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_adadf322fc5419467c8612840c006eaaa}{en\+Ttone}} ()
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a8a715c4ec0ba3a9601a229a8c43d05be}{restart}} ()
+\item 
+void \mbox{\hyperlink{classSTM32LoRaWAN_a79634164ef1e9c2d8c4d4589cbeaf665}{poll}} ()
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a9d332d013d0a2569bc162568adb1bd04}{sleep}} (bool on=true)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a619ee70f32e4ad240c67af514750ffed}{factory\+Default}} ()
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a3eff0f30e2bf1ea1f046c81bcbedecfe}{format}} (bool hex\+Mode)
+\item 
+void \mbox{\hyperlink{classSTM32LoRaWAN_a8a580f36418deb428460d6eee12672ba}{dumb}} ()
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_ac49cddab0119f98ae926e53aa11e16f2}{init}} ()
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a077e0794bb3ac3c199f13e486933417b}{configure\+Class}} (\mbox{\hyperlink{STM32LoRaWAN_8h_a6f8077b5a9a47075e6c1cbf074efa09f}{\+\_\+lora\+\_\+class}} \+\_\+class)
+\item 
+String \mbox{\hyperlink{classSTM32LoRaWAN_a190e38032336a2d69927724fbe872f17}{get\+Nwk\+S\+Key}} ()
+\item 
+String \mbox{\hyperlink{classSTM32LoRaWAN_a0c818ce976451d7ce17f5c4630d109dd}{get\+App\+S\+Key}} ()
+\item 
+String \mbox{\hyperlink{classSTM32LoRaWAN_af5a44ca0779d52ba0ed35235dd92e107}{application\+Key}} ()
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_af21b1d27c22c2e94da4ca2d368620c13}{send\+Mask}} (String new\+Mask)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a79915834d3c8812cfd80a08d62382686}{send\+Mask}} ()
+\item 
+String \mbox{\hyperlink{classSTM32LoRaWAN_a87dedb0a627b82dcf7bba62edbea3713}{get\+Channel\+Mask}} ()
+\item 
+int \mbox{\hyperlink{classSTM32LoRaWAN_a067096f42efcee590a3b0c807a65e07f}{get\+Channel\+Mask\+Size}} (\mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24b}{\+\_\+lora\+\_\+band}} band)
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a8c9e66574bd8137330de4067ee3bf2b8}{configure\+Band}} (\mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24b}{\+\_\+lora\+\_\+band}} band)
+\end{DoxyCompactItemize}
+\end{Indent}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 uint64\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_a1f5732e872ed564bc74f6c941b54da21}{builtin\+Dev\+E\+UI}} ()
 \item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a7eb5fcb627bb6f3d9aa3e06df117f66e}{join}} (bool otaa)
-\item 
-void \mbox{\hyperlink{classSTM32LoRaWAN_a5b3d970d8d35e74b34eae5a3c6843f62}{clear\+\_\+rx}} ()
+static bool void \mbox{\hyperlink{classSTM32LoRaWAN_ac597b3b55d9a8fea51b4e86319291d02}{clear\+\_\+rx}} ()
 \item 
 void \mbox{\hyperlink{classSTM32LoRaWAN_acff4f237cf22a492f3c070b845ae3934}{add\+\_\+rx}} (const uint8\+\_\+t $\ast$buf, size\+\_\+t len)
 \end{DoxyCompactItemize}
@@ -404,6 +471,8 @@ static void \mbox{\hyperlink{classSTM32LoRaWAN_a38f3b2184022481810daeeb731d332c3
 static void \mbox{\hyperlink{classSTM32LoRaWAN_adb22008cc147d1f94bceba9ca5676bcf}{Mac\+Mlme\+Confirm}} (Mlme\+Confirm\+\_\+t $\ast$Mlme\+Confirm)
 \item 
 static void \mbox{\hyperlink{classSTM32LoRaWAN_a6dce90cc8ee17de4a48c4ec5365fcad9}{Mac\+Mlme\+Indication}} (Mlme\+Indication\+\_\+t $\ast$Mlme\+Indication, Lo\+Ra\+Mac\+Rx\+Status\+\_\+t $\ast$Rx\+Status)
+\item 
+static void \mbox{\hyperlink{classSTM32LoRaWAN_a80f4126e5c863ec1b11f66bd270ec6fd}{Mac\+Process\+Notify}} ()
 \item 
 static const char $\ast$ \mbox{\hyperlink{classSTM32LoRaWAN_a4ede80a683b07f0f00b18531022ddecb}{to\+String}} (Lo\+Ra\+Mac\+Status\+\_\+t)
 \item 
@@ -423,7 +492,7 @@ static bool \mbox{\hyperlink{classSTM32LoRaWAN_a4dcc14ebf323e8aa72b3635d13646d0c
 \item 
 static uint32\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_aba623626dfe280e03d08c5712b6406ae}{make\+Uint32}} (uint8\+\_\+t a, uint8\+\_\+t b, uint8\+\_\+t c, uint8\+\_\+t d)
 \item 
-static bool \mbox{\hyperlink{classSTM32LoRaWAN_a5ea9a027f17f301f74a5411652126014}{failure}} (const char $\ast$fmt,...)
+static bool \mbox{\hyperlink{classSTM32LoRaWAN_adf5c35e2aaea1ba3673af314c2c32caa}{failure}} (const char $\ast$fmt,...) \+\_\+\+\_\+attribute\+\_\+\+\_\+((\mbox{\hyperlink{classSTM32LoRaWAN_a3eff0f30e2bf1ea1f046c81bcbedecfe}{format}}(printf
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -438,7 +507,7 @@ uint8\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_a2d842876085b5671605071115b09611
 \item 
 uint8\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_a1a8d94acf9cfb846f1b90aad4836ae63}{rx\+\_\+port}} = 0
 \item 
-bool \mbox{\hyperlink{classSTM32LoRaWAN_a68b5f00129f93640dfa39fdcb4f84a30}{nwk\+Key\+Set}} = false
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a29e3e04449873af7a4d82ee1f0c84ba9}{nwk\+\_\+key\+\_\+set}} = false
 \item 
 uint8\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_a48913ce12dc2e2f2eae00c6af09517b6}{tx\+\_\+buf}} \mbox{[}255\mbox{]}
 \item 
@@ -447,11 +516,23 @@ uint8\+\_\+t $\ast$ \mbox{\hyperlink{classSTM32LoRaWAN_ac16474bc60825278e21136db
 uint8\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_ac20a82fca09fe79a49b2efb14c3ddf35}{rx\+\_\+buf}} \mbox{[}255\mbox{]}
 \item 
 uint8\+\_\+t $\ast$ \mbox{\hyperlink{classSTM32LoRaWAN_ad8439dc88e0a8dd52e44f1914bf0a8c3}{rx\+\_\+ptr}}
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a490ebe9741d79b68d81f9ea515570cb1}{last\+\_\+tx\+\_\+acked}} = false
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_ac96049b0c2393f846cfa650e79b7b3e7}{fcnt\+\_\+up}} = 0
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_a35a745b85482d2373206f1d45c86ba3a}{fcnt\+\_\+down}} = 0
+\item 
+std\+::function$<$ void(void)$>$ \mbox{\hyperlink{classSTM32LoRaWAN_ad08ee261884f5852a5b3f6f6a2ee5292}{maintain\+\_\+needed\+\_\+callback}}
+\item 
+bool \mbox{\hyperlink{classSTM32LoRaWAN_a567065f79a2195207e806a08abd01e18}{mac\+\_\+process\+\_\+pending}} = false
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 static \mbox{\hyperlink{classSTM32LoRaWAN}{S\+T\+M32\+Lo\+Ra\+W\+AN}} $\ast$ \mbox{\hyperlink{classSTM32LoRaWAN_a6974eb61fff706231a7c9f13d95b1fda}{instance}}
+\item 
+static constexpr uint32\+\_\+t \mbox{\hyperlink{classSTM32LoRaWAN_a2a1e4648be8f45af29b33b4fe2c0c8df}{D\+E\+F\+A\+U\+L\+T\+\_\+\+J\+O\+I\+N\+\_\+\+T\+I\+M\+E\+O\+UT}} = 60000
 \end{DoxyCompactItemize}
 
 
@@ -469,7 +550,7 @@ Add data to the rx buffer \mbox{\Hypertarget{classSTM32LoRaWAN_af5a44ca0779d52ba
 {\footnotesize\ttfamily String S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::application\+Key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000027}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: Keys cannot be retrieved \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000044}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: Keys cannot be retrieved \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a51adb005319aa9c4ccb2f63b246789a1}\label{classSTM32LoRaWAN_a51adb005319aa9c4ccb2f63b246789a1}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!autoBaud@{autoBaud}}
 \index{autoBaud@{autoBaud}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -477,7 +558,7 @@ Add data to the rx buffer \mbox{\Hypertarget{classSTM32LoRaWAN_af5a44ca0779d52ba
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::auto\+Baud (\begin{DoxyParamCaption}\item[{unsigned long}]{timeout = {\ttfamily 10000L} }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000012}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: no serial link to configure \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000029}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: no serial link to configure \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a9c28e7976a749ba1871f5df806b21882}\label{classSTM32LoRaWAN_a9c28e7976a749ba1871f5df806b21882}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!available@{available}}
 \index{available@{available}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -517,7 +598,7 @@ The selected band must be within the frequency range of the board design, this c
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::begin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24b}{\+\_\+lora\+\_\+band}}}]{band,  }\item[{uint32\+\_\+t}]{baud,  }\item[{uint16\+\_\+t}]{config = {\ttfamily SERIAL\+\_\+8N2} }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000011}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: no serial link to configure \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000028}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: no serial link to configure \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a53de6fa3a4971cde2ff3da8331b877dc}\label{classSTM32LoRaWAN_a53de6fa3a4971cde2ff3da8331b877dc}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!beginPacket@{beginPacket}}
 \index{beginPacket@{beginPacket}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -539,12 +620,12 @@ Generate the builtin Dev\+E\+UI for this board \mbox{\Hypertarget{classSTM32LoRa
 Returns whether the modem is currently busy processing a request. After a non-\/blocking request (e.\+g. unconfirmed uplink), this returns true until the request is completed and then returns false until some new request is made.
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000030}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN \end{DoxyRefDesc}
-\mbox{\Hypertarget{classSTM32LoRaWAN_a5b3d970d8d35e74b34eae5a3c6843f62}\label{classSTM32LoRaWAN_a5b3d970d8d35e74b34eae5a3c6843f62}} 
+\item[\mbox{\hyperlink{extensions__extensions000011}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN \end{DoxyRefDesc}
+\mbox{\Hypertarget{classSTM32LoRaWAN_ac597b3b55d9a8fea51b4e86319291d02}\label{classSTM32LoRaWAN_ac597b3b55d9a8fea51b4e86319291d02}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!clear\_rx@{clear\_rx}}
 \index{clear\_rx@{clear\_rx}!STM32LoRaWAN@{STM32LoRaWAN}}
 \doxysubsubsection{\texorpdfstring{clear\_rx()}{clear\_rx()}}
-{\footnotesize\ttfamily void S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::clear\+\_\+rx (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+{\footnotesize\ttfamily static bool void S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::clear\+\_\+rx (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
 
 Empty the rx buffer \mbox{\Hypertarget{classSTM32LoRaWAN_a8c9e66574bd8137330de4067ee3bf2b8}\label{classSTM32LoRaWAN_a8c9e66574bd8137330de4067ee3bf2b8}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!configureBand@{configureBand}}
@@ -553,7 +634,7 @@ Empty the rx buffer \mbox{\Hypertarget{classSTM32LoRaWAN_a8c9e66574bd8137330de40
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::configure\+Band (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24b}{\+\_\+lora\+\_\+band}}}]{band }\end{DoxyParamCaption})}
 
 This could be supported, but needs careful consideration and complete re-\/initialization. \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000028}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: Changing band after initialization not supported \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000049}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: Changing band after initialization not supported \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a077e0794bb3ac3c199f13e486933417b}\label{classSTM32LoRaWAN_a077e0794bb3ac3c199f13e486933417b}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!configureClass@{configureClass}}
 \index{configureClass@{configureClass}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -561,14 +642,14 @@ This could be supported, but needs careful consideration and complete re-\/initi
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::configure\+Class (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{STM32LoRaWAN_8h_a6f8077b5a9a47075e6c1cbf074efa09f}{\+\_\+lora\+\_\+class}}}]{\+\_\+class }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000024}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: only class A supported \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000041}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: only class A supported \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a5b953d8373ef95547e5f933cf6563a45}\label{classSTM32LoRaWAN_a5b953d8373ef95547e5f933cf6563a45}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!connected@{connected}}
 \index{connected@{connected}!STM32LoRaWAN@{STM32LoRaWAN}}
 \doxysubsubsection{\texorpdfstring{connected()}{connected()}}
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::connected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Returns whether connected to the network (i.\+e. for O\+T\+AA a succesfull join exchange has happened, or for A\+BP session information has been supplied by calling join\+A\+BP). \mbox{\Hypertarget{classSTM32LoRaWAN_a5cca097cfdebc2227eb4ff0cb5358084}\label{classSTM32LoRaWAN_a5cca097cfdebc2227eb4ff0cb5358084}} 
+Returns whether connected to the network (i.\+e. for O\+T\+AA a successful join exchange has happened, or for A\+BP session information has been supplied by calling join\+A\+BP). \mbox{\Hypertarget{classSTM32LoRaWAN_a5cca097cfdebc2227eb4ff0cb5358084}\label{classSTM32LoRaWAN_a5cca097cfdebc2227eb4ff0cb5358084}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!dataRate@{dataRate}}
 \index{dataRate@{dataRate}!STM32LoRaWAN@{STM32LoRaWAN}}
 \doxysubsubsection{\texorpdfstring{dataRate()}{dataRate()}}
@@ -580,11 +661,11 @@ Set the datarate to use for future packets. If A\+DR is enabled, that might chan
 \doxysubsubsection{\texorpdfstring{deviceEUI()}{deviceEUI()}}
 {\footnotesize\ttfamily String S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::device\+E\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Return the currently configured device\+E\+UI. On startup, this is the E\+UI for the chip (stored in R\+OM). If changed (i.\+e. with \mbox{\hyperlink{classSTM32LoRaWAN_a5e623c2aaee526fdc4720d48ca72ec87}{join\+O\+T\+A\+A()}} or set\+Dev\+E\+U\+I()), the changed value is returned instead. \mbox{\Hypertarget{classSTM32LoRaWAN_a4c6d8afc0f5fd9b3c54d01158bf7778e}\label{classSTM32LoRaWAN_a4c6d8afc0f5fd9b3c54d01158bf7778e}} 
+Return the currently configured device\+E\+UI. On startup, this is the E\+UI for the chip (stored in R\+OM). If changed (i.\+e. with \mbox{\hyperlink{classSTM32LoRaWAN_a36f73d685e3a41c862dfbe82e34f7672}{join\+O\+T\+A\+A()}} or set\+Dev\+E\+U\+I()), the changed value is returned instead. \mbox{\Hypertarget{classSTM32LoRaWAN_a7d0e9be1e1e7c250928b828baae9e004}\label{classSTM32LoRaWAN_a7d0e9be1e1e7c250928b828baae9e004}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!disableChannel@{disableChannel}}
 \index{disableChannel@{disableChannel}!STM32LoRaWAN@{STM32LoRaWAN}}
 \doxysubsubsection{\texorpdfstring{disableChannel()}{disableChannel()}}
-{\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::disable\+Channel (\begin{DoxyParamCaption}\item[{int}]{pos }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::disable\+Channel (\begin{DoxyParamCaption}\item[{unsigned}]{pos }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classSTM32LoRaWAN_a8a580f36418deb428460d6eee12672ba}\label{classSTM32LoRaWAN_a8a580f36418deb428460d6eee12672ba}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!dumb@{dumb}}
@@ -593,7 +674,7 @@ Return the currently configured device\+E\+UI. On startup, this is the E\+UI for
 {\footnotesize\ttfamily void S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::dumb (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000022}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: no protocol stream to configure \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000039}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: no protocol stream to configure \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_acfa79d28cb7254c016cf20604afd1bd8}\label{classSTM32LoRaWAN_acfa79d28cb7254c016cf20604afd1bd8}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!dutyCycle@{dutyCycle}}
 \index{dutyCycle@{dutyCycle}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -602,11 +683,14 @@ Return the currently configured device\+E\+UI. On startup, this is the E\+UI for
 
 When false is passed, duty cycle limits are no longer checked.
 
-\textbackslash{}raisewarning Use with care, disabling duty cycle limits can cause violations of laws and regulations around use of the RF spectrum! \mbox{\Hypertarget{classSTM32LoRaWAN_a0ba00b353d6f5cefd0b850a5983604fc}\label{classSTM32LoRaWAN_a0ba00b353d6f5cefd0b850a5983604fc}} 
+\begin{DoxyWarning}{Warning}
+Use with care, disabling duty cycle limits can cause violations of laws and regulations around use of the RF spectrum! 
+\end{DoxyWarning}
+\mbox{\Hypertarget{classSTM32LoRaWAN_a79c395d41208f191871d04b2b30dd441}\label{classSTM32LoRaWAN_a79c395d41208f191871d04b2b30dd441}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!enableChannel@{enableChannel}}
 \index{enableChannel@{enableChannel}!STM32LoRaWAN@{STM32LoRaWAN}}
 \doxysubsubsection{\texorpdfstring{enableChannel()}{enableChannel()}}
-{\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::enable\+Channel (\begin{DoxyParamCaption}\item[{int}]{pos }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::enable\+Channel (\begin{DoxyParamCaption}\item[{unsigned}]{pos }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classSTM32LoRaWAN_a816dd9c8b223bda9380971c5a1dab377}\label{classSTM32LoRaWAN_a816dd9c8b223bda9380971c5a1dab377}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!endPacket@{endPacket}}
@@ -614,6 +698,27 @@ When false is passed, duty cycle limits are no longer checked.
 \doxysubsubsection{\texorpdfstring{endPacket()}{endPacket()}}
 {\footnotesize\ttfamily int S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::end\+Packet (\begin{DoxyParamCaption}\item[{bool}]{confirmed = {\ttfamily false} }\end{DoxyParamCaption})}
 
+Finalize and send a packet previously prepared using \mbox{\hyperlink{classSTM32LoRaWAN_a53de6fa3a4971cde2ff3da8331b877dc}{begin\+Packet()}} and \mbox{\hyperlink{classSTM32LoRaWAN_a6bf5661d2b38c2f12871d7c28f0658fd}{write()}}.
+
+This blocks until the packet is completely sent an both RX windows have been completed.
+
+\begin{DoxyReturn}{Returns}
+The number of bytes sent when successful, or -\/1 when the packet could not be sent. For confirmed packets, also returns -\/1 when no confirmation was received (in that case the packet might still have been sent correctly).
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
+\item[\mbox{\hyperlink{extensions__extensions000008}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]This library blocks for all packets, not just confirmed packets. \end{DoxyRefDesc}
+\mbox{\Hypertarget{classSTM32LoRaWAN_a5b979b128f0cd00d4c7a2dcc549af89a}\label{classSTM32LoRaWAN_a5b979b128f0cd00d4c7a2dcc549af89a}} 
+\index{STM32LoRaWAN@{STM32LoRaWAN}!endPacketAsync@{endPacketAsync}}
+\index{endPacketAsync@{endPacketAsync}!STM32LoRaWAN@{STM32LoRaWAN}}
+\doxysubsubsection{\texorpdfstring{endPacketAsync()}{endPacketAsync()}}
+{\footnotesize\ttfamily int S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::end\+Packet\+Async (\begin{DoxyParamCaption}\item[{bool}]{confirmed = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Finalize and asynchronously send a packet. This can be used in place of {\ttfamily \mbox{\hyperlink{classSTM32LoRaWAN_a816dd9c8b223bda9380971c5a1dab377}{end\+Packet()}}} when you do not want blocking behavior.
+
+The return value only reflects whether the packet could successfully queued, to see if a confirmed packet was actually confirmed by the network, call \mbox{\hyperlink{classSTM32LoRaWAN_a44d6abeff4068edf16a0f8d6f98e544f}{last\+Ack()}}.
+
+\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
+\item[\mbox{\hyperlink{extensions__extensions000018}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_adadf322fc5419467c8612840c006eaaa}\label{classSTM32LoRaWAN_adadf322fc5419467c8612840c006eaaa}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!enTtone@{enTtone}}
 \index{enTtone@{enTtone}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -621,7 +726,7 @@ When false is passed, duty cycle limits are no longer checked.
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::en\+Ttone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000016}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: test method only \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000033}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: test method only \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a619ee70f32e4ad240c67af514750ffed}\label{classSTM32LoRaWAN_a619ee70f32e4ad240c67af514750ffed}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!factoryDefault@{factoryDefault}}
 \index{factoryDefault@{factoryDefault}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -629,8 +734,8 @@ When false is passed, duty cycle limits are no longer checked.
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::factory\+Default (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000020}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: no remote module to reset \end{DoxyRefDesc}
-\mbox{\Hypertarget{classSTM32LoRaWAN_a5ea9a027f17f301f74a5411652126014}\label{classSTM32LoRaWAN_a5ea9a027f17f301f74a5411652126014}} 
+\item[\mbox{\hyperlink{extensions__extensions000037}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: no remote module to reset \end{DoxyRefDesc}
+\mbox{\Hypertarget{classSTM32LoRaWAN_adf5c35e2aaea1ba3673af314c2c32caa}\label{classSTM32LoRaWAN_adf5c35e2aaea1ba3673af314c2c32caa}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!failure@{failure}}
 \index{failure@{failure}!STM32LoRaWAN@{STM32LoRaWAN}}
 \doxysubsubsection{\texorpdfstring{failure()}{failure()}}
@@ -642,8 +747,8 @@ Helper that prints an error and then always returns false, to allow for combinin
 \doxysubsubsection{\texorpdfstring{flush()}{flush()}}
 {\footnotesize\ttfamily virtual void S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::flush (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
 
-This is a no-\/op, to send writen data, use \mbox{\hyperlink{classSTM32LoRaWAN_a816dd9c8b223bda9380971c5a1dab377}{end\+Packet()}}. \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000029}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Dummy implementation in this library \end{DoxyRefDesc}
+This is a no-\/op, to send written data, use \mbox{\hyperlink{classSTM32LoRaWAN_a816dd9c8b223bda9380971c5a1dab377}{end\+Packet()}}. \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
+\item[\mbox{\hyperlink{extensions__extensions000009}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Dummy implementation in this library \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a3eff0f30e2bf1ea1f046c81bcbedecfe}\label{classSTM32LoRaWAN_a3eff0f30e2bf1ea1f046c81bcbedecfe}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!format@{format}}
 \index{format@{format}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -651,7 +756,7 @@ This is a no-\/op, to send writen data, use \mbox{\hyperlink{classSTM32LoRaWAN_a
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::format (\begin{DoxyParamCaption}\item[{bool}]{hex\+Mode }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000021}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: no protocol stream to configure \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000038}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: no protocol stream to configure \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a3b13d9d9db35aaff6fbdcaacf101d14f}\label{classSTM32LoRaWAN_a3b13d9d9db35aaff6fbdcaacf101d14f}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!getADR@{getADR}}
 \index{getADR@{getADR}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -677,7 +782,7 @@ Return whether A\+DR (automatic datarate) is enabled. \mbox{\Hypertarget{classST
 {\footnotesize\ttfamily String S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::get\+App\+S\+Key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000026}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: Keys cannot be retrieved \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000043}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: Keys cannot be retrieved \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a1b8fbaeab4917b93e3f240133835d3e3}\label{classSTM32LoRaWAN_a1b8fbaeab4917b93e3f240133835d3e3}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!getCFM@{getCFM}}
 \index{getCFM@{getCFM}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -685,7 +790,7 @@ Return whether A\+DR (automatic datarate) is enabled. \mbox{\Hypertarget{classST
 {\footnotesize\ttfamily int S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::get\+C\+FM (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000009}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: confirmed uplinked better handled through \mbox{\hyperlink{classSTM32LoRaWAN_a816dd9c8b223bda9380971c5a1dab377}{end\+Packet()}} \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000026}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: confirmed uplinked better handled through \mbox{\hyperlink{classSTM32LoRaWAN_a816dd9c8b223bda9380971c5a1dab377}{end\+Packet()}} \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a58632ff20ab6a0f48fa772c827d73cde}\label{classSTM32LoRaWAN_a58632ff20ab6a0f48fa772c827d73cde}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!getCFS@{getCFS}}
 \index{getCFS@{getCFS}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -693,19 +798,23 @@ Return whether A\+DR (automatic datarate) is enabled. \mbox{\Hypertarget{classST
 {\footnotesize\ttfamily int S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::get\+C\+FS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000010}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: confirmed uplinked better handled through \mbox{\hyperlink{classSTM32LoRaWAN_a816dd9c8b223bda9380971c5a1dab377}{end\+Packet()}} \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000027}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: confirmed uplinked better handled through \mbox{\hyperlink{classSTM32LoRaWAN_a816dd9c8b223bda9380971c5a1dab377}{end\+Packet()}} \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a87dedb0a627b82dcf7bba62edbea3713}\label{classSTM32LoRaWAN_a87dedb0a627b82dcf7bba62edbea3713}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!getChannelMask@{getChannelMask}}
 \index{getChannelMask@{getChannelMask}!STM32LoRaWAN@{STM32LoRaWAN}}
 \doxysubsubsection{\texorpdfstring{getChannelMask()}{getChannelMask()}}
 {\footnotesize\ttfamily String S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::get\+Channel\+Mask (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
+\item[\mbox{\hyperlink{extensions__extensions000047}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: seems to be an internal method in M\+K\+R\+W\+AN (use enable\+Channel/disable\+Channel instead) \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a067096f42efcee590a3b0c807a65e07f}\label{classSTM32LoRaWAN_a067096f42efcee590a3b0c807a65e07f}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!getChannelMaskSize@{getChannelMaskSize}}
 \index{getChannelMaskSize@{getChannelMaskSize}!STM32LoRaWAN@{STM32LoRaWAN}}
 \doxysubsubsection{\texorpdfstring{getChannelMaskSize()}{getChannelMaskSize()}}
 {\footnotesize\ttfamily int S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::get\+Channel\+Mask\+Size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{STM32LoRaWAN_8h_a749dbc809ded9d6eaa98594e2ebcd24b}{\+\_\+lora\+\_\+band}}}]{band }\end{DoxyParamCaption})}
 
+\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
+\item[\mbox{\hyperlink{extensions__extensions000048}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: seems to be an internal method in M\+K\+R\+W\+AN (use enable\+Channel/disable\+Channel instead) \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a5d7d806e8ff17f8ebf12cf08af23283b}\label{classSTM32LoRaWAN_a5d7d806e8ff17f8ebf12cf08af23283b}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!getDataRate@{getDataRate}}
 \index{getDataRate@{getDataRate}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -754,24 +863,20 @@ Returns the port number of the most recently received packet. \mbox{\Hypertarget
 \doxysubsubsection{\texorpdfstring{getFCD()}{getFCD()}}
 {\footnotesize\ttfamily int32\+\_\+t S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::get\+F\+CD (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000007}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library \end{DoxyRefDesc}
-\mbox{\Hypertarget{classSTM32LoRaWAN_a23c34cb2f59e5c27ea67fe755373bbc5}\label{classSTM32LoRaWAN_a23c34cb2f59e5c27ea67fe755373bbc5}} 
+Return the frame counter of the most recent downlink message that was received. \mbox{\Hypertarget{classSTM32LoRaWAN_a23c34cb2f59e5c27ea67fe755373bbc5}\label{classSTM32LoRaWAN_a23c34cb2f59e5c27ea67fe755373bbc5}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!getFCU@{getFCU}}
 \index{getFCU@{getFCU}!STM32LoRaWAN@{STM32LoRaWAN}}
 \doxysubsubsection{\texorpdfstring{getFCU()}{getFCU()}}
 {\footnotesize\ttfamily int32\+\_\+t S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::get\+F\+CU (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000005}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library \end{DoxyRefDesc}
-\mbox{\Hypertarget{classSTM32LoRaWAN_a190e38032336a2d69927724fbe872f17}\label{classSTM32LoRaWAN_a190e38032336a2d69927724fbe872f17}} 
+Return the frame counter of the most recent uplink message that was completely transmitted (i.\+e. after the RX windows have passed). \mbox{\Hypertarget{classSTM32LoRaWAN_a190e38032336a2d69927724fbe872f17}\label{classSTM32LoRaWAN_a190e38032336a2d69927724fbe872f17}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!getNwkSKey@{getNwkSKey}}
 \index{getNwkSKey@{getNwkSKey}!STM32LoRaWAN@{STM32LoRaWAN}}
 \doxysubsubsection{\texorpdfstring{getNwkSKey()}{getNwkSKey()}}
 {\footnotesize\ttfamily String S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::get\+Nwk\+S\+Key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000025}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: Keys cannot be retrieved \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000042}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: Keys cannot be retrieved \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a01ff41259ed00ec882e33eb0e33b72c2}\label{classSTM32LoRaWAN_a01ff41259ed00ec882e33eb0e33b72c2}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!getPort@{getPort}}
 \index{getPort@{getPort}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -779,7 +884,7 @@ Returns the port number of the most recently received packet. \mbox{\Hypertarget
 {\footnotesize\ttfamily uint8\+\_\+t S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::get\+Port (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 Return the port used for data transmission. \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000003}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000013}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_aefa9c84b0a9e0169d6a1751d26cab403}\label{classSTM32LoRaWAN_aefa9c84b0a9e0169d6a1751d26cab403}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!getRX2DR@{getRX2DR}}
 \index{getRX2DR@{getRX2DR}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -805,7 +910,7 @@ Alias of \mbox{\hyperlink{classSTM32LoRaWAN_ad57ef4c3c5076303ee8fa18ab145d5b3}{g
 {\footnotesize\ttfamily String S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::get\+T\+Conf (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000014}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: test method \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000031}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: test method \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_ac49cddab0119f98ae926e53aa11e16f2}\label{classSTM32LoRaWAN_ac49cddab0119f98ae926e53aa11e16f2}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!init@{init}}
 \index{init@{init}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -813,85 +918,129 @@ Alias of \mbox{\hyperlink{classSTM32LoRaWAN_ad57ef4c3c5076303ee8fa18ab145d5b3}{g
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000023}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: seems to be an internal method in M\+K\+R\+W\+AN \end{DoxyRefDesc}
-\mbox{\Hypertarget{classSTM32LoRaWAN_ac2b17a777db7c77409fa22b7b2109faf}\label{classSTM32LoRaWAN_ac2b17a777db7c77409fa22b7b2109faf}} 
+\item[\mbox{\hyperlink{extensions__extensions000040}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: seems to be an internal method in M\+K\+R\+W\+AN \end{DoxyRefDesc}
+\mbox{\Hypertarget{classSTM32LoRaWAN_aa83cf43c08e8faec5a955140ea740eee}\label{classSTM32LoRaWAN_aa83cf43c08e8faec5a955140ea740eee}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!isChannelEnabled@{isChannelEnabled}}
 \index{isChannelEnabled@{isChannelEnabled}!STM32LoRaWAN@{STM32LoRaWAN}}
 \doxysubsubsection{\texorpdfstring{isChannelEnabled()}{isChannelEnabled()}}
-{\footnotesize\ttfamily int S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::is\+Channel\+Enabled (\begin{DoxyParamCaption}\item[{int}]{pos }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::is\+Channel\+Enabled (\begin{DoxyParamCaption}\item[{unsigned}]{pos }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classSTM32LoRaWAN_a7eb5fcb627bb6f3d9aa3e06df117f66e}\label{classSTM32LoRaWAN_a7eb5fcb627bb6f3d9aa3e06df117f66e}} 
-\index{STM32LoRaWAN@{STM32LoRaWAN}!join@{join}}
-\index{join@{join}!STM32LoRaWAN@{STM32LoRaWAN}}
-\doxysubsubsection{\texorpdfstring{join()}{join()}}
-{\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::join (\begin{DoxyParamCaption}\item[{bool}]{otaa }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
-
-Actually perform the join, expects identifiers and keys to be configured already. \mbox{\Hypertarget{classSTM32LoRaWAN_a02a0f08284de75fec38cd0c574c25e68}\label{classSTM32LoRaWAN_a02a0f08284de75fec38cd0c574c25e68}} 
+\mbox{\Hypertarget{classSTM32LoRaWAN_a272accb2e14a24773c90ffc932861412}\label{classSTM32LoRaWAN_a272accb2e14a24773c90ffc932861412}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!joinABP@{joinABP}}
 \index{joinABP@{joinABP}!STM32LoRaWAN@{STM32LoRaWAN}}
-\doxysubsubsection{\texorpdfstring{joinABP()}{joinABP()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+\doxysubsubsection{\texorpdfstring{joinABP()}{joinABP()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::join\+A\+BP (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Perform a join with parameters previously set using after using \mbox{\hyperlink{classSTM32LoRaWAN_abc27e5d0c81613ffad4ded7f4a8584cf}{set\+Dev\+Addr()}}, \mbox{\hyperlink{classSTM32LoRaWAN_afb43161f31093d3fd4452d6ee97c6a49}{set\+Nwk\+S\+Key()}} and \mbox{\hyperlink{classSTM32LoRaWAN_a06d74434ac48a0b264ed32ba11c34a4a}{set\+App\+S\+Key()}}.
+
+\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
+\item[\mbox{\hyperlink{extensions__extensions000007}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN \end{DoxyRefDesc}
+\mbox{\Hypertarget{classSTM32LoRaWAN_a02a0f08284de75fec38cd0c574c25e68}\label{classSTM32LoRaWAN_a02a0f08284de75fec38cd0c574c25e68}} 
+\index{STM32LoRaWAN@{STM32LoRaWAN}!joinABP@{joinABP}}
+\index{joinABP@{joinABP}!STM32LoRaWAN@{STM32LoRaWAN}}
+\doxysubsubsection{\texorpdfstring{joinABP()}{joinABP()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::join\+A\+BP (\begin{DoxyParamCaption}\item[{const char $\ast$}]{dev\+Addr,  }\item[{const char $\ast$}]{nwk\+S\+Key,  }\item[{const char $\ast$}]{app\+S\+Key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \mbox{\Hypertarget{classSTM32LoRaWAN_a840708f0869c267e9c781c65a7f1c581}\label{classSTM32LoRaWAN_a840708f0869c267e9c781c65a7f1c581}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!joinABP@{joinABP}}
 \index{joinABP@{joinABP}!STM32LoRaWAN@{STM32LoRaWAN}}
-\doxysubsubsection{\texorpdfstring{joinABP()}{joinABP()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+\doxysubsubsection{\texorpdfstring{joinABP()}{joinABP()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::join\+A\+BP (\begin{DoxyParamCaption}\item[{String}]{dev\+Addr,  }\item[{String}]{nwk\+S\+Key,  }\item[{String}]{app\+S\+Key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \mbox{\Hypertarget{classSTM32LoRaWAN_a28f3375385338d901d558ba063bf4b9b}\label{classSTM32LoRaWAN_a28f3375385338d901d558ba063bf4b9b}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!joinABP@{joinABP}}
 \index{joinABP@{joinABP}!STM32LoRaWAN@{STM32LoRaWAN}}
-\doxysubsubsection{\texorpdfstring{joinABP()}{joinABP()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+\doxysubsubsection{\texorpdfstring{joinABP()}{joinABP()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::join\+A\+BP (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{dev\+Addr,  }\item[{String}]{nwk\+S\+Key,  }\item[{String}]{app\+S\+Key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+\mbox{\Hypertarget{classSTM32LoRaWAN_a36f73d685e3a41c862dfbe82e34f7672}\label{classSTM32LoRaWAN_a36f73d685e3a41c862dfbe82e34f7672}} 
+\index{STM32LoRaWAN@{STM32LoRaWAN}!joinOTAA@{joinOTAA}}
+\index{joinOTAA@{joinOTAA}!STM32LoRaWAN@{STM32LoRaWAN}}
+\doxysubsubsection{\texorpdfstring{joinOTAA()}{joinOTAA()}\hspace{0.1cm}{\footnotesize\ttfamily [1/9]}}
+{\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::join\+O\+T\+AA (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Perform a join with parameters previously set using after using \mbox{\hyperlink{classSTM32LoRaWAN_a6055d4c91f0c5f3b0671142c5b3cc3aa}{set\+App\+Eui()}}, \mbox{\hyperlink{classSTM32LoRaWAN_abaa553af9c824eff6ea5905ab4f9530b}{set\+App\+Key()}} and optionally \mbox{\hyperlink{classSTM32LoRaWAN_afad4207d0c10a3b8e8ade879b5511b96}{set\+Dev\+Eui()}}.
+
+\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
+\item[\mbox{\hyperlink{extensions__extensions000006}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_afb7ebbde6afbb910b2229af9feb38eb7}\label{classSTM32LoRaWAN_afb7ebbde6afbb910b2229af9feb38eb7}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!joinOTAA@{joinOTAA}}
 \index{joinOTAA@{joinOTAA}!STM32LoRaWAN@{STM32LoRaWAN}}
-\doxysubsubsection{\texorpdfstring{joinOTAA()}{joinOTAA()}\hspace{0.1cm}{\footnotesize\ttfamily [1/8]}}
+\doxysubsubsection{\texorpdfstring{joinOTAA()}{joinOTAA()}\hspace{0.1cm}{\footnotesize\ttfamily [2/9]}}
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::join\+O\+T\+AA (\begin{DoxyParamCaption}\item[{const char $\ast$}]{app\+Eui,  }\item[{const char $\ast$}]{app\+Key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \mbox{\Hypertarget{classSTM32LoRaWAN_a5e623c2aaee526fdc4720d48ca72ec87}\label{classSTM32LoRaWAN_a5e623c2aaee526fdc4720d48ca72ec87}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!joinOTAA@{joinOTAA}}
 \index{joinOTAA@{joinOTAA}!STM32LoRaWAN@{STM32LoRaWAN}}
-\doxysubsubsection{\texorpdfstring{joinOTAA()}{joinOTAA()}\hspace{0.1cm}{\footnotesize\ttfamily [2/8]}}
+\doxysubsubsection{\texorpdfstring{joinOTAA()}{joinOTAA()}\hspace{0.1cm}{\footnotesize\ttfamily [3/9]}}
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::join\+O\+T\+AA (\begin{DoxyParamCaption}\item[{const char $\ast$}]{app\+Eui,  }\item[{const char $\ast$}]{app\+Key,  }\item[{const char $\ast$}]{dev\+Eui }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \mbox{\Hypertarget{classSTM32LoRaWAN_af34d30d30bf628268323090a75e9d33f}\label{classSTM32LoRaWAN_af34d30d30bf628268323090a75e9d33f}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!joinOTAA@{joinOTAA}}
 \index{joinOTAA@{joinOTAA}!STM32LoRaWAN@{STM32LoRaWAN}}
-\doxysubsubsection{\texorpdfstring{joinOTAA()}{joinOTAA()}\hspace{0.1cm}{\footnotesize\ttfamily [3/8]}}
+\doxysubsubsection{\texorpdfstring{joinOTAA()}{joinOTAA()}\hspace{0.1cm}{\footnotesize\ttfamily [4/9]}}
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::join\+O\+T\+AA (\begin{DoxyParamCaption}\item[{String}]{app\+Eui,  }\item[{String}]{app\+Key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \mbox{\Hypertarget{classSTM32LoRaWAN_a7f8584b575809f35104549570fd92bbf}\label{classSTM32LoRaWAN_a7f8584b575809f35104549570fd92bbf}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!joinOTAA@{joinOTAA}}
 \index{joinOTAA@{joinOTAA}!STM32LoRaWAN@{STM32LoRaWAN}}
-\doxysubsubsection{\texorpdfstring{joinOTAA()}{joinOTAA()}\hspace{0.1cm}{\footnotesize\ttfamily [4/8]}}
+\doxysubsubsection{\texorpdfstring{joinOTAA()}{joinOTAA()}\hspace{0.1cm}{\footnotesize\ttfamily [5/9]}}
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::join\+O\+T\+AA (\begin{DoxyParamCaption}\item[{String}]{app\+Eui,  }\item[{String}]{app\+Key,  }\item[{String}]{dev\+Eui }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \mbox{\Hypertarget{classSTM32LoRaWAN_a9e291fe38487b64834e9e252044a7df4}\label{classSTM32LoRaWAN_a9e291fe38487b64834e9e252044a7df4}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!joinOTAA@{joinOTAA}}
 \index{joinOTAA@{joinOTAA}!STM32LoRaWAN@{STM32LoRaWAN}}
-\doxysubsubsection{\texorpdfstring{joinOTAA()}{joinOTAA()}\hspace{0.1cm}{\footnotesize\ttfamily [5/8]}}
+\doxysubsubsection{\texorpdfstring{joinOTAA()}{joinOTAA()}\hspace{0.1cm}{\footnotesize\ttfamily [6/9]}}
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::join\+O\+T\+AA (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{app\+Eui,  }\item[{const char $\ast$}]{app\+Key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
+\item[\mbox{\hyperlink{extensions__extensions000003}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_ae9974afa679110e61be69c1cfa5b47ce}\label{classSTM32LoRaWAN_ae9974afa679110e61be69c1cfa5b47ce}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!joinOTAA@{joinOTAA}}
 \index{joinOTAA@{joinOTAA}!STM32LoRaWAN@{STM32LoRaWAN}}
-\doxysubsubsection{\texorpdfstring{joinOTAA()}{joinOTAA()}\hspace{0.1cm}{\footnotesize\ttfamily [6/8]}}
+\doxysubsubsection{\texorpdfstring{joinOTAA()}{joinOTAA()}\hspace{0.1cm}{\footnotesize\ttfamily [7/9]}}
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::join\+O\+T\+AA (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{app\+Eui,  }\item[{const char $\ast$}]{app\+Key,  }\item[{uint64\+\_\+t}]{dev\+Eui }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
+\item[\mbox{\hyperlink{extensions__extensions000002}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a27ca1d3572101b8f8a20d7ea4a0ec928}\label{classSTM32LoRaWAN_a27ca1d3572101b8f8a20d7ea4a0ec928}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!joinOTAA@{joinOTAA}}
 \index{joinOTAA@{joinOTAA}!STM32LoRaWAN@{STM32LoRaWAN}}
-\doxysubsubsection{\texorpdfstring{joinOTAA()}{joinOTAA()}\hspace{0.1cm}{\footnotesize\ttfamily [7/8]}}
+\doxysubsubsection{\texorpdfstring{joinOTAA()}{joinOTAA()}\hspace{0.1cm}{\footnotesize\ttfamily [8/9]}}
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::join\+O\+T\+AA (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{app\+Eui,  }\item[{String}]{app\+Key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
+\item[\mbox{\hyperlink{extensions__extensions000005}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a5d9ea4cf437b233d23b2440463fda6a5}\label{classSTM32LoRaWAN_a5d9ea4cf437b233d23b2440463fda6a5}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!joinOTAA@{joinOTAA}}
 \index{joinOTAA@{joinOTAA}!STM32LoRaWAN@{STM32LoRaWAN}}
-\doxysubsubsection{\texorpdfstring{joinOTAA()}{joinOTAA()}\hspace{0.1cm}{\footnotesize\ttfamily [8/8]}}
+\doxysubsubsection{\texorpdfstring{joinOTAA()}{joinOTAA()}\hspace{0.1cm}{\footnotesize\ttfamily [9/9]}}
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::join\+O\+T\+AA (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{app\+Eui,  }\item[{String}]{app\+Key,  }\item[{uint64\+\_\+t}]{dev\+Eui }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
+\item[\mbox{\hyperlink{extensions__extensions000004}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN \end{DoxyRefDesc}
+\mbox{\Hypertarget{classSTM32LoRaWAN_a420cf8fb6a886b0e9b950797b1146bba}\label{classSTM32LoRaWAN_a420cf8fb6a886b0e9b950797b1146bba}} 
+\index{STM32LoRaWAN@{STM32LoRaWAN}!joinOTAAAsync@{joinOTAAAsync}}
+\index{joinOTAAAsync@{joinOTAAAsync}!STM32LoRaWAN@{STM32LoRaWAN}}
+\doxysubsubsection{\texorpdfstring{joinOTAAAsync()}{joinOTAAAsync()}}
+{\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::join\+O\+T\+A\+A\+Async (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Do an asynchronous O\+T\+AA join using previously configured App\+Eui, App\+Key and optionally Dev\+Eui. This can be used in place of \mbox{\hyperlink{classSTM32LoRaWAN_a36f73d685e3a41c862dfbe82e34f7672}{join\+O\+T\+A\+A()}} when you do not want blocking behavior.
+
+This initiates a single join attempt (one Join\+Req message). After both receive windows are complete, {\ttfamily \mbox{\hyperlink{classSTM32LoRaWAN_ab3335b40c9a640200c4e3c345859ac80}{busy()}}} will become false and the sketch can call {\ttfamily \mbox{\hyperlink{classSTM32LoRaWAN_a5b953d8373ef95547e5f933cf6563a45}{connected()}}} to see if the join attempt was successful. If not, it is up to the sketch to decide on retries.
+
+\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
+\item[\mbox{\hyperlink{extensions__extensions000017}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN \end{DoxyRefDesc}
+\mbox{\Hypertarget{classSTM32LoRaWAN_a44d6abeff4068edf16a0f8d6f98e544f}\label{classSTM32LoRaWAN_a44d6abeff4068edf16a0f8d6f98e544f}} 
+\index{STM32LoRaWAN@{STM32LoRaWAN}!lastAck@{lastAck}}
+\index{lastAck@{lastAck}!STM32LoRaWAN@{STM32LoRaWAN}}
+\doxysubsubsection{\texorpdfstring{lastAck()}{lastAck()}}
+{\footnotesize\ttfamily uint8\+\_\+t S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::last\+Ack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns true when the most recently transmitted packet has received a confirmation from the network (if requested). Directly after transmitting any packet, this will return false and it will become true when the ack is received (which is, at the latest, when \mbox{\hyperlink{classSTM32LoRaWAN_ab3335b40c9a640200c4e3c345859ac80}{busy()}} becomes false again).
+
+\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
+\item[\mbox{\hyperlink{extensions__extensions000020}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a7f4eb77aaaae63ef543cc2dcda5314df}\label{classSTM32LoRaWAN_a7f4eb77aaaae63ef543cc2dcda5314df}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!MacMcpsConfirm@{MacMcpsConfirm}}
 \index{MacMcpsConfirm@{MacMcpsConfirm}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -916,6 +1065,12 @@ Actually perform the join, expects identifiers and keys to be configured already
 \doxysubsubsection{\texorpdfstring{MacMlmeIndication()}{MacMlmeIndication()}}
 {\footnotesize\ttfamily void S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::\+Mac\+Mlme\+Indication (\begin{DoxyParamCaption}\item[{Mlme\+Indication\+\_\+t $\ast$}]{Mlme\+Indication,  }\item[{Lo\+Ra\+Mac\+Rx\+Status\+\_\+t $\ast$}]{Rx\+Status }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
 
+\mbox{\Hypertarget{classSTM32LoRaWAN_a80f4126e5c863ec1b11f66bd270ec6fd}\label{classSTM32LoRaWAN_a80f4126e5c863ec1b11f66bd270ec6fd}} 
+\index{STM32LoRaWAN@{STM32LoRaWAN}!MacProcessNotify@{MacProcessNotify}}
+\index{MacProcessNotify@{MacProcessNotify}!STM32LoRaWAN@{STM32LoRaWAN}}
+\doxysubsubsection{\texorpdfstring{MacProcessNotify()}{MacProcessNotify()}}
+{\footnotesize\ttfamily void S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::\+Mac\+Process\+Notify (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
 \mbox{\Hypertarget{classSTM32LoRaWAN_a2c207de2ede561d57ef26af61991cffa}\label{classSTM32LoRaWAN_a2c207de2ede561d57ef26af61991cffa}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!maintain@{maintain}}
 \index{maintain@{maintain}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -933,7 +1088,7 @@ While the stack is busy, this method should be called very frequently to ensure 
 Call \mbox{\hyperlink{classSTM32LoRaWAN_a2c207de2ede561d57ef26af61991cffa}{maintain()}} to process any background work for as long as the stack is busy (i.\+e. until \mbox{\hyperlink{classSTM32LoRaWAN_ab3335b40c9a640200c4e3c345859ac80}{busy()}} returns false).
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000001}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000021}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_aba623626dfe280e03d08c5712b6406ae}\label{classSTM32LoRaWAN_aba623626dfe280e03d08c5712b6406ae}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!makeUint32@{makeUint32}}
 \index{makeUint32@{makeUint32}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -963,6 +1118,12 @@ Build a uint32\+\_\+t from four bytes (big-\/endian, a is M\+SB) \mbox{\Hypertar
 \index{mibGetInt8@{mibGetInt8}!STM32LoRaWAN@{STM32LoRaWAN}}
 \doxysubsubsection{\texorpdfstring{mibGetInt8()}{mibGetInt8()}}
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::mib\+Get\+Int8 (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name,  }\item[{Mib\+\_\+t}]{type,  }\item[{int8\+\_\+t $\ast$}]{value }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classSTM32LoRaWAN_a5f59597389f5b7912f00e71c9bbcfec3}\label{classSTM32LoRaWAN_a5f59597389f5b7912f00e71c9bbcfec3}} 
+\index{STM32LoRaWAN@{STM32LoRaWAN}!mibGetPtr@{mibGetPtr}}
+\index{mibGetPtr@{mibGetPtr}!STM32LoRaWAN@{STM32LoRaWAN}}
+\doxysubsubsection{\texorpdfstring{mibGetPtr()}{mibGetPtr()}}
+{\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::mib\+Get\+Ptr (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name,  }\item[{Mib\+\_\+t}]{type,  }\item[{void $\ast$$\ast$}]{value }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classSTM32LoRaWAN_a1faeb797036db8e17c771984765d7ac9}\label{classSTM32LoRaWAN_a1faeb797036db8e17c771984765d7ac9}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!mibGetRxChannelParams@{mibGetRxChannelParams}}
@@ -1018,6 +1179,12 @@ Build a uint32\+\_\+t from four bytes (big-\/endian, a is M\+SB) \mbox{\Hypertar
 \doxysubsubsection{\texorpdfstring{mibSetInt8()}{mibSetInt8()}}
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::mib\+Set\+Int8 (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name,  }\item[{Mib\+\_\+t}]{type,  }\item[{int8\+\_\+t}]{value }\end{DoxyParamCaption})}
 
+\mbox{\Hypertarget{classSTM32LoRaWAN_a3b28a3bc4423bbf5f93cf37f58bfeb4a}\label{classSTM32LoRaWAN_a3b28a3bc4423bbf5f93cf37f58bfeb4a}} 
+\index{STM32LoRaWAN@{STM32LoRaWAN}!mibSetPtr@{mibSetPtr}}
+\index{mibSetPtr@{mibSetPtr}!STM32LoRaWAN@{STM32LoRaWAN}}
+\doxysubsubsection{\texorpdfstring{mibSetPtr()}{mibSetPtr()}}
+{\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::mib\+Set\+Ptr (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name,  }\item[{Mib\+\_\+t}]{type,  }\item[{void $\ast$}]{value }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{classSTM32LoRaWAN_a82559627e5b7532affd0e0788381867d}\label{classSTM32LoRaWAN_a82559627e5b7532affd0e0788381867d}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!mibSetRxChannelParams@{mibSetRxChannelParams}}
 \index{mibSetRxChannelParams@{mibSetRxChannelParams}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -1049,7 +1216,15 @@ Build a uint32\+\_\+t from four bytes (big-\/endian, a is M\+SB) \mbox{\Hypertar
 {\footnotesize\ttfamily void S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::min\+Poll\+Interval (\begin{DoxyParamCaption}\item[{unsigned long}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Dummy for M\+K\+R\+W\+AN compatibility. Exact purpose on M\+K\+R\+W\+AN is unclear, see \href{https://github.com/arduino-libraries/MKRWAN/issues/25}{\texttt{ https\+://github.\+com/arduino-\/libraries/\+M\+K\+R\+W\+A\+N/issues/25}} \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000032}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Dummy implementation in this library \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000024}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Dummy implementation in this library \end{DoxyRefDesc}
+\mbox{\Hypertarget{classSTM32LoRaWAN_a14df7748a2df407809fa2862da7194be}\label{classSTM32LoRaWAN_a14df7748a2df407809fa2862da7194be}} 
+\index{STM32LoRaWAN@{STM32LoRaWAN}!modifyChannelEnabled@{modifyChannelEnabled}}
+\index{modifyChannelEnabled@{modifyChannelEnabled}!STM32LoRaWAN@{STM32LoRaWAN}}
+\doxysubsubsection{\texorpdfstring{modifyChannelEnabled()}{modifyChannelEnabled()}}
+{\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::modify\+Channel\+Enabled (\begin{DoxyParamCaption}\item[{unsigned}]{pos,  }\item[{bool}]{value }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
+\item[\mbox{\hyperlink{extensions__extensions000014}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_aba3b5cbafa87684ebfb2585fd9060912}\label{classSTM32LoRaWAN_aba3b5cbafa87684ebfb2585fd9060912}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!operator bool@{operator bool}}
 \index{operator bool@{operator bool}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -1092,7 +1267,7 @@ The M\+K\+R\+W\+AN documentation suggests this method must be called before call
 {\footnotesize\ttfamily void S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::poll (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000018}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: no remote module to poll \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000035}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: no remote module to poll \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a149bb7518e6756db8fa60848f2efd527}\label{classSTM32LoRaWAN_a149bb7518e6756db8fa60848f2efd527}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!power@{power}}
 \index{power@{power}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -1107,6 +1282,8 @@ Set the transmit power (M\+K\+R\+W\+AN version)
 
 \begin{DoxyParams}{Parameters}
 {\em mode} & This parameter is ignored, the mode is automatically determined based on the selected power. \\
+\hline
+{\em index} & See \mbox{\hyperlink{classSTM32LoRaWAN_ad3820664ad2ad9e0cfff299eab1ad786}{power(uint8\+\_\+t)}} for details. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classSTM32LoRaWAN_ad3820664ad2ad9e0cfff299eab1ad786}\label{classSTM32LoRaWAN_ad3820664ad2ad9e0cfff299eab1ad786}} 
@@ -1139,8 +1316,10 @@ Set transmit power in dB.
 \end{DoxyParams}
 Note that only even values are supported, but an uneven value will be rounded down automatically.
 
+The available options depend on the region (see the T\+X\+\_\+\+P\+O\+W\+ER constants in Lo\+Ra\+Mac\+Interfaces.\+h), but down to -\/10 dB should be supported by all regions (but most regions support additional values, down to -\/28 dB for some regions).
+
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000002}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000012}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_afc9939a198a3d0f243dd066a72ea2b81}\label{classSTM32LoRaWAN_afc9939a198a3d0f243dd066a72ea2b81}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!publicNetwork@{publicNetwork}}
 \index{publicNetwork@{publicNetwork}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -1166,25 +1345,35 @@ Configure the syncword to use. The default is the \char`\"{}public\char`\"{} (Lo
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::restart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000017}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: no remote module to restart \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000034}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: no remote module to restart \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_acd434a7ebbe91a548c010355f7553460}\label{classSTM32LoRaWAN_acd434a7ebbe91a548c010355f7553460}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!send@{send}}
 \index{send@{send}!STM32LoRaWAN@{STM32LoRaWAN}}
 \doxysubsubsection{\texorpdfstring{send()}{send()}}
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::send (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t $\ast$}]{payload,  }\item[{size\+\_\+t}]{size,  }\item[{bool}]{confirmed }\end{DoxyParamCaption})}
 
+Send a packet asynchronously by passing a buffer. This can be used instead of \mbox{\hyperlink{classSTM32LoRaWAN_a53de6fa3a4971cde2ff3da8331b877dc}{begin\+Packet()}} / \mbox{\hyperlink{classSTM32LoRaWAN_a6bf5661d2b38c2f12871d7c28f0658fd}{write()}} / \mbox{\hyperlink{classSTM32LoRaWAN_a816dd9c8b223bda9380971c5a1dab377}{end\+Packet()}}, when you prefer building the data to send in an external buffer and do not want to skip one buffer copy.
+
+The return value only reflects whether the packet could successfully queued, to see if a confirmed packet was actually confirmed by the network, call \mbox{\hyperlink{classSTM32LoRaWAN_a44d6abeff4068edf16a0f8d6f98e544f}{last\+Ack()}}.
+
+\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
+\item[\mbox{\hyperlink{extensions__extensions000019}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a79915834d3c8812cfd80a08d62382686}\label{classSTM32LoRaWAN_a79915834d3c8812cfd80a08d62382686}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!sendMask@{sendMask}}
 \index{sendMask@{sendMask}!STM32LoRaWAN@{STM32LoRaWAN}}
 \doxysubsubsection{\texorpdfstring{sendMask()}{sendMask()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::send\+Mask (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
+\item[\mbox{\hyperlink{extensions__extensions000046}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: seems to be an internal method in M\+K\+R\+W\+AN (use enable\+Channel/disable\+Channel instead) \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_af21b1d27c22c2e94da4ca2d368620c13}\label{classSTM32LoRaWAN_af21b1d27c22c2e94da4ca2d368620c13}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!sendMask@{sendMask}}
 \index{sendMask@{sendMask}!STM32LoRaWAN@{STM32LoRaWAN}}
 \doxysubsubsection{\texorpdfstring{sendMask()}{sendMask()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::send\+Mask (\begin{DoxyParamCaption}\item[{String}]{new\+Mask }\end{DoxyParamCaption})}
 
+\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
+\item[\mbox{\hyperlink{extensions__extensions000045}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: seems to be an internal method in M\+K\+R\+W\+AN (use enable\+Channel/disable\+Channel instead) \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_ae83ea4aa1df9729e17602ee88cd4b607}\label{classSTM32LoRaWAN_ae83ea4aa1df9729e17602ee88cd4b607}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!setADR@{setADR}}
 \index{setADR@{setADR}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -1244,7 +1433,7 @@ Together, these two mechanisms should ensure the highest possible datarate is us
 {\footnotesize\ttfamily void S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::set\+Baud (\begin{DoxyParamCaption}\item[{unsigned long}]{baud }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000013}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: no serial link to configure \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000030}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: no serial link to configure \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a999c98c64e466aedf9fa2e848e684018}\label{classSTM32LoRaWAN_a999c98c64e466aedf9fa2e848e684018}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!setCFM@{setCFM}}
 \index{setCFM@{setCFM}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -1252,7 +1441,7 @@ Together, these two mechanisms should ensure the highest possible datarate is us
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::set\+C\+FM (\begin{DoxyParamCaption}\item[{bool}]{cfm }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000008}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: confirmed uplinked better handled through \mbox{\hyperlink{classSTM32LoRaWAN_a816dd9c8b223bda9380971c5a1dab377}{end\+Packet()}} \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000025}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: confirmed uplinked better handled through \mbox{\hyperlink{classSTM32LoRaWAN_a816dd9c8b223bda9380971c5a1dab377}{end\+Packet()}} \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_abc27e5d0c81613ffad4ded7f4a8584cf}\label{classSTM32LoRaWAN_abc27e5d0c81613ffad4ded7f4a8584cf}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!setDevAddr@{setDevAddr}}
 \index{setDevAddr@{setDevAddr}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -1296,7 +1485,7 @@ Together, these two mechanisms should ensure the highest possible datarate is us
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::set\+F\+CD (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{fcd }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000006}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000015}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_ab1f8b82511bb880e253f7bdf4e194023}\label{classSTM32LoRaWAN_ab1f8b82511bb880e253f7bdf4e194023}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!setFCU@{setFCU}}
 \index{setFCU@{setFCU}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -1304,7 +1493,24 @@ Together, these two mechanisms should ensure the highest possible datarate is us
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::set\+F\+CU (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{fcu }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000004}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000016}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library \end{DoxyRefDesc}
+\mbox{\Hypertarget{classSTM32LoRaWAN_aefa957b4339b2da06b292f917ddfed31}\label{classSTM32LoRaWAN_aefa957b4339b2da06b292f917ddfed31}} 
+\index{STM32LoRaWAN@{STM32LoRaWAN}!setMaintainNeededCallback@{setMaintainNeededCallback}}
+\index{setMaintainNeededCallback@{setMaintainNeededCallback}!STM32LoRaWAN@{STM32LoRaWAN}}
+\doxysubsubsection{\texorpdfstring{setMaintainNeededCallback()}{setMaintainNeededCallback()}}
+{\footnotesize\ttfamily void S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::set\+Maintain\+Needed\+Callback (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(void)$>$}]{callback }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Registers a callback that is called whenever there is some work to do and the \mbox{\hyperlink{classSTM32LoRaWAN_a2c207de2ede561d57ef26af61991cffa}{maintain()}} function must be called soon.
+
+\begin{DoxyWarning}{Warning}
+This callback is called from an interrupt handler, so it should not do any work and definitely {\itshape not} call {\ttfamily \mbox{\hyperlink{classSTM32LoRaWAN_a2c207de2ede561d57ef26af61991cffa}{maintain()}}}, but just set a flag, enable a task, or something similarly short, and make sure to do that in a interrupt-\/safe manner.
+\end{DoxyWarning}
+When using this callback, it is not needed to call the {\ttfamily \mbox{\hyperlink{classSTM32LoRaWAN_a2c207de2ede561d57ef26af61991cffa}{maintain()}}} method unless this callback is called, allowing applications to be more efficient, or use sleeping (but care should be taken to prevent race conditions).
+
+Only one callback can be active at the same time, so any previously configured callback is replaced by the new one passed.
+
+\begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
+\item[\mbox{\hyperlink{extensions__extensions000022}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not supported by M\+K\+R\+W\+AN \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a95d202e3d49f0d6071011e0cecf945a9}\label{classSTM32LoRaWAN_a95d202e3d49f0d6071011e0cecf945a9}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!setNwkKey@{setNwkKey}}
 \index{setNwkKey@{setNwkKey}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -1354,7 +1560,7 @@ Set the frequency used for the R\+X2 window. The network might override this val
 {\footnotesize\ttfamily String S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::set\+T\+Conf (\begin{DoxyParamCaption}\item[{String}]{params }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000015}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: test method only \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000032}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: test method only \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a9d332d013d0a2569bc162568adb1bd04}\label{classSTM32LoRaWAN_a9d332d013d0a2569bc162568adb1bd04}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!sleep@{sleep}}
 \index{sleep@{sleep}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -1362,7 +1568,7 @@ Set the frequency used for the R\+X2 window. The network might override this val
 {\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::sleep (\begin{DoxyParamCaption}\item[{bool}]{on = {\ttfamily true} }\end{DoxyParamCaption})}
 
 \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000019}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: no remote module to sleep \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000036}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Not implemented by this library\+: no remote module to sleep \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_a4dcc14ebf323e8aa72b3635d13646d0c}\label{classSTM32LoRaWAN_a4dcc14ebf323e8aa72b3635d13646d0c}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!toHex@{toHex}}
 \index{toHex@{toHex}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -1418,7 +1624,7 @@ Convert an enum value into string containing its name. The string returned is a 
 {\footnotesize\ttfamily String S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::version (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Dummy for M\+K\+R\+W\+AN compatibility. On M\+K\+R\+W\+AN this returned the module firmware version, but this does not apply here. \begin{DoxyRefDesc}{M\+K\+R\+W\+A\+N A\+P\+I difference}
-\item[\mbox{\hyperlink{extensions__extensions000031}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Dummy implementation in this library \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{extensions__extensions000023}{M\+K\+R\+W\+A\+N A\+P\+I difference}}]Dummy implementation in this library \end{DoxyRefDesc}
 \mbox{\Hypertarget{classSTM32LoRaWAN_abfc969cde7d66d7029ea35896ee0f6dc}\label{classSTM32LoRaWAN_abfc969cde7d66d7029ea35896ee0f6dc}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!write@{write}}
 \index{write@{write}!STM32LoRaWAN@{STM32LoRaWAN}}
@@ -1441,11 +1647,35 @@ size\+\_\+t S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::write (\begin{DoxyParamCaption}\item[{
 
 
 \doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classSTM32LoRaWAN_a2a1e4648be8f45af29b33b4fe2c0c8df}\label{classSTM32LoRaWAN_a2a1e4648be8f45af29b33b4fe2c0c8df}} 
+\index{STM32LoRaWAN@{STM32LoRaWAN}!DEFAULT\_JOIN\_TIMEOUT@{DEFAULT\_JOIN\_TIMEOUT}}
+\index{DEFAULT\_JOIN\_TIMEOUT@{DEFAULT\_JOIN\_TIMEOUT}!STM32LoRaWAN@{STM32LoRaWAN}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_JOIN\_TIMEOUT}{DEFAULT\_JOIN\_TIMEOUT}}
+{\footnotesize\ttfamily constexpr uint32\+\_\+t S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::\+D\+E\+F\+A\+U\+L\+T\+\_\+\+J\+O\+I\+N\+\_\+\+T\+I\+M\+E\+O\+UT = 60000\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSTM32LoRaWAN_a35a745b85482d2373206f1d45c86ba3a}\label{classSTM32LoRaWAN_a35a745b85482d2373206f1d45c86ba3a}} 
+\index{STM32LoRaWAN@{STM32LoRaWAN}!fcnt\_down@{fcnt\_down}}
+\index{fcnt\_down@{fcnt\_down}!STM32LoRaWAN@{STM32LoRaWAN}}
+\doxysubsubsection{\texorpdfstring{fcnt\_down}{fcnt\_down}}
+{\footnotesize\ttfamily uint32\+\_\+t S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::fcnt\+\_\+down = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSTM32LoRaWAN_ac96049b0c2393f846cfa650e79b7b3e7}\label{classSTM32LoRaWAN_ac96049b0c2393f846cfa650e79b7b3e7}} 
+\index{STM32LoRaWAN@{STM32LoRaWAN}!fcnt\_up@{fcnt\_up}}
+\index{fcnt\_up@{fcnt\_up}!STM32LoRaWAN@{STM32LoRaWAN}}
+\doxysubsubsection{\texorpdfstring{fcnt\_up}{fcnt\_up}}
+{\footnotesize\ttfamily uint32\+\_\+t S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::fcnt\+\_\+up = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
 \mbox{\Hypertarget{classSTM32LoRaWAN_a6974eb61fff706231a7c9f13d95b1fda}\label{classSTM32LoRaWAN_a6974eb61fff706231a7c9f13d95b1fda}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!instance@{instance}}
 \index{instance@{instance}!STM32LoRaWAN@{STM32LoRaWAN}}
 \doxysubsubsection{\texorpdfstring{instance}{instance}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classSTM32LoRaWAN}{S\+T\+M32\+Lo\+Ra\+W\+AN}} $\ast$ S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSTM32LoRaWAN_a490ebe9741d79b68d81f9ea515570cb1}\label{classSTM32LoRaWAN_a490ebe9741d79b68d81f9ea515570cb1}} 
+\index{STM32LoRaWAN@{STM32LoRaWAN}!last\_tx\_acked@{last\_tx\_acked}}
+\index{last\_tx\_acked@{last\_tx\_acked}!STM32LoRaWAN@{STM32LoRaWAN}}
+\doxysubsubsection{\texorpdfstring{last\_tx\_acked}{last\_tx\_acked}}
+{\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::last\+\_\+tx\+\_\+acked = false\hspace{0.3cm}{\ttfamily [protected]}}
 
 \mbox{\Hypertarget{classSTM32LoRaWAN_a8525c0cdda207f7b6d950d34719fc274}\label{classSTM32LoRaWAN_a8525c0cdda207f7b6d950d34719fc274}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!LoRaMacCallbacks@{LoRaMacCallbacks}}
@@ -1456,12 +1686,11 @@ size\+\_\+t S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::write (\begin{DoxyParamCaption}\item[{
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{= \{}
-\DoxyCodeLine{      }
 \DoxyCodeLine{      .GetBatteryLevel = \textcolor{keyword}{nullptr},}
 \DoxyCodeLine{      .GetTemperatureLevel = \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{      .GetUniqueId = \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{      .GetUniqueId = \textcolor{keyword}{nullptr}, }
 \DoxyCodeLine{      .NvmDataChange = \textcolor{keyword}{nullptr},}
-\DoxyCodeLine{      .MacProcessNotify = \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{      .MacProcessNotify = \mbox{\hyperlink{classSTM32LoRaWAN_a80f4126e5c863ec1b11f66bd270ec6fd}{MacProcessNotify}},}
 \DoxyCodeLine{    \}}
 
 \end{DoxyCode}
@@ -1481,11 +1710,23 @@ size\+\_\+t S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::write (\begin{DoxyParamCaption}\item[{
 \DoxyCodeLine{    \}}
 
 \end{DoxyCode}
-\mbox{\Hypertarget{classSTM32LoRaWAN_a68b5f00129f93640dfa39fdcb4f84a30}\label{classSTM32LoRaWAN_a68b5f00129f93640dfa39fdcb4f84a30}} 
-\index{STM32LoRaWAN@{STM32LoRaWAN}!nwkKeySet@{nwkKeySet}}
-\index{nwkKeySet@{nwkKeySet}!STM32LoRaWAN@{STM32LoRaWAN}}
-\doxysubsubsection{\texorpdfstring{nwkKeySet}{nwkKeySet}}
-{\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::nwk\+Key\+Set = false\hspace{0.3cm}{\ttfamily [protected]}}
+\mbox{\Hypertarget{classSTM32LoRaWAN_a567065f79a2195207e806a08abd01e18}\label{classSTM32LoRaWAN_a567065f79a2195207e806a08abd01e18}} 
+\index{STM32LoRaWAN@{STM32LoRaWAN}!mac\_process\_pending@{mac\_process\_pending}}
+\index{mac\_process\_pending@{mac\_process\_pending}!STM32LoRaWAN@{STM32LoRaWAN}}
+\doxysubsubsection{\texorpdfstring{mac\_process\_pending}{mac\_process\_pending}}
+{\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::mac\+\_\+process\+\_\+pending = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSTM32LoRaWAN_ad08ee261884f5852a5b3f6f6a2ee5292}\label{classSTM32LoRaWAN_ad08ee261884f5852a5b3f6f6a2ee5292}} 
+\index{STM32LoRaWAN@{STM32LoRaWAN}!maintain\_needed\_callback@{maintain\_needed\_callback}}
+\index{maintain\_needed\_callback@{maintain\_needed\_callback}!STM32LoRaWAN@{STM32LoRaWAN}}
+\doxysubsubsection{\texorpdfstring{maintain\_needed\_callback}{maintain\_needed\_callback}}
+{\footnotesize\ttfamily std\+::function$<$void(void)$>$ S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::maintain\+\_\+needed\+\_\+callback\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSTM32LoRaWAN_a29e3e04449873af7a4d82ee1f0c84ba9}\label{classSTM32LoRaWAN_a29e3e04449873af7a4d82ee1f0c84ba9}} 
+\index{STM32LoRaWAN@{STM32LoRaWAN}!nwk\_key\_set@{nwk\_key\_set}}
+\index{nwk\_key\_set@{nwk\_key\_set}!STM32LoRaWAN@{STM32LoRaWAN}}
+\doxysubsubsection{\texorpdfstring{nwk\_key\_set}{nwk\_key\_set}}
+{\footnotesize\ttfamily bool S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::nwk\+\_\+key\+\_\+set = false\hspace{0.3cm}{\ttfamily [protected]}}
 
 \mbox{\Hypertarget{classSTM32LoRaWAN_ac20a82fca09fe79a49b2efb14c3ddf35}\label{classSTM32LoRaWAN_ac20a82fca09fe79a49b2efb14c3ddf35}} 
 \index{STM32LoRaWAN@{STM32LoRaWAN}!rx\_buf@{rx\_buf}}

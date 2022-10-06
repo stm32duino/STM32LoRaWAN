@@ -62,7 +62,6 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-static-methods">Static Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
@@ -74,146 +73,29 @@ $(function() {
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="STM32LoRaWAN_8h_source.html">STM32LoRaWAN.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for STM32LoRaWAN:</div>
-<div class="dyncontent">
-<div class="center"><img src="classSTM32LoRaWAN__inherit__graph.png" border="0" usemap="#STM32LoRaWAN_inherit__map" alt="Inheritance graph"/></div>
-<!-- MAP 0 -->
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
-<div class="dynheader">
-Collaboration diagram for STM32LoRaWAN:</div>
-<div class="dyncontent">
-<div class="center"><img src="classSTM32LoRaWAN__coll__graph.png" border="0" usemap="#STM32LoRaWAN_coll__map" alt="Collaboration graph"/></div>
-<!-- MAP 1 -->
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Initialization</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p><a class="anchor" id="initialization"></a></p>
+</div></td></tr>
 <tr class="memitem:acb97fcbe514f6b69319d105b48e54223"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#acb97fcbe514f6b69319d105b48e54223">begin</a> (<a class="el" href="STM32LoRaWAN_8h.html#a749dbc809ded9d6eaa98594e2ebcd24b">_lora_band</a> band)</td></tr>
 <tr class="separator:acb97fcbe514f6b69319d105b48e54223"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c207de2ede561d57ef26af61991cffa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a2c207de2ede561d57ef26af61991cffa">maintain</a> ()</td></tr>
-<tr class="separator:a2c207de2ede561d57ef26af61991cffa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd305ad1b2327c96fd1bd94c41c6fb46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#afd305ad1b2327c96fd1bd94c41c6fb46">maintainUntilIdle</a> ()</td></tr>
-<tr class="separator:afd305ad1b2327c96fd1bd94c41c6fb46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Radio / transmission configuration</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>These methods allow configuring various radio and tranmission parameters. </p>
-</div></td></tr>
-<tr class="memitem:a5cca097cfdebc2227eb4ff0cb5358084"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a5cca097cfdebc2227eb4ff0cb5358084">dataRate</a> (uint8_t dr)</td></tr>
-<tr class="separator:a5cca097cfdebc2227eb4ff0cb5358084"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d7d806e8ff17f8ebf12cf08af23283b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a5d7d806e8ff17f8ebf12cf08af23283b">getDataRate</a> ()</td></tr>
-<tr class="separator:a5d7d806e8ff17f8ebf12cf08af23283b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3820664ad2ad9e0cfff299eab1ad786"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ad3820664ad2ad9e0cfff299eab1ad786">power</a> (uint8_t index)</td></tr>
-<tr class="separator:ad3820664ad2ad9e0cfff299eab1ad786"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a149bb7518e6756db8fa60848f2efd527"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a149bb7518e6756db8fa60848f2efd527">power</a> (<a class="el" href="STM32LoRaWAN_8h.html#a1fd3d2eb05358dae64890dff0448c69c">_rf_mode</a> mode, uint8_t index)</td></tr>
-<tr class="separator:a149bb7518e6756db8fa60848f2efd527"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac720f4ea2f3efe054908a8f8bdcfc7a5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ac720f4ea2f3efe054908a8f8bdcfc7a5">powerdB</a> (int8_t db)</td></tr>
-<tr class="separator:ac720f4ea2f3efe054908a8f8bdcfc7a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01ff41259ed00ec882e33eb0e33b72c2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a01ff41259ed00ec882e33eb0e33b72c2">getPort</a> ()</td></tr>
-<tr class="separator:a01ff41259ed00ec882e33eb0e33b72c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af342c59031d83d102bc58672f844f64f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#af342c59031d83d102bc58672f844f64f">setPort</a> (uint8_t port)</td></tr>
-<tr class="separator:af342c59031d83d102bc58672f844f64f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae83ea4aa1df9729e17602ee88cd4b607"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ae83ea4aa1df9729e17602ee88cd4b607">setADR</a> (bool adr)</td></tr>
-<tr class="separator:ae83ea4aa1df9729e17602ee88cd4b607"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b13d9d9db35aaff6fbdcaacf101d14f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a3b13d9d9db35aaff6fbdcaacf101d14f">getADR</a> ()</td></tr>
-<tr class="separator:a3b13d9d9db35aaff6fbdcaacf101d14f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Advanced configuration</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>These methods allow configuring advanced settings, which are usually not required for normal operation. </p>
-</div></td></tr>
-<tr class="memitem:acfa79d28cb7254c016cf20604afd1bd8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#acfa79d28cb7254c016cf20604afd1bd8">dutyCycle</a> (bool on)</td></tr>
-<tr class="separator:acfa79d28cb7254c016cf20604afd1bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc9939a198a3d0f243dd066a72ea2b81"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#afc9939a198a3d0f243dd066a72ea2b81">publicNetwork</a> (bool publicNetwork)</td></tr>
-<tr class="separator:afc9939a198a3d0f243dd066a72ea2b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefa9c84b0a9e0169d6a1751d26cab403"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#aefa9c84b0a9e0169d6a1751d26cab403">getRX2DR</a> ()</td></tr>
-<tr class="separator:aefa9c84b0a9e0169d6a1751d26cab403"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8d43824dddd36b0f41e3be41e7943c9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ae8d43824dddd36b0f41e3be41e7943c9">setRX2DR</a> (uint8_t dr)</td></tr>
-<tr class="separator:ae8d43824dddd36b0f41e3be41e7943c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad57ef4c3c5076303ee8fa18ab145d5b3"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ad57ef4c3c5076303ee8fa18ab145d5b3">getRX2Freq</a> ()</td></tr>
-<tr class="separator:ad57ef4c3c5076303ee8fa18ab145d5b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62955c24acd965b504db5e1923f07f65"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a62955c24acd965b504db5e1923f07f65">setRX2Freq</a> (uint32_t freq)</td></tr>
-<tr class="separator:a62955c24acd965b504db5e1923f07f65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72d986af51d931c34a64fd3544e432fc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a72d986af51d931c34a64fd3544e432fc">getrxfreq</a> ()</td></tr>
-<tr class="separator:a72d986af51d931c34a64fd3544e432fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Frame counters</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>These methods allow access to the up and down frame counters.</p>
-<dl class="section note"><dt>Note</dt><dd>These are <em>not</em> currently implemented, since it does not seem easy to access the frame counters. They might be implemented in the future with some extra work. </dd></dl>
-</div></td></tr>
-<tr class="memitem:ab1f8b82511bb880e253f7bdf4e194023"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ab1f8b82511bb880e253f7bdf4e194023">setFCU</a> (uint16_t fcu)</td></tr>
-<tr class="separator:ab1f8b82511bb880e253f7bdf4e194023"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23c34cb2f59e5c27ea67fe755373bbc5"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a23c34cb2f59e5c27ea67fe755373bbc5">getFCU</a> ()</td></tr>
-<tr class="separator:a23c34cb2f59e5c27ea67fe755373bbc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29b18acfa3074157c501122b9399d1d1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a29b18acfa3074157c501122b9399d1d1">setFCD</a> (uint16_t fcd)</td></tr>
-<tr class="separator:a29b18acfa3074157c501122b9399d1d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a840faf34c5bcef2a58420095dc78d691"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a840faf34c5bcef2a58420095dc78d691">getFCD</a> ()</td></tr>
-<tr class="separator:a840faf34c5bcef2a58420095dc78d691"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Channel manipulation</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>These methods allow manipulating the list of enabled channels.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Implement &amp; document</dd></dl>
-</div></td></tr>
-<tr class="memitem:af21b1d27c22c2e94da4ca2d368620c13"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#af21b1d27c22c2e94da4ca2d368620c13">sendMask</a> (String newMask)</td></tr>
-<tr class="separator:af21b1d27c22c2e94da4ca2d368620c13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79915834d3c8812cfd80a08d62382686"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a79915834d3c8812cfd80a08d62382686">sendMask</a> ()</td></tr>
-<tr class="separator:a79915834d3c8812cfd80a08d62382686"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ba00b353d6f5cefd0b850a5983604fc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a0ba00b353d6f5cefd0b850a5983604fc">enableChannel</a> (int pos)</td></tr>
-<tr class="separator:a0ba00b353d6f5cefd0b850a5983604fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c6d8afc0f5fd9b3c54d01158bf7778e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a4c6d8afc0f5fd9b3c54d01158bf7778e">disableChannel</a> (int pos)</td></tr>
-<tr class="separator:a4c6d8afc0f5fd9b3c54d01158bf7778e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2b17a777db7c77409fa22b7b2109faf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ac2b17a777db7c77409fa22b7b2109faf">isChannelEnabled</a> (int pos)</td></tr>
-<tr class="separator:ac2b17a777db7c77409fa22b7b2109faf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87dedb0a627b82dcf7bba62edbea3713"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a87dedb0a627b82dcf7bba62edbea3713">getChannelMask</a> ()</td></tr>
-<tr class="separator:a87dedb0a627b82dcf7bba62edbea3713"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a067096f42efcee590a3b0c807a65e07f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a067096f42efcee590a3b0c807a65e07f">getChannelMaskSize</a> (<a class="el" href="STM32LoRaWAN_8h.html#a749dbc809ded9d6eaa98594e2ebcd24b">_lora_band</a> band)</td></tr>
-<tr class="separator:a067096f42efcee590a3b0c807a65e07f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Missing methods</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>These methods are present in MKRWAN, but are not implemented in this library (because they are specific to the module-based serial approach used by MKRWAN, are for testing purposes only or have better API not tied to the MKRWAN AT commands available.</p>
-<p>These methods <em>are</em> declared in this library, but marked so the compiler can generate a friendly error message when they are used. </p>
-</div></td></tr>
-<tr class="memitem:a999c98c64e466aedf9fa2e848e684018"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a999c98c64e466aedf9fa2e848e684018">setCFM</a> (bool cfm)</td></tr>
-<tr class="separator:a999c98c64e466aedf9fa2e848e684018"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b8fbaeab4917b93e3f240133835d3e3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a1b8fbaeab4917b93e3f240133835d3e3">getCFM</a> ()</td></tr>
-<tr class="separator:a1b8fbaeab4917b93e3f240133835d3e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58632ff20ab6a0f48fa772c827d73cde"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a58632ff20ab6a0f48fa772c827d73cde">getCFS</a> ()</td></tr>
-<tr class="separator:a58632ff20ab6a0f48fa772c827d73cde"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01766fa6242b566fde0010eef9707372"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a01766fa6242b566fde0010eef9707372">begin</a> (<a class="el" href="STM32LoRaWAN_8h.html#a749dbc809ded9d6eaa98594e2ebcd24b">_lora_band</a> band, uint32_t baud, uint16_t config=SERIAL_8N2)</td></tr>
-<tr class="separator:a01766fa6242b566fde0010eef9707372"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51adb005319aa9c4ccb2f63b246789a1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a51adb005319aa9c4ccb2f63b246789a1">autoBaud</a> (unsigned long timeout=10000L)</td></tr>
-<tr class="separator:a51adb005319aa9c4ccb2f63b246789a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a54edbb78e6b782204b2d37bed84c96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a9a54edbb78e6b782204b2d37bed84c96">setBaud</a> (unsigned long baud)</td></tr>
-<tr class="separator:a9a54edbb78e6b782204b2d37bed84c96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c4031e2de24b5f3066603e71e37a2ae"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a5c4031e2de24b5f3066603e71e37a2ae">getTConf</a> ()</td></tr>
-<tr class="separator:a5c4031e2de24b5f3066603e71e37a2ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2eb7351c1b7e8ada59ba58e8032c6a83"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a2eb7351c1b7e8ada59ba58e8032c6a83">setTConf</a> (String params)</td></tr>
-<tr class="separator:a2eb7351c1b7e8ada59ba58e8032c6a83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adadf322fc5419467c8612840c006eaaa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#adadf322fc5419467c8612840c006eaaa">enTtone</a> ()</td></tr>
-<tr class="separator:adadf322fc5419467c8612840c006eaaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a715c4ec0ba3a9601a229a8c43d05be"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a8a715c4ec0ba3a9601a229a8c43d05be">restart</a> ()</td></tr>
-<tr class="separator:a8a715c4ec0ba3a9601a229a8c43d05be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79634164ef1e9c2d8c4d4589cbeaf665"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a79634164ef1e9c2d8c4d4589cbeaf665">poll</a> ()</td></tr>
-<tr class="separator:a79634164ef1e9c2d8c4d4589cbeaf665"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d332d013d0a2569bc162568adb1bd04"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a9d332d013d0a2569bc162568adb1bd04">sleep</a> (bool on=true)</td></tr>
-<tr class="separator:a9d332d013d0a2569bc162568adb1bd04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a619ee70f32e4ad240c67af514750ffed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a619ee70f32e4ad240c67af514750ffed">factoryDefault</a> ()</td></tr>
-<tr class="separator:a619ee70f32e4ad240c67af514750ffed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3eff0f30e2bf1ea1f046c81bcbedecfe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a3eff0f30e2bf1ea1f046c81bcbedecfe">format</a> (bool hexMode)</td></tr>
-<tr class="separator:a3eff0f30e2bf1ea1f046c81bcbedecfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a580f36418deb428460d6eee12672ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a8a580f36418deb428460d6eee12672ba">dumb</a> ()</td></tr>
-<tr class="separator:a8a580f36418deb428460d6eee12672ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac49cddab0119f98ae926e53aa11e16f2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ac49cddab0119f98ae926e53aa11e16f2">init</a> ()</td></tr>
-<tr class="separator:ac49cddab0119f98ae926e53aa11e16f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a077e0794bb3ac3c199f13e486933417b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a077e0794bb3ac3c199f13e486933417b">configureClass</a> (<a class="el" href="STM32LoRaWAN_8h.html#a6f8077b5a9a47075e6c1cbf074efa09f">_lora_class</a> _class)</td></tr>
-<tr class="separator:a077e0794bb3ac3c199f13e486933417b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a190e38032336a2d69927724fbe872f17"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a190e38032336a2d69927724fbe872f17">getNwkSKey</a> ()</td></tr>
-<tr class="separator:a190e38032336a2d69927724fbe872f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c818ce976451d7ce17f5c4630d109dd"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a0c818ce976451d7ce17f5c4630d109dd">getAppSKey</a> ()</td></tr>
-<tr class="separator:a0c818ce976451d7ce17f5c4630d109dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5a44ca0779d52ba0ed35235dd92e107"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#af5a44ca0779d52ba0ed35235dd92e107">applicationKey</a> ()</td></tr>
-<tr class="separator:af5a44ca0779d52ba0ed35235dd92e107"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c9e66574bd8137330de4067ee3bf2b8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a8c9e66574bd8137330de4067ee3bf2b8">configureBand</a> (<a class="el" href="STM32LoRaWAN_8h.html#a749dbc809ded9d6eaa98594e2ebcd24b">_lora_band</a> band)</td></tr>
-<tr class="separator:a8c9e66574bd8137330de4067ee3bf2b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">OTAA join</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>This method can be used to join the network using the OTAA (over-the-air-activation) method, where the device uses the credentials specified here to negotiate a session (including session address and encryption keys) with the network by exchanging messages.</p>
+<tr><td colspan="2"><div class="groupHeader">OTAA Join</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p><a class="anchor" id="joinOTAA"></a></p>
+<p>This method can be used to join the network using the OTAA (over-the-air-activation) method, where the device uses the credentials specified here to negotiate a session (including session address and encryption keys) with the network by exchanging messages.</p>
 <p>The appEUI and appKey are mandatory, the devEUI can be omitted, in which case the devEUI baked into the chip is used.</p>
 <p>For both EUIs and the key, you can pass a hex-encoded (MSB-first) string (<code>String</code> object or <code>const char*</code>), for the EUIs also a raw integer (64-bits).</p>
-<p>TODO: Blocking behavior </p>
+<p>These methods will perform multiple join attempts and block until the join completes successfully, or a timeout (60 seconds) occurs.</p>
+<p>There are some subtle differences with MKRWAN in how the join process works:</p><ul>
+<li>MKRWAN returns directly after the timeout, while this library finishes the running join attempt before joinOTAA returns.</li>
+<li>With MKRWAN the module continues doing join attempts in the background, while this library stops attempting them after joinOTAA returns.</li>
+<li>With MKRWAN the module automatically decreases/alternates the datarate in a region-specific way for all regions, this library uses the configured datarate (with <code>datarate()</code>) for most regions, but uses fixed datarates (according to LoRaWAN regional parameters) for US915/AU915/AS923.</li>
+</ul>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000001">MKRWAN API difference:</a></b></dt><dd><p class="startdd">Timeout parameter omitted (also omitted in MKRWAN_v2) </p>
+<p class="interdd">Added version that accepts uint64_t appEUI </p>
+<p class="enddd">Differences in timeout and retry datarate handling</p>
+</dd></dl>
 </div></td></tr>
 <tr class="memitem:a5e623c2aaee526fdc4720d48ca72ec87"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a5e623c2aaee526fdc4720d48ca72ec87">joinOTAA</a> (const char *appEui, const char *appKey, const char *devEui)</td></tr>
 <tr class="separator:a5e623c2aaee526fdc4720d48ca72ec87"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -231,10 +113,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5d9ea4cf437b233d23b2440463fda6a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27ca1d3572101b8f8a20d7ea4a0ec928"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a27ca1d3572101b8f8a20d7ea4a0ec928">joinOTAA</a> (uint64_t appEui, String appKey)</td></tr>
 <tr class="separator:a27ca1d3572101b8f8a20d7ea4a0ec928"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">ABP join</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>This method can be used to join the network using the ABP method, where the session address and keys are preconfigured and no exchange with the network is needed before data can be sent.</p>
+<tr class="memitem:a36f73d685e3a41c862dfbe82e34f7672"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a36f73d685e3a41c862dfbe82e34f7672">joinOTAA</a> ()</td></tr>
+<tr class="separator:a36f73d685e3a41c862dfbe82e34f7672"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">ABP Join</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p><a class="anchor" id="joinABP"></a></p>
+<p>This method can be used to join the network using the ABP method, where the session address and keys are preconfigured and no exchange with the network is needed before data can be sent.</p>
 <p>For the address and both keys, you can pass a hex-encoded (MSB-first) string (<code>String</code> object or <code>const char*</code>), for the address also a raw integer (32-bits).</p>
-<dl class="section warning"><dt>Warning</dt><dd>This library does <em>not</em> preserve frame counters in non-volatile storage, so it starts at zero after every reset. This only works when the server disables framecounter-based replay attacks, otherwise only the first session will work and data will be dropped after the first reset. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>This library does <em>not</em> preserve frame counters in non-volatile storage, so it starts at zero after every reset. This only works when the server disables framecounter-based replay attacks, otherwise only the first session will work and data will be dropped after the first reset.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>An ABP join returns immediately, it does not need to wait for the network, so there is no separate non-blocking/async version of this method. </dd></dl>
 </div></td></tr>
 <tr class="memitem:a02a0f08284de75fec38cd0c574c25e68"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a02a0f08284de75fec38cd0c574c25e68">joinABP</a> (const char *devAddr, const char *nwkSKey, const char *appSKey)</td></tr>
 <tr class="separator:a02a0f08284de75fec38cd0c574c25e68"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -242,8 +128,11 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a840708f0869c267e9c781c65a7f1c581"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28f3375385338d901d558ba063bf4b9b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a28f3375385338d901d558ba063bf4b9b">joinABP</a> (uint32_t devAddr, String nwkSKey, String appSKey)</td></tr>
 <tr class="separator:a28f3375385338d901d558ba063bf4b9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a272accb2e14a24773c90ffc932861412"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a272accb2e14a24773c90ffc932861412">joinABP</a> ()</td></tr>
+<tr class="separator:a272accb2e14a24773c90ffc932861412"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Packet sending</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>These methods allow sending a data packet.</p>
+<tr><td colspan="2"><div class="groupText"><p><a class="anchor" id="sending"></a></p>
+<p>These methods allow sending a data packet.</p>
 <p>After a join was completed, sending a packet consists of calling <a class="el" href="classSTM32LoRaWAN.html#a53de6fa3a4971cde2ff3da8331b877dc">beginPacket()</a>, writing data to using the Stream write methods, and calling <a class="el" href="classSTM32LoRaWAN.html#a816dd9c8b223bda9380971c5a1dab377">endPacket()</a> to finish up and send the packet.</p>
 <p>The port number to use for the packet can be set using <a class="el" href="classSTM32LoRaWAN.html#af342c59031d83d102bc58672f844f64f">setPort()</a> (to be called before <a class="el" href="classSTM32LoRaWAN.html#a816dd9c8b223bda9380971c5a1dab377">endPacket()</a>). A confirmed packet can be sent using the parameter to <a class="el" href="classSTM32LoRaWAN.html#a816dd9c8b223bda9380971c5a1dab377">endPacket()</a>, which will request the network to confirm the packet was received (but if not, no automatic retries are done).</p>
 <p>The <a class="el" href="classSTM32LoRaWAN.html#acd434a7ebbe91a548c010355f7553460">send()</a> method offers an alternative (and always non-blocking) API, where you pass a payload already built into your own buffer. </p>
@@ -252,18 +141,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a53de6fa3a4971cde2ff3da8331b877dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a816dd9c8b223bda9380971c5a1dab377"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a816dd9c8b223bda9380971c5a1dab377">endPacket</a> (bool confirmed=false)</td></tr>
 <tr class="separator:a816dd9c8b223bda9380971c5a1dab377"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd434a7ebbe91a548c010355f7553460"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#acd434a7ebbe91a548c010355f7553460">send</a> (const uint8_t *payload, size_t size, bool confirmed)</td></tr>
-<tr class="separator:acd434a7ebbe91a548c010355f7553460"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Packet reception</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>These methods are about reception of downlink packets.</p>
-<p>After an uplink packet was fully sent, a received downlink packet can be checked by calling <a class="el" href="classSTM32LoRaWAN.html#a56fcc5244fc0df45dbad61654c9ddcff">parsePacket()</a> (or simply <a class="el" href="classSTM32LoRaWAN.html#a9c28e7976a749ba1871f5df806b21882">available()</a> to see if any bytes are ready to read). If so, the contents of the packet can be read using the Stream read methods. </p>
-</div></td></tr>
-<tr class="memitem:a56fcc5244fc0df45dbad61654c9ddcff"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a56fcc5244fc0df45dbad61654c9ddcff">parsePacket</a> ()</td></tr>
-<tr class="separator:a56fcc5244fc0df45dbad61654c9ddcff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeaa78654443adbfdcad9b3ca268f256b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#aeaa78654443adbfdcad9b3ca268f256b">getDownlinkPort</a> ()</td></tr>
-<tr class="separator:aeaa78654443adbfdcad9b3ca268f256b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Stream/Print writing</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>These are standard methods defined by the Arduino Stream (or actually its Print superclass) class to allow writing data into a packet being built.</p>
+<tr><td colspan="2"><div class="groupText"><p><a class="anchor" id="print"></a></p>
+<p>These are standard methods defined by the Arduino Stream (or actually its Print superclass) class to allow writing data into a packet being built.</p>
 <p>In addition to the methods listed here, all methods offered by the Arduino Print class are also available (but at the time of writing, unfortunately not documented by Arduino).</p>
 <p>There is one addition, there is a templated write method that accepts any type of object (e.g. a struct, integer, etc.) and writes its memory representation into the packet. When using this, note that data will be written exactly as the processor stores it in memory, so typically little-endian. </p>
 </div></td></tr>
@@ -278,12 +158,21 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8a8ee4421ec95742d8e3ffc924f7a206"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a730063277eca759fda3c67bc144568a1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a730063277eca759fda3c67bc144568a1">flush</a> ()</td></tr>
 <tr class="separator:a730063277eca759fda3c67bc144568a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Packet reception</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p><a class="anchor" id="reception"></a></p>
+<p>These methods are about reception of downlink packets.</p>
+<p>After an uplink packet was fully sent, a received downlink packet can be checked by calling <a class="el" href="classSTM32LoRaWAN.html#a56fcc5244fc0df45dbad61654c9ddcff">parsePacket()</a> (or simply <a class="el" href="classSTM32LoRaWAN.html#a9c28e7976a749ba1871f5df806b21882">available()</a> to see if any bytes are ready to read). If so, the contents of the packet can be read using the Stream read methods. </p>
+</div></td></tr>
+<tr class="memitem:a56fcc5244fc0df45dbad61654c9ddcff"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a56fcc5244fc0df45dbad61654c9ddcff">parsePacket</a> ()</td></tr>
+<tr class="separator:a56fcc5244fc0df45dbad61654c9ddcff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaa78654443adbfdcad9b3ca268f256b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#aeaa78654443adbfdcad9b3ca268f256b">getDownlinkPort</a> ()</td></tr>
+<tr class="separator:aeaa78654443adbfdcad9b3ca268f256b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Stream reading</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>These are standard methods defined by the Arduino Stream class to allow reading received data.</p>
+<tr><td colspan="2"><div class="groupText"><p><a class="anchor" id="stream"></a></p>
+<p>These are standard methods defined by the Arduino Stream class to allow reading received data.</p>
 <p>In addition to the methods listed here, all methods offered by the Arduino Stream class are also available, see <a href="https://www.arduino.cc/reference/en/language/functions/communication/stream/">https://www.arduino.cc/reference/en/language/functions/communication/stream/</a></p>
 <p>After a packet is received, the <a class="el" href="classSTM32LoRaWAN.html#a9c28e7976a749ba1871f5df806b21882">available()</a> method can be used to query how much bytes are in the packet (or after some bytes were read, how many are left to be read), and various <a class="el" href="classSTM32LoRaWAN.html#aa04eea06439708bf70cfa524325f427f">read()</a> versions can be used to read the data.</p>
-<dl class="section note"><dt>Note</dt><dd>If data is left unread when a new packet is received, the new data will be appended to the unread data and it becomes impossible to query where the first packet ends and the second begins. It is recommended to always fully read any received data before transmitting a new packet (which is, in class A LoRaWAN, the only time a new packet can be received).</dd></dl>
-<p>TODO: How does parsePacket fit in? </p>
+<dl class="section note"><dt>Note</dt><dd>If data is left unread when a new packet is received, the new data will be appended to the unread data and it becomes impossible to query where the first packet ends and the second begins. It is recommended to always fully read any received data before transmitting a new packet (which is, in class A LoRaWAN, the only time a new packet can be received). </dd></dl>
 </div></td></tr>
 <tr class="memitem:ad3dcbfd834bcdfc34b6800e6a29c9134"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ad3dcbfd834bcdfc34b6800e6a29c9134">read</a> (uint8_t *buf, size_t size)</td></tr>
 <tr class="separator:ad3dcbfd834bcdfc34b6800e6a29c9134"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -293,52 +182,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa04eea06439708bf70cfa524325f427f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a996f203e1738383edeaa35395e2ba77b"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a996f203e1738383edeaa35395e2ba77b">peek</a> ()</td></tr>
 <tr class="separator:a996f203e1738383edeaa35395e2ba77b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Advanced MIB access</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>These methods allow direct access to the MIB (Mac Information Base) layer of the underlying stack to set and query values. These are only intended for advanced usage, when the regular API does not provide sufficient access.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">name</td><td>Parameter name, only used in error messages </td></tr>
-  </table>
-  </dd>
-</dl>
-</div></td></tr>
-<tr class="memitem:ac46b3ed90b924750c7167c82cf842134"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ac46b3ed90b924750c7167c82cf842134">mibGet</a> (const char *name, Mib_t type, MibRequestConfirm_t &amp;mibReq)</td></tr>
-<tr class="separator:ac46b3ed90b924750c7167c82cf842134"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b33336566915f62e15b83f0c3f5d494"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a2b33336566915f62e15b83f0c3f5d494">mibGetBool</a> (const char *name, Mib_t type, bool *value)</td></tr>
-<tr class="separator:a2b33336566915f62e15b83f0c3f5d494"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad61d878cdc32ac6446af59ad5dadfe11"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ad61d878cdc32ac6446af59ad5dadfe11">mibGetUint8</a> (const char *name, Mib_t type, uint8_t *value)</td></tr>
-<tr class="separator:ad61d878cdc32ac6446af59ad5dadfe11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84f788236ebd468599d4a466402cdb3c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a84f788236ebd468599d4a466402cdb3c">mibGetInt8</a> (const char *name, Mib_t type, int8_t *value)</td></tr>
-<tr class="separator:a84f788236ebd468599d4a466402cdb3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a961aa074bdb6ab5832245f6eadbd19c5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a961aa074bdb6ab5832245f6eadbd19c5">mibGetUint32</a> (const char *name, Mib_t type, uint32_t *value)</td></tr>
-<tr class="separator:a961aa074bdb6ab5832245f6eadbd19c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6beae8437b3b6bc619524160c2e6cc75"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a6beae8437b3b6bc619524160c2e6cc75">mibGetUint64</a> (const char *name, Mib_t type, uint64_t *value)</td></tr>
-<tr class="separator:a6beae8437b3b6bc619524160c2e6cc75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6514cb063c8f6b615f5c2972271babd8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a6514cb063c8f6b615f5c2972271babd8">mibGetHex</a> (const char *name, Mib_t type, String *value)</td></tr>
-<tr class="separator:a6514cb063c8f6b615f5c2972271babd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1faeb797036db8e17c771984765d7ac9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a1faeb797036db8e17c771984765d7ac9">mibGetRxChannelParams</a> (const char *name, Mib_t type, RxChannelParams_t *value)</td></tr>
-<tr class="separator:a1faeb797036db8e17c771984765d7ac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17e206e013c225aacc949e13cbf89b32"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a17e206e013c225aacc949e13cbf89b32">mibSet</a> (const char *name, Mib_t type, MibRequestConfirm_t &amp;mibReq)</td></tr>
-<tr class="separator:a17e206e013c225aacc949e13cbf89b32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad15b0a38c993256021716d664829de35"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ad15b0a38c993256021716d664829de35">mibSetBool</a> (const char *name, Mib_t type, bool value)</td></tr>
-<tr class="separator:ad15b0a38c993256021716d664829de35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3ce891c87be01c921ccd030b246aa41"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#aa3ce891c87be01c921ccd030b246aa41">mibSetUint8</a> (const char *name, Mib_t type, uint8_t value)</td></tr>
-<tr class="separator:aa3ce891c87be01c921ccd030b246aa41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b7c4552f8160f8811f48ef5d91c546d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a2b7c4552f8160f8811f48ef5d91c546d">mibSetInt8</a> (const char *name, Mib_t type, int8_t value)</td></tr>
-<tr class="separator:a2b7c4552f8160f8811f48ef5d91c546d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad32b380d960b7b4d204f1e1af0b54bee"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ad32b380d960b7b4d204f1e1af0b54bee">mibSetUint32</a> (const char *name, Mib_t type, uint32_t value)</td></tr>
-<tr class="separator:ad32b380d960b7b4d204f1e1af0b54bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fd0b9364f8cd9b75113ff5d6c905645"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a4fd0b9364f8cd9b75113ff5d6c905645">mibSetUint64</a> (const char *name, Mib_t type, uint64_t value)</td></tr>
-<tr class="separator:a4fd0b9364f8cd9b75113ff5d6c905645"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fa81e8160c6691b1d07ea67e099c38b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a2fa81e8160c6691b1d07ea67e099c38b">mibSetHex</a> (const char *name, Mib_t type, const char *value)</td></tr>
-<tr class="separator:a2fa81e8160c6691b1d07ea67e099c38b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82559627e5b7532affd0e0788381867d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a82559627e5b7532affd0e0788381867d">mibSetRxChannelParams</a> (const char *name, Mib_t type, RxChannelParams_t value)</td></tr>
-<tr class="separator:a82559627e5b7532affd0e0788381867d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b67c2e0eeb4bce82be136639c705bee"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a5b67c2e0eeb4bce82be136639c705bee">mibHexSize</a> (const char *name, Mib_t type)</td></tr>
-<tr class="separator:a5b67c2e0eeb4bce82be136639c705bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Setters for identifiers and keys</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>These methods allow setting various identifiers and keys.</p>
-<p>You can pass a hex-encoded (MSB-first) string (<code>String</code> object or <code>const char*</code>), or a raw integer (32-bits for DevAddr and 64-bits for EUIs, keys are too long to be passed as an integer). </p>
+<p>You can pass a hex-encoded (MSB-first) string (<code>String</code> object or <code>const char*</code>), or a raw integer (32-bits for DevAddr and 64-bits for EUIs, keys are too long to be passed as an integer).</p>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000010">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN</dd></dl>
 </div></td></tr>
 <tr class="memitem:afad4207d0c10a3b8e8ade879b5511b96"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#afad4207d0c10a3b8e8ade879b5511b96">setDevEui</a> (const char *value)</td></tr>
 <tr class="separator:afad4207d0c10a3b8e8ade879b5511b96"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -402,6 +249,134 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab3335b40c9a640200c4e3c345859ac80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba3b5cbafa87684ebfb2585fd9060912"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#aba3b5cbafa87684ebfb2585fd9060912">operator bool</a> ()</td></tr>
 <tr class="separator:aba3b5cbafa87684ebfb2585fd9060912"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Radio / transmission configuration</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>These methods allow configuring various radio and transmission parameters. </p>
+</div></td></tr>
+<tr class="memitem:a5cca097cfdebc2227eb4ff0cb5358084"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a5cca097cfdebc2227eb4ff0cb5358084">dataRate</a> (uint8_t dr)</td></tr>
+<tr class="separator:a5cca097cfdebc2227eb4ff0cb5358084"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d7d806e8ff17f8ebf12cf08af23283b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a5d7d806e8ff17f8ebf12cf08af23283b">getDataRate</a> ()</td></tr>
+<tr class="separator:a5d7d806e8ff17f8ebf12cf08af23283b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3820664ad2ad9e0cfff299eab1ad786"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ad3820664ad2ad9e0cfff299eab1ad786">power</a> (uint8_t index)</td></tr>
+<tr class="separator:ad3820664ad2ad9e0cfff299eab1ad786"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a149bb7518e6756db8fa60848f2efd527"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a149bb7518e6756db8fa60848f2efd527">power</a> (<a class="el" href="STM32LoRaWAN_8h.html#a1fd3d2eb05358dae64890dff0448c69c">_rf_mode</a> mode, uint8_t index)</td></tr>
+<tr class="separator:a149bb7518e6756db8fa60848f2efd527"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac720f4ea2f3efe054908a8f8bdcfc7a5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ac720f4ea2f3efe054908a8f8bdcfc7a5">powerdB</a> (int8_t db)</td></tr>
+<tr class="separator:ac720f4ea2f3efe054908a8f8bdcfc7a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01ff41259ed00ec882e33eb0e33b72c2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a01ff41259ed00ec882e33eb0e33b72c2">getPort</a> ()</td></tr>
+<tr class="separator:a01ff41259ed00ec882e33eb0e33b72c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af342c59031d83d102bc58672f844f64f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#af342c59031d83d102bc58672f844f64f">setPort</a> (uint8_t port)</td></tr>
+<tr class="separator:af342c59031d83d102bc58672f844f64f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae83ea4aa1df9729e17602ee88cd4b607"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ae83ea4aa1df9729e17602ee88cd4b607">setADR</a> (bool adr)</td></tr>
+<tr class="separator:ae83ea4aa1df9729e17602ee88cd4b607"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b13d9d9db35aaff6fbdcaacf101d14f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a3b13d9d9db35aaff6fbdcaacf101d14f">getADR</a> ()</td></tr>
+<tr class="separator:a3b13d9d9db35aaff6fbdcaacf101d14f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Advanced configuration</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>These methods allow configuring advanced settings, which are usually not required for normal operation. </p>
+</div></td></tr>
+<tr class="memitem:acfa79d28cb7254c016cf20604afd1bd8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#acfa79d28cb7254c016cf20604afd1bd8">dutyCycle</a> (bool on)</td></tr>
+<tr class="separator:acfa79d28cb7254c016cf20604afd1bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc9939a198a3d0f243dd066a72ea2b81"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#afc9939a198a3d0f243dd066a72ea2b81">publicNetwork</a> (bool publicNetwork)</td></tr>
+<tr class="separator:afc9939a198a3d0f243dd066a72ea2b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefa9c84b0a9e0169d6a1751d26cab403"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#aefa9c84b0a9e0169d6a1751d26cab403">getRX2DR</a> ()</td></tr>
+<tr class="separator:aefa9c84b0a9e0169d6a1751d26cab403"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8d43824dddd36b0f41e3be41e7943c9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ae8d43824dddd36b0f41e3be41e7943c9">setRX2DR</a> (uint8_t dr)</td></tr>
+<tr class="separator:ae8d43824dddd36b0f41e3be41e7943c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad57ef4c3c5076303ee8fa18ab145d5b3"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ad57ef4c3c5076303ee8fa18ab145d5b3">getRX2Freq</a> ()</td></tr>
+<tr class="separator:ad57ef4c3c5076303ee8fa18ab145d5b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62955c24acd965b504db5e1923f07f65"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a62955c24acd965b504db5e1923f07f65">setRX2Freq</a> (uint32_t freq)</td></tr>
+<tr class="separator:a62955c24acd965b504db5e1923f07f65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72d986af51d931c34a64fd3544e432fc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a72d986af51d931c34a64fd3544e432fc">getrxfreq</a> ()</td></tr>
+<tr class="separator:a72d986af51d931c34a64fd3544e432fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Channel manipulation</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>These methods allow manipulating the list of enabled channels.</p>
+<p>The number of channels that are actually available and defined and their frequency and other settings are region-dependent. The fixed frequency regions (US915 and AU915) have 96 fixed channels, while the other regions have just a couple (up to 16) of channels defined.</p>
+<dl class="section note"><dt>Note</dt><dd>The list of channels will be reset when starting an OTAA join an when the join completes. Also, the network can send commands to modify the channel plan (define new channels or replace them, and enable/disable them), also as part of ADR messages. </dd></dl>
+</div></td></tr>
+<tr class="memitem:a79c395d41208f191871d04b2b30dd441"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a79c395d41208f191871d04b2b30dd441">enableChannel</a> (unsigned pos)</td></tr>
+<tr class="separator:a79c395d41208f191871d04b2b30dd441"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d0e9be1e1e7c250928b828baae9e004"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a7d0e9be1e1e7c250928b828baae9e004">disableChannel</a> (unsigned pos)</td></tr>
+<tr class="separator:a7d0e9be1e1e7c250928b828baae9e004"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14df7748a2df407809fa2862da7194be"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a14df7748a2df407809fa2862da7194be">modifyChannelEnabled</a> (unsigned pos, bool value)</td></tr>
+<tr class="separator:a14df7748a2df407809fa2862da7194be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa83cf43c08e8faec5a955140ea740eee"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#aa83cf43c08e8faec5a955140ea740eee">isChannelEnabled</a> (unsigned pos)</td></tr>
+<tr class="separator:aa83cf43c08e8faec5a955140ea740eee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Frame counters</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>These methods allow access to the up and down frame counters.</p>
+<dl class="section note"><dt>Note</dt><dd>Currently setting the framecounters is not supported, since the underlying LoRaWAN library has no obvious way to set these. This might be implemented in the future with some extra work. </dd></dl>
+</div></td></tr>
+<tr class="memitem:a23c34cb2f59e5c27ea67fe755373bbc5"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a23c34cb2f59e5c27ea67fe755373bbc5">getFCU</a> ()</td></tr>
+<tr class="separator:a23c34cb2f59e5c27ea67fe755373bbc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a840faf34c5bcef2a58420095dc78d691"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a840faf34c5bcef2a58420095dc78d691">getFCD</a> ()</td></tr>
+<tr class="separator:a840faf34c5bcef2a58420095dc78d691"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29b18acfa3074157c501122b9399d1d1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a29b18acfa3074157c501122b9399d1d1">setFCD</a> (uint16_t fcd)</td></tr>
+<tr class="separator:a29b18acfa3074157c501122b9399d1d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1f8b82511bb880e253f7bdf4e194023"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ab1f8b82511bb880e253f7bdf4e194023">setFCU</a> (uint16_t fcu)</td></tr>
+<tr class="separator:ab1f8b82511bb880e253f7bdf4e194023"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Advanced MIB access</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>These methods allow direct access to the MIB (Mac Information Base) layer of the underlying stack to set and query values. These are only intended for advanced usage, when the regular API does not provide sufficient access.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Parameter name, only used in error messages </td></tr>
+  </table>
+  </dd>
+</dl>
+</div></td></tr>
+<tr class="memitem:ac46b3ed90b924750c7167c82cf842134"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ac46b3ed90b924750c7167c82cf842134">mibGet</a> (const char *name, Mib_t type, MibRequestConfirm_t &amp;mibReq)</td></tr>
+<tr class="separator:ac46b3ed90b924750c7167c82cf842134"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b33336566915f62e15b83f0c3f5d494"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a2b33336566915f62e15b83f0c3f5d494">mibGetBool</a> (const char *name, Mib_t type, bool *value)</td></tr>
+<tr class="separator:a2b33336566915f62e15b83f0c3f5d494"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad61d878cdc32ac6446af59ad5dadfe11"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ad61d878cdc32ac6446af59ad5dadfe11">mibGetUint8</a> (const char *name, Mib_t type, uint8_t *value)</td></tr>
+<tr class="separator:ad61d878cdc32ac6446af59ad5dadfe11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84f788236ebd468599d4a466402cdb3c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a84f788236ebd468599d4a466402cdb3c">mibGetInt8</a> (const char *name, Mib_t type, int8_t *value)</td></tr>
+<tr class="separator:a84f788236ebd468599d4a466402cdb3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a961aa074bdb6ab5832245f6eadbd19c5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a961aa074bdb6ab5832245f6eadbd19c5">mibGetUint32</a> (const char *name, Mib_t type, uint32_t *value)</td></tr>
+<tr class="separator:a961aa074bdb6ab5832245f6eadbd19c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6beae8437b3b6bc619524160c2e6cc75"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a6beae8437b3b6bc619524160c2e6cc75">mibGetUint64</a> (const char *name, Mib_t type, uint64_t *value)</td></tr>
+<tr class="separator:a6beae8437b3b6bc619524160c2e6cc75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6514cb063c8f6b615f5c2972271babd8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a6514cb063c8f6b615f5c2972271babd8">mibGetHex</a> (const char *name, Mib_t type, String *value)</td></tr>
+<tr class="separator:a6514cb063c8f6b615f5c2972271babd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1faeb797036db8e17c771984765d7ac9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a1faeb797036db8e17c771984765d7ac9">mibGetRxChannelParams</a> (const char *name, Mib_t type, RxChannelParams_t *value)</td></tr>
+<tr class="separator:a1faeb797036db8e17c771984765d7ac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f59597389f5b7912f00e71c9bbcfec3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a5f59597389f5b7912f00e71c9bbcfec3">mibGetPtr</a> (const char *name, Mib_t type, void **value)</td></tr>
+<tr class="separator:a5f59597389f5b7912f00e71c9bbcfec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17e206e013c225aacc949e13cbf89b32"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a17e206e013c225aacc949e13cbf89b32">mibSet</a> (const char *name, Mib_t type, MibRequestConfirm_t &amp;mibReq)</td></tr>
+<tr class="separator:a17e206e013c225aacc949e13cbf89b32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad15b0a38c993256021716d664829de35"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ad15b0a38c993256021716d664829de35">mibSetBool</a> (const char *name, Mib_t type, bool value)</td></tr>
+<tr class="separator:ad15b0a38c993256021716d664829de35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3ce891c87be01c921ccd030b246aa41"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#aa3ce891c87be01c921ccd030b246aa41">mibSetUint8</a> (const char *name, Mib_t type, uint8_t value)</td></tr>
+<tr class="separator:aa3ce891c87be01c921ccd030b246aa41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b7c4552f8160f8811f48ef5d91c546d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a2b7c4552f8160f8811f48ef5d91c546d">mibSetInt8</a> (const char *name, Mib_t type, int8_t value)</td></tr>
+<tr class="separator:a2b7c4552f8160f8811f48ef5d91c546d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad32b380d960b7b4d204f1e1af0b54bee"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ad32b380d960b7b4d204f1e1af0b54bee">mibSetUint32</a> (const char *name, Mib_t type, uint32_t value)</td></tr>
+<tr class="separator:ad32b380d960b7b4d204f1e1af0b54bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fd0b9364f8cd9b75113ff5d6c905645"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a4fd0b9364f8cd9b75113ff5d6c905645">mibSetUint64</a> (const char *name, Mib_t type, uint64_t value)</td></tr>
+<tr class="separator:a4fd0b9364f8cd9b75113ff5d6c905645"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fa81e8160c6691b1d07ea67e099c38b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a2fa81e8160c6691b1d07ea67e099c38b">mibSetHex</a> (const char *name, Mib_t type, const char *value)</td></tr>
+<tr class="separator:a2fa81e8160c6691b1d07ea67e099c38b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82559627e5b7532affd0e0788381867d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a82559627e5b7532affd0e0788381867d">mibSetRxChannelParams</a> (const char *name, Mib_t type, RxChannelParams_t value)</td></tr>
+<tr class="separator:a82559627e5b7532affd0e0788381867d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b28a3bc4423bbf5f93cf37f58bfeb4a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a3b28a3bc4423bbf5f93cf37f58bfeb4a">mibSetPtr</a> (const char *name, Mib_t type, void *value)</td></tr>
+<tr class="separator:a3b28a3bc4423bbf5f93cf37f58bfeb4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b67c2e0eeb4bce82be136639c705bee"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a5b67c2e0eeb4bce82be136639c705bee">mibHexSize</a> (const char *name, Mib_t type)</td></tr>
+<tr class="separator:a5b67c2e0eeb4bce82be136639c705bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Non-blocking (async) methods</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>These are variants of other methods that are asynchronous, i.e. these start an operation and then return immediately without waiting (blocking) for the operation to complete.</p>
+<p>After calling these methods, the sketch must periodically call the <code><a class="el" href="classSTM32LoRaWAN.html#a2c207de2ede561d57ef26af61991cffa">maintain()</a></code> method to allow any background work to be performed. This must be done at least until <code><a class="el" href="classSTM32LoRaWAN.html#ab3335b40c9a640200c4e3c345859ac80">busy()</a></code> returns false. You can use <code><a class="el" href="classSTM32LoRaWAN.html#afd305ad1b2327c96fd1bd94c41c6fb46">maintainUntilIdle()</a></code> for this if you no longer have other things to do while waiting. </p>
+</div></td></tr>
+<tr class="memitem:a420cf8fb6a886b0e9b950797b1146bba"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a420cf8fb6a886b0e9b950797b1146bba">joinOTAAAsync</a> ()</td></tr>
+<tr class="separator:a420cf8fb6a886b0e9b950797b1146bba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b979b128f0cd00d4c7a2dcc549af89a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a5b979b128f0cd00d4c7a2dcc549af89a">endPacketAsync</a> (bool confirmed=false)</td></tr>
+<tr class="separator:a5b979b128f0cd00d4c7a2dcc549af89a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd434a7ebbe91a548c010355f7553460"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#acd434a7ebbe91a548c010355f7553460">send</a> (const uint8_t *payload, size_t size, bool confirmed)</td></tr>
+<tr class="separator:acd434a7ebbe91a548c010355f7553460"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44d6abeff4068edf16a0f8d6f98e544f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a44d6abeff4068edf16a0f8d6f98e544f">lastAck</a> ()</td></tr>
+<tr class="separator:a44d6abeff4068edf16a0f8d6f98e544f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c207de2ede561d57ef26af61991cffa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a2c207de2ede561d57ef26af61991cffa">maintain</a> ()</td></tr>
+<tr class="separator:a2c207de2ede561d57ef26af61991cffa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd305ad1b2327c96fd1bd94c41c6fb46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#afd305ad1b2327c96fd1bd94c41c6fb46">maintainUntilIdle</a> ()</td></tr>
+<tr class="separator:afd305ad1b2327c96fd1bd94c41c6fb46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefa957b4339b2da06b292f917ddfed31"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#aefa957b4339b2da06b292f917ddfed31">setMaintainNeededCallback</a> (std::function&lt; void(void)&gt; callback)</td></tr>
+<tr class="separator:aefa957b4339b2da06b292f917ddfed31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Dummy implementations</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>These methods have only dummy implementations, because no meaningful implementations exist and having a dummy implementation is harmless (and also helps to make some examples work without modification). </p>
 </div></td></tr>
@@ -409,15 +384,67 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab3dd6a10e89c4e94474b85aa4da0a302"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad98e9a94a0a991742a433ce1dd67ec84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ad98e9a94a0a991742a433ce1dd67ec84">minPollInterval</a> (unsigned long)</td></tr>
 <tr class="separator:ad98e9a94a0a991742a433ce1dd67ec84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Missing methods</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>These methods are present in MKRWAN, but are not implemented in this library (because they are specific to the module-based serial approach used by MKRWAN, are for testing purposes only or have better API not tied to the MKRWAN AT commands available.</p>
+<p>These methods <em>are</em> declared in this library, but marked so the compiler can generate a friendly error message when they are used. </p>
+</div></td></tr>
+<tr class="memitem:a999c98c64e466aedf9fa2e848e684018"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a999c98c64e466aedf9fa2e848e684018">setCFM</a> (bool cfm)</td></tr>
+<tr class="separator:a999c98c64e466aedf9fa2e848e684018"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b8fbaeab4917b93e3f240133835d3e3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a1b8fbaeab4917b93e3f240133835d3e3">getCFM</a> ()</td></tr>
+<tr class="separator:a1b8fbaeab4917b93e3f240133835d3e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58632ff20ab6a0f48fa772c827d73cde"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a58632ff20ab6a0f48fa772c827d73cde">getCFS</a> ()</td></tr>
+<tr class="separator:a58632ff20ab6a0f48fa772c827d73cde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01766fa6242b566fde0010eef9707372"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a01766fa6242b566fde0010eef9707372">begin</a> (<a class="el" href="STM32LoRaWAN_8h.html#a749dbc809ded9d6eaa98594e2ebcd24b">_lora_band</a> band, uint32_t baud, uint16_t config=SERIAL_8N2)</td></tr>
+<tr class="separator:a01766fa6242b566fde0010eef9707372"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51adb005319aa9c4ccb2f63b246789a1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a51adb005319aa9c4ccb2f63b246789a1">autoBaud</a> (unsigned long timeout=10000L)</td></tr>
+<tr class="separator:a51adb005319aa9c4ccb2f63b246789a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a54edbb78e6b782204b2d37bed84c96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a9a54edbb78e6b782204b2d37bed84c96">setBaud</a> (unsigned long baud)</td></tr>
+<tr class="separator:a9a54edbb78e6b782204b2d37bed84c96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c4031e2de24b5f3066603e71e37a2ae"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a5c4031e2de24b5f3066603e71e37a2ae">getTConf</a> ()</td></tr>
+<tr class="separator:a5c4031e2de24b5f3066603e71e37a2ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eb7351c1b7e8ada59ba58e8032c6a83"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a2eb7351c1b7e8ada59ba58e8032c6a83">setTConf</a> (String params)</td></tr>
+<tr class="separator:a2eb7351c1b7e8ada59ba58e8032c6a83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adadf322fc5419467c8612840c006eaaa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#adadf322fc5419467c8612840c006eaaa">enTtone</a> ()</td></tr>
+<tr class="separator:adadf322fc5419467c8612840c006eaaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a715c4ec0ba3a9601a229a8c43d05be"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a8a715c4ec0ba3a9601a229a8c43d05be">restart</a> ()</td></tr>
+<tr class="separator:a8a715c4ec0ba3a9601a229a8c43d05be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79634164ef1e9c2d8c4d4589cbeaf665"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a79634164ef1e9c2d8c4d4589cbeaf665">poll</a> ()</td></tr>
+<tr class="separator:a79634164ef1e9c2d8c4d4589cbeaf665"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d332d013d0a2569bc162568adb1bd04"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a9d332d013d0a2569bc162568adb1bd04">sleep</a> (bool on=true)</td></tr>
+<tr class="separator:a9d332d013d0a2569bc162568adb1bd04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a619ee70f32e4ad240c67af514750ffed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a619ee70f32e4ad240c67af514750ffed">factoryDefault</a> ()</td></tr>
+<tr class="separator:a619ee70f32e4ad240c67af514750ffed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3eff0f30e2bf1ea1f046c81bcbedecfe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a3eff0f30e2bf1ea1f046c81bcbedecfe">format</a> (bool hexMode)</td></tr>
+<tr class="separator:a3eff0f30e2bf1ea1f046c81bcbedecfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a580f36418deb428460d6eee12672ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a8a580f36418deb428460d6eee12672ba">dumb</a> ()</td></tr>
+<tr class="separator:a8a580f36418deb428460d6eee12672ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac49cddab0119f98ae926e53aa11e16f2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ac49cddab0119f98ae926e53aa11e16f2">init</a> ()</td></tr>
+<tr class="separator:ac49cddab0119f98ae926e53aa11e16f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a077e0794bb3ac3c199f13e486933417b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a077e0794bb3ac3c199f13e486933417b">configureClass</a> (<a class="el" href="STM32LoRaWAN_8h.html#a6f8077b5a9a47075e6c1cbf074efa09f">_lora_class</a> _class)</td></tr>
+<tr class="separator:a077e0794bb3ac3c199f13e486933417b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a190e38032336a2d69927724fbe872f17"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a190e38032336a2d69927724fbe872f17">getNwkSKey</a> ()</td></tr>
+<tr class="separator:a190e38032336a2d69927724fbe872f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c818ce976451d7ce17f5c4630d109dd"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a0c818ce976451d7ce17f5c4630d109dd">getAppSKey</a> ()</td></tr>
+<tr class="separator:a0c818ce976451d7ce17f5c4630d109dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5a44ca0779d52ba0ed35235dd92e107"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#af5a44ca0779d52ba0ed35235dd92e107">applicationKey</a> ()</td></tr>
+<tr class="separator:af5a44ca0779d52ba0ed35235dd92e107"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af21b1d27c22c2e94da4ca2d368620c13"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#af21b1d27c22c2e94da4ca2d368620c13">sendMask</a> (String newMask)</td></tr>
+<tr class="separator:af21b1d27c22c2e94da4ca2d368620c13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79915834d3c8812cfd80a08d62382686"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a79915834d3c8812cfd80a08d62382686">sendMask</a> ()</td></tr>
+<tr class="separator:a79915834d3c8812cfd80a08d62382686"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87dedb0a627b82dcf7bba62edbea3713"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a87dedb0a627b82dcf7bba62edbea3713">getChannelMask</a> ()</td></tr>
+<tr class="separator:a87dedb0a627b82dcf7bba62edbea3713"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a067096f42efcee590a3b0c807a65e07f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a067096f42efcee590a3b0c807a65e07f">getChannelMaskSize</a> (<a class="el" href="STM32LoRaWAN_8h.html#a749dbc809ded9d6eaa98594e2ebcd24b">_lora_band</a> band)</td></tr>
+<tr class="separator:a067096f42efcee590a3b0c807a65e07f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c9e66574bd8137330de4067ee3bf2b8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a8c9e66574bd8137330de4067ee3bf2b8">configureBand</a> (<a class="el" href="STM32LoRaWAN_8h.html#a749dbc809ded9d6eaa98594e2ebcd24b">_lora_band</a> band)</td></tr>
+<tr class="separator:a8c9e66574bd8137330de4067ee3bf2b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a1f5732e872ed564bc74f6c941b54da21"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a1f5732e872ed564bc74f6c941b54da21">builtinDevEUI</a> ()</td></tr>
 <tr class="separator:a1f5732e872ed564bc74f6c941b54da21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7eb5fcb627bb6f3d9aa3e06df117f66e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a7eb5fcb627bb6f3d9aa3e06df117f66e">join</a> (bool otaa)</td></tr>
-<tr class="separator:a7eb5fcb627bb6f3d9aa3e06df117f66e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b3d970d8d35e74b34eae5a3c6843f62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a5b3d970d8d35e74b34eae5a3c6843f62">clear_rx</a> ()</td></tr>
-<tr class="separator:a5b3d970d8d35e74b34eae5a3c6843f62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac597b3b55d9a8fea51b4e86319291d02"><td class="memItemLeft" align="right" valign="top">static bool void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ac597b3b55d9a8fea51b4e86319291d02">clear_rx</a> ()</td></tr>
+<tr class="separator:ac597b3b55d9a8fea51b4e86319291d02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acff4f237cf22a492f3c070b845ae3934"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#acff4f237cf22a492f3c070b845ae3934">add_rx</a> (const uint8_t *buf, size_t len)</td></tr>
 <tr class="separator:acff4f237cf22a492f3c070b845ae3934"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -431,6 +458,8 @@ Static Protected Member Functions</h2></td></tr>
 <tr class="separator:adb22008cc147d1f94bceba9ca5676bcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6dce90cc8ee17de4a48c4ec5365fcad9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a6dce90cc8ee17de4a48c4ec5365fcad9">MacMlmeIndication</a> (MlmeIndication_t *MlmeIndication, LoRaMacRxStatus_t *RxStatus)</td></tr>
 <tr class="separator:a6dce90cc8ee17de4a48c4ec5365fcad9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80f4126e5c863ec1b11f66bd270ec6fd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a80f4126e5c863ec1b11f66bd270ec6fd">MacProcessNotify</a> ()</td></tr>
+<tr class="separator:a80f4126e5c863ec1b11f66bd270ec6fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ede80a683b07f0f00b18531022ddecb"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a4ede80a683b07f0f00b18531022ddecb">toString</a> (LoRaMacStatus_t)</td></tr>
 <tr class="separator:a4ede80a683b07f0f00b18531022ddecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ec35154ca31f04c3341dd32983c0a34"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a8ec35154ca31f04c3341dd32983c0a34">toString</a> (LoRaMacEventInfoStatus_t)</td></tr>
@@ -449,8 +478,8 @@ Static Protected Member Functions</h2></td></tr>
 <tr class="separator:a4dcc14ebf323e8aa72b3635d13646d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba623626dfe280e03d08c5712b6406ae"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#aba623626dfe280e03d08c5712b6406ae">makeUint32</a> (uint8_t a, uint8_t b, uint8_t c, uint8_t d)</td></tr>
 <tr class="separator:aba623626dfe280e03d08c5712b6406ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ea9a027f17f301f74a5411652126014"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a5ea9a027f17f301f74a5411652126014">failure</a> (const char *fmt,...)</td></tr>
-<tr class="separator:a5ea9a027f17f301f74a5411652126014"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf5c35e2aaea1ba3673af314c2c32caa"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#adf5c35e2aaea1ba3673af314c2c32caa">failure</a> (const char *fmt,...) __attribute__((<a class="el" href="classSTM32LoRaWAN.html#a3eff0f30e2bf1ea1f046c81bcbedecfe">format</a>(printf</td></tr>
+<tr class="separator:adf5c35e2aaea1ba3673af314c2c32caa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -464,8 +493,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a2d842876085b5671605071115b096115"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a8d94acf9cfb846f1b90aad4836ae63"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a1a8d94acf9cfb846f1b90aad4836ae63">rx_port</a> = 0</td></tr>
 <tr class="separator:a1a8d94acf9cfb846f1b90aad4836ae63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68b5f00129f93640dfa39fdcb4f84a30"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a68b5f00129f93640dfa39fdcb4f84a30">nwkKeySet</a> = false</td></tr>
-<tr class="separator:a68b5f00129f93640dfa39fdcb4f84a30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29e3e04449873af7a4d82ee1f0c84ba9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a29e3e04449873af7a4d82ee1f0c84ba9">nwk_key_set</a> = false</td></tr>
+<tr class="separator:a29e3e04449873af7a4d82ee1f0c84ba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48913ce12dc2e2f2eae00c6af09517b6"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a48913ce12dc2e2f2eae00c6af09517b6">tx_buf</a> [255]</td></tr>
 <tr class="separator:a48913ce12dc2e2f2eae00c6af09517b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac16474bc60825278e21136db97d0a470"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ac16474bc60825278e21136db97d0a470">tx_ptr</a></td></tr>
@@ -474,11 +503,23 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:ac20a82fca09fe79a49b2efb14c3ddf35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8439dc88e0a8dd52e44f1914bf0a8c3"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ad8439dc88e0a8dd52e44f1914bf0a8c3">rx_ptr</a></td></tr>
 <tr class="separator:ad8439dc88e0a8dd52e44f1914bf0a8c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a490ebe9741d79b68d81f9ea515570cb1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a490ebe9741d79b68d81f9ea515570cb1">last_tx_acked</a> = false</td></tr>
+<tr class="separator:a490ebe9741d79b68d81f9ea515570cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac96049b0c2393f846cfa650e79b7b3e7"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ac96049b0c2393f846cfa650e79b7b3e7">fcnt_up</a> = 0</td></tr>
+<tr class="separator:ac96049b0c2393f846cfa650e79b7b3e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35a745b85482d2373206f1d45c86ba3a"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a35a745b85482d2373206f1d45c86ba3a">fcnt_down</a> = 0</td></tr>
+<tr class="separator:a35a745b85482d2373206f1d45c86ba3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad08ee261884f5852a5b3f6f6a2ee5292"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(void)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ad08ee261884f5852a5b3f6f6a2ee5292">maintain_needed_callback</a></td></tr>
+<tr class="separator:ad08ee261884f5852a5b3f6f6a2ee5292"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a567065f79a2195207e806a08abd01e18"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a567065f79a2195207e806a08abd01e18">mac_process_pending</a> = false</td></tr>
+<tr class="separator:a567065f79a2195207e806a08abd01e18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-attribs"></a>
 Static Protected Attributes</h2></td></tr>
 <tr class="memitem:a6974eb61fff706231a7c9f13d95b1fda"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classSTM32LoRaWAN.html">STM32LoRaWAN</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a6974eb61fff706231a7c9f13d95b1fda">instance</a></td></tr>
 <tr class="separator:a6974eb61fff706231a7c9f13d95b1fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a1e4648be8f45af29b33b4fe2c0c8df"><td class="memItemLeft" align="right" valign="top">static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a2a1e4648be8f45af29b33b4fe2c0c8df">DEFAULT_JOIN_TIMEOUT</a> = 60000</td></tr>
+<tr class="separator:a2a1e4648be8f45af29b33b4fe2c0c8df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="acff4f237cf22a492f3c070b845ae3934"></a>
@@ -532,7 +573,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000027">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: Keys cannot be retrieved </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000044">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: Keys cannot be retrieved </dd></dl>
 
 </div>
 </div>
@@ -551,7 +592,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000012">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no serial link to configure </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000029">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no serial link to configure </dd></dl>
 
 </div>
 </div>
@@ -665,7 +706,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000011">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no serial link to configure </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000028">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no serial link to configure </dd></dl>
 
 </div>
 </div>
@@ -727,12 +768,12 @@ Static Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Returns whether the modem is currently busy processing a request. After a non-blocking request (e.g. unconfirmed uplink), this returns true until the request is completed and then returns false until some new request is made.</p>
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000030">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000011">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
 
 </div>
 </div>
-<a id="a5b3d970d8d35e74b34eae5a3c6843f62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b3d970d8d35e74b34eae5a3c6843f62">&#9670;&nbsp;</a></span>clear_rx()</h2>
+<a id="ac597b3b55d9a8fea51b4e86319291d02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac597b3b55d9a8fea51b4e86319291d02">&#9670;&nbsp;</a></span>clear_rx()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -741,7 +782,7 @@ Static Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void STM32LoRaWAN::clear_rx </td>
+          <td class="memname">static bool void STM32LoRaWAN::clear_rx </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -772,7 +813,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This could be supported, but needs careful consideration and complete re-initialization. </p><dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000028">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: Changing band after initialization not supported </dd></dl>
+<p>This could be supported, but needs careful consideration and complete re-initialization. </p><dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000049">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: Changing band after initialization not supported </dd></dl>
 
 </div>
 </div>
@@ -791,7 +832,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000024">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: only class A supported </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000041">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: only class A supported </dd></dl>
 
 </div>
 </div>
@@ -809,7 +850,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns whether connected to the network (i.e. for OTAA a succesfull join exchange has happened, or for ABP session information has been supplied by calling joinABP). </p>
+<p>Returns whether connected to the network (i.e. for OTAA a successful join exchange has happened, or for ABP session information has been supplied by calling joinABP). </p>
 
 </div>
 </div>
@@ -846,12 +887,12 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Return the currently configured deviceEUI. On startup, this is the EUI for the chip (stored in ROM). If changed (i.e. with <a class="el" href="classSTM32LoRaWAN.html#a5e623c2aaee526fdc4720d48ca72ec87">joinOTAA()</a> or setDevEUI()), the changed value is returned instead. </p>
+<p>Return the currently configured deviceEUI. On startup, this is the EUI for the chip (stored in ROM). If changed (i.e. with <a class="el" href="classSTM32LoRaWAN.html#a36f73d685e3a41c862dfbe82e34f7672">joinOTAA()</a> or setDevEUI()), the changed value is returned instead. </p>
 
 </div>
 </div>
-<a id="a4c6d8afc0f5fd9b3c54d01158bf7778e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c6d8afc0f5fd9b3c54d01158bf7778e">&#9670;&nbsp;</a></span>disableChannel()</h2>
+<a id="a7d0e9be1e1e7c250928b828baae9e004"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d0e9be1e1e7c250928b828baae9e004">&#9670;&nbsp;</a></span>disableChannel()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -859,7 +900,7 @@ Static Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">bool STM32LoRaWAN::disableChannel </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">unsigned&#160;</td>
           <td class="paramname"><em>pos</em></td><td>)</td>
           <td></td>
         </tr>
@@ -882,7 +923,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000022">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no protocol stream to configure </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000039">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no protocol stream to configure </dd></dl>
 
 </div>
 </div>
@@ -902,12 +943,12 @@ Static Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>When false is passed, duty cycle limits are no longer checked.</p>
-<p>\raisewarning Use with care, disabling duty cycle limits can cause violations of laws and regulations around use of the RF spectrum! </p>
+<dl class="section warning"><dt>Warning</dt><dd>Use with care, disabling duty cycle limits can cause violations of laws and regulations around use of the RF spectrum! </dd></dl>
 
 </div>
 </div>
-<a id="a0ba00b353d6f5cefd0b850a5983604fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ba00b353d6f5cefd0b850a5983604fc">&#9670;&nbsp;</a></span>enableChannel()</h2>
+<a id="a79c395d41208f191871d04b2b30dd441"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79c395d41208f191871d04b2b30dd441">&#9670;&nbsp;</a></span>enableChannel()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -915,7 +956,7 @@ Static Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">bool STM32LoRaWAN::enableChannel </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">unsigned&#160;</td>
           <td class="paramname"><em>pos</em></td><td>)</td>
           <td></td>
         </tr>
@@ -939,6 +980,31 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Finalize and send a packet previously prepared using <a class="el" href="classSTM32LoRaWAN.html#a53de6fa3a4971cde2ff3da8331b877dc">beginPacket()</a> and <a class="el" href="classSTM32LoRaWAN.html#a6bf5661d2b38c2f12871d7c28f0658fd">write()</a>.</p>
+<p>This blocks until the packet is completely sent an both RX windows have been completed.</p>
+<dl class="section return"><dt>Returns</dt><dd>The number of bytes sent when successful, or -1 when the packet could not be sent. For confirmed packets, also returns -1 when no confirmation was received (in that case the packet might still have been sent correctly).</dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000008">MKRWAN API difference:</a></b></dt><dd>This library blocks for all packets, not just confirmed packets. </dd></dl>
+
+</div>
+</div>
+<a id="a5b979b128f0cd00d4c7a2dcc549af89a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b979b128f0cd00d4c7a2dcc549af89a">&#9670;&nbsp;</a></span>endPacketAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int STM32LoRaWAN::endPacketAsync </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>confirmed</em> = <code>false</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Finalize and asynchronously send a packet. This can be used in place of <code><a class="el" href="classSTM32LoRaWAN.html#a816dd9c8b223bda9380971c5a1dab377">endPacket()</a></code> when you do not want blocking behavior.</p>
+<p>The return value only reflects whether the packet could successfully queued, to see if a confirmed packet was actually confirmed by the network, call <a class="el" href="classSTM32LoRaWAN.html#a44d6abeff4068edf16a0f8d6f98e544f">lastAck()</a>.</p>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000018">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
 
 </div>
 </div>
@@ -956,7 +1022,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000016">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: test method only </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000033">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: test method only </dd></dl>
 
 </div>
 </div>
@@ -974,12 +1040,12 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000020">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no remote module to reset </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000037">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no remote module to reset </dd></dl>
 
 </div>
 </div>
-<a id="a5ea9a027f17f301f74a5411652126014"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5ea9a027f17f301f74a5411652126014">&#9670;&nbsp;</a></span>failure()</h2>
+<a id="adf5c35e2aaea1ba3673af314c2c32caa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf5c35e2aaea1ba3673af314c2c32caa">&#9670;&nbsp;</a></span>failure()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1037,7 +1103,7 @@ Static Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>This is a no-op, to send writen data, use <a class="el" href="classSTM32LoRaWAN.html#a816dd9c8b223bda9380971c5a1dab377">endPacket()</a>. </p><dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000029">MKRWAN API difference:</a></b></dt><dd>Dummy implementation in this library </dd></dl>
+<p>This is a no-op, to send written data, use <a class="el" href="classSTM32LoRaWAN.html#a816dd9c8b223bda9380971c5a1dab377">endPacket()</a>. </p><dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000009">MKRWAN API difference:</a></b></dt><dd>Dummy implementation in this library </dd></dl>
 
 </div>
 </div>
@@ -1056,7 +1122,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000021">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no protocol stream to configure </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000038">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no protocol stream to configure </dd></dl>
 
 </div>
 </div>
@@ -1144,7 +1210,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000026">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: Keys cannot be retrieved </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000043">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: Keys cannot be retrieved </dd></dl>
 
 </div>
 </div>
@@ -1162,7 +1228,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000009">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: confirmed uplinked better handled through <a class="el" href="classSTM32LoRaWAN.html#a816dd9c8b223bda9380971c5a1dab377">endPacket()</a> </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000026">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: confirmed uplinked better handled through <a class="el" href="classSTM32LoRaWAN.html#a816dd9c8b223bda9380971c5a1dab377">endPacket()</a> </dd></dl>
 
 </div>
 </div>
@@ -1180,7 +1246,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000010">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: confirmed uplinked better handled through <a class="el" href="classSTM32LoRaWAN.html#a816dd9c8b223bda9380971c5a1dab377">endPacket()</a> </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000027">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: confirmed uplinked better handled through <a class="el" href="classSTM32LoRaWAN.html#a816dd9c8b223bda9380971c5a1dab377">endPacket()</a> </dd></dl>
 
 </div>
 </div>
@@ -1198,6 +1264,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000047">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: seems to be an internal method in MKRWAN (use enableChannel/disableChannel instead) </dd></dl>
 
 </div>
 </div>
@@ -1216,6 +1283,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000048">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: seems to be an internal method in MKRWAN (use enableChannel/disableChannel instead) </dd></dl>
 
 </div>
 </div>
@@ -1398,7 +1466,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000007">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library </dd></dl>
+<p>Return the frame counter of the most recent downlink message that was received. </p>
 
 </div>
 </div>
@@ -1416,7 +1484,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000005">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library </dd></dl>
+<p>Return the frame counter of the most recent uplink message that was completely transmitted (i.e. after the RX windows have passed). </p>
 
 </div>
 </div>
@@ -1434,7 +1502,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000025">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: Keys cannot be retrieved </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000042">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: Keys cannot be retrieved </dd></dl>
 
 </div>
 </div>
@@ -1452,7 +1520,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Return the port used for data transmission. </p><dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000003">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
+<p>Return the port used for data transmission. </p><dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000013">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
 
 </div>
 </div>
@@ -1524,7 +1592,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000014">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: test method </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000031">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: test method </dd></dl>
 
 </div>
 </div>
@@ -1542,20 +1610,20 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000023">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: seems to be an internal method in MKRWAN </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000040">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: seems to be an internal method in MKRWAN </dd></dl>
 
 </div>
 </div>
-<a id="ac2b17a777db7c77409fa22b7b2109faf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2b17a777db7c77409fa22b7b2109faf">&#9670;&nbsp;</a></span>isChannelEnabled()</h2>
+<a id="aa83cf43c08e8faec5a955140ea740eee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa83cf43c08e8faec5a955140ea740eee">&#9670;&nbsp;</a></span>isChannelEnabled()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int STM32LoRaWAN::isChannelEnabled </td>
+          <td class="memname">bool STM32LoRaWAN::isChannelEnabled </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">unsigned&#160;</td>
           <td class="paramname"><em>pos</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1564,35 +1632,27 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a7eb5fcb627bb6f3d9aa3e06df117f66e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7eb5fcb627bb6f3d9aa3e06df117f66e">&#9670;&nbsp;</a></span>join()</h2>
+<a id="a272accb2e14a24773c90ffc932861412"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a272accb2e14a24773c90ffc932861412">&#9670;&nbsp;</a></span>joinABP() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool STM32LoRaWAN::join </td>
+          <td class="memname">bool STM32LoRaWAN::joinABP </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>otaa</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<p>Actually perform the join, expects identifiers and keys to be configured already. </p>
+<p>Perform a join with parameters previously set using after using <a class="el" href="classSTM32LoRaWAN.html#abc27e5d0c81613ffad4ded7f4a8584cf">setDevAddr()</a>, <a class="el" href="classSTM32LoRaWAN.html#afb43161f31093d3fd4452d6ee97c6a49">setNwkSKey()</a> and <a class="el" href="classSTM32LoRaWAN.html#a06d74434ac48a0b264ed32ba11c34a4a">setAppSKey()</a>.</p>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000007">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
 
 </div>
 </div>
 <a id="a02a0f08284de75fec38cd0c574c25e68"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02a0f08284de75fec38cd0c574c25e68">&#9670;&nbsp;</a></span>joinABP() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a02a0f08284de75fec38cd0c574c25e68">&#9670;&nbsp;</a></span>joinABP() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1634,7 +1694,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a840708f0869c267e9c781c65a7f1c581"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a840708f0869c267e9c781c65a7f1c581">&#9670;&nbsp;</a></span>joinABP() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a840708f0869c267e9c781c65a7f1c581">&#9670;&nbsp;</a></span>joinABP() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1676,7 +1736,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a28f3375385338d901d558ba063bf4b9b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28f3375385338d901d558ba063bf4b9b">&#9670;&nbsp;</a></span>joinABP() <span class="overload">[3/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a28f3375385338d901d558ba063bf4b9b">&#9670;&nbsp;</a></span>joinABP() <span class="overload">[4/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1717,8 +1777,27 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a36f73d685e3a41c862dfbe82e34f7672"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36f73d685e3a41c862dfbe82e34f7672">&#9670;&nbsp;</a></span>joinOTAA() <span class="overload">[1/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool STM32LoRaWAN::joinOTAA </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Perform a join with parameters previously set using after using <a class="el" href="classSTM32LoRaWAN.html#a6055d4c91f0c5f3b0671142c5b3cc3aa">setAppEui()</a>, <a class="el" href="classSTM32LoRaWAN.html#abaa553af9c824eff6ea5905ab4f9530b">setAppKey()</a> and optionally <a class="el" href="classSTM32LoRaWAN.html#afad4207d0c10a3b8e8ade879b5511b96">setDevEui()</a>.</p>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000006">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
+
+</div>
+</div>
 <a id="afb7ebbde6afbb910b2229af9feb38eb7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb7ebbde6afbb910b2229af9feb38eb7">&#9670;&nbsp;</a></span>joinOTAA() <span class="overload">[1/8]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afb7ebbde6afbb910b2229af9feb38eb7">&#9670;&nbsp;</a></span>joinOTAA() <span class="overload">[2/9]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1754,7 +1833,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a5e623c2aaee526fdc4720d48ca72ec87"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e623c2aaee526fdc4720d48ca72ec87">&#9670;&nbsp;</a></span>joinOTAA() <span class="overload">[2/8]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e623c2aaee526fdc4720d48ca72ec87">&#9670;&nbsp;</a></span>joinOTAA() <span class="overload">[3/9]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1796,7 +1875,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 </div>
 <a id="af34d30d30bf628268323090a75e9d33f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af34d30d30bf628268323090a75e9d33f">&#9670;&nbsp;</a></span>joinOTAA() <span class="overload">[3/8]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af34d30d30bf628268323090a75e9d33f">&#9670;&nbsp;</a></span>joinOTAA() <span class="overload">[4/9]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1832,7 +1911,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a7f8584b575809f35104549570fd92bbf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f8584b575809f35104549570fd92bbf">&#9670;&nbsp;</a></span>joinOTAA() <span class="overload">[4/8]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f8584b575809f35104549570fd92bbf">&#9670;&nbsp;</a></span>joinOTAA() <span class="overload">[5/9]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1874,7 +1953,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a9e291fe38487b64834e9e252044a7df4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e291fe38487b64834e9e252044a7df4">&#9670;&nbsp;</a></span>joinOTAA() <span class="overload">[5/8]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e291fe38487b64834e9e252044a7df4">&#9670;&nbsp;</a></span>joinOTAA() <span class="overload">[6/9]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1906,11 +1985,12 @@ Static Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000003">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
 
 </div>
 </div>
 <a id="ae9974afa679110e61be69c1cfa5b47ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae9974afa679110e61be69c1cfa5b47ce">&#9670;&nbsp;</a></span>joinOTAA() <span class="overload">[6/8]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9974afa679110e61be69c1cfa5b47ce">&#9670;&nbsp;</a></span>joinOTAA() <span class="overload">[7/9]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1948,11 +2028,12 @@ Static Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000002">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
 
 </div>
 </div>
 <a id="a27ca1d3572101b8f8a20d7ea4a0ec928"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a27ca1d3572101b8f8a20d7ea4a0ec928">&#9670;&nbsp;</a></span>joinOTAA() <span class="overload">[7/8]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a27ca1d3572101b8f8a20d7ea4a0ec928">&#9670;&nbsp;</a></span>joinOTAA() <span class="overload">[8/9]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1984,11 +2065,12 @@ Static Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000005">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
 
 </div>
 </div>
 <a id="a5d9ea4cf437b233d23b2440463fda6a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d9ea4cf437b233d23b2440463fda6a5">&#9670;&nbsp;</a></span>joinOTAA() <span class="overload">[8/8]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d9ea4cf437b233d23b2440463fda6a5">&#9670;&nbsp;</a></span>joinOTAA() <span class="overload">[9/9]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2026,6 +2108,54 @@ Static Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000004">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
+
+</div>
+</div>
+<a id="a420cf8fb6a886b0e9b950797b1146bba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a420cf8fb6a886b0e9b950797b1146bba">&#9670;&nbsp;</a></span>joinOTAAAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool STM32LoRaWAN::joinOTAAAsync </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Do an asynchronous OTAA join using previously configured AppEui, AppKey and optionally DevEui. This can be used in place of <a class="el" href="classSTM32LoRaWAN.html#a36f73d685e3a41c862dfbe82e34f7672">joinOTAA()</a> when you do not want blocking behavior.</p>
+<p>This initiates a single join attempt (one JoinReq message). After both receive windows are complete, <code><a class="el" href="classSTM32LoRaWAN.html#ab3335b40c9a640200c4e3c345859ac80">busy()</a></code> will become false and the sketch can call <code><a class="el" href="classSTM32LoRaWAN.html#a5b953d8373ef95547e5f933cf6563a45">connected()</a></code> to see if the join attempt was successful. If not, it is up to the sketch to decide on retries.</p>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000017">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
+
+</div>
+</div>
+<a id="a44d6abeff4068edf16a0f8d6f98e544f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44d6abeff4068edf16a0f8d6f98e544f">&#9670;&nbsp;</a></span>lastAck()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t STM32LoRaWAN::lastAck </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns true when the most recently transmitted packet has received a confirmation from the network (if requested). Directly after transmitting any packet, this will return false and it will become true when the ack is received (which is, at the latest, when <a class="el" href="classSTM32LoRaWAN.html#ab3335b40c9a640200c4e3c345859ac80">busy()</a> becomes false again).</p>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000020">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
 
 </div>
 </div>
@@ -2153,6 +2283,31 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a80f4126e5c863ec1b11f66bd270ec6fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80f4126e5c863ec1b11f66bd270ec6fd">&#9670;&nbsp;</a></span>MacProcessNotify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void STM32LoRaWAN::MacProcessNotify </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a2c207de2ede561d57ef26af61991cffa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2c207de2ede561d57ef26af61991cffa">&#9670;&nbsp;</a></span>maintain()</h2>
 
@@ -2187,7 +2342,7 @@ Static Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Call <a class="el" href="classSTM32LoRaWAN.html#a2c207de2ede561d57ef26af61991cffa">maintain()</a> to process any background work for as long as the stack is busy (i.e. until <a class="el" href="classSTM32LoRaWAN.html#ab3335b40c9a640200c4e3c345859ac80">busy()</a> returns false).</p>
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000001">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000021">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
 
 </div>
 </div>
@@ -2364,6 +2519,40 @@ Static Protected Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int8_t *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5f59597389f5b7912f00e71c9bbcfec3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f59597389f5b7912f00e71c9bbcfec3">&#9670;&nbsp;</a></span>mibGetPtr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool STM32LoRaWAN::mibGetPtr </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mib_t&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void **&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
@@ -2676,6 +2865,40 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a3b28a3bc4423bbf5f93cf37f58bfeb4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b28a3bc4423bbf5f93cf37f58bfeb4a">&#9670;&nbsp;</a></span>mibSetPtr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool STM32LoRaWAN::mibSetPtr </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Mib_t&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a82559627e5b7532affd0e0788381867d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a82559627e5b7532affd0e0788381867d">&#9670;&nbsp;</a></span>mibSetRxChannelParams()</h2>
 
@@ -2835,7 +3058,36 @@ Static Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Dummy for MKRWAN compatibility. Exact purpose on MKRWAN is unclear, see <a href="https://github.com/arduino-libraries/MKRWAN/issues/25">https://github.com/arduino-libraries/MKRWAN/issues/25</a> </p><dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000032">MKRWAN API difference:</a></b></dt><dd>Dummy implementation in this library </dd></dl>
+<p>Dummy for MKRWAN compatibility. Exact purpose on MKRWAN is unclear, see <a href="https://github.com/arduino-libraries/MKRWAN/issues/25">https://github.com/arduino-libraries/MKRWAN/issues/25</a> </p><dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000024">MKRWAN API difference:</a></b></dt><dd>Dummy implementation in this library </dd></dl>
+
+</div>
+</div>
+<a id="a14df7748a2df407809fa2862da7194be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14df7748a2df407809fa2862da7194be">&#9670;&nbsp;</a></span>modifyChannelEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool STM32LoRaWAN::modifyChannelEnabled </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000014">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
 
 </div>
 </div>
@@ -2993,7 +3245,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000018">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no remote module to poll </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000035">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no remote module to poll </dd></dl>
 
 </div>
 </div>
@@ -3035,6 +3287,7 @@ Static Protected Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">mode</td><td>This parameter is ignored, the mode is automatically determined based on the selected power. </td></tr>
+    <tr><td class="paramname">index</td><td>See <a class="el" href="classSTM32LoRaWAN.html#ad3820664ad2ad9e0cfff299eab1ad786">power(uint8_t)</a> for details. </td></tr>
   </table>
   </dd>
 </dl>
@@ -3091,7 +3344,8 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 <p>Note that only even values are supported, but an uneven value will be rounded down automatically.</p>
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000002">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
+<p>The available options depend on the region (see the TX_POWER constants in LoRaMacInterfaces.h), but down to -10 dB should be supported by all regions (but most regions support additional values, down to -28 dB for some regions).</p>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000012">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
 
 </div>
 </div>
@@ -3181,7 +3435,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000017">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no remote module to restart </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000034">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no remote module to restart </dd></dl>
 
 </div>
 </div>
@@ -3216,6 +3470,9 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Send a packet asynchronously by passing a buffer. This can be used instead of <a class="el" href="classSTM32LoRaWAN.html#a53de6fa3a4971cde2ff3da8331b877dc">beginPacket()</a> / <a class="el" href="classSTM32LoRaWAN.html#a6bf5661d2b38c2f12871d7c28f0658fd">write()</a> / <a class="el" href="classSTM32LoRaWAN.html#a816dd9c8b223bda9380971c5a1dab377">endPacket()</a>, when you prefer building the data to send in an external buffer and do not want to skip one buffer copy.</p>
+<p>The return value only reflects whether the packet could successfully queued, to see if a confirmed packet was actually confirmed by the network, call <a class="el" href="classSTM32LoRaWAN.html#a44d6abeff4068edf16a0f8d6f98e544f">lastAck()</a>.</p>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000019">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
 
 </div>
 </div>
@@ -3233,6 +3490,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000046">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: seems to be an internal method in MKRWAN (use enableChannel/disableChannel instead) </dd></dl>
 
 </div>
 </div>
@@ -3251,6 +3509,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000045">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: seems to be an internal method in MKRWAN (use enableChannel/disableChannel instead) </dd></dl>
 
 </div>
 </div>
@@ -3472,7 +3731,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000013">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no serial link to configure </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000030">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no serial link to configure </dd></dl>
 
 </div>
 </div>
@@ -3491,7 +3750,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000008">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: confirmed uplinked better handled through <a class="el" href="classSTM32LoRaWAN.html#a816dd9c8b223bda9380971c5a1dab377">endPacket()</a> </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000025">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: confirmed uplinked better handled through <a class="el" href="classSTM32LoRaWAN.html#a816dd9c8b223bda9380971c5a1dab377">endPacket()</a> </dd></dl>
 
 </div>
 </div>
@@ -3666,7 +3925,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000006">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000015">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library </dd></dl>
 
 </div>
 </div>
@@ -3685,7 +3944,38 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000004">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000016">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library </dd></dl>
+
+</div>
+</div>
+<a id="aefa957b4339b2da06b292f917ddfed31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefa957b4339b2da06b292f917ddfed31">&#9670;&nbsp;</a></span>setMaintainNeededCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void STM32LoRaWAN::setMaintainNeededCallback </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void(void)&gt;&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Registers a callback that is called whenever there is some work to do and the <a class="el" href="classSTM32LoRaWAN.html#a2c207de2ede561d57ef26af61991cffa">maintain()</a> function must be called soon.</p>
+<dl class="section warning"><dt>Warning</dt><dd>This callback is called from an interrupt handler, so it should not do any work and definitely <em>not</em> call <code><a class="el" href="classSTM32LoRaWAN.html#a2c207de2ede561d57ef26af61991cffa">maintain()</a></code>, but just set a flag, enable a task, or something similarly short, and make sure to do that in a interrupt-safe manner.</dd></dl>
+<p>When using this callback, it is not needed to call the <code><a class="el" href="classSTM32LoRaWAN.html#a2c207de2ede561d57ef26af61991cffa">maintain()</a></code> method unless this callback is called, allowing applications to be more efficient, or use sleeping (but care should be taken to prevent race conditions).</p>
+<p>Only one callback can be active at the same time, so any previously configured callback is replaced by the new one passed.</p>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000022">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
 
 </div>
 </div>
@@ -3865,7 +4155,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000015">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: test method only </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000032">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: test method only </dd></dl>
 
 </div>
 </div>
@@ -3884,7 +4174,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000019">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no remote module to sleep </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000036">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no remote module to sleep </dd></dl>
 
 </div>
 </div>
@@ -4094,7 +4384,7 @@ Static Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Dummy for MKRWAN compatibility. On MKRWAN this returned the module firmware version, but this does not apply here. </p><dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000031">MKRWAN API difference:</a></b></dt><dd>Dummy implementation in this library </dd></dl>
+<p>Dummy for MKRWAN compatibility. On MKRWAN this returned the module firmware version, but this does not apply here. </p><dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000023">MKRWAN API difference:</a></b></dt><dd>Dummy implementation in this library </dd></dl>
 
 </div>
 </div>
@@ -4189,6 +4479,72 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a2a1e4648be8f45af29b33b4fe2c0c8df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a1e4648be8f45af29b33b4fe2c0c8df">&#9670;&nbsp;</a></span>DEFAULT_JOIN_TIMEOUT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uint32_t STM32LoRaWAN::DEFAULT_JOIN_TIMEOUT = 60000</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a35a745b85482d2373206f1d45c86ba3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35a745b85482d2373206f1d45c86ba3a">&#9670;&nbsp;</a></span>fcnt_down</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t STM32LoRaWAN::fcnt_down = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac96049b0c2393f846cfa650e79b7b3e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac96049b0c2393f846cfa650e79b7b3e7">&#9670;&nbsp;</a></span>fcnt_up</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t STM32LoRaWAN::fcnt_up = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a6974eb61fff706231a7c9f13d95b1fda"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6974eb61fff706231a7c9f13d95b1fda">&#9670;&nbsp;</a></span>instance</h2>
 
@@ -4205,6 +4561,28 @@ template&lt;typename T &gt; </div>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a490ebe9741d79b68d81f9ea515570cb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a490ebe9741d79b68d81f9ea515570cb1">&#9670;&nbsp;</a></span>last_tx_acked</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool STM32LoRaWAN::last_tx_acked = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -4231,12 +4609,11 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">      </div>
 <div class="line">      .GetBatteryLevel = <span class="keyword">nullptr</span>,</div>
 <div class="line">      .GetTemperatureLevel = <span class="keyword">nullptr</span>,</div>
-<div class="line">      .GetUniqueId = <span class="keyword">nullptr</span>,</div>
+<div class="line">      .GetUniqueId = <span class="keyword">nullptr</span>, </div>
 <div class="line">      .NvmDataChange = <span class="keyword">nullptr</span>,</div>
-<div class="line">      .MacProcessNotify = <span class="keyword">nullptr</span>,</div>
+<div class="line">      .MacProcessNotify = <a class="code" href="classSTM32LoRaWAN.html#a80f4126e5c863ec1b11f66bd270ec6fd">MacProcessNotify</a>,</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
 </div>
@@ -4269,8 +4646,8 @@ template&lt;typename T &gt; </div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a68b5f00129f93640dfa39fdcb4f84a30"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68b5f00129f93640dfa39fdcb4f84a30">&#9670;&nbsp;</a></span>nwkKeySet</h2>
+<a id="a567065f79a2195207e806a08abd01e18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a567065f79a2195207e806a08abd01e18">&#9670;&nbsp;</a></span>mac_process_pending</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -4279,7 +4656,51 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool STM32LoRaWAN::nwkKeySet = false</td>
+          <td class="memname">bool STM32LoRaWAN::mac_process_pending = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad08ee261884f5852a5b3f6f6a2ee5292"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad08ee261884f5852a5b3f6f6a2ee5292">&#9670;&nbsp;</a></span>maintain_needed_callback</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt;void(void)&gt; STM32LoRaWAN::maintain_needed_callback</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a29e3e04449873af7a4d82ee1f0c84ba9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29e3e04449873af7a4d82ee1f0c84ba9">&#9670;&nbsp;</a></span>nwk_key_set</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool STM32LoRaWAN::nwk_key_set = false</td>
         </tr>
       </table>
   </td>
@@ -4453,10 +4874,11 @@ template&lt;typename T &gt; </div>
 <li>src/<a class="el" href="STM32LoRaWAN_8cpp.html">STM32LoRaWAN.cpp</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassSTM32LoRaWAN_html_a6dce90cc8ee17de4a48c4ec5365fcad9"><div class="ttname"><a href="classSTM32LoRaWAN.html#a6dce90cc8ee17de4a48c4ec5365fcad9">STM32LoRaWAN::MacMlmeIndication</a></div><div class="ttdeci">static void MacMlmeIndication(MlmeIndication_t *MlmeIndication, LoRaMacRxStatus_t *RxStatus)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1125</div></div>
-<div class="ttc" id="aclassSTM32LoRaWAN_html_a7f4eb77aaaae63ef543cc2dcda5314df"><div class="ttname"><a href="classSTM32LoRaWAN.html#a7f4eb77aaaae63ef543cc2dcda5314df">STM32LoRaWAN::MacMcpsConfirm</a></div><div class="ttdeci">static void MacMcpsConfirm(McpsConfirm_t *McpsConfirm)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1088</div></div>
-<div class="ttc" id="aclassSTM32LoRaWAN_html_a38f3b2184022481810daeeb731d332c3"><div class="ttname"><a href="classSTM32LoRaWAN.html#a38f3b2184022481810daeeb731d332c3">STM32LoRaWAN::MacMcpsIndication</a></div><div class="ttdeci">static void MacMcpsIndication(McpsIndication_t *McpsIndication, LoRaMacRxStatus_t *RxStatus)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1102</div></div>
-<div class="ttc" id="aclassSTM32LoRaWAN_html_adb22008cc147d1f94bceba9ca5676bcf"><div class="ttname"><a href="classSTM32LoRaWAN.html#adb22008cc147d1f94bceba9ca5676bcf">STM32LoRaWAN::MacMlmeConfirm</a></div><div class="ttdeci">static void MacMlmeConfirm(MlmeConfirm_t *MlmeConfirm)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1117</div></div>
+<div class="ttc" id="aclassSTM32LoRaWAN_html_a6dce90cc8ee17de4a48c4ec5365fcad9"><div class="ttname"><a href="classSTM32LoRaWAN.html#a6dce90cc8ee17de4a48c4ec5365fcad9">STM32LoRaWAN::MacMlmeIndication</a></div><div class="ttdeci">static void MacMlmeIndication(MlmeIndication_t *MlmeIndication, LoRaMacRxStatus_t *RxStatus)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1275</div></div>
+<div class="ttc" id="aclassSTM32LoRaWAN_html_a7f4eb77aaaae63ef543cc2dcda5314df"><div class="ttname"><a href="classSTM32LoRaWAN.html#a7f4eb77aaaae63ef543cc2dcda5314df">STM32LoRaWAN::MacMcpsConfirm</a></div><div class="ttdeci">static void MacMcpsConfirm(McpsConfirm_t *McpsConfirm)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1234</div></div>
+<div class="ttc" id="aclassSTM32LoRaWAN_html_a80f4126e5c863ec1b11f66bd270ec6fd"><div class="ttname"><a href="classSTM32LoRaWAN.html#a80f4126e5c863ec1b11f66bd270ec6fd">STM32LoRaWAN::MacProcessNotify</a></div><div class="ttdeci">static void MacProcessNotify()</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:104</div></div>
+<div class="ttc" id="aclassSTM32LoRaWAN_html_a38f3b2184022481810daeeb731d332c3"><div class="ttname"><a href="classSTM32LoRaWAN.html#a38f3b2184022481810daeeb731d332c3">STM32LoRaWAN::MacMcpsIndication</a></div><div class="ttdeci">static void MacMcpsIndication(McpsIndication_t *McpsIndication, LoRaMacRxStatus_t *RxStatus)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1250</div></div>
+<div class="ttc" id="aclassSTM32LoRaWAN_html_adb22008cc147d1f94bceba9ca5676bcf"><div class="ttname"><a href="classSTM32LoRaWAN.html#adb22008cc147d1f94bceba9ca5676bcf">STM32LoRaWAN::MacMlmeConfirm</a></div><div class="ttdeci">static void MacMlmeConfirm(MlmeConfirm_t *MlmeConfirm)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1267</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

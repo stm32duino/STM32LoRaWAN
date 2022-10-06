@@ -1,0 +1,101 @@
+This library provides support for Lo\+Ra\+W\+AN communication using the S\+T\+M32\+W\+L55 microcontroller (with embedded Lo\+Ra radio) inside the Arduino develop environment (together with the \href{https://github.com/stm32duino/Arduino_Core_STM32}{\texttt{ stm32duino core}}).
+
+This library offers an A\+PI that is highly similar to the A\+PI offered by the \href{https://www.arduino.cc/reference/en/libraries/mkrwan/}{\texttt{ Arduino M\+K\+R\+W\+AN library}} (including undocumented methods) so any sketches written for either library should usually work on the other too (but note below for some caveats).
+
+In the Arduino I\+DE, the supported N\+U\+C\+L\+E\+O-\/\+W\+L55\+J\+C1 board can be configured in the Tools menu by selecting \char`\"{}\+Nucleo-\/64\char`\"{} under \char`\"{}\+Board\char`\"{}, and then \char`\"{}\+Nucleo W\+L55\+J\+C\char`\"{} under \char`\"{}\+Board part number\char`\"{}. You likely also want to enable \char`\"{}\+Core logs\char`\"{} under \char`\"{}\+Debug symbols and core logs\char`\"{} (see more below).
+
+The main part of this documentation can be found in the \mbox{\hyperlink{classSTM32LoRaWAN}{S\+T\+M32\+Lo\+Ra\+W\+AN}} class documentation.\hypertarget{index_autotoc_md0}{}\doxysection{Supported features}\label{index_autotoc_md0}
+
+\begin{DoxyItemize}
+\item Works with the N\+U\+C\+L\+E\+O-\/\+W\+L55\+J\+C1 board (other W\+L55-\/based boards are probably easy to support, but might need some changes).
+\item Lo\+Ra\+W\+AN 1.\+0.\+3 with random nonces
+\item O\+T\+AA and A\+BP joining (but framecounters are not saved for A\+BP)
+\item Class A, with confirmed and unconfirmed uplink and downlink. Port and datarate can be set for uplinks.
+\item Various radio parameters configurable.
+\item Automatic Data Rate (A\+DR) and other Mac commands as specified by Lo\+Ra\+W\+AN.
+\end{DoxyItemize}
+
+Not supported\+:
+\begin{DoxyItemize}
+\item Storing data in non-\/volatile storage (e.\+g. framecounters for A\+BP, or nonce for Lo\+Ra\+W\+AN 1.\+0.\+4 incremental O\+T\+AA nonces).
+\item Class B and C (the underlying stack has support for this, but this is not enabled or tested).
+\item Hardware A\+ES encryption.
+\item Automatic sleeping (can be implemented in the sketch).
+\end{DoxyItemize}\hypertarget{index_autotoc_md1}{}\doxysection{Library structure}\label{index_autotoc_md1}
+The \mbox{\hyperlink{classSTM32LoRaWAN}{S\+T\+M32\+Lo\+Ra\+W\+AN}} class is the main entrypoint for this library. Your sketch must create one instance of this class (in the examples named {\ttfamily modem}).
+
+\begin{DoxyNote}{Note}
+Creating multiple instances is technically possible, but you can only call begin() in one of them.
+\end{DoxyNote}
+To initialize the library, use the {\ttfamily \mbox{\hyperlink{classSTM32LoRaWAN_acb97fcbe514f6b69319d105b48e54223}{S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::begin()}}} method, then use the \mbox{\hyperlink{classSTM32LoRaWAN_joinABP}{join\+A\+BP}} or \mbox{\hyperlink{classSTM32LoRaWAN_joinOTAA}{join\+O\+T\+AA}} methods to set up a session with the network.
+
+After that, packets can be sent using \mbox{\hyperlink{classSTM32LoRaWAN_sending}{begin\+Packet() and end\+Packet()}}, using the \mbox{\hyperlink{classSTM32LoRaWAN_print}{Print methods}} to write data into the packet.
+
+After each packet transmitted, there is an opportunity for the network to send a reply packet. To see if any data was received, use the \mbox{\hyperlink{classSTM32LoRaWAN_reception}{reception methods}} and the actual data can be read using the \mbox{\hyperlink{classSTM32LoRaWAN_stream}{Stream methods}} (e.\+g. {\ttfamily available()} and {\ttfamily read()}).\hypertarget{index_autotoc_md2}{}\doxysection{Core logging}\label{index_autotoc_md2}
+This library uses the S\+T\+M32\+Duino {\ttfamily core\+\_\+debug()} mechanism for logging to the default serial port. This mechanism is disabled by default, but can be enabled in the board options in the Arduino I\+DE (Tools -\/$>$ Debug Symbols and core logs").
+
+When enabled, the library prints informational messages and also error messages.\hypertarget{index_autotoc_md3}{}\doxysection{Error handling}\label{index_autotoc_md3}
+Most methods that change or do something return a {\ttfamily bool} value that indicates whether the operation was successful. Typically, if the {\ttfamily false} is returned, the operation was not executed at all, though it might have been done partially.
+
+Methods do not return more details about what went wrong exactly (i.\+e. no error codes), like the M\+K\+R\+W\+AN library. However, whenever a method returns false, there will also be an error message printed to the core log (e.\+g. serial when enabled, see above), so it is recommended to run with core logs enabled.\hypertarget{index_autotoc_md4}{}\doxysection{Examples}\label{index_autotoc_md4}
+How to use this library is probably easiest learned from the examples. The library currently supplies these two examples\+:
+
+
+\begin{DoxyItemize}
+\item Basic.\+ino has a very basic sketch that shows setting up the library, joining the network (using O\+T\+AA or A\+BP) and transmitting packets periodically. It also shows how to read downlink packets. To use this sketch, configure device credentials in the {\ttfamily join\+O\+T\+A\+A()} or {\ttfamily join\+A\+B\+P()} calls.
+\item Lora\+Send\+And\+Receive.\+ino is a similar sketch, but is a bit more interactive, so might be a good starting point. This sketch is taken (nearly) verbatim from the M\+K\+R\+W\+AN. Credentials are configured in the accompanying {\ttfamily arduino\+\_\+secrets.\+h} file.
+\item Simple\+Async is similar in structure as Basic.\+ino, but uses the asynchronous A\+PI instead of the regular blocking A\+PI. Because of this, it can do other work in parallel with the Lo\+Ra\+W\+AN operations, in this case the example blinks a L\+ED at the same time.
+\item Scheduled\+Async is a more complete asynchronous example where the control flow of the code no longer follows the Lo\+Ra\+W\+AN flow, but the main loop runs a (very, very simple) cooperative scheduler that can alternate between running different tasks whenever they need attention, and the Lo\+Ra\+W\+AN flow is handled by a simple state machine run inside that scheduler.
+\end{DoxyItemize}
+
+All examples default to the E\+U868 frequency plan, so if are in a different region, be sure to change the argument to \mbox{\hyperlink{classSTM32LoRaWAN_acb97fcbe514f6b69319d105b48e54223}{S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::begin()}} accordingly.\hypertarget{index_autotoc_md5}{}\doxysection{Duty cycle limits}\label{index_autotoc_md5}
+In most regions, local regulations limit the amount of airtime that a device can use. This is typically expressed in a percentage, for example 1\% duty cycle means that a device can be transmitting (in a given frequncye band) at most 1\% of the time.
+
+The default The Things Network frequency plan in E\+U868 for example has channels enabled in two different 1\% bands, making the total effective duty cycle of the available airtime 2\%.
+
+This library accounts for these duty cycle limits in 30 minute intervals, meaning that you can never transmit more than (in this example) 2\% × 30min = 36s in any given period of 30 minutes (sliding window). On startup, you get the full 30-\/minute budget, so you can do a big burst of packets, but if you do, the available airtime is reduced as soon as you initial budget is used up.
+
+Also note that The Things Network has an additional fair use policy that is more strict than the official regulations, but this is not enforced by this library.
+
+Rather than relying on the library\textquotesingle{}s duty cycle limits, it is usually a good idea to keep these limits in mind when deciding on the transmission frequency (and possibly adapt this frequency dynamically when the datarate is changed by A\+DR or manually, which changes the airtime of a single packet) to ensure you never cross these limits (especially since the library only enforces the official limits, not the T\+TN policy.\hypertarget{index_autotoc_md6}{}\doxysection{Differences with M\+K\+R\+W\+AN}\label{index_autotoc_md6}
+Where possible, the A\+PI offered by this library is identical to the M\+K\+R\+W\+AN library. In some cases, this library offers additional methods not present in M\+K\+R\+W\+AN.
+
+One big difference is that all normal methods in this library are blocking (in M\+K\+R\+W\+AN, joining and confirmed uplinks are blocking, but unconfirmed uplinks return immediately). For more advanced cases, non-\/blocking/asynchronous methods are available as well. See below for details.
+
+Additionally, some minor improvements were made to the A\+PI (more appropriate types, for example) that can hopefully be applied to the M\+K\+R\+W\+AN library as well.
+
+All differences with the M\+K\+R\+W\+AN A\+PI have been clearly marked in the reference documentation, and a list can be found on the \mbox{\hyperlink{extensions}{Differences to M\+K\+R\+W\+AN A\+PI}} page.\hypertarget{index_autotoc_md7}{}\doxysubsection{Blocking and asynchronous behavior}\label{index_autotoc_md7}
+There is big hardware difference between the M\+K\+R\+W\+AN and the S\+T\+M32\+WL\+: with M\+K\+R\+W\+AN, the Lo\+Ra\+W\+AN stack runs in a completely different module that can independently run background tasks such as handling reception, only needing to communicate the results to the main microcontroller using a U\+A\+RT.
+
+For this library, the Lo\+Ra\+W\+AN stack runs in the main microcontroller, so needs cooperation of the sketch to run these background tasks. The R\+TC (and its alarm interrupt handler) is used to handle timing critical things, but some tasks need to happen in the mainloop.
+
+In practice, when using the normal (non-\/async) methods, this is all handled automatically -\/ the normal methods simply block until the join or T\+X+\+RX is fully done, doing any work directly. When these methods return, the library is idle again and there is no need for mainloop work anymore.
+
+However, when the sketch wants to do other work while waiting for airtime or for the RX windows, it can use the async functions instead. These functions start some operation and then immediately return while the library is still busy (has future work to do). While the library is busy (some pending task, mostly waiting for RX windows or waiting for TX airtime), the sketch must regularly allow the library to perform some work. This is done by calling the {\ttfamily maintain()} method, which checks to see if there is some work to be done and does it.
+
+\begin{DoxyNote}{Note}
+All timing-\/critical work (mostly starting RX at the right moment) is done inside the interrupt handler, it should not be problematic when {\ttfamily maintain()} is called a couple (probably even up to a hundred) milliseconds after new work has become available, but in general it is good to just call it often, especially during long processing (if there is no work, it will return quickly).
+\end{DoxyNote}
+For even more advanced usecases, sketches can use \mbox{\hyperlink{classSTM32LoRaWAN_aefa957b4339b2da06b292f917ddfed31}{S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::set\+Maintain\+Needed\+Callback()}} to register a callback that is called whenever there is some background work to be done. This can be used to remove the need to call {\ttfamily maintain()} all the time (just make sure that {\ttfamily maintain()} is called from the main loop after the callback was called) and can even be used to implement sleeping between bits of work (see below).\hypertarget{index_autotoc_md8}{}\doxysection{Low power applications}\label{index_autotoc_md8}
+This library does not handle low-\/power and sleeping automatically, but has been designed to allow the sketch to implement this.
+
+In particular\+:
+\begin{DoxyItemize}
+\item Whenever the radio is not actively used, it is put into sleep mode, minimizing power usage from the radio module.
+\item When the library is idle (no operation in progress, {\ttfamily busy()} returning false) it requires no attention and should not generate any interrupts (until the sketch starts a new operation). The M\+CU can be put into a sleep mode at the sketch\textquotesingle{}s discretion.
+
+In this scenario, the R\+TC must ideally be kept running. It will not generate any interrupts, but will be used for timing duty cycle limits.
+\item When the library {\itshape is} running an operation, the microcontroller can also be put in sleep mode, provided that the R\+TC and radio modules are kept enabled and can wake up the M\+CU with their interrupts.
+
+To prevent race conditions (where a work-\/generating interrupt is triggered between the last call to {\ttfamily maintain()} and actually sleeping), some care will be needed. For example using \mbox{\hyperlink{classSTM32LoRaWAN_aefa957b4339b2da06b292f917ddfed31}{S\+T\+M32\+Lo\+Ra\+W\+A\+N\+::set\+Maintain\+Needed\+Callback()}} to set a flag when there is pending work, and when it is time for sleeping disable interrupts, check the flag and only if it is unset, actually sleep. This way, when more work is triggered (e.\+g. by the R\+TC I\+RQ) just before sleeping, that I\+RQ will be postponed and cause the M\+CU to wake up immediately after sleeping and the work can be handled.
+\end{DoxyItemize}
+
+Note that sleeping has not actually been tested during development of this library, so if you run into problems (or successfully implement any of this), please open a Github issue.\hypertarget{index_autotoc_md9}{}\doxysection{Used resources}\label{index_autotoc_md9}
+This library makes use of\+:
+
+
+\begin{DoxyItemize}
+\item The radio module, obviously. The library handles enabling the module and the associated S\+PI block, so nothing is needed in the sketch.
+\item The R\+TC for timing. This library currently completely configures the R\+TC and defines the interrupt handler, making it impossible to use the R\+TC for anything else. In the future, this library could be modified to co-\/exist with e.\+g. the S\+T\+M32\+R\+TC library or use a (low-\/power) timer instead of the R\+TC, but this is not possible right now.
+\item A number of G\+P\+IO pins that are connected to external RF circuitry on the board. This just uses the Arduino {\ttfamily digital\+Write()} functions. 
+\end{DoxyItemize}

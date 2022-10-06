@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>STM32LoRaWAN: Main Page</title>
+<title>STM32LoRaWAN: STM32LoRaWAN library</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -60,11 +60,99 @@ $(function() {
 </iframe>
 </div>
 
-<div class="header">
+<div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">STM32LoRaWAN Documentation</div>  </div>
+<div class="title"><a class="el" href="classSTM32LoRaWAN.html">STM32LoRaWAN</a> library </div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p>This library provides support for LoRaWAN communication using the STM32WL55 microcontroller (with embedded LoRa radio) inside the Arduino develop environment (together with the <a href="https://github.com/stm32duino/Arduino_Core_STM32">stm32duino core</a>).</p>
+<p>This library offers an API that is highly similar to the API offered by the <a href="https://www.arduino.cc/reference/en/libraries/mkrwan/">Arduino MKRWAN library</a> (including undocumented methods) so any sketches written for either library should usually work on the other too (but note below for some caveats).</p>
+<p>In the Arduino IDE, the supported NUCLEO-WL55JC1 board can be configured in the Tools menu by selecting "Nucleo-64" under "Board", and then "Nucleo WL55JC" under "Board part number". You likely also want to enable "Core logs" under "Debug symbols and core logs" (see more below).</p>
+<p>The main part of this documentation can be found in the <a class="el" href="classSTM32LoRaWAN.html">STM32LoRaWAN</a> class documentation.</p>
+<h1><a class="anchor" id="autotoc_md0"></a>
+Supported features</h1>
+<ul>
+<li>Works with the NUCLEO-WL55JC1 board (other WL55-based boards are probably easy to support, but might need some changes).</li>
+<li>LoRaWAN 1.0.3 with random nonces</li>
+<li>OTAA and ABP joining (but framecounters are not saved for ABP)</li>
+<li>Class A, with confirmed and unconfirmed uplink and downlink. Port and datarate can be set for uplinks.</li>
+<li>Various radio parameters configurable.</li>
+<li>Automatic Data Rate (ADR) and other Mac commands as specified by LoRaWAN.</li>
+</ul>
+<p>Not supported:</p><ul>
+<li>Storing data in non-volatile storage (e.g. framecounters for ABP, or nonce for LoRaWAN 1.0.4 incremental OTAA nonces).</li>
+<li>Class B and C (the underlying stack has support for this, but this is not enabled or tested).</li>
+<li>Hardware AES encryption.</li>
+<li>Automatic sleeping (can be implemented in the sketch).</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Library structure</h1>
+<p>The <a class="el" href="classSTM32LoRaWAN.html">STM32LoRaWAN</a> class is the main entrypoint for this library. Your sketch must create one instance of this class (in the examples named <code>modem</code>).</p>
+<dl class="section note"><dt>Note</dt><dd>Creating multiple instances is technically possible, but you can only call begin() in one of them.</dd></dl>
+<p>To initialize the library, use the <code><a class="el" href="classSTM32LoRaWAN.html#acb97fcbe514f6b69319d105b48e54223">STM32LoRaWAN::begin()</a></code> method, then use the <a class="el" href="classSTM32LoRaWAN.html#joinABP">joinABP</a> or <a class="el" href="classSTM32LoRaWAN.html#joinOTAA">joinOTAA</a> methods to set up a session with the network.</p>
+<p>After that, packets can be sent using <a class="el" href="classSTM32LoRaWAN.html#sending">beginPacket() and endPacket()</a>, using the <a class="el" href="classSTM32LoRaWAN.html#print">Print methods</a> to write data into the packet.</p>
+<p>After each packet transmitted, there is an opportunity for the network to send a reply packet. To see if any data was received, use the <a class="el" href="classSTM32LoRaWAN.html#reception">reception methods</a> and the actual data can be read using the <a class="el" href="classSTM32LoRaWAN.html#stream">Stream methods</a> (e.g. <code>available()</code> and <code>read()</code>).</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Core logging</h1>
+<p>This library uses the STM32Duino <code>core_debug()</code> mechanism for logging to the default serial port. This mechanism is disabled by default, but can be enabled in the board options in the Arduino IDE (Tools -&gt; Debug Symbols and core logs").</p>
+<p>When enabled, the library prints informational messages and also error messages.</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Error handling</h1>
+<p>Most methods that change or do something return a <code>bool</code> value that indicates whether the operation was successful. Typically, if the <code>false</code> is returned, the operation was not executed at all, though it might have been done partially.</p>
+<p>Methods do not return more details about what went wrong exactly (i.e. no error codes), like the MKRWAN library. However, whenever a method returns false, there will also be an error message printed to the core log (e.g. serial when enabled, see above), so it is recommended to run with core logs enabled.</p>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Examples</h1>
+<p>How to use this library is probably easiest learned from the examples. The library currently supplies these two examples:</p>
+<ul>
+<li>Basic.ino has a very basic sketch that shows setting up the library, joining the network (using OTAA or ABP) and transmitting packets periodically. It also shows how to read downlink packets. To use this sketch, configure device credentials in the <code>joinOTAA()</code> or <code>joinABP()</code> calls.</li>
+<li>LoraSendAndReceive.ino is a similar sketch, but is a bit more interactive, so might be a good starting point. This sketch is taken (nearly) verbatim from the MKRWAN. Credentials are configured in the accompanying <code>arduino_secrets.h</code> file.</li>
+<li>SimpleAsync is similar in structure as Basic.ino, but uses the asynchronous API instead of the regular blocking API. Because of this, it can do other work in parallel with the LoRaWAN operations, in this case the example blinks a LED at the same time.</li>
+<li>ScheduledAsync is a more complete asynchronous example where the control flow of the code no longer follows the LoRaWAN flow, but the main loop runs a (very, very simple) cooperative scheduler that can alternate between running different tasks whenever they need attention, and the LoRaWAN flow is handled by a simple state machine run inside that scheduler.</li>
+</ul>
+<p>All examples default to the EU868 frequency plan, so if are in a different region, be sure to change the argument to <a class="el" href="classSTM32LoRaWAN.html#acb97fcbe514f6b69319d105b48e54223">STM32LoRaWAN::begin()</a> accordingly.</p>
+<h1><a class="anchor" id="autotoc_md5"></a>
+Duty cycle limits</h1>
+<p>In most regions, local regulations limit the amount of airtime that a device can use. This is typically expressed in a percentage, for example 1% duty cycle means that a device can be transmitting (in a given frequncye band) at most 1% of the time.</p>
+<p>The default The Things Network frequency plan in EU868 for example has channels enabled in two different 1% bands, making the total effective duty cycle of the available airtime 2%.</p>
+<p>This library accounts for these duty cycle limits in 30 minute intervals, meaning that you can never transmit more than (in this example) 2% × 30min = 36s in any given period of 30 minutes (sliding window). On startup, you get the full 30-minute budget, so you can do a big burst of packets, but if you do, the available airtime is reduced as soon as you initial budget is used up.</p>
+<p>Also note that The Things Network has an additional fair use policy that is more strict than the official regulations, but this is not enforced by this library.</p>
+<p>Rather than relying on the library's duty cycle limits, it is usually a good idea to keep these limits in mind when deciding on the transmission frequency (and possibly adapt this frequency dynamically when the datarate is changed by ADR or manually, which changes the airtime of a single packet) to ensure you never cross these limits (especially since the library only enforces the official limits, not the TTN policy.</p>
+<h1><a class="anchor" id="autotoc_md6"></a>
+Differences with MKRWAN</h1>
+<p>Where possible, the API offered by this library is identical to the MKRWAN library. In some cases, this library offers additional methods not present in MKRWAN.</p>
+<p>One big difference is that all normal methods in this library are blocking (in MKRWAN, joining and confirmed uplinks are blocking, but unconfirmed uplinks return immediately). For more advanced cases, non-blocking/asynchronous methods are available as well. See below for details.</p>
+<p>Additionally, some minor improvements were made to the API (more appropriate types, for example) that can hopefully be applied to the MKRWAN library as well.</p>
+<p>All differences with the MKRWAN API have been clearly marked in the reference documentation, and a list can be found on the <a class="el" href="extensions.html">Differences to MKRWAN API</a> page.</p>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Blocking and asynchronous behavior</h2>
+<p>There is big hardware difference between the MKRWAN and the STM32WL: with MKRWAN, the LoRaWAN stack runs in a completely different module that can independently run background tasks such as handling reception, only needing to communicate the results to the main microcontroller using a UART.</p>
+<p>For this library, the LoRaWAN stack runs in the main microcontroller, so needs cooperation of the sketch to run these background tasks. The RTC (and its alarm interrupt handler) is used to handle timing critical things, but some tasks need to happen in the mainloop.</p>
+<p>In practice, when using the normal (non-async) methods, this is all handled automatically - the normal methods simply block until the join or TX+RX is fully done, doing any work directly. When these methods return, the library is idle again and there is no need for mainloop work anymore.</p>
+<p>However, when the sketch wants to do other work while waiting for airtime or for the RX windows, it can use the async functions instead. These functions start some operation and then immediately return while the library is still busy (has future work to do). While the library is busy (some pending task, mostly waiting for RX windows or waiting for TX airtime), the sketch must regularly allow the library to perform some work. This is done by calling the <code>maintain()</code> method, which checks to see if there is some work to be done and does it.</p>
+<dl class="section note"><dt>Note</dt><dd>All timing-critical work (mostly starting RX at the right moment) is done inside the interrupt handler, it should not be problematic when <code>maintain()</code> is called a couple (probably even up to a hundred) milliseconds after new work has become available, but in general it is good to just call it often, especially during long processing (if there is no work, it will return quickly).</dd></dl>
+<p>For even more advanced usecases, sketches can use <a class="el" href="classSTM32LoRaWAN.html#aefa957b4339b2da06b292f917ddfed31">STM32LoRaWAN::setMaintainNeededCallback()</a> to register a callback that is called whenever there is some background work to be done. This can be used to remove the need to call <code>maintain()</code> all the time (just make sure that <code>maintain()</code> is called from the main loop after the callback was called) and can even be used to implement sleeping between bits of work (see below).</p>
+<h1><a class="anchor" id="autotoc_md8"></a>
+Low power applications</h1>
+<p>This library does not handle low-power and sleeping automatically, but has been designed to allow the sketch to implement this.</p>
+<p>In particular:</p><ul>
+<li>Whenever the radio is not actively used, it is put into sleep mode, minimizing power usage from the radio module.</li>
+<li><p class="startli">When the library is idle (no operation in progress, <code>busy()</code> returning false) it requires no attention and should not generate any interrupts (until the sketch starts a new operation). The MCU can be put into a sleep mode at the sketch's discretion.</p>
+<p class="startli">In this scenario, the RTC must ideally be kept running. It will not generate any interrupts, but will be used for timing duty cycle limits.</p>
+</li>
+<li><p class="startli">When the library <em>is</em> running an operation, the microcontroller can also be put in sleep mode, provided that the RTC and radio modules are kept enabled and can wake up the MCU with their interrupts.</p>
+<p class="startli">To prevent race conditions (where a work-generating interrupt is triggered between the last call to <code>maintain()</code> and actually sleeping), some care will be needed. For example using <a class="el" href="classSTM32LoRaWAN.html#aefa957b4339b2da06b292f917ddfed31">STM32LoRaWAN::setMaintainNeededCallback()</a> to set a flag when there is pending work, and when it is time for sleeping disable interrupts, check the flag and only if it is unset, actually sleep. This way, when more work is triggered (e.g. by the RTC IRQ) just before sleeping, that IRQ will be postponed and cause the MCU to wake up immediately after sleeping and the work can be handled.</p>
+</li>
+</ul>
+<p>Note that sleeping has not actually been tested during development of this library, so if you run into problems (or successfully implement any of this), please open a Github issue.</p>
+<h1><a class="anchor" id="autotoc_md9"></a>
+Used resources</h1>
+<p>This library makes use of:</p>
+<ul>
+<li>The radio module, obviously. The library handles enabling the module and the associated SPI block, so nothing is needed in the sketch.</li>
+<li>The RTC for timing. This library currently completely configures the RTC and defines the interrupt handler, making it impossible to use the RTC for anything else. In the future, this library could be modified to co-exist with e.g. the STM32RTC library or use a (low-power) timer instead of the RTC, but this is not possible right now.</li>
+<li>A number of GPIO pins that are connected to external RF circuitry on the board. This just uses the Arduino <code>digitalWrite()</code> functions. </li>
+</ul>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
