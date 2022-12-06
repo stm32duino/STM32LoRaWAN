@@ -8,7 +8,7 @@ var searchData=
   ['getchannelmask_188',['getChannelMask',['../classSTM32LoRaWAN.html#a87dedb0a627b82dcf7bba62edbea3713',1,'STM32LoRaWAN']]],
   ['getchannelmasksize_189',['getChannelMaskSize',['../classSTM32LoRaWAN.html#a067096f42efcee590a3b0c807a65e07f',1,'STM32LoRaWAN']]],
   ['getdatarate_190',['getDataRate',['../classSTM32LoRaWAN.html#a5d7d806e8ff17f8ebf12cf08af23283b',1,'STM32LoRaWAN']]],
-  ['getdevaddr_191',['getDevAddr',['../classSTM32LoRaWAN.html#afa279260d3bc2fa4a100dabef7d20d77',1,'STM32LoRaWAN::getDevAddr(String *value)'],['../classSTM32LoRaWAN.html#a1b7bb44520e4d60e39e30334f227b0f3',1,'STM32LoRaWAN::getDevAddr(uint32_t *value)'],['../classSTM32LoRaWAN.html#a55fae409a50fa604373b515fc0a25421',1,'STM32LoRaWAN::getDevAddr()']]],
+  ['getdevaddr_191',['getDevAddr',['../classSTM32LoRaWAN.html#a55fae409a50fa604373b515fc0a25421',1,'STM32LoRaWAN::getDevAddr()'],['../classSTM32LoRaWAN.html#a1b7bb44520e4d60e39e30334f227b0f3',1,'STM32LoRaWAN::getDevAddr(uint32_t *value)'],['../classSTM32LoRaWAN.html#afa279260d3bc2fa4a100dabef7d20d77',1,'STM32LoRaWAN::getDevAddr(String *value)']]],
   ['getdeveui_192',['getDevEui',['../classSTM32LoRaWAN.html#a204ba546f6e5f6ad9b73c621a9feec8b',1,'STM32LoRaWAN::getDevEui(String *value)'],['../classSTM32LoRaWAN.html#aa0a1e2a39c775b9898a26afa73dd9637',1,'STM32LoRaWAN::getDevEui(uint64_t *value)']]],
   ['getdownlinkport_193',['getDownlinkPort',['../classSTM32LoRaWAN.html#aeaa78654443adbfdcad9b3ca268f256b',1,'STM32LoRaWAN']]],
   ['getfcd_194',['getFCD',['../classSTM32LoRaWAN.html#a840faf34c5bcef2a58420095dc78d691',1,'STM32LoRaWAN']]],
