@@ -1110,7 +1110,7 @@ bool STM32LoRaWAN::toHex(String *dest, const uint8_t *src, size_t src_len) {
 bool STM32LoRaWAN::failure(const char* fmt, ...) {
   va_list ap;
   va_start(ap, fmt);
-  vcore_debug(fmt, ap);
+  core_debug(fmt, ap);
   va_end(ap);
   return false;
 }
