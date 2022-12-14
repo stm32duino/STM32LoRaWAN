@@ -13,9 +13,8 @@ library should usually work on the other too (but note below for some
 caveats).
 
 ## Documentation
-Overview and reference documentation is embedded in the source code.
-Fully generated documentation will be published later, for now you can
-generate it yourself using the [Doxygen](https://doxygen.nl/) tool.
+Overview and reference documentation is embedded in the source code and
+can be [viewed online on Github](https://stm32duino.github.io/STM32LoRaWAN/).
 
 To generate the documentation yourself, simply run the `doxygen` command
 (no options needed) in the root of this repository. This will produce
