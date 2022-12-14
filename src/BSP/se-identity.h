@@ -102,17 +102,13 @@
  */
 #define STATIC_DEVICE_EUI                                  0
 
-/*!
- * end-device IEEE EUI (big endian)
- */
-#define LORAWAN_DEVICE_EUI                                 { }
+// This leaves all join ids (not keys, like the field name suggests)
+// empty, the actual id values will be configured at runtime
+#define SOFT_SE_ID_LIST .SeNvmDevJoinKey = {}
 
-/*!
- * App/Join server IEEE EUI (big endian)
- */
-#define LORAWAN_JOIN_EUI                                   { }
-
-#if (USE_LRWAN_1_1_X_CRYPTO == 1)
+// This defines slots for all needed keys, but leaves their value empty
+// to be configured at runtime.
+#if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01010100 ))
 #define SESSION_KEYS_LIST                                                                                           \
         {                                                                                                           \
             /*!                                                                                                     \
@@ -160,8 +156,15 @@
              */                                                                                                     \
             .KeyID    = APP_S_KEY,                                                                                  \
             .KeyValue = { },                                                                                        \
+        },                                                                                                          \
+        {                                                                                                           \
+            /*!                                                                                                     \
+             * Datablock MIC key                                                                                    \
+             */                                                                                                     \
+            .KeyID    = DATABLOCK_INT_KEY,                                                                          \
+            .KeyValue = { },                                                                                        \
         },
-#else /* USE_LRWAN_1_1_X_CRYPTO == 0 */
+#else /* ( LORAMAC_VERSION == 0x01010100 ) */
 #define SESSION_KEYS_LIST                                                                                           \
         {                                                                                                           \
             /*!                                                                                                     \
@@ -176,8 +179,15 @@
              */                                                                                                     \
             .KeyID    = APP_S_KEY,                                                                                  \
             .KeyValue = { },                                                                                        \
+        },                                                                                                          \
+        {                                                                                                           \
+            /*!                                                                                                     \
+             * Datablock MIC key                                                                                    \
+             */                                                                                                     \
+            .KeyID    = DATABLOCK_INT_KEY,                                                                          \
+            .KeyValue = { },                                                                                        \
         },
-#endif /* USE_LRWAN_1_1_X_CRYPTO */
+#endif /* ( LORAMAC_VERSION == 0x01010100 ) */
 
 #if (LORAMAC_MAX_MC_CTX == 1)
 #define SESSION_MC_KEYS_LIST                                                                                        \

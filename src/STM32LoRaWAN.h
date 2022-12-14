@@ -377,27 +377,27 @@ class STM32LoRaWAN : public Stream {
     bool setAppSKey(String value) { return setAppSKey(value.c_str()); }
     bool setNwkSKey(const char *value)
     {
-#if ( USE_LRWAN_1_1_X_CRYPTO == 1 )
+#if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01010100 ))
       // When compiled for 1.1 crypto, three different keys are used.
       // When the sketch only supplies a single key, just set all
       // three keys to the same value.
       return mibSetHex("NwkSEncKey", MIB_NWK_S_ENC_KEY, value)
              && mibSetHex("FNwkSIntKey", MIB_F_NWK_S_INT_KEY, value)
              && mibSetHex("SNwkSIntKey", MIB_S_NWK_S_INT_KEY, value);
-#else /* USE_LRWAN_1_1_X_CRYPTO == 0 */
+#else /* ( LORAMAC_VERSION == 0x01010100 ) */
       return mibSetHex("NwkSKey", MIB_NWK_S_KEY, value);
-#endif /* USE_LRWAN_1_1_X_CRYPTO */
+#endif /* ( LORAMAC_VERSION == 0x01010100 ) */
     }
     bool setNwkSKey(String value) { return setNwkSKey(value.c_str()); }
 
-#if ( USE_LRWAN_1_1_X_CRYPTO == 1 )
+#if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01010100 ))
     bool setNwkSEncKey(const char *value) { return mibSetHex("NwkSEncKey", MIB_NWK_S_ENC_KEY, value); }
     bool setNwkSEncKey(String value) { return setNwkSEncKey(value.c_str()); }
     bool setFNwkSIntKey(const char *value) { return mibSetHex("FNwkSIntKey", MIB_F_NWK_S_INT_KEY, value); }
     bool setFNwkSIntKey(String value) { return setFNwkSIntKey(value.c_str()); }
     bool setSNwkSIntKey(const char *value) { return mibSetHex("SNwkSIntKey", MIB_S_NWK_S_INT_KEY, value); }
     bool setSNwkSIntKey(String value) { return setSNwkSIntKey(value.c_str()); }
-#endif /* USE_LRWAN_1_1_X_CRYPTO */
+#endif /* ( LORAMAC_VERSION == 0x01010100 ) */
     /// @}
 
     /**
@@ -957,6 +957,7 @@ class STM32LoRaWAN : public Stream {
       .GetBatteryLevel = nullptr,
       .GetTemperatureLevel = nullptr,
       .GetUniqueId = nullptr, // Not needed, we just explicitly set the deveui in begin()
+      .GetDevAddress = nullptr, // Not needed, user explicitly configures devaddr
       .NvmDataChange = nullptr,
       .MacProcessNotify = MacProcessNotify,
     };

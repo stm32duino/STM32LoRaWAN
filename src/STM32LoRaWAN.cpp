@@ -645,15 +645,15 @@ size_t STM32LoRaWAN::mibHexSize(const char *name, Mib_t type) {
 
     case MIB_APP_KEY:
     case MIB_NWK_KEY:
-    #if ( USE_LRWAN_1_1_X_CRYPTO == 1 )
+    #if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01010100 ))
     case MIB_J_S_INT_KEY:
     case MIB_J_S_ENC_KEY:
     case MIB_F_NWK_S_INT_KEY:
     case MIB_S_NWK_S_INT_KEY:
     case MIB_NWK_S_ENC_KEY:
-    #else /* USE_LRWAN_1_1_X_CRYPTO == 0 */
+    #else /* ( LORAMAC_VERSION == 0x01010100 ) */
     case MIB_NWK_S_KEY:
-    #endif /* USE_LRWAN_1_1_X_CRYPTO */
+    #endif /* ( LORAMAC_VERSION == 0x01010100 ) */
     case MIB_APP_S_KEY:
     case MIB_MC_KE_KEY:
     #if ( LORAMAC_MAX_MC_CTX > 0 )
@@ -710,15 +710,15 @@ bool STM32LoRaWAN::mibGetHex(const char* name, Mib_t type, String* value) {
       break;
     case MIB_APP_KEY: buf = mibReq.Param.AppKey; break;
     case MIB_NWK_KEY: buf = mibReq.Param.NwkKey; break;
-    #if ( USE_LRWAN_1_1_X_CRYPTO == 1 )
+    #if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01010100 ))
     case MIB_J_S_INT_KEY: buf = mibReq.Param.JSIntKey; break;
     case MIB_J_S_ENC_KEY: buf = mibReq.Param.JSEncKey; break;
     case MIB_F_NWK_S_INT_KEY: buf = mibReq.Param.FNwkSIntKey; break;
     case MIB_S_NWK_S_INT_KEY: buf = mibReq.Param.SNwkSIntKey; break;
     case MIB_NWK_S_ENC_KEY: buf = mibReq.Param.NwkSEncKey; break;
-    #else /* USE_LRWAN_1_1_X_CRYPTO == 0 */
+    #else /* ( LORAMAC_VERSION == 0x01010100 ) */
     case MIB_NWK_S_KEY: buf = mibReq.Param.NwkSKey; break;
-    #endif /* USE_LRWAN_1_1_X_CRYPTO */
+    #endif /* ( LORAMAC_VERSION == 0x01010100 ) */
     case MIB_APP_S_KEY: buf = mibReq.Param.AppSKey; break;
     case MIB_MC_KE_KEY: buf = mibReq.Param.McKEKey; break;
     #if ( LORAMAC_MAX_MC_CTX > 0 )
@@ -770,15 +770,15 @@ bool STM32LoRaWAN::mibSetHex(const char* name, Mib_t type, const char* value) {
     case MIB_DEV_ADDR: mibReq.Param.DevAddr = makeUint32(buf[0], buf[1], buf[2], buf[3]); break;
     case MIB_APP_KEY: mibReq.Param.AppKey = buf; break;
     case MIB_NWK_KEY: mibReq.Param.NwkKey = buf; break;
-    #if ( USE_LRWAN_1_1_X_CRYPTO == 1 )
+    #if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01010100 ))
     case MIB_J_S_INT_KEY: mibReq.Param.JSIntKey = buf; break;
     case MIB_J_S_ENC_KEY: mibReq.Param.JSEncKey = buf; break;
     case MIB_F_NWK_S_INT_KEY: mibReq.Param.FNwkSIntKey = buf; break;
     case MIB_S_NWK_S_INT_KEY: mibReq.Param.SNwkSIntKey = buf; break;
     case MIB_NWK_S_ENC_KEY: mibReq.Param.NwkSEncKey = buf; break;
-    #else /* USE_LRWAN_1_1_X_CRYPTO == 0 */
+    #else /* ( LORAMAC_VERSION == 0x01010100 ) */
     case MIB_NWK_S_KEY: mibReq.Param.NwkSKey = buf; break;
-    #endif /* USE_LRWAN_1_1_X_CRYPTO */
+    #endif /* ( LORAMAC_VERSION == 0x01010100 ) */
     case MIB_APP_S_KEY: mibReq.Param.AppSKey = buf; break;
     case MIB_MC_KE_KEY: mibReq.Param.McKEKey = buf; break;
     #if ( LORAMAC_MAX_MC_CTX > 0 )
@@ -1013,6 +1013,8 @@ const char *STM32LoRaWAN::toString(Mlme_t mlme) {
       return "MLME_REJOIN_0";
     case MLME_REJOIN_1:
       return "MLME_REJOIN_1";
+    case MLME_REJOIN_2:
+      return "MLME_REJOIN_2";
     case MLME_LINK_CHECK:
       return "MLME_LINK_CHECK";
     case MLME_TXCW:
@@ -1021,8 +1023,6 @@ const char *STM32LoRaWAN::toString(Mlme_t mlme) {
     case MLME_TXCW_1:
       return "MLME_TXCW_1";
     #endif /* LORAMAC_VERSION */
-    case MLME_SCHEDULE_UPLINK:
-      return "MLME_SCHEDULE_UPLINK";
     case MLME_DERIVE_MC_KE_KEY:
       return "MLME_DERIVE_MC_KE_KEY";
     case MLME_DERIVE_MC_KEY_PAIR:
@@ -1039,6 +1039,8 @@ const char *STM32LoRaWAN::toString(Mlme_t mlme) {
       return "MLME_BEACON_TIMING";
     case MLME_BEACON_LOST:
       return "MLME_BEACON_LOST";
+    case MLME_REVERT_JOIN:
+      return "MLME_REVERT_JOIN";
     default:
       return "<unknown>";
   }
@@ -1252,7 +1254,7 @@ void STM32LoRaWAN::MacMcpsIndication(McpsIndication_t* i, LoRaMacRxStatus_t* sta
   core_debug(
     "McpsIndication: ind=%s, status=%s, multicast=%u, port=%u, datarate=%u, pending=%u, size=%u, rxdata=%u, ack=%u, dncnt=%u, devaddr=%08x, rssi=%d, snr=%d, slot=%u\r\n",
     toString(i->McpsIndication), toString(i->Status), i->Multicast, i->Port,
-    i->RxDatarate, i->FramePending, i->BufferSize, i->RxData,
+    i->RxDatarate, i->IsUplinkTxPending, i->BufferSize, i->RxData,
     i->AckReceived, i->DownLinkCounter, i->DevAddress,
     status->Rssi, status->Snr, status->RxSlot);
 

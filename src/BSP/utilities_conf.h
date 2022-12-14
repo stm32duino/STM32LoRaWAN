@@ -57,4 +57,6 @@
   */
 #define UTILS_EXIT_CRITICAL_SECTION()  __set_PRIMASK(primask_bit)
 
+#define ALIGN(n) __attribute__((aligned(n)))
+
 #endif /*__UTILITIES_CONF_H__ */
