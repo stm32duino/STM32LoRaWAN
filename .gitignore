@@ -1,0 +1,5 @@
+.clangd
+.gdb_history
+build
+sketch.json
+api-docs
