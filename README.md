@@ -3,7 +3,7 @@
 This library provides support for LoRaWAN communication using the
 STM32WL55 microcontroller (with embedded LoRa radio) inside the Arduino
 develop environment (together with the [stm32duino
-core](https://github.com/stm32duino/Arduino_Core_STM32)).
+core](https://github.com/stm32duino/Arduino_Core_STM32) with version higher than 2.3.0).
 
 This library offers an API that is highly similar to the API offered by
 the [Arduino MKRWAN
