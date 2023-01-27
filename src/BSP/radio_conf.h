@@ -50,7 +50,9 @@
   * @brief drive value used anytime radio is NOT in TX low power mode
   * @note override the default configuration of radio_driver.c
   */
-#define SMPS_DRIVE_SETTING_DEFAULT  SMPS_DRV_40
+#ifndef SMPS_DRIVE_SETTING_DEFAULT
+  #define SMPS_DRIVE_SETTING_DEFAULT  SMPS_DRV_40
+#endif
 
 /**
   * @brief drive value used anytime radio is in TX low power mode
@@ -58,32 +60,42 @@
   *        while in high power mode, current is sunk directly from the battery
   * @note override the default configuration of radio_driver.c
   */
-#define SMPS_DRIVE_SETTING_MAX      SMPS_DRV_60
+#ifndef SMPS_DRIVE_SETTING_MAX
+  #define SMPS_DRIVE_SETTING_MAX      SMPS_DRV_60
+#endif
 
 /**
   * @brief Provides the frequency of the chip running on the radio and the frequency step
   * @remark These defines are used for computing the frequency divider to set the RF frequency
   * @note override the default configuration of radio_driver.c
   */
-#define XTAL_FREQ                   ( 32000000UL )
+#ifndef XTAL_FREQ
+  #define XTAL_FREQ                   ( 32000000UL )
+#endif
 
 /**
   * @brief in XO mode, set internal capacitor (from 0x00 to 0x2F starting 11.2pF with 0.47pF steps)
   * @note override the default configuration of radio_driver.c
   */
-#define XTAL_DEFAULT_CAP_VALUE      ( 0x20UL )
+#ifndef XTAL_DEFAULT_CAP_VALUE
+  #define XTAL_DEFAULT_CAP_VALUE      ( 0x20UL )
+#endif /* XTAL_DEFAULT_CAP_VALUE */
 
 /**
   * @brief voltage of vdd tcxo.
   * @note override the default configuration of radio_driver.c
   */
-#define TCXO_CTRL_VOLTAGE           TCXO_CTRL_1_7V
+#ifndef TCXO_CTRL_VOLTAGE
+  #define TCXO_CTRL_VOLTAGE           TCXO_CTRL_1_7V
+#endif
 
 /**
   * @brief Radio maximum wakeup time (in ms)
   * @note override the default configuration of radio_driver.c
   */
-#define RF_WAKEUP_TIME              ( 1UL )
+#ifndef RF_WAKEUP_TIME
+  #define RF_WAKEUP_TIME              ( 1UL )
+#endif
 
 /**
   * @brief DCDC is enabled
@@ -91,7 +103,9 @@
   * (as indicated by RBI_IsDCDC())
   * @note override the default configuration of radio_driver.c
   */
-#define DCDC_ENABLE                 ( 1UL )
+#ifndef DCDC_ENABLE
+  #define DCDC_ENABLE                 ( 1UL )
+#endif
 
 /**
   * @brief disable the Sigfox radio modulation
