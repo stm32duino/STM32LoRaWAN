@@ -792,15 +792,15 @@ class STM32LoRaWAN : public Stream {
     /// @}
 
     /**
-     * Set the radion into continuous wave (CW) mode. In this mode radio outputs
-     * a signal at the specified frequency and power for the specified duration.
-     *
+     * Set the radio into continuous wave (CW) mode. In this mode radio outputs
+     * a signal at the specified frequency and power for the specified duration. 
+     * 
      * Used only for compliance testing and antenna testing.
      *
      * \param frequency Frequency in Hz.
      * \param powerdBm transmit power in dBm.
      * \param timeout Duration in seconds.
-     * \returns True if CW mode was activated successfully.
+     * \returns true if CW mode was activated successfully.
      */
 
     bool continuousWave(uint32_t frequency, int8_t powerdBm, uint16_t timeout);
