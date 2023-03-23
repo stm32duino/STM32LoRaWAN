@@ -800,7 +800,7 @@ class STM32LoRaWAN : public Stream {
      * \param frequency Frequency in Hz.
      * \param power TX power level [0-15].
      * \param timeout Duration in seconds.
-     * \returns True if CW mode was activated successfully.
+     * \returns true if CW mode was activated successfully.
      */
 
     bool continuousWave(uint32_t frequency, int8_t power, uint16_t timeout);
