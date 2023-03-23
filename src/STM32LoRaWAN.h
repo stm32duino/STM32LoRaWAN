@@ -792,7 +792,7 @@ class STM32LoRaWAN : public Stream {
     /// @}
 
     /**
-     * Set the radion into continuous wave (CW) mode. In this mode radio outputs
+     * Set the radio into continuous wave (CW) mode. In this mode radio outputs
      * a signal at the specified frequency and power for the specified duration. 
      * 
      * Used only for compliance testing and antenna testing.
