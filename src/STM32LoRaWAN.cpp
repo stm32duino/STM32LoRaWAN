@@ -124,11 +124,12 @@ void STM32LoRaWAN::maintainUntilIdle()
   } while(busy());
 }
 
-bool STM32LoRaWAN::continuousWave(uint32_t frequency, int8_t power, uint16_t timeout) {
+bool STM32LoRaWAN::continuousWave(uint32_t frequency, int8_t powerdBm,
+                                  uint16_t timeout) {
   MlmeReq_t mlmeReq;
   mlmeReq.Type = MLME_TXCW_1;
   mlmeReq.Req.TxCw.Frequency = frequency;
-  mlmeReq.Req.TxCw.Power = power;
+  mlmeReq.Req.TxCw.Power = powerdBm;
   mlmeReq.Req.TxCw.Timeout = timeout;
   LoRaMacStatus_t res = LoRaMacMlmeRequest(&mlmeReq);
   if (res != LORAMAC_STATUS_OK)
