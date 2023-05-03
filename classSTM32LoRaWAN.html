@@ -62,6 +62,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-static-methods">Static Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
@@ -76,6 +77,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:abc06655cd5d42e0e98254fe68a187068"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#abc06655cd5d42e0e98254fe68a187068">continuousWave</a> (uint32_t frequency, int8_t powerdBm, uint16_t timeout)</td></tr>
+<tr class="separator:abc06655cd5d42e0e98254fe68a187068"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Initialization</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p><a class="anchor" id="initialization"></a></p>
 </div></td></tr>
@@ -851,6 +854,51 @@ Static Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Returns whether connected to the network (i.e. for OTAA a successful join exchange has happened, or for ABP session information has been supplied by calling joinABP). </p>
+
+</div>
+</div>
+<a id="abc06655cd5d42e0e98254fe68a187068"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc06655cd5d42e0e98254fe68a187068">&#9670;&nbsp;</a></span>continuousWave()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool STM32LoRaWAN::continuousWave </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>frequency</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int8_t&#160;</td>
+          <td class="paramname"><em>powerdBm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set the radio into continuous wave (CW) mode. In this mode radio outputs a signal at the specified frequency and power for the specified duration.</p>
+<p>Used only for compliance testing and antenna testing.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frequency</td><td>Frequency in Hz. </td></tr>
+    <tr><td class="paramname">powerdBm</td><td>transmit power in dBm. </td></tr>
+    <tr><td class="paramname">timeout</td><td>Duration in seconds. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if CW mode was activated successfully. </dd></dl>
 
 </div>
 </div>
@@ -4645,10 +4693,10 @@ template&lt;typename T &gt; </div>
 <div class="line">      .MacMlmeConfirm = <a class="code" href="classSTM32LoRaWAN.html#adb22008cc147d1f94bceba9ca5676bcf">MacMlmeConfirm</a>,</div>
 <div class="line">      .MacMlmeIndication = <a class="code" href="classSTM32LoRaWAN.html#a6dce90cc8ee17de4a48c4ec5365fcad9">MacMlmeIndication</a>,</div>
 <div class="line">    }</div>
-<div class="ttc" id="aclassSTM32LoRaWAN_html_a38f3b2184022481810daeeb731d332c3"><div class="ttname"><a href="classSTM32LoRaWAN.html#a38f3b2184022481810daeeb731d332c3">STM32LoRaWAN::MacMcpsIndication</a></div><div class="ttdeci">static void MacMcpsIndication(McpsIndication_t *McpsIndication, LoRaMacRxStatus_t *RxStatus)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1252</div></div>
-<div class="ttc" id="aclassSTM32LoRaWAN_html_a6dce90cc8ee17de4a48c4ec5365fcad9"><div class="ttname"><a href="classSTM32LoRaWAN.html#a6dce90cc8ee17de4a48c4ec5365fcad9">STM32LoRaWAN::MacMlmeIndication</a></div><div class="ttdeci">static void MacMlmeIndication(MlmeIndication_t *MlmeIndication, LoRaMacRxStatus_t *RxStatus)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1277</div></div>
-<div class="ttc" id="aclassSTM32LoRaWAN_html_a7f4eb77aaaae63ef543cc2dcda5314df"><div class="ttname"><a href="classSTM32LoRaWAN.html#a7f4eb77aaaae63ef543cc2dcda5314df">STM32LoRaWAN::MacMcpsConfirm</a></div><div class="ttdeci">static void MacMcpsConfirm(McpsConfirm_t *McpsConfirm)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1236</div></div>
-<div class="ttc" id="aclassSTM32LoRaWAN_html_adb22008cc147d1f94bceba9ca5676bcf"><div class="ttname"><a href="classSTM32LoRaWAN.html#adb22008cc147d1f94bceba9ca5676bcf">STM32LoRaWAN::MacMlmeConfirm</a></div><div class="ttdeci">static void MacMlmeConfirm(MlmeConfirm_t *MlmeConfirm)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1269</div></div>
+<div class="ttc" id="aclassSTM32LoRaWAN_html_a38f3b2184022481810daeeb731d332c3"><div class="ttname"><a href="classSTM32LoRaWAN.html#a38f3b2184022481810daeeb731d332c3">STM32LoRaWAN::MacMcpsIndication</a></div><div class="ttdeci">static void MacMcpsIndication(McpsIndication_t *McpsIndication, LoRaMacRxStatus_t *RxStatus)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1266</div></div>
+<div class="ttc" id="aclassSTM32LoRaWAN_html_a6dce90cc8ee17de4a48c4ec5365fcad9"><div class="ttname"><a href="classSTM32LoRaWAN.html#a6dce90cc8ee17de4a48c4ec5365fcad9">STM32LoRaWAN::MacMlmeIndication</a></div><div class="ttdeci">static void MacMlmeIndication(MlmeIndication_t *MlmeIndication, LoRaMacRxStatus_t *RxStatus)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1291</div></div>
+<div class="ttc" id="aclassSTM32LoRaWAN_html_a7f4eb77aaaae63ef543cc2dcda5314df"><div class="ttname"><a href="classSTM32LoRaWAN.html#a7f4eb77aaaae63ef543cc2dcda5314df">STM32LoRaWAN::MacMcpsConfirm</a></div><div class="ttdeci">static void MacMcpsConfirm(McpsConfirm_t *McpsConfirm)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1250</div></div>
+<div class="ttc" id="aclassSTM32LoRaWAN_html_adb22008cc147d1f94bceba9ca5676bcf"><div class="ttname"><a href="classSTM32LoRaWAN.html#adb22008cc147d1f94bceba9ca5676bcf">STM32LoRaWAN::MacMlmeConfirm</a></div><div class="ttdeci">static void MacMlmeConfirm(MlmeConfirm_t *MlmeConfirm)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1283</div></div>
 </div><!-- fragment -->
 </div>
 </div>
