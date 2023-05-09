@@ -104,17 +104,6 @@ const UTIL_SYSTIM_Driver_s UTIL_SYSTIMDriver =
 
 /* #define RTIF_DEBUG */
 
-/**
-  * @brief Map UTIL_TIMER_IRQ can be overridden in utilities_conf.h to Map on Task rather then Isr
-  */
-#ifndef UTIL_TIMER_IRQ_MAP_INIT
-#define UTIL_TIMER_IRQ_MAP_INIT()
-#endif /* UTIL_TIMER_IRQ_MAP_INIT */
-
-#ifndef UTIL_TIMER_IRQ_MAP_PROCESS
-#define UTIL_TIMER_IRQ_MAP_PROCESS() UTIL_TIMER_IRQ_Handler()
-#endif /* UTIL_TIMER_IRQ_MAP_PROCESS */
-
 /* USER CODE BEGIN PD */
 
 /* USER CODE END PD */
@@ -177,6 +166,14 @@ static uint32_t TIMER_IF_BkUp_Read_MSBticks(void);
 
 /* USER CODE BEGIN PFP */
 
+/* Function to attach to the RTC IRQ as a callback */
+void UTIL_TIMER_IRQ_MAP_PROCESS(void *data)
+{
+    UNUSED(data);
+
+    UTIL_TIMER_IRQ_Handler();
+}
+
 /* USER CODE END PFP */
 
 /* Exported functions ---------------------------------------------------------*/
@@ -188,18 +185,12 @@ UTIL_TIMER_Status_t TIMER_IF_Init(void)
   /* USER CODE END TIMER_IF_Init */
   if (RTC_Initialized == false)
   {
-    hrtc.IsEnabled.RtcFeatures = UINT32_MAX;
-    /*Init RTC*/
-    MX_RTC_Init();
-    /*Stop Timer */
+    /* RTC is already Initialized by the LoRaWan::begin */
     TIMER_IF_StopTimer();
-    /** DeActivate the Alarm A enabled by STM32CubeMX during MX_RTC_Init() */
-    HAL_RTC_DeactivateAlarm(&hrtc, RTC_ALARM_A);
+
     /*overload RTC feature enable*/
     hrtc.IsEnabled.RtcFeatures = UINT32_MAX;
 
-    /*Enable Direct Read of the calendar registers (not through Shadow) */
-    HAL_RTCEx_EnableBypassShadow(&hrtc);
     /*Initialize MSB ticks*/
     TIMER_IF_BkUp_Write_MSBticks(0);
 
@@ -229,16 +220,23 @@ UTIL_TIMER_Status_t TIMER_IF_StartTimer(uint32_t timeout)
   timeout += RtcTimerContext;
 
   TIMER_IF_DBG_PRINTF("Start timer: time=%d, alarm=%d\n\r",  GetTimerTicks(), timeout);
+
+#if 0
   /* starts timer*/
   sAlarm.BinaryAutoClr = RTC_ALARMSUBSECONDBIN_AUTOCLR_NO;
   sAlarm.AlarmTime.SubSeconds = UINT32_MAX - timeout;
-  sAlarm.AlarmMask = RTC_ALARMMASK_NONE;
+  sAlarm.AlarmMask = RTC_ALARMMASK_ALL; /* set MASK to ALL to trig interrupt on subsecond */
   sAlarm.AlarmSubSecondMask = RTC_ALARMSUBSECONDBINMASK_NONE;
   sAlarm.Alarm = RTC_ALARM_A;
   if (HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BCD) != HAL_OK)
   {
     Error_Handler();
   }
+#else
+    /* Program ALARM A on subsecond, mask is 32 (and fixed to RTC_ALARMMASK_NONE for calendar) */
+    RTC_StartAlarm(RTC_ALARM_A, 0, 0, 0, 0, UINT32_MAX - timeout, RTC_HOURFORMAT12_PM, 32UL);
+#endif
+
   /* USER CODE BEGIN TIMER_IF_StartTimer_Last */
 
   /* USER CODE END TIMER_IF_StartTimer_Last */
@@ -251,10 +249,15 @@ UTIL_TIMER_Status_t TIMER_IF_StopTimer(void)
   /* USER CODE BEGIN TIMER_IF_StopTimer */
 
   /* USER CODE END TIMER_IF_StopTimer */
+#if 1
   /* Clear RTC Alarm Flag */
   __HAL_RTC_ALARM_CLEAR_FLAG(&hrtc, RTC_FLAG_ALRAF);
   /* Disable the Alarm A interrupt */
   HAL_RTC_DeactivateAlarm(&hrtc, RTC_ALARM_A);
+#else
+  rtc.disableAlarm(RTC_ALARM_A);
+
+#endif
   /*overload RTC feature enable*/
   hrtc.IsEnabled.RtcFeatures = UINT32_MAX;
   /* USER CODE BEGIN TIMER_IF_StopTimer_Last */
@@ -374,6 +377,7 @@ void TIMER_IF_DelayMs(uint32_t delay)
   /* USER CODE END TIMER_IF_DelayMs_Last */
 }
 
+#if 0
 void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
 {
   (void)hrtc; // unused
@@ -385,6 +389,7 @@ void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc)
 
   /* USER CODE END HAL_RTC_AlarmAEventCallback_Last */
 }
+#endif
 
 void HAL_RTCEx_SSRUEventCallback(RTC_HandleTypeDef *hrtc)
 {

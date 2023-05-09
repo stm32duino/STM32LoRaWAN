@@ -32,6 +32,14 @@ extern "C" {
 #include "../STM32CubeWL/Utilities/misc/stm32_systime.h"
 
 /* USER CODE BEGIN Includes */
+/**
+  * @brief Map UTIL_TIMER_IRQ can be overridden in utilities_conf.h to Map on Task rather then Isr
+  */
+#ifndef UTIL_TIMER_IRQ_MAP_INIT
+#define UTIL_TIMER_IRQ_MAP_INIT()
+#endif /* UTIL_TIMER_IRQ_MAP_INIT */
+
+void UTIL_TIMER_IRQ_MAP_PROCESS(void *data);
 
 /* USER CODE END Includes */
 
