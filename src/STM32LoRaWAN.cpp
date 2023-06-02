@@ -54,6 +54,9 @@
 #error "Unexpected txpower constants"
 #endif
 
+/* Get the RTC object for init */
+STM32RTC& rtc = STM32RTC::getInstance();
+
 STM32LoRaWAN* STM32LoRaWAN::instance;
 
 bool STM32LoRaWAN::begin(_lora_band band)
@@ -62,6 +65,17 @@ bool STM32LoRaWAN::begin(_lora_band band)
     return failure("Only one STM32LoRaWAN instance can be used");
   instance = this;
 
+  /*
+   * Init RTC as an object :
+   * use the MIX mode = free running BCD calendar + binary mode for
+   * the sub-second counter RTC_SSR on 32 bit
+    */
+  rtc.setClockSource(STM32RTC::LSE_CLOCK);
+  rtc.begin(true, STM32RTC::HOUR_24, STM32RTC::MODE_MIX);
+  /* Attach the callback function before enabling Interrupt */
+  rtc.attachInterrupt(UTIL_TIMER_IRQ_MAP_PROCESS, STM32RTC::ALARM_B);
+  /* The subsecond alarm B is set during the StartTimerEvent */
+ 
   UTIL_TIMER_Init();
 
   LoRaMacStatus_t res = LoRaMacInitialization(&LoRaMacPrimitives, &LoRaMacCallbacks, (LoRaMacRegion_t)band);
