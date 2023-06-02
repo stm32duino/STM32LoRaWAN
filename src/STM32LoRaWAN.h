@@ -41,8 +41,9 @@
 
 #include "Arduino.h"
 #include "STM32CubeWL/LoRaWAN/Mac/LoRaMac.h"
-#include "STM32CubeWL/Utilities/timer/stm32_timer.h"
 #include "BSP/mw_log_conf.h"
+#include "BSP/timer_if.h"
+#include "STM32RTC.h"
 
 
 /**
