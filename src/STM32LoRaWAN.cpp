@@ -71,7 +71,8 @@ bool STM32LoRaWAN::begin(_lora_band band)
    * the sub-second counter RTC_SSR on 32 bit
     */
   rtc.setClockSource(STM32RTC::LSE_CLOCK);
-  rtc.begin(true, STM32RTC::HOUR_24, STM32RTC::MODE_MIX);
+  rtc.setRTCMode(STM32RTC::MODE_MIX);
+  rtc.begin(true, STM32RTC::HOUR_24);
   /* Attach the callback function before enabling Interrupt */
   rtc.attachInterrupt(UTIL_TIMER_IRQ_MAP_PROCESS, STM32RTC::ALARM_A);
   /* The subsecond alarm A is set during the StartTimerEvent */
