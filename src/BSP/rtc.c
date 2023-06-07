@@ -140,17 +140,6 @@ void HAL_RTC_MspDeInit(RTC_HandleTypeDef* rtcHandle)
   }
 }
 
-void RTC_Alarm_IRQHandler(void)
-{
-  /* USER CODE BEGIN RTC_Alarm_IRQn 0 */
-
-  /* USER CODE END RTC_Alarm_IRQn 0 */
-  HAL_RTC_AlarmIRQHandler(&hrtc);
-  /* USER CODE BEGIN RTC_Alarm_IRQn 1 */
-
-  /* USER CODE END RTC_Alarm_IRQn 1 */
-}
-
 /* USER CODE BEGIN 1 */
 
 /* USER CODE END 1 */
