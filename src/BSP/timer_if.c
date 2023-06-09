@@ -27,17 +27,55 @@
 // #include "stm32_lpm.h"
 // #include "utilities_def.h"
 #include "stm32wlxx_ll_rtc.h"
-#include "rtc.h"
 
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
 
 /* External variables ---------------------------------------------------------*/
-/**
-  * @brief RTC handle
-  */
+
 extern RTC_HandleTypeDef RtcHandle;
+
+/* HAL MSP function used for RTC_Init */
+void HAL_RTC_MspInit(RTC_HandleTypeDef* rtcHandle)
+{
+
+  if(rtcHandle->Instance==RTC)
+  {
+    if (HAL_RTCEx_SetSSRU_IT(rtcHandle) != HAL_OK)
+    {
+        Error_Handler();
+    }
+
+    /* RTC interrupt Init */
+    HAL_NVIC_SetPriority(TAMP_STAMP_LSECSS_SSRU_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(TAMP_STAMP_LSECSS_SSRU_IRQn);
+
+    HAL_NVIC_SetPriority(RTC_Alarm_IRQn, RTC_IRQ_PRIO, RTC_IRQ_SUBPRIO);
+    HAL_NVIC_EnableIRQ(RTC_Alarm_IRQn);
+  }
+}
+
+void HAL_RTC_MspDeInit(RTC_HandleTypeDef* rtcHandle)
+{
+
+  if(rtcHandle->Instance==RTC)
+  {
+  /* USER CODE BEGIN RTC_MspDeInit 0 */
+
+  /* USER CODE END RTC_MspDeInit 0 */
+    /* Peripheral clock disable */
+    __HAL_RCC_RTC_DISABLE();
+    __HAL_RCC_RTCAPB_CLK_DISABLE();
+
+    /* RTC interrupt Deinit */
+    HAL_NVIC_DisableIRQ(TAMP_STAMP_LSECSS_SSRU_IRQn);
+    HAL_NVIC_DisableIRQ(RTC_Alarm_IRQn);
+  /* USER CODE BEGIN RTC_MspDeInit 1 */
+
+  /* USER CODE END RTC_MspDeInit 1 */
+  }
+}
 
 /**
   * @brief Timer driver callbacks handler
@@ -187,6 +225,12 @@ UTIL_TIMER_Status_t TIMER_IF_Init(void)
   if (RTC_Initialized == false)
   {
     /* RTC is already Initialized by the LoRaWan::begin */
+    RtcHandle.IsEnabled.RtcFeatures = UINT32_MAX;
+
+    /** Enable the Alarm B just after the HAL_RTC_Init */
+    RTC_StartAlarm(RTC_ALARM_B, 0, 0, 0, 0, 0, RTC_HOURFORMAT12_PM, 32UL);
+
+    /*Stop Timer */
     TIMER_IF_StopTimer();
 
     /*overload RTC feature enable*/
