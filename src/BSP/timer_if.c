@@ -46,6 +46,8 @@ void HAL_RTC_MspInit(RTC_HandleTypeDef* rtcHandle)
     {
         Error_Handler();
     }
+    /* give init value for the RtcFeatures enable */
+    rtcHandle->IsEnabled.RtcFeatures = 0;
 
     /* RTC interrupt Init */
     HAL_NVIC_SetPriority(TAMP_STAMP_LSECSS_SSRU_IRQn, 0, 0);
@@ -224,17 +226,8 @@ UTIL_TIMER_Status_t TIMER_IF_Init(void)
   /* USER CODE END TIMER_IF_Init */
   if (RTC_Initialized == false)
   {
-    /* RTC is already Initialized by the LoRaWan::begin */
-    RtcHandle.IsEnabled.RtcFeatures = UINT32_MAX;
-
-    /** Enable the Alarm B just after the HAL_RTC_Init */
-    RTC_StartAlarm(RTC_ALARM_B, 0, 0, 0, 0, 0, RTC_HOURFORMAT12_PM, 32UL);
-
-    /*Stop Timer */
-    TIMER_IF_StopTimer();
-
-    /*overload RTC feature enable*/
-    RtcHandle.IsEnabled.RtcFeatures = UINT32_MAX;
+    /*Stop Timer : Disable the Alarm B interrupt */
+    RTC_StopAlarm(RTC_ALARM_B);
 
     /*Initialize MSB ticks*/
     TIMER_IF_BkUp_Write_MSBticks(0);
@@ -259,14 +252,16 @@ UTIL_TIMER_Status_t TIMER_IF_StartTimer(uint32_t timeout)
   /* USER CODE BEGIN TIMER_IF_StartTimer */
 
   /* USER CODE END TIMER_IF_StartTimer */
+
   /*Stop timer if one is already started*/
-  TIMER_IF_StopTimer();
+  RTC_StopAlarm(RTC_ALARM_B);
+
   timeout += RtcTimerContext;
 
-  TIMER_IF_DBG_PRINTF("Start timer: time=%d, alarm=%d\n\r",  GetTimerTicks(), timeout);
+  TIMER_IF_DBG_PRINTF("Start timer: time=%d, alarm=%d\n\r", GetTimerTicks(), timeout);
 
-  /* Program ALARM B on subsecond, mask is 32 (and fixed to RTC_ALARMMASK_NONE for calendar) */
-  RTC_StartAlarm(RTC_ALARM_B, 0, 0, 0, 0, UINT32_MAX - timeout, RTC_HOURFORMAT12_PM, 32UL);
+  /* Program ALARM B on subsecond, mask is 32 (and fixed to RTC_ALARMMASK_ALL for calendar) */
+  RTC_StartAlarm(RTC_ALARM_B, 0, 0, 0, 0, UINT32_MAX - timeout, RTC_HOURFORMAT12_PM, 31UL);
 
   /* USER CODE BEGIN TIMER_IF_StartTimer_Last */
 
@@ -284,8 +279,6 @@ UTIL_TIMER_Status_t TIMER_IF_StopTimer(void)
   /* Disable the Alarm B interrupt */
   RTC_StopAlarm(RTC_ALARM_B);
 
-  /*overload RTC feature enable*/
-  RtcHandle.IsEnabled.RtcFeatures = UINT32_MAX;
   /* USER CODE BEGIN TIMER_IF_StopTimer_Last */
 
   /* USER CODE END TIMER_IF_StopTimer_Last */
