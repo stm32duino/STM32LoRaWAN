@@ -358,11 +358,12 @@ uint32_t TIMER_IF_Convert_ms2Tick(uint32_t timeMilliSec)
   /* USER CODE BEGIN TIMER_IF_Convert_ms2Tick */
 
   /* USER CODE END TIMER_IF_Convert_ms2Tick */
-  ret = ((uint32_t)((((uint64_t) timeMilliSec) << RTC_N_PREDIV_S) / 1000));
+  ret = ((uint64_t)timeMilliSec * MS_TO_TICK) / 1000;
+
   /* USER CODE BEGIN TIMER_IF_Convert_ms2Tick_Last */
 
   /* USER CODE END TIMER_IF_Convert_ms2Tick_Last */
-  return ret;
+  return (uint32_t)ret;
 }
 
 uint32_t TIMER_IF_Convert_Tick2ms(uint32_t tick)
@@ -371,7 +372,7 @@ uint32_t TIMER_IF_Convert_Tick2ms(uint32_t tick)
   /* USER CODE BEGIN TIMER_IF_Convert_Tick2ms */
 
   /* USER CODE END TIMER_IF_Convert_Tick2ms */
-  ret = ((uint32_t)((((uint64_t)(tick)) * 1000) >> RTC_N_PREDIV_S));
+  ret = tick * TICK_TO_MS;
   /* USER CODE BEGIN TIMER_IF_Convert_Tick2ms_Last */
 
   /* USER CODE END TIMER_IF_Convert_Tick2ms_Last */
@@ -424,12 +425,8 @@ uint32_t TIMER_IF_GetTime(uint32_t *mSeconds)
 
   ticks = (((uint64_t) timerValueMSB) << 32) + timerValueLsb;
 
-  seconds = (uint32_t)(ticks >> RTC_N_PREDIV_S);
-
-  ticks = (uint32_t) ticks & RTC_PREDIV_S;
-
-  *mSeconds = TIMER_IF_Convert_Tick2ms(ticks);
-
+  seconds = ticks / MS_TO_TICK;
+  *mSeconds = (ticks * 1000) / MS_TO_TICK;
   /* USER CODE BEGIN TIMER_IF_GetTime_Last */
 
   /* USER CODE END TIMER_IF_GetTime_Last */

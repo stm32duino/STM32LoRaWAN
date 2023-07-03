@@ -39,6 +39,11 @@ extern "C" {
 #define UTIL_TIMER_IRQ_MAP_INIT()
 #endif /* UTIL_TIMER_IRQ_MAP_INIT */
 
+/* With RTC clocked by LSE, the APRE freq is 256Hz: 1 tick is 3.9ms (APREDIV = 0x7F) */
+#define MS_TO_TICK 256
+/* Give one more (to adjust to x3.9 factor) */
+#define TICK_TO_MS ((1000/256) + 1)
+
 void UTIL_TIMER_IRQ_MAP_PROCESS(void *data);
 
 /* USER CODE END Includes */
