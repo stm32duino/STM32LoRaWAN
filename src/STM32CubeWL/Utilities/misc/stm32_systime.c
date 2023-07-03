@@ -233,7 +233,7 @@ void SysTimeSet( SysTime_t sysTime )
 
   SysTime_t calendarTime = { .Seconds = 0, .SubSeconds = 0 };
 
-  calendarTime.Seconds = UTIL_SYSTIMDriver.GetCalendarTime( ( uint16_t* )&calendarTime.SubSeconds );
+  calendarTime.Seconds = UTIL_SYSTIMDriver.GetCalendarTime( ( uint32_t* )&calendarTime.SubSeconds );
 
   // sysTime is UNIX epoch
   DeltaTime = SysTimeSub( sysTime, calendarTime );
@@ -248,9 +248,9 @@ SysTime_t SysTimeGet( void )
   SysTime_t sysTime = { .Seconds = 0, .SubSeconds = 0 };
   SysTime_t DeltaTime;
 
-  calendarTime.Seconds = UTIL_SYSTIMDriver.GetCalendarTime( ( uint16_t* )&calendarTime.SubSeconds );
+  calendarTime.Seconds = UTIL_SYSTIMDriver.GetCalendarTime( ( uint32_t* )&calendarTime.SubSeconds );
 
-  DeltaTime.SubSeconds = (int16_t)UTIL_SYSTIMDriver.BKUPRead_SubSeconds();
+  DeltaTime.SubSeconds = (int32_t)UTIL_SYSTIMDriver.BKUPRead_SubSeconds();
   DeltaTime.Seconds = UTIL_SYSTIMDriver.BKUPRead_Seconds();
 
   sysTime = SysTimeAdd( DeltaTime, calendarTime );
@@ -263,7 +263,7 @@ SysTime_t SysTimeGetMcuTime( void )
 {
   SysTime_t calendarTime = { .Seconds = 0, .SubSeconds = 0 };
 
-  calendarTime.Seconds = UTIL_SYSTIMDriver.GetCalendarTime( ( uint16_t* )&calendarTime.SubSeconds );
+  calendarTime.Seconds = UTIL_SYSTIMDriver.GetCalendarTime( ( uint32_t* )&calendarTime.SubSeconds );
 
   return calendarTime;
 }
@@ -284,7 +284,7 @@ SysTime_t SysTimeFromMs( uint32_t timeMs )
   SysTime_t sysTime = { .Seconds = seconds, .SubSeconds =  timeMs - seconds * 1000 };
   SysTime_t DeltaTime = { 0 };
 
-  DeltaTime.SubSeconds = (int16_t)UTIL_SYSTIMDriver.BKUPRead_SubSeconds();
+  DeltaTime.SubSeconds = (int32_t)UTIL_SYSTIMDriver.BKUPRead_SubSeconds();
   DeltaTime.Seconds = UTIL_SYSTIMDriver.BKUPRead_Seconds();
   return SysTimeAdd( sysTime, DeltaTime );
 }
