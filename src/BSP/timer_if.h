@@ -135,7 +135,7 @@ uint32_t TIMER_IF_Convert_Tick2ms(uint32_t tick);
   * @param[out] subSeconds in ticks
   * @return time seconds
   */
-uint32_t TIMER_IF_GetTime(uint16_t *subSeconds);
+uint32_t TIMER_IF_GetTime(uint32_t *subSeconds);
 
 /**
   * @brief write seconds in backUp register

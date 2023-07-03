@@ -378,7 +378,7 @@ void HAL_RTCEx_SSRUEventCallback(RTC_HandleTypeDef *hrtc)
   /* USER CODE END HAL_RTCEx_SSRUEventCallback_Last */
 }
 
-uint32_t TIMER_IF_GetTime(uint16_t *mSeconds)
+uint32_t TIMER_IF_GetTime(uint32_t *mSeconds)
 {
   uint32_t seconds = 0;
   /* USER CODE BEGIN TIMER_IF_GetTime */
