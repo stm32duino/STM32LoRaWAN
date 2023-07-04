@@ -2,6 +2,7 @@
  * This is a very basic example that demonstrates how to configure the
  * library, join the network, send regular packets and print any
  * downlink packets received.
+ * This example is using the RTC in MIX (binary and BCD) mode
  *
  * Revised BSD License - https://spdx.org/licenses/BSD-3-Clause.html
  */
@@ -11,6 +12,10 @@ STM32LoRaWAN modem;
 
 static const unsigned long TX_INTERVAL = 60000; /* ms */
 unsigned long last_tx = 0;
+uint8_t payload[27]; /* packet to be sent */
+
+/* Get the rtc object */
+extern STM32RTC &rtc;
 
 void setup()
 {
@@ -29,11 +34,20 @@ void setup()
     Serial.println("Join failed");
     while (true) /* infinite loop */;
   }
+
+  /* set the calendar */
+  rtc.setTime(15, 30, 58);
+  rtc.setDate(04, 07, 23);
+
 }
 
 void send_packet()
 {
-  uint8_t payload[] = {0xde, 0xad, 0xbe, 0xef};
+  /* prepare the Tx packet : get date and format string */
+  sprintf((char *)payload, "%02d/%02d/%04d - %02d:%02d:%02d",
+          rtc.getMonth(), rtc.getDay(), 2000 + rtc.getYear(),
+          rtc.getHours(), rtc.getMinutes(), rtc.getSeconds());
+
   modem.setPort(10);
   modem.beginPacket();
   modem.write(payload, sizeof(payload));
