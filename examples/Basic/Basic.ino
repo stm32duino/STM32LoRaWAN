@@ -2,6 +2,7 @@
  * This is a very basic example that demonstrates how to configure the
  * library, join the network, send regular packets and print any
  * downlink packets received.
+ * This example is using the RTC in MIX (binary and BCD) mode
  *
  * Revised BSD License - https://spdx.org/licenses/BSD-3-Clause.html
  */
@@ -12,8 +13,10 @@ STM32LoRaWAN modem;
 static const unsigned long TX_INTERVAL = 60000; /* ms */
 unsigned long last_tx = 0;
 
-void setup()
-{
+/* Get the rtc object */
+STM32RTC& rtc = STM32RTC::getInstance();
+
+void setup() {
   Serial.begin(115200);
   Serial.println("Start");
   modem.begin(EU868);
@@ -27,17 +30,25 @@ void setup()
     Serial.println("Joined");
   } else {
     Serial.println("Join failed");
-    while (true) /* infinite loop */;
+    while (true) /* infinite loop */
+      ;
   }
+
+  /* set the calendar */
+  rtc.setTime(15, 30, 58);
+  rtc.setDate(04, 07, 23);
 }
 
-void send_packet()
-{
-  uint8_t payload[] = {0xde, 0xad, 0xbe, 0xef};
+void send_packet() {
+  char payload[27] = { 0 }; /* packet to be sent */
+  /* prepare the Tx packet : get date and format string */
+  sprintf(payload, "%02d/%02d/%04d - %02d:%02d:%02d",
+          rtc.getMonth(), rtc.getDay(), 2000 + rtc.getYear(),
+          rtc.getHours(), rtc.getMinutes(), rtc.getSeconds());
   modem.setPort(10);
   modem.beginPacket();
-  modem.write(payload, sizeof(payload));
-  if (modem.endPacket() == sizeof(payload)) {
+  modem.write(payload, strlen(payload));
+  if (modem.endPacket() == (int)strlen(payload)) {
     Serial.println("Sent packet");
   } else {
     Serial.println("Failed to send packet");
@@ -57,8 +68,7 @@ void send_packet()
   }
 }
 
-void loop()
-{
+void loop() {
   if (!last_tx || millis() - last_tx > TX_INTERVAL) {
     send_packet();
     last_tx = millis();
