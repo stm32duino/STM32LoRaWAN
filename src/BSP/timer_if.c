@@ -236,8 +236,8 @@ UTIL_TIMER_Status_t TIMER_IF_StartTimer(uint32_t timeout)
 
   TIMER_IF_DBG_PRINTF("Start timer: time=%d, alarm=%d\n\r", GetTimerTicks(), timeout);
 
-  /* Program ALARM B on subsecond, mask is 32 (and fixed to RTC_ALARMMASK_ALL for calendar) */
-  RTC_StartAlarm(RTC_ALARM_B, 0, 0, 0, 0, UINT32_MAX - timeout, RTC_HOURFORMAT12_PM, 31UL);
+  /* Program ALARM B on timeout ticks converted in ms (one more for uncertainty, mask is 31 */
+  RTC_StartAlarm(RTC_ALARM_B, 0, 0, 0, 0, (timeout * 1000 / MS_TO_TICK + 1), RTC_HOURFORMAT12_PM, 31UL);
 
   /* USER CODE BEGIN TIMER_IF_StartTimer_Last */
 
