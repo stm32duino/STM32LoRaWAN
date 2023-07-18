@@ -347,7 +347,7 @@ class STM32LoRaWAN : public Stream {
     bool setDevEui(String value) { return setDevEui(value.c_str()); }
     bool setDevEui(uint64_t value) { return mibSetUint64("DevEui", MIB_DEV_EUI, value); }
     bool setAppEui(const char *value) { return mibSetHex("AppEui", MIB_JOIN_EUI, value); }
-    bool setAppEui(String value) { return setDevEui(value.c_str()); }
+    bool setAppEui(String value) { return setAppEui(value.c_str()); }
     bool setAppEui(uint64_t value) { return mibSetUint64("AppEui", MIB_JOIN_EUI, value); }
     bool setDevAddr(const char *value) { return mibSetHex("DevAddr", MIB_DEV_ADDR, value); }
     bool setDevAddr(String value) { return setDevAddr(value.c_str()); }
