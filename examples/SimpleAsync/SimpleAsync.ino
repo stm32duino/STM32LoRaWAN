@@ -52,7 +52,7 @@ void setup()
   //modem.setDevAddr("00000000");
   //modem.setNwkSKey("00000000000000000000000000000000");
   //modem.setAppSKey("00000000000000000000000000000000");
-  //modem.joinABPAsync();
+  //modem.joinABP();
 
   wait_for_idle();
 
