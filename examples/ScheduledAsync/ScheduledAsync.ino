@@ -97,7 +97,7 @@ void start_join()
   //modem.setDevAddr("00000000");
   //modem.setNwkSKey("00000000000000000000000000000000");
   //modem.setAppSKey("00000000000000000000000000000000");
-  //modem.joinABPAsync();
+  //modem.joinABP();
 
   lora_state = JOINING;
 }

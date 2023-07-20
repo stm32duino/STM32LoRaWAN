@@ -60,7 +60,6 @@ joinOTAAAsync	KEYWORD2
 setDevAddr	KEYWORD2
 setNwkSKey	KEYWORD2
 setAppSKey	KEYWORD2
-joinABPAsync	KEYWORD2
 endPacketAsync	KEYWORD2
 getDownlinkPort	KEYWORD2
 setMaintainNeededCallback	KEYWORD2
