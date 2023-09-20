@@ -22,7 +22,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include <math.h>
 #include "timer_if.h"
-#include "main.h" /*for STM32CubeMX generated RTC_N_PREDIV_S and RTC_N_PREDIV_A*/
 #include "rtc.h"
 // #include "stm32_lpm.h"
 // #include "utilities_def.h"
