@@ -243,12 +243,8 @@ This library makes use of:
  - The radio module, obviously. The library handles enabling the module
    and the associated SPI block, so nothing is needed in the sketch.
 
- - The RTC for timing. This library currently completely configures the
-   RTC and defines the interrupt handler, making it impossible to use
-   the RTC for anything else. In the future, this library could be
-   modified to co-exist with e.g. the STM32RTC library or use
-   a (low-power) timer instead of the RTC, but this is not possible
-   right now.
+ - The RTC for timing (Since v0.2.0). This library uses the
+ [STM32RTC library](https://github.com/stm32duino/STM32RTC).
 
  - A number of GPIO pins that are connected to external RF circuitry on
    the board. This just uses the Arduino `digitalWrite()` functions.
