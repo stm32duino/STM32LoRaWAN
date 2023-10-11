@@ -75,6 +75,7 @@ bool STM32LoRaWAN::begin(_lora_band band)
   _rtc.begin(true, STM32RTC::HOUR_24);
   /* Attach the callback function before enabling Interrupt */
   _rtc.attachInterrupt(UTIL_TIMER_IRQ_MAP_PROCESS, STM32RTC::ALARM_B);
+  _rtc.attachSecondsInterrupt(TIMER_IF_SSRUCallback);
   /* The subsecond alarm B is set during the StartTimerEvent */
 
   UTIL_TIMER_Init(_rtc.getHandle());

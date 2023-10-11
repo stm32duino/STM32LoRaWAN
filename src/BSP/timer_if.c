@@ -372,20 +372,14 @@ void TIMER_IF_DelayMs(uint32_t delay)
   /* USER CODE END TIMER_IF_DelayMs_Last */
 }
 
-void HAL_RTCEx_SSRUEventCallback(RTC_HandleTypeDef *hrtc)
+WEAK void TIMER_IF_SSRUCallback(void *data)
 {
-  (void)hrtc; // unused
-  /* USER CODE BEGIN HAL_RTCEx_SSRUEventCallback */
-
-  /* USER CODE END HAL_RTCEx_SSRUEventCallback */
-  /*called every 48 days with 1024 ticks per seconds*/
+  (void)data;
+  /* called every 48 days with 1024 ticks per seconds */
   TIMER_IF_DBG_PRINTF(">>Handler SSRUnderflow at %d\n\r", GetTimerTicks());
-  /*Increment MSBticks*/
+  /* Increment MSBticks */
   uint32_t MSB_ticks = TIMER_IF_BkUp_Read_MSBticks();
   TIMER_IF_BkUp_Write_MSBticks(MSB_ticks + 1);
-  /* USER CODE BEGIN HAL_RTCEx_SSRUEventCallback_Last */
-
-  /* USER CODE END HAL_RTCEx_SSRUEventCallback_Last */
 }
 
 uint32_t TIMER_IF_GetTime(uint32_t *mSeconds)

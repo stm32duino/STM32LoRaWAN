@@ -131,6 +131,12 @@ uint32_t TIMER_IF_Convert_ms2Tick(uint32_t timeMilliSec);
 uint32_t TIMER_IF_Convert_Tick2ms(uint32_t tick);
 
 /**
+  * @brief rtc SSRU Event Callback
+  * @param[in] data not used
+  */
+void TIMER_IF_SSRUCallback(void *data);
+
+/**
   * @brief Get rtc time
   * @param[out] subSeconds in ticks
   * @return time seconds
