@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['nwk_5fkey_5fset_282',['nwk_key_set',['../classSTM32LoRaWAN.html#a29e3e04449873af7a4d82ee1f0c84ba9',1,'STM32LoRaWAN']]]
+  ['mac_5fprocess_5fpending_282',['mac_process_pending',['../classSTM32LoRaWAN.html#a567065f79a2195207e806a08abd01e18',1,'STM32LoRaWAN']]],
+  ['maintain_5fneeded_5fcallback_283',['maintain_needed_callback',['../classSTM32LoRaWAN.html#ad08ee261884f5852a5b3f6f6a2ee5292',1,'STM32LoRaWAN']]]
 ];
