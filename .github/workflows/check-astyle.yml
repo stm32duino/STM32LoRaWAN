@@ -13,6 +13,6 @@ jobs:
     steps:
       - run: sudo apt install astyle
       - uses: actions/checkout@v3
-      - run: astyle --project=.astylerc --recursive '*.c' '*.h' '*.ino'
+      - run: astyle --project=.astylerc --recursive '*.c' '*.h'
       # If anything changed, this will fail and show the needed changes
       - run: git diff --exit-code

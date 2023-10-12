@@ -72,8 +72,8 @@ void do_blink()
 }
 
 /*********************************************************************
- * This part of the sketch defines the lora work task, which iniates new
- * work and the lora_done() function that processes the results.
+ * This part of the sketch defines the lora work task, which initiates
+ * new work and the lora_done() function that processes the results.
  *********************************************************************/
 
 static const unsigned long TX_INTERVAL = 60000; /* ms */

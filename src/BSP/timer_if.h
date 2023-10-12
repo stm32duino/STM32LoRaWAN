@@ -33,10 +33,13 @@ extern "C" {
 
 /* USER CODE BEGIN Includes */
 
+void UTIL_TIMER_IRQ_MAP_PROCESS(void *data);
+
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+
 
 /* USER CODE END ET */
 
@@ -58,9 +61,10 @@ extern "C" {
 /* Exported functions prototypes ---------------------------------------------*/
 /**
   * @brief Init RTC hardware
+  * @param RtcHandle  RTC_HandleTypeDef
   * @return Status based on @ref UTIL_TIMER_Status_t
   */
-UTIL_TIMER_Status_t TIMER_IF_Init(void);
+UTIL_TIMER_Status_t TIMER_IF_Init(RTC_HandleTypeDef *RtcHandle);
 
 /**
   * @brief Set the alarm
@@ -127,11 +131,17 @@ uint32_t TIMER_IF_Convert_ms2Tick(uint32_t timeMilliSec);
 uint32_t TIMER_IF_Convert_Tick2ms(uint32_t tick);
 
 /**
+  * @brief rtc SSRU Event Callback
+  * @param[in] data not used
+  */
+void TIMER_IF_SSRUCallback(void *data);
+
+/**
   * @brief Get rtc time
   * @param[out] subSeconds in ticks
   * @return time seconds
   */
-uint32_t TIMER_IF_GetTime(uint16_t *subSeconds);
+uint32_t TIMER_IF_GetTime(uint32_t *subSeconds);
 
 /**
   * @brief write seconds in backUp register
