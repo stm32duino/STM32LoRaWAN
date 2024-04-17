@@ -790,6 +790,18 @@ class STM32LoRaWAN : public Stream {
      */
     void setMaintainNeededCallback(std::function<void(void)> callback) { this->maintain_needed_callback = callback; }
 
+    /**
+     * Registers a callback that is called whenever there is a DevStatusReq.
+     *
+     * BAT_LEVEL_EXT_SRC - The end-device is connected to an external power source
+     * BAT_LEVEL_EMPTY - The battery is empty
+     * 1..254 - The battery level, 1 being at minimum and 254 being at maximum
+     * BAT_LEVEL_FULL - The battery is full
+     * BAT_LEVEL_NO_MEASURE - The end-device was not able to measure the battery level
+     *
+     * \NotInMKRWAN
+     */
+    void setBatteryLevelCallback(std::function<uint8_t(void)> callback) { this->battery_level_callback = callback; }
     /// @}
 
     /**
@@ -957,6 +969,7 @@ class STM32LoRaWAN : public Stream {
     static void MacMlmeConfirm(MlmeConfirm_t *MlmeConfirm);
     static void MacMlmeIndication(MlmeIndication_t *MlmeIndication, LoRaMacRxStatus_t *RxStatus);
     static void MacProcessNotify();
+    static uint8_t GetBatteryLevel();
 
     static STM32LoRaWAN *instance;
 
@@ -968,7 +981,7 @@ class STM32LoRaWAN : public Stream {
     };
 
     LoRaMacCallback_t LoRaMacCallbacks = {
-      .GetBatteryLevel = nullptr,
+      .GetBatteryLevel = GetBatteryLevel,
       .GetTemperatureLevel = nullptr,
       .GetUniqueId = nullptr, // Not needed, we just explicitly set the deveui in begin()
       .GetDevAddress = nullptr, // Not needed, user explicitly configures devaddr
@@ -1046,6 +1059,7 @@ class STM32LoRaWAN : public Stream {
     uint32_t fcnt_down = 0;
 
     std::function<void(void)> maintain_needed_callback;
+    std::function<uint8_t(void)> battery_level_callback;
 
     bool mac_process_pending = false;
 

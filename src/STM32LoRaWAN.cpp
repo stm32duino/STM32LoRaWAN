@@ -125,6 +125,17 @@ void STM32LoRaWAN::MacProcessNotify()
     instance->maintain_needed_callback();
 }
 
+uint8_t STM32LoRaWAN::GetBatteryLevel()
+{
+  // Called by the stack from an ISR when there is a DevStatusReq
+  uint8_t battery_level = BAT_LEVEL_NO_MEASURE;
+  if (instance->battery_level_callback) {
+      battery_level = instance->battery_level_callback();
+  }
+
+  return battery_level;
+}
+
 void STM32LoRaWAN::maintain()
 {
   if (mac_process_pending) {
