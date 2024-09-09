@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_5flora_5fclass_292',['_lora_class',['../STM32LoRaWAN_8h.html#a6f8077b5a9a47075e6c1cbf074efa09f',1,'STM32LoRaWAN.h']]]
+  ['_5flora_5fclass_298',['_lora_class',['../STM32LoRaWAN_8h.html#a6f8077b5a9a47075e6c1cbf074efa09f',1,'STM32LoRaWAN.h']]]
 ];

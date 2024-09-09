@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['default_5fjoin_5ftimeout_275',['DEFAULT_JOIN_TIMEOUT',['../classSTM32LoRaWAN.html#a2a1e4648be8f45af29b33b4fe2c0c8df',1,'STM32LoRaWAN']]]
+  ['battery_5flevel_5fcallback_280',['battery_level_callback',['../classSTM32LoRaWAN.html#a59f474cd5bf1f6b2af7a38bb25015286',1,'STM32LoRaWAN']]]
 ];

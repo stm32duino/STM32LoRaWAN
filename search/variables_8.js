@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['tx_5fbuf_288',['tx_buf',['../classSTM32LoRaWAN.html#a48913ce12dc2e2f2eae00c6af09517b6',1,'STM32LoRaWAN']]],
-  ['tx_5fdr_289',['tx_dr',['../classSTM32LoRaWAN.html#ac01cadd3cb3352d73950ce0cdb8921d4',1,'STM32LoRaWAN']]],
-  ['tx_5fport_290',['tx_port',['../classSTM32LoRaWAN.html#a2d842876085b5671605071115b096115',1,'STM32LoRaWAN']]],
-  ['tx_5fptr_291',['tx_ptr',['../classSTM32LoRaWAN.html#ac16474bc60825278e21136db97d0a470',1,'STM32LoRaWAN']]]
+  ['rx_5fbuf_291',['rx_buf',['../classSTM32LoRaWAN.html#ac20a82fca09fe79a49b2efb14c3ddf35',1,'STM32LoRaWAN']]],
+  ['rx_5fport_292',['rx_port',['../classSTM32LoRaWAN.html#a1a8d94acf9cfb846f1b90aad4836ae63',1,'STM32LoRaWAN']]],
+  ['rx_5fptr_293',['rx_ptr',['../classSTM32LoRaWAN.html#ad8439dc88e0a8dd52e44f1914bf0a8c3',1,'STM32LoRaWAN']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['fcnt_5fdown_276',['fcnt_down',['../classSTM32LoRaWAN.html#a35a745b85482d2373206f1d45c86ba3a',1,'STM32LoRaWAN']]],
-  ['fcnt_5fup_277',['fcnt_up',['../classSTM32LoRaWAN.html#ac96049b0c2393f846cfa650e79b7b3e7',1,'STM32LoRaWAN']]]
+  ['default_5fjoin_5ftimeout_281',['DEFAULT_JOIN_TIMEOUT',['../classSTM32LoRaWAN.html#a2a1e4648be8f45af29b33b4fe2c0c8df',1,'STM32LoRaWAN']]]
 ];

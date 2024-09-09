@@ -380,6 +380,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:afd305ad1b2327c96fd1bd94c41c6fb46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefa957b4339b2da06b292f917ddfed31"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#aefa957b4339b2da06b292f917ddfed31">setMaintainNeededCallback</a> (std::function&lt; void(void)&gt; callback)</td></tr>
 <tr class="separator:aefa957b4339b2da06b292f917ddfed31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1fe1b5838a3f7ef44651d9a9afe7f23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ab1fe1b5838a3f7ef44651d9a9afe7f23">setBatteryLevelCallback</a> (std::function&lt; uint8_t(void)&gt; callback)</td></tr>
+<tr class="separator:ab1fe1b5838a3f7ef44651d9a9afe7f23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Dummy implementations</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>These methods have only dummy implementations, because no meaningful implementations exist and having a dummy implementation is harmless (and also helps to make some examples work without modification). </p>
 </div></td></tr>
@@ -463,6 +465,8 @@ Static Protected Member Functions</h2></td></tr>
 <tr class="separator:a6dce90cc8ee17de4a48c4ec5365fcad9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80f4126e5c863ec1b11f66bd270ec6fd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a80f4126e5c863ec1b11f66bd270ec6fd">MacProcessNotify</a> ()</td></tr>
 <tr class="separator:a80f4126e5c863ec1b11f66bd270ec6fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abae950faa0a3eaa647285d7c369d55b4"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#abae950faa0a3eaa647285d7c369d55b4">GetBatteryLevel</a> ()</td></tr>
+<tr class="separator:abae950faa0a3eaa647285d7c369d55b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ede80a683b07f0f00b18531022ddecb"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a4ede80a683b07f0f00b18531022ddecb">toString</a> (LoRaMacStatus_t)</td></tr>
 <tr class="separator:a4ede80a683b07f0f00b18531022ddecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ec35154ca31f04c3341dd32983c0a34"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a8ec35154ca31f04c3341dd32983c0a34">toString</a> (LoRaMacEventInfoStatus_t)</td></tr>
@@ -514,6 +518,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a35a745b85482d2373206f1d45c86ba3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad08ee261884f5852a5b3f6f6a2ee5292"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(void)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#ad08ee261884f5852a5b3f6f6a2ee5292">maintain_needed_callback</a></td></tr>
 <tr class="separator:ad08ee261884f5852a5b3f6f6a2ee5292"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59f474cd5bf1f6b2af7a38bb25015286"><td class="memItemLeft" align="right" valign="top">std::function&lt; uint8_t(void)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a59f474cd5bf1f6b2af7a38bb25015286">battery_level_callback</a></td></tr>
+<tr class="separator:a59f474cd5bf1f6b2af7a38bb25015286"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a567065f79a2195207e806a08abd01e18"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a567065f79a2195207e806a08abd01e18">mac_process_pending</a> = false</td></tr>
 <tr class="separator:a567065f79a2195207e806a08abd01e18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -576,7 +582,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000044">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: Keys cannot be retrieved </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000045">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: Keys cannot be retrieved </dd></dl>
 
 </div>
 </div>
@@ -595,7 +601,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000029">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no serial link to configure </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000030">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no serial link to configure </dd></dl>
 
 </div>
 </div>
@@ -709,7 +715,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000028">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no serial link to configure </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000029">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no serial link to configure </dd></dl>
 
 </div>
 </div>
@@ -816,7 +822,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This could be supported, but needs careful consideration and complete re-initialization. </p><dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000049">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: Changing band after initialization not supported </dd></dl>
+<p>This could be supported, but needs careful consideration and complete re-initialization. </p><dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000050">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: Changing band after initialization not supported </dd></dl>
 
 </div>
 </div>
@@ -835,7 +841,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000041">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: only class A supported </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000042">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: only class A supported </dd></dl>
 
 </div>
 </div>
@@ -971,7 +977,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000039">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no protocol stream to configure </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000040">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no protocol stream to configure </dd></dl>
 
 </div>
 </div>
@@ -1070,7 +1076,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000033">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: test method only </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000034">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: test method only </dd></dl>
 
 </div>
 </div>
@@ -1088,7 +1094,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000037">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no remote module to reset </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000038">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no remote module to reset </dd></dl>
 
 </div>
 </div>
@@ -1170,7 +1176,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000038">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no protocol stream to configure </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000039">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no protocol stream to configure </dd></dl>
 
 </div>
 </div>
@@ -1258,7 +1264,32 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000043">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: Keys cannot be retrieved </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000044">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: Keys cannot be retrieved </dd></dl>
+
+</div>
+</div>
+<a id="abae950faa0a3eaa647285d7c369d55b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abae950faa0a3eaa647285d7c369d55b4">&#9670;&nbsp;</a></span>GetBatteryLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t STM32LoRaWAN::GetBatteryLevel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -1276,7 +1307,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000026">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: confirmed uplinked better handled through <a class="el" href="classSTM32LoRaWAN.html#a816dd9c8b223bda9380971c5a1dab377">endPacket()</a> </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000027">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: confirmed uplinked better handled through <a class="el" href="classSTM32LoRaWAN.html#a816dd9c8b223bda9380971c5a1dab377">endPacket()</a> </dd></dl>
 
 </div>
 </div>
@@ -1294,7 +1325,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000027">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: confirmed uplinked better handled through <a class="el" href="classSTM32LoRaWAN.html#a816dd9c8b223bda9380971c5a1dab377">endPacket()</a> </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000028">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: confirmed uplinked better handled through <a class="el" href="classSTM32LoRaWAN.html#a816dd9c8b223bda9380971c5a1dab377">endPacket()</a> </dd></dl>
 
 </div>
 </div>
@@ -1312,7 +1343,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000047">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: seems to be an internal method in MKRWAN (use enableChannel/disableChannel instead) </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000048">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: seems to be an internal method in MKRWAN (use enableChannel/disableChannel instead) </dd></dl>
 
 </div>
 </div>
@@ -1331,7 +1362,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000048">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: seems to be an internal method in MKRWAN (use enableChannel/disableChannel instead) </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000049">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: seems to be an internal method in MKRWAN (use enableChannel/disableChannel instead) </dd></dl>
 
 </div>
 </div>
@@ -1550,7 +1581,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000042">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: Keys cannot be retrieved </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000043">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: Keys cannot be retrieved </dd></dl>
 
 </div>
 </div>
@@ -1640,7 +1671,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000031">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: test method </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000032">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: test method </dd></dl>
 
 </div>
 </div>
@@ -1658,7 +1689,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000040">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: seems to be an internal method in MKRWAN </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000041">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: seems to be an internal method in MKRWAN </dd></dl>
 
 </div>
 </div>
@@ -3106,7 +3137,7 @@ Static Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Dummy for MKRWAN compatibility. Exact purpose on MKRWAN is unclear, see <a href="https://github.com/arduino-libraries/MKRWAN/issues/25">https://github.com/arduino-libraries/MKRWAN/issues/25</a> </p><dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000024">MKRWAN API difference:</a></b></dt><dd>Dummy implementation in this library </dd></dl>
+<p>Dummy for MKRWAN compatibility. Exact purpose on MKRWAN is unclear, see <a href="https://github.com/arduino-libraries/MKRWAN/issues/25">https://github.com/arduino-libraries/MKRWAN/issues/25</a> </p><dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000025">MKRWAN API difference:</a></b></dt><dd>Dummy implementation in this library </dd></dl>
 
 </div>
 </div>
@@ -3293,7 +3324,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000035">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no remote module to poll </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000036">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no remote module to poll </dd></dl>
 
 </div>
 </div>
@@ -3483,7 +3514,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000034">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no remote module to restart </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000035">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no remote module to restart </dd></dl>
 
 </div>
 </div>
@@ -3538,7 +3569,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000046">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: seems to be an internal method in MKRWAN (use enableChannel/disableChannel instead) </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000047">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: seems to be an internal method in MKRWAN (use enableChannel/disableChannel instead) </dd></dl>
 
 </div>
 </div>
@@ -3557,7 +3588,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000045">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: seems to be an internal method in MKRWAN (use enableChannel/disableChannel instead) </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000046">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: seems to be an internal method in MKRWAN (use enableChannel/disableChannel instead) </dd></dl>
 
 </div>
 </div>
@@ -3764,6 +3795,35 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ab1fe1b5838a3f7ef44651d9a9afe7f23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1fe1b5838a3f7ef44651d9a9afe7f23">&#9670;&nbsp;</a></span>setBatteryLevelCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void STM32LoRaWAN::setBatteryLevelCallback </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; uint8_t(void)&gt;&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Registers a callback that is called whenever there is a DevStatusReq.</p>
+<p>BAT_LEVEL_EXT_SRC - The end-device is connected to an external power source BAT_LEVEL_EMPTY - The battery is empty 1..254 - The battery level, 1 being at minimum and 254 being at maximum BAT_LEVEL_FULL - The battery is full BAT_LEVEL_NO_MEASURE - The end-device was not able to measure the battery level</p>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000023">MKRWAN API difference:</a></b></dt><dd>Not supported by MKRWAN </dd></dl>
+
+</div>
+</div>
 <a id="a9a54edbb78e6b782204b2d37bed84c96"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9a54edbb78e6b782204b2d37bed84c96">&#9670;&nbsp;</a></span>setBaud()</h2>
 
@@ -3779,7 +3839,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000030">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no serial link to configure </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000031">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no serial link to configure </dd></dl>
 
 </div>
 </div>
@@ -3798,7 +3858,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000025">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: confirmed uplinked better handled through <a class="el" href="classSTM32LoRaWAN.html#a816dd9c8b223bda9380971c5a1dab377">endPacket()</a> </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000026">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: confirmed uplinked better handled through <a class="el" href="classSTM32LoRaWAN.html#a816dd9c8b223bda9380971c5a1dab377">endPacket()</a> </dd></dl>
 
 </div>
 </div>
@@ -4203,7 +4263,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000032">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: test method only </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000033">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: test method only </dd></dl>
 
 </div>
 </div>
@@ -4222,7 +4282,7 @@ Static Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000036">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no remote module to sleep </dd></dl>
+<dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000037">MKRWAN API difference:</a></b></dt><dd>Not implemented by this library: no remote module to sleep </dd></dl>
 
 </div>
 </div>
@@ -4432,7 +4492,7 @@ Static Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Dummy for MKRWAN compatibility. On MKRWAN this returned the module firmware version, but this does not apply here. </p><dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000023">MKRWAN API difference:</a></b></dt><dd>Dummy implementation in this library </dd></dl>
+<p>Dummy for MKRWAN compatibility. On MKRWAN this returned the module firmware version, but this does not apply here. </p><dl class="extensions"><dt><b><a class="el" href="extensions.html#_extensions000024">MKRWAN API difference:</a></b></dt><dd>Dummy implementation in this library </dd></dl>
 
 </div>
 </div>
@@ -4527,6 +4587,28 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a59f474cd5bf1f6b2af7a38bb25015286"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59f474cd5bf1f6b2af7a38bb25015286">&#9670;&nbsp;</a></span>battery_level_callback</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt;uint8_t(void)&gt; STM32LoRaWAN::battery_level_callback</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a2a1e4648be8f45af29b33b4fe2c0c8df"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2a1e4648be8f45af29b33b4fe2c0c8df">&#9670;&nbsp;</a></span>DEFAULT_JOIN_TIMEOUT</h2>
 
@@ -4657,7 +4739,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">      .GetBatteryLevel = <span class="keyword">nullptr</span>,</div>
+<div class="line">      .GetBatteryLevel = <a class="code" href="classSTM32LoRaWAN.html#abae950faa0a3eaa647285d7c369d55b4">GetBatteryLevel</a>,</div>
 <div class="line">      .GetTemperatureLevel = <span class="keyword">nullptr</span>,</div>
 <div class="line">      .GetUniqueId = <span class="keyword">nullptr</span>, </div>
 <div class="line">      .GetDevAddress = <span class="keyword">nullptr</span>, </div>
@@ -4665,6 +4747,7 @@ template&lt;typename T &gt; </div>
 <div class="line">      .MacProcessNotify = <a class="code" href="classSTM32LoRaWAN.html#a80f4126e5c863ec1b11f66bd270ec6fd">MacProcessNotify</a>,</div>
 <div class="line">    }</div>
 <div class="ttc" id="aclassSTM32LoRaWAN_html_a80f4126e5c863ec1b11f66bd270ec6fd"><div class="ttname"><a href="classSTM32LoRaWAN.html#a80f4126e5c863ec1b11f66bd270ec6fd">STM32LoRaWAN::MacProcessNotify</a></div><div class="ttdeci">static void MacProcessNotify()</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:120</div></div>
+<div class="ttc" id="aclassSTM32LoRaWAN_html_abae950faa0a3eaa647285d7c369d55b4"><div class="ttname"><a href="classSTM32LoRaWAN.html#abae950faa0a3eaa647285d7c369d55b4">STM32LoRaWAN::GetBatteryLevel</a></div><div class="ttdeci">static uint8_t GetBatteryLevel()</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:128</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4693,10 +4776,10 @@ template&lt;typename T &gt; </div>
 <div class="line">      .MacMlmeConfirm = <a class="code" href="classSTM32LoRaWAN.html#adb22008cc147d1f94bceba9ca5676bcf">MacMlmeConfirm</a>,</div>
 <div class="line">      .MacMlmeIndication = <a class="code" href="classSTM32LoRaWAN.html#a6dce90cc8ee17de4a48c4ec5365fcad9">MacMlmeIndication</a>,</div>
 <div class="line">    }</div>
-<div class="ttc" id="aclassSTM32LoRaWAN_html_a38f3b2184022481810daeeb731d332c3"><div class="ttname"><a href="classSTM32LoRaWAN.html#a38f3b2184022481810daeeb731d332c3">STM32LoRaWAN::MacMcpsIndication</a></div><div class="ttdeci">static void MacMcpsIndication(McpsIndication_t *McpsIndication, LoRaMacRxStatus_t *RxStatus)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1282</div></div>
-<div class="ttc" id="aclassSTM32LoRaWAN_html_a6dce90cc8ee17de4a48c4ec5365fcad9"><div class="ttname"><a href="classSTM32LoRaWAN.html#a6dce90cc8ee17de4a48c4ec5365fcad9">STM32LoRaWAN::MacMlmeIndication</a></div><div class="ttdeci">static void MacMlmeIndication(MlmeIndication_t *MlmeIndication, LoRaMacRxStatus_t *RxStatus)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1307</div></div>
-<div class="ttc" id="aclassSTM32LoRaWAN_html_a7f4eb77aaaae63ef543cc2dcda5314df"><div class="ttname"><a href="classSTM32LoRaWAN.html#a7f4eb77aaaae63ef543cc2dcda5314df">STM32LoRaWAN::MacMcpsConfirm</a></div><div class="ttdeci">static void MacMcpsConfirm(McpsConfirm_t *McpsConfirm)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1266</div></div>
-<div class="ttc" id="aclassSTM32LoRaWAN_html_adb22008cc147d1f94bceba9ca5676bcf"><div class="ttname"><a href="classSTM32LoRaWAN.html#adb22008cc147d1f94bceba9ca5676bcf">STM32LoRaWAN::MacMlmeConfirm</a></div><div class="ttdeci">static void MacMlmeConfirm(MlmeConfirm_t *MlmeConfirm)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1299</div></div>
+<div class="ttc" id="aclassSTM32LoRaWAN_html_a38f3b2184022481810daeeb731d332c3"><div class="ttname"><a href="classSTM32LoRaWAN.html#a38f3b2184022481810daeeb731d332c3">STM32LoRaWAN::MacMcpsIndication</a></div><div class="ttdeci">static void MacMcpsIndication(McpsIndication_t *McpsIndication, LoRaMacRxStatus_t *RxStatus)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1293</div></div>
+<div class="ttc" id="aclassSTM32LoRaWAN_html_a6dce90cc8ee17de4a48c4ec5365fcad9"><div class="ttname"><a href="classSTM32LoRaWAN.html#a6dce90cc8ee17de4a48c4ec5365fcad9">STM32LoRaWAN::MacMlmeIndication</a></div><div class="ttdeci">static void MacMlmeIndication(MlmeIndication_t *MlmeIndication, LoRaMacRxStatus_t *RxStatus)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1318</div></div>
+<div class="ttc" id="aclassSTM32LoRaWAN_html_a7f4eb77aaaae63ef543cc2dcda5314df"><div class="ttname"><a href="classSTM32LoRaWAN.html#a7f4eb77aaaae63ef543cc2dcda5314df">STM32LoRaWAN::MacMcpsConfirm</a></div><div class="ttdeci">static void MacMcpsConfirm(McpsConfirm_t *McpsConfirm)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1277</div></div>
+<div class="ttc" id="aclassSTM32LoRaWAN_html_adb22008cc147d1f94bceba9ca5676bcf"><div class="ttname"><a href="classSTM32LoRaWAN.html#adb22008cc147d1f94bceba9ca5676bcf">STM32LoRaWAN::MacMlmeConfirm</a></div><div class="ttdeci">static void MacMlmeConfirm(MlmeConfirm_t *MlmeConfirm)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1310</div></div>
 </div><!-- fragment -->
 </div>
 </div>
