@@ -114,11 +114,8 @@ const UTIL_SYSTIM_Driver_s UTIL_SYSTIMDriver =
  * (1 tick is 3.9ms (when APREDIV = 0x7F)
  * for other RTC clock freq, the formula is ck_apre = RTC_clock / (prediv_A +1)
  */
-#define MS_TO_TICK \
+#define CK_APRE \
   (uint32_t)(LL_RCC_GetRTCClockFreq() / (LL_RTC_GetAsynchPrescaler(hrtc->Instance) + 1))
-
-/* Give one more (to adjust to x3.9 factor) */
-#define TICK_TO_MS ((1000/MS_TO_TICK) + 1)
 
 /* USER CODE BEGIN PD */
 
@@ -237,7 +234,7 @@ UTIL_TIMER_Status_t TIMER_IF_StartTimer(uint32_t timeout)
   TIMER_IF_DBG_PRINTF("Start timer: time=%d, alarm=%d\n\r", GetTimerTicks(), timeout);
 
   /* Program ALARM B on timeout ticks converted in ms (one more for uncertainty, mask is 31 */
-  uint64_t subSeconds64 = ((uint64_t)((uint64_t)timeout * (uint64_t)(1000))) / MS_TO_TICK + 1;
+  uint64_t subSeconds64 = ((uint64_t)((uint64_t)timeout * (uint64_t)(1000))) / CK_APRE + 1;
   RTC_StartAlarm64(RTC_ALARM_B, 0, 0, 0, 0, subSeconds64, RTC_HOURFORMAT12_PM, 31UL);
 
   /* USER CODE BEGIN TIMER_IF_StartTimer_Last */
@@ -335,7 +332,7 @@ uint32_t TIMER_IF_Convert_ms2Tick(uint32_t timeMilliSec)
   /* USER CODE BEGIN TIMER_IF_Convert_ms2Tick */
 
   /* USER CODE END TIMER_IF_Convert_ms2Tick */
-  ret = ((uint32_t)(((uint64_t)timeMilliSec * MS_TO_TICK) / 1000));
+  ret = ((uint32_t)(((uint64_t)timeMilliSec * CK_APRE) / 1000));
   /* USER CODE BEGIN TIMER_IF_Convert_ms2Tick_Last */
 
   /* USER CODE END TIMER_IF_Convert_ms2Tick_Last */
@@ -348,7 +345,7 @@ uint32_t TIMER_IF_Convert_Tick2ms(uint32_t tick)
   /* USER CODE BEGIN TIMER_IF_Convert_Tick2ms */
 
   /* USER CODE END TIMER_IF_Convert_Tick2ms */
-  ret = tick * TICK_TO_MS;
+  ret = (uint32_t)((uint64_t)tick * 1000 / CK_APRE + 1);
   /* USER CODE BEGIN TIMER_IF_Convert_Tick2ms_Last */
 
   /* USER CODE END TIMER_IF_Convert_Tick2ms_Last */
@@ -395,8 +392,8 @@ uint32_t TIMER_IF_GetTime(uint32_t *mSeconds)
 
   ticks = (((uint64_t) timerValueMSB) << 32) + timerValueLsb;
 
-  seconds = ticks / MS_TO_TICK;
-  *mSeconds = (ticks * 1000) / MS_TO_TICK;
+  seconds = ticks / CK_APRE;
+  *mSeconds = (ticks * 1000) / CK_APRE;
   /* USER CODE BEGIN TIMER_IF_GetTime_Last */
 
   /* USER CODE END TIMER_IF_GetTime_Last */
