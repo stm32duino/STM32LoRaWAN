@@ -630,17 +630,15 @@ bool STM32LoRaWAN::mibSetUint32(const char* name, Mib_t type, uint32_t value) {
 
 bool STM32LoRaWAN::mibGetUint64(const char* name, Mib_t type, uint64_t *value) {
   MibRequestConfirm_t mibReq;
-  if (!mibGet(name, type, mibReq))
-    return false;
-
-  const uint8_t *buf;
+  uint8_t buf[8];
 
   switch(type) {
-    case MIB_DEV_EUI: buf = mibReq.Param.DevEui; break;
-    case MIB_JOIN_EUI: buf = mibReq.Param.JoinEui; break;
+    case MIB_DEV_EUI: mibReq.Param.DevEui = buf; break;
+    case MIB_JOIN_EUI: mibReq.Param.JoinEui = buf; break;
     default: return failure("Internal error: Unknown MIB type: %s / %u\r\n", name, type);
   }
-
+  if (!mibGet(name, type, mibReq))
+    return false;
   *value = (uint64_t)buf[0] << 7*8 |
            (uint64_t)buf[1] << 6*8 |
            (uint64_t)buf[2] << 5*8 |
@@ -726,64 +724,67 @@ size_t STM32LoRaWAN::mibHexSize(const char *name, Mib_t type) {
 
 bool STM32LoRaWAN::mibGetHex(const char* name, Mib_t type, String* value) {
   MibRequestConfirm_t mibReq;
-  if (!mibGet(name, type, mibReq))
-    return false;
-
   size_t size = mibHexSize(name, type);
 
   if (!size)
     return false;
 
-  uint8_t dev_addr_buf[4];;
-  uint8_t *buf;
+  uint8_t dev_addr_buf[4];
+  uint8_t buf_type[size];
+  uint8_t *buf = buf_type;
 
   switch(type) {
-    case MIB_DEV_EUI: buf = mibReq.Param.DevEui; break;
-    case MIB_JOIN_EUI: buf = mibReq.Param.JoinEui; break;
-    // This assumes big endian, since that's the natural way to
-    // write down a a number in hex
-    case MIB_DEV_ADDR:
-      dev_addr_buf[0] = mibReq.Param.DevAddr >> (3*8);
-      dev_addr_buf[1] = mibReq.Param.DevAddr >> (2*8);
-      dev_addr_buf[2] = mibReq.Param.DevAddr >> (1*8);
-      dev_addr_buf[3] = mibReq.Param.DevAddr >> (0*8);
-      buf = dev_addr_buf;
-      break;
-    case MIB_APP_KEY: buf = mibReq.Param.AppKey; break;
-    case MIB_NWK_KEY: buf = mibReq.Param.NwkKey; break;
+    case MIB_DEV_EUI: mibReq.Param.DevEui = buf_type; break;
+    case MIB_JOIN_EUI: mibReq.Param.JoinEui = buf_type; break;
+     case MIB_APP_KEY: mibReq.Param.AppKey = buf_type; break;
+    case MIB_NWK_KEY: mibReq.Param.NwkKey = buf_type; break;
     #if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01010100 ))
-    case MIB_J_S_INT_KEY: buf = mibReq.Param.JSIntKey; break;
-    case MIB_J_S_ENC_KEY: buf = mibReq.Param.JSEncKey; break;
-    case MIB_F_NWK_S_INT_KEY: buf = mibReq.Param.FNwkSIntKey; break;
-    case MIB_S_NWK_S_INT_KEY: buf = mibReq.Param.SNwkSIntKey; break;
-    case MIB_NWK_S_ENC_KEY: buf = mibReq.Param.NwkSEncKey; break;
+    case MIB_J_S_INT_KEY: mibReq.Param.JSIntKey = buf_type; break;
+    case MIB_J_S_ENC_KEY: mibReq.Param.JSEncKey = buf_type; break;
+    case MIB_F_NWK_S_INT_KEY: mibReq.Param.FNwkSIntKey = buf_type; break;
+    case MIB_S_NWK_S_INT_KEY: mibReq.Param.SNwkSIntKey = buf_type; break;
+    case MIB_NWK_S_ENC_KEY: mibReq.Param.NwkSEncKey = buf_type; break;
     #else /* ( LORAMAC_VERSION == 0x01010100 ) */
-    case MIB_NWK_S_KEY: buf = mibReq.Param.NwkSKey; break;
+    case MIB_NWK_S_KEY: mibReq.Param.NwkSKey = buf_type; break;
     #endif /* ( LORAMAC_VERSION == 0x01010100 ) */
-    case MIB_APP_S_KEY: buf = mibReq.Param.AppSKey; break;
-    case MIB_MC_KE_KEY: buf = mibReq.Param.McKEKey; break;
+    case MIB_APP_S_KEY: mibReq.Param.AppSKey = buf_type; break;
+    case MIB_MC_KE_KEY: mibReq.Param.McKEKey = buf_type; break;
     #if ( LORAMAC_MAX_MC_CTX > 0 )
-    case MIB_MC_KEY_0: buf = mibReq.Param.McKey0; break;
-    case MIB_MC_APP_S_KEY_0: buf = mibReq.Param.McAppSKey0; break;
-    case MIB_MC_NWK_S_KEY_0: buf = mibReq.Param.McNwkSKey0; break;
+    case MIB_MC_KEY_0: mibReq.Param.McKey0 = buf_type; break;
+    case MIB_MC_APP_S_KEY_0: mibReq.Param.McAppSKey0 = buf_type; break;
+    case MIB_MC_NWK_S_KEY_0: mibReq.Param.McNwkSKey0 = buf_type; break;
     #endif /* LORAMAC_MAX_MC_CTX > 0 */
     #if ( LORAMAC_MAX_MC_CTX > 1 )
-    case MIB_MC_KEY_1: buf = mibReq.Param.McKey1; break;
-    case MIB_MC_APP_S_KEY_1: buf = mibReq.Param.McAppSKey1; break;
-    case MIB_MC_NWK_S_KEY_1: buf = mibReq.Param.McNwkSKey1; break;
+    case MIB_MC_KEY_1: mibReq.Param.McKey1 = buf_type; break;
+    case MIB_MC_APP_S_KEY_1: mibReq.Param.McAppSKey1 = buf_type; break;
+    case MIB_MC_NWK_S_KEY_1: mibReq.Param.McNwkSKey1 = buf_type; break;
     #endif /* LORAMAC_MAX_MC_CTX > 1 */
     #if ( LORAMAC_MAX_MC_CTX > 2 )
-    case MIB_MC_KEY_2: buf = mibReq.Param.McKey2; break;
-    case MIB_MC_APP_S_KEY_2: buf = mibReq.Param.McAppSKey2; break;
-    case MIB_MC_NWK_S_KEY_2: buf = mibReq.Param.McNwkSKey2; break;
+    case MIB_MC_KEY_2: mibReq.Param.McKey2 = buf_type; break;
+    case MIB_MC_APP_S_KEY_2: mibReq.Param.McAppSKey2 = buf_type; break;
+    case MIB_MC_NWK_S_KEY_2: mibReq.Param.McNwkSKey2 = buf_type; break;
     #endif /* LORAMAC_MAX_MC_CTX > 2 */
     #if ( LORAMAC_MAX_MC_CTX > 3 )
-    case MIB_MC_KEY_3: buf = mibReq.Param.McKey3; break;
-    case MIB_MC_APP_S_KEY_3: buf = mibReq.Param.McAppSKey3; break;
-    case MIB_MC_NWK_S_KEY_3: buf = mibReq.Param.McNwkSKey3; break;
+    case MIB_MC_KEY_3: mibReq.Param.McKey3 = buf_type; break;
+    case MIB_MC_APP_S_KEY_3: mibReq.Param.McAppSKey3 = buf_type; break;
+    case MIB_MC_NWK_S_KEY_3: mibReq.Param.McNwkSKey3 = buf_type; break;
     #endif /* LORAMAC_MAX_MC_CTX > 3 */
     default:
       return failure("Internal error: Unknown MIB type: %s / %u\r\n", name, type);
+  }
+
+
+  if (!mibGet(name, type, mibReq))
+    return false;
+
+  if (type == MIB_DEV_ADDR) {
+    // This assumes big endian, since that's the natural way to
+    // write down a a number in hex
+    dev_addr_buf[0] = mibReq.Param.DevAddr >> (3*8);
+    dev_addr_buf[1] = mibReq.Param.DevAddr >> (2*8);
+    dev_addr_buf[2] = mibReq.Param.DevAddr >> (1*8);
+    dev_addr_buf[3] = mibReq.Param.DevAddr >> (0*8);
+    buf = dev_addr_buf;
   }
 
   return toHex(value, buf, size);
