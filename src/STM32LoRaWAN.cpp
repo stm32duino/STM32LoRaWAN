@@ -1304,6 +1304,8 @@ void STM32LoRaWAN::MacMcpsIndication(McpsIndication_t* i, LoRaMacRxStatus_t* sta
   if ((i->McpsIndication == MCPS_CONFIRMED || i->McpsIndication == MCPS_UNCONFIRMED) && i->Status == LORAMAC_EVENT_INFO_STATUS_OK) {
     instance->add_rx(i->Buffer, i->BufferSize);
     instance->rx_port = i->Port;
+    instance->rx_rssi = status->Rssi;
+    instance->rx_snr = status->Snr;
   }
 }
 
