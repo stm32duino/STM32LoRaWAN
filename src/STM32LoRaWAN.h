@@ -299,6 +299,16 @@ class STM32LoRaWAN : public Stream {
      * Returns the port number of the most recently received packet.
      */
     uint8_t getDownlinkPort() { return rx_port; }
+
+    /**
+     * Returns the RSSI of the most recently received packet.
+     */
+    int16_t getDownlinkRssi() { return rx_rssi; }
+
+    /**
+     * Returns the SNR of the most recently received packet.
+     */
+    int8_t getDownlinkSnr() { return rx_snr; }
     /// @}
 
 
@@ -1044,6 +1054,12 @@ class STM32LoRaWAN : public Stream {
 
     /** Port for most recently received packet */
     uint8_t rx_port = 0;
+
+    /** RSSI for most recently received packet */
+    int16_t rx_rssi = 0;
+
+    /** SNR for most recently received packet */
+    int8_t rx_snr = 0;
 
     bool nwk_key_set = false;
 
