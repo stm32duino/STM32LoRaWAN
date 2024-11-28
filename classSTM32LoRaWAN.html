@@ -170,6 +170,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a56fcc5244fc0df45dbad61654c9ddcff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeaa78654443adbfdcad9b3ca268f256b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#aeaa78654443adbfdcad9b3ca268f256b">getDownlinkPort</a> ()</td></tr>
 <tr class="separator:aeaa78654443adbfdcad9b3ca268f256b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c908d02e781ae4f9a00a2a0e3c75c31"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a6c908d02e781ae4f9a00a2a0e3c75c31">getDownlinkRssi</a> ()</td></tr>
+<tr class="separator:a6c908d02e781ae4f9a00a2a0e3c75c31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4eca8781203e99cb0b39ea6fcbdbcc81"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a4eca8781203e99cb0b39ea6fcbdbcc81">getDownlinkSnr</a> ()</td></tr>
+<tr class="separator:a4eca8781203e99cb0b39ea6fcbdbcc81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Stream reading</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p><a class="anchor" id="stream"></a></p>
 <p>These are standard methods defined by the Arduino Stream class to allow reading received data.</p>
@@ -500,6 +504,10 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a2d842876085b5671605071115b096115"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a8d94acf9cfb846f1b90aad4836ae63"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a1a8d94acf9cfb846f1b90aad4836ae63">rx_port</a> = 0</td></tr>
 <tr class="separator:a1a8d94acf9cfb846f1b90aad4836ae63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2a2ed1d44742d0cc38729838b06f0f7"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#af2a2ed1d44742d0cc38729838b06f0f7">rx_rssi</a> = 0</td></tr>
+<tr class="separator:af2a2ed1d44742d0cc38729838b06f0f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb7ee57f245b9000e21f3b83a84df0d6"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#aeb7ee57f245b9000e21f3b83a84df0d6">rx_snr</a> = 0</td></tr>
+<tr class="separator:aeb7ee57f245b9000e21f3b83a84df0d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29e3e04449873af7a4d82ee1f0c84ba9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a29e3e04449873af7a4d82ee1f0c84ba9">nwk_key_set</a> = false</td></tr>
 <tr class="separator:a29e3e04449873af7a4d82ee1f0c84ba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48913ce12dc2e2f2eae00c6af09517b6"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSTM32LoRaWAN.html#a48913ce12dc2e2f2eae00c6af09517b6">tx_buf</a> [255]</td></tr>
@@ -1528,6 +1536,58 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Returns the port number of the most recently received packet. </p>
+
+</div>
+</div>
+<a id="a6c908d02e781ae4f9a00a2a0e3c75c31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c908d02e781ae4f9a00a2a0e3c75c31">&#9670;&nbsp;</a></span>getDownlinkRssi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t STM32LoRaWAN::getDownlinkRssi </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the RSSI of the most recently received packet. </p>
+
+</div>
+</div>
+<a id="a4eca8781203e99cb0b39ea6fcbdbcc81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4eca8781203e99cb0b39ea6fcbdbcc81">&#9670;&nbsp;</a></span>getDownlinkSnr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int8_t STM32LoRaWAN::getDownlinkSnr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the SNR of the most recently received packet. </p>
 
 </div>
 </div>
@@ -4777,9 +4837,9 @@ template&lt;typename T &gt; </div>
 <div class="line">      .MacMlmeIndication = <a class="code" href="classSTM32LoRaWAN.html#a6dce90cc8ee17de4a48c4ec5365fcad9">MacMlmeIndication</a>,</div>
 <div class="line">    }</div>
 <div class="ttc" id="aclassSTM32LoRaWAN_html_a38f3b2184022481810daeeb731d332c3"><div class="ttname"><a href="classSTM32LoRaWAN.html#a38f3b2184022481810daeeb731d332c3">STM32LoRaWAN::MacMcpsIndication</a></div><div class="ttdeci">static void MacMcpsIndication(McpsIndication_t *McpsIndication, LoRaMacRxStatus_t *RxStatus)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1293</div></div>
-<div class="ttc" id="aclassSTM32LoRaWAN_html_a6dce90cc8ee17de4a48c4ec5365fcad9"><div class="ttname"><a href="classSTM32LoRaWAN.html#a6dce90cc8ee17de4a48c4ec5365fcad9">STM32LoRaWAN::MacMlmeIndication</a></div><div class="ttdeci">static void MacMlmeIndication(MlmeIndication_t *MlmeIndication, LoRaMacRxStatus_t *RxStatus)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1318</div></div>
+<div class="ttc" id="aclassSTM32LoRaWAN_html_a6dce90cc8ee17de4a48c4ec5365fcad9"><div class="ttname"><a href="classSTM32LoRaWAN.html#a6dce90cc8ee17de4a48c4ec5365fcad9">STM32LoRaWAN::MacMlmeIndication</a></div><div class="ttdeci">static void MacMlmeIndication(MlmeIndication_t *MlmeIndication, LoRaMacRxStatus_t *RxStatus)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1320</div></div>
 <div class="ttc" id="aclassSTM32LoRaWAN_html_a7f4eb77aaaae63ef543cc2dcda5314df"><div class="ttname"><a href="classSTM32LoRaWAN.html#a7f4eb77aaaae63ef543cc2dcda5314df">STM32LoRaWAN::MacMcpsConfirm</a></div><div class="ttdeci">static void MacMcpsConfirm(McpsConfirm_t *McpsConfirm)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1277</div></div>
-<div class="ttc" id="aclassSTM32LoRaWAN_html_adb22008cc147d1f94bceba9ca5676bcf"><div class="ttname"><a href="classSTM32LoRaWAN.html#adb22008cc147d1f94bceba9ca5676bcf">STM32LoRaWAN::MacMlmeConfirm</a></div><div class="ttdeci">static void MacMlmeConfirm(MlmeConfirm_t *MlmeConfirm)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1310</div></div>
+<div class="ttc" id="aclassSTM32LoRaWAN_html_adb22008cc147d1f94bceba9ca5676bcf"><div class="ttname"><a href="classSTM32LoRaWAN.html#adb22008cc147d1f94bceba9ca5676bcf">STM32LoRaWAN::MacMlmeConfirm</a></div><div class="ttdeci">static void MacMlmeConfirm(MlmeConfirm_t *MlmeConfirm)</div><div class="ttdef"><b>Definition:</b> STM32LoRaWAN.cpp:1312</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4913,6 +4973,52 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="af2a2ed1d44742d0cc38729838b06f0f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2a2ed1d44742d0cc38729838b06f0f7">&#9670;&nbsp;</a></span>rx_rssi</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t STM32LoRaWAN::rx_rssi = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>RSSI for most recently received packet </p>
+
+</div>
+</div>
+<a id="aeb7ee57f245b9000e21f3b83a84df0d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb7ee57f245b9000e21f3b83a84df0d6">&#9670;&nbsp;</a></span>rx_snr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int8_t STM32LoRaWAN::rx_snr = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>SNR for most recently received packet </p>
 
 </div>
 </div>
