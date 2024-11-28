@@ -62,6 +62,8 @@ setNwkSKey	KEYWORD2
 setAppSKey	KEYWORD2
 endPacketAsync	KEYWORD2
 getDownlinkPort	KEYWORD2
+getDownlinkRssi	KEYWORD2
+getDownlinkSnr	KEYWORD2
 setMaintainNeededCallback	KEYWORD2
 
 #######################################
