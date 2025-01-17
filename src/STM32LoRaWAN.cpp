@@ -46,23 +46,24 @@
 // the plain value, so no translation is needed. However, do doublecheck
 // that this is really the case.
 #if DR_0 != 0 || DR_1 != 1 || DR_2 != 2 || DR_3 != 3 || DR_4 != 4 || DR_5 != 5 || DR_6 != 6 || DR_8 != 8 || DR_9 != 9 || DR_10 != 10 || DR_11 != 11 || DR_12 != 12 || DR_13 != 13 || DR_14 != 14 || DR_15 != 15
-#error "Unexpected datarate constants"
+  #error "Unexpected datarate constants"
 #endif
 
 // Same for tx power
 #if TX_POWER_0 != 0 || TX_POWER_1 != 1 || TX_POWER_2 != 2 || TX_POWER_3 != 3 || TX_POWER_4 != 4 || TX_POWER_5 != 5 || TX_POWER_6 != 6 || TX_POWER_8 != 8 || TX_POWER_9 != 9 || TX_POWER_10 != 10 || TX_POWER_11 != 11 || TX_POWER_12 != 12 || TX_POWER_13 != 13 || TX_POWER_14 != 14 || TX_POWER_15 != 15
-#error "Unexpected txpower constants"
+  #error "Unexpected txpower constants"
 #endif
 
 /* Get the RTC object for init */
-STM32RTC& _rtc = STM32RTC::getInstance();
+STM32RTC &_rtc = STM32RTC::getInstance();
 
-STM32LoRaWAN* STM32LoRaWAN::instance;
+STM32LoRaWAN *STM32LoRaWAN::instance;
 
 bool STM32LoRaWAN::begin(_lora_band band)
 {
-  if (instance != nullptr)
+  if (instance != nullptr) {
     return failure("Only one STM32LoRaWAN instance can be used");
+  }
   instance = this;
 
   /*
@@ -85,8 +86,9 @@ bool STM32LoRaWAN::begin(_lora_band band)
   }
 
   res = LoRaMacStart();
-  if (res != LORAMAC_STATUS_OK)
+  if (res != LORAMAC_STATUS_OK) {
     return failure("LoRaMacStart failed: %s\r\n", toString(res));
+  }
 
   /*
    * Default datarate for joining and data transmission (until ADR
@@ -95,14 +97,16 @@ bool STM32LoRaWAN::begin(_lora_band band)
    * regions. If this DR has insufficient range, the join process (and
    * ADR) will fall back to lower datarates automatically.
    */
-  if (!dataRate(DR_4))
+  if (!dataRate(DR_4)) {
     return false;
+  }
 
   /*
    * Enable ADR by default, to be more friendly with the spectrum and to
    * match the default value of MKRWAN / mkrwan1300-fw */
-  if (!setADR(true))
+  if (!setADR(true)) {
     return false;
+  }
 
   /*
    * Default to the builtin devEUI for this chip.
@@ -110,8 +114,9 @@ bool STM32LoRaWAN::begin(_lora_band band)
    * LoRaMacIniitalization so it initialize the secure element with that
    * default, but just setting the devEUI explicitly here is easier.
    */
-  if (!setDevEui(builtinDevEUI()))
+  if (!setDevEui(builtinDevEUI())) {
     return false;
+  }
 
   return true;
 }
@@ -120,8 +125,9 @@ void STM32LoRaWAN::MacProcessNotify()
 {
   // Called by the stack from an ISR when there is work to do
   instance->mac_process_pending = true;
-  if (instance->maintain_needed_callback)
+  if (instance->maintain_needed_callback) {
     instance->maintain_needed_callback();
+  }
 }
 
 uint8_t STM32LoRaWAN::GetBatteryLevel()
@@ -129,7 +135,7 @@ uint8_t STM32LoRaWAN::GetBatteryLevel()
   // Called by the stack from an ISR when there is a DevStatusReq
   uint8_t battery_level = BAT_LEVEL_NO_MEASURE;
   if (instance->battery_level_callback) {
-      battery_level = instance->battery_level_callback();
+    battery_level = instance->battery_level_callback();
   }
 
   return battery_level;
@@ -139,7 +145,7 @@ void STM32LoRaWAN::maintain()
 {
   if (mac_process_pending) {
     mac_process_pending = false;
-    LoRaMacProcess( );
+    LoRaMacProcess();
   }
 }
 
@@ -147,19 +153,21 @@ void STM32LoRaWAN::maintainUntilIdle()
 {
   do {
     maintain();
-  } while(busy());
+  } while (busy());
 }
 
 bool STM32LoRaWAN::continuousWave(uint32_t frequency, int8_t powerdBm,
-                                  uint16_t timeout) {
+                                  uint16_t timeout)
+{
   MlmeReq_t mlmeReq;
   mlmeReq.Type = MLME_TXCW_1;
   mlmeReq.Req.TxCw.Frequency = frequency;
   mlmeReq.Req.TxCw.Power = powerdBm;
   mlmeReq.Req.TxCw.Timeout = timeout;
   LoRaMacStatus_t res = LoRaMacMlmeRequest(&mlmeReq);
-  if (res != LORAMAC_STATUS_OK)
+  if (res != LORAMAC_STATUS_OK) {
     return failure("Failed to enable CW mode: %s\r\n", toString(res));
+  }
 
   return true;
 }
@@ -178,13 +186,15 @@ bool STM32LoRaWAN::joinOTAAAsync()
 
   // Starts the OTAA join procedure
   LoRaMacStatus_t res = LoRaMacMlmeRequest(&mlmeReq);
-  if (res != LORAMAC_STATUS_OK)
+  if (res != LORAMAC_STATUS_OK) {
     return failure("Join request failed: %s\r\n", toString(res));
+  }
 
   return true;
 }
 
-bool STM32LoRaWAN::joinOTAA() {
+bool STM32LoRaWAN::joinOTAA()
+{
   unsigned long start = millis();
 
   do {
@@ -217,49 +227,59 @@ bool STM32LoRaWAN::joinOTAA() {
 }
 
 
-bool STM32LoRaWAN::joinABP() {
+bool STM32LoRaWAN::joinABP()
+{
   clear_rx();
   MibRequestConfirm_t mibReq;
   mibReq.Param.NetworkActivation = ACTIVATION_TYPE_ABP;
-  if (!mibSet("MIB_NETWORK_ACTIVATION", MIB_NETWORK_ACTIVATION, mibReq))
+  if (!mibSet("MIB_NETWORK_ACTIVATION", MIB_NETWORK_ACTIVATION, mibReq)) {
     return false;
+  }
 
   return true;
 }
 
-bool STM32LoRaWAN::dataRate(uint8_t dr) {
+bool STM32LoRaWAN::dataRate(uint8_t dr)
+{
   return mibSetInt8("dataRate", MIB_CHANNELS_DATARATE, dr);
 }
 
-int STM32LoRaWAN::getDataRate() {
+int STM32LoRaWAN::getDataRate()
+{
   int8_t dr;
-  if (!mibGetInt8("dataRate", MIB_CHANNELS_DATARATE, &dr))
+  if (!mibGetInt8("dataRate", MIB_CHANNELS_DATARATE, &dr)) {
     return -1;
+  }
   return dr;
 }
 
-bool STM32LoRaWAN::power(uint8_t index){
+bool STM32LoRaWAN::power(uint8_t index)
+{
   return mibSetInt8("power", MIB_CHANNELS_TX_POWER, index);
 }
 
-bool STM32LoRaWAN::powerdB(int8_t db){
+bool STM32LoRaWAN::powerdB(int8_t db)
+{
   // This uses knowledge about the radio implementation to calculate the
   // index to use. See RegionCommonComputeTxPower()
   int8_t index = -(db - 1) / 2;
   return mibSetInt8("power", MIB_CHANNELS_TX_POWER, index);
 }
 
-bool STM32LoRaWAN::dutyCycle(bool on){
+bool STM32LoRaWAN::dutyCycle(bool on)
+{
   LoRaMacTestSetDutyCycleOn(on);
   return true;
 }
 
-bool STM32LoRaWAN::setPort(uint8_t port){
+bool STM32LoRaWAN::setPort(uint8_t port)
+{
   this->tx_port = port;
   return true;
 }
 
-uint8_t STM32LoRaWAN::getPort(){
+uint8_t STM32LoRaWAN::getPort()
+{
   return this->tx_port;
 }
 
@@ -270,55 +290,68 @@ bool STM32LoRaWAN::configureBand(_lora_band band){
 }
 */
 
-bool STM32LoRaWAN::publicNetwork(bool publicNetwork){
+bool STM32LoRaWAN::publicNetwork(bool publicNetwork)
+{
   return mibSetBool("publicNetwork", MIB_PUBLIC_NETWORK, publicNetwork);
 }
 
 
-bool STM32LoRaWAN::setADR(bool adr){
+bool STM32LoRaWAN::setADR(bool adr)
+{
   return mibSetBool("ADR", MIB_ADR, adr);
 }
 
-int STM32LoRaWAN::getADR(){
+int STM32LoRaWAN::getADR()
+{
   bool res;
-  if (!mibGetBool("ADR", MIB_ADR, &res))
+  if (!mibGetBool("ADR", MIB_ADR, &res)) {
     return -1;
+  }
   return res;
 }
 
 // MKRWAN_v2 version
-int STM32LoRaWAN::getrxfreq(){
+int STM32LoRaWAN::getrxfreq()
+{
   return getRX2Freq();
 }
 
-int STM32LoRaWAN::getRX2DR(){
+int STM32LoRaWAN::getRX2DR()
+{
   RxChannelParams_t rx;
-  if (!mibGetRxChannelParams("RX2DR", MIB_RX2_CHANNEL, &rx))
-      return -1;
+  if (!mibGetRxChannelParams("RX2DR", MIB_RX2_CHANNEL, &rx)) {
+    return -1;
+  }
   return rx.Datarate;
 }
 
-bool STM32LoRaWAN::setRX2DR(uint8_t dr){
+bool STM32LoRaWAN::setRX2DR(uint8_t dr)
+{
   // MIB_RX2_CHANNEL contains multiple values, so do get-modify-set
   RxChannelParams_t rx;
-  if (!mibGetRxChannelParams("RX2DR", MIB_RX2_CHANNEL, &rx))
-      return false;
+  if (!mibGetRxChannelParams("RX2DR", MIB_RX2_CHANNEL, &rx)) {
+    return false;
+  }
   rx.Datarate = dr;
   return mibSetRxChannelParams("RX2DR", MIB_RX2_CHANNEL, rx);
 }
 
-uint32_t STM32LoRaWAN::getRX2Freq(){
+uint32_t STM32LoRaWAN::getRX2Freq()
+{
   RxChannelParams_t rx;
-  if (!mibGetRxChannelParams("RX2Freq", MIB_RX2_CHANNEL, &rx))
-      return -1;
+  if (!mibGetRxChannelParams("RX2Freq", MIB_RX2_CHANNEL, &rx)) {
+    return -1;
+  }
   return rx.Frequency;
 }
 
-bool STM32LoRaWAN::setRX2Freq(uint32_t freq){
+bool STM32LoRaWAN::setRX2Freq(uint32_t freq)
+{
   // MIB_RX2_CHANNEL contains multiple values, so do get-modify-set
   RxChannelParams_t rx;
-  if (!mibGetRxChannelParams("RX2Freq", MIB_RX2_CHANNEL, &rx))
-      return false;
+  if (!mibGetRxChannelParams("RX2Freq", MIB_RX2_CHANNEL, &rx)) {
+    return false;
+  }
   rx.Frequency = freq;
   return mibSetRxChannelParams("RX2Freq", MIB_RX2_CHANNEL, rx);
 }
@@ -338,68 +371,83 @@ bool STM32LoRaWAN::setFCD(uint16_t fcd){
 }
 */
 
-int32_t STM32LoRaWAN::getFCU(){
+int32_t STM32LoRaWAN::getFCU()
+{
   return this->fcnt_up;
 }
 
-int32_t STM32LoRaWAN::getFCD(){
+int32_t STM32LoRaWAN::getFCD()
+{
   return this->fcnt_down;
 }
 
-bool STM32LoRaWAN::enableChannel(unsigned idx) {
+bool STM32LoRaWAN::enableChannel(unsigned idx)
+{
   return modifyChannelEnabled(idx, true);
 }
 
-bool STM32LoRaWAN::disableChannel(unsigned idx) {
+bool STM32LoRaWAN::disableChannel(unsigned idx)
+{
   return modifyChannelEnabled(idx, false);
 }
 
-bool STM32LoRaWAN::modifyChannelEnabled(unsigned idx, bool value) {
+bool STM32LoRaWAN::modifyChannelEnabled(unsigned idx, bool value)
+{
   const char *enabledisable = value ? "enable" : "disable";
-  if (idx >= REGION_NVM_MAX_NB_CHANNELS)
+  if (idx >= REGION_NVM_MAX_NB_CHANNELS) {
     return failure("Cannot %s channel %u, only %u channels are available\r\n", enabledisable, idx, REGION_NVM_MAX_NB_CHANNELS);
+  }
 
   ChannelParams_t *channels;
-  if (!mibGetPtr("Channels", MIB_CHANNELS, (void**)&channels))
+  if (!mibGetPtr("Channels", MIB_CHANNELS, (void **)&channels)) {
     return false;
+  }
 
-  if (channels[idx].Frequency == 0)
+  if (channels[idx].Frequency == 0) {
     return failure("Cannot %s channel %u, channel not defined\r\n", enabledisable, idx);
+  }
 
   uint16_t new_mask[REGION_NVM_CHANNELS_MASK_SIZE];
-  uint16_t* cur_mask;
-  if (!mibGetPtr("ChannelsMask", MIB_CHANNELS_MASK, (void**)&cur_mask))
+  uint16_t *cur_mask;
+  if (!mibGetPtr("ChannelsMask", MIB_CHANNELS_MASK, (void **)&cur_mask)) {
     return false;
+  }
 
   // Ensure the channel mask can hold all channels, so the check against
   // REGION_NVM_MAX_NB_CHANNELS above is sufficient to prevent overflows here.
   static_assert(REGION_NVM_CHANNELS_MASK_SIZE * 16 <= REGION_NVM_MAX_NB_CHANNELS, "Mask too short for all channels?");
 
   memcpy(new_mask, cur_mask, sizeof(new_mask));
-  if (value)
+  if (value) {
     new_mask[idx / 16] |= 1 << (idx % 16);
-  else
+  } else {
     new_mask[idx / 16] &= ~(1 << (idx % 16));
+  }
 
-  return mibSetPtr("ChannelsMask", MIB_CHANNELS_MASK, (void*)new_mask);
+  return mibSetPtr("ChannelsMask", MIB_CHANNELS_MASK, (void *)new_mask);
 }
 
-bool STM32LoRaWAN::isChannelEnabled(unsigned idx){
-  if (idx >= REGION_NVM_MAX_NB_CHANNELS)
+bool STM32LoRaWAN::isChannelEnabled(unsigned idx)
+{
+  if (idx >= REGION_NVM_MAX_NB_CHANNELS) {
     return false;
+  }
 
   ChannelParams_t *channels;
-  if (!mibGetPtr("Channels", MIB_CHANNELS, (void**)&channels))
+  if (!mibGetPtr("Channels", MIB_CHANNELS, (void **)&channels)) {
     return false;
+  }
 
   // Treat unconfigured channels as disabled (even though the enabled
   // mask defaults to being set).
-  if (channels[idx].Frequency == 0)
+  if (channels[idx].Frequency == 0) {
     return 0;
+  }
 
-  uint16_t* cur_mask;
-  if (!mibGetPtr("ChannelsMask", MIB_CHANNELS_MASK, (void**)&cur_mask))
+  uint16_t *cur_mask;
+  if (!mibGetPtr("ChannelsMask", MIB_CHANNELS_MASK, (void **)&cur_mask)) {
     return false;
+  }
 
   // Ensure the channel mask can hold all channels, so the check against
   // REGION_NVM_MAX_NB_CHANNELS above is sufficient to prevent overflows here.
@@ -408,7 +456,8 @@ bool STM32LoRaWAN::isChannelEnabled(unsigned idx){
   return cur_mask[idx / 16] & (1 << (idx % 16));
 }
 
-bool STM32LoRaWAN::send(const uint8_t *payload, size_t size, bool confirmed) {
+bool STM32LoRaWAN::send(const uint8_t *payload, size_t size, bool confirmed)
+{
   McpsReq_t mcpsReq;
 
   if (confirmed) {
@@ -419,25 +468,26 @@ bool STM32LoRaWAN::send(const uint8_t *payload, size_t size, bool confirmed) {
     mcpsReq.Req.Confirmed.Datarate = getDataRate();
     mcpsReq.Req.Confirmed.fPort = this->tx_port;
     mcpsReq.Req.Confirmed.fBufferSize = size;
-    mcpsReq.Req.Confirmed.fBuffer = const_cast<uint8_t*>(payload);
-    #if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000300 ))
+    mcpsReq.Req.Confirmed.fBuffer = const_cast<uint8_t *>(payload);
+#if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000300 ))
     // Mimic the 1.0.4 behavior where the application manages retransmissions.
     // See https://github.com/Lora-net/LoRaMac-node/discussions/1096
     mcpsReq.Req.Confirmed.NbTrials = 1;
-    #endif /* LORAMAC_VERSION */
+#endif /* LORAMAC_VERSION */
   } else {
     mcpsReq.Type = MCPS_UNCONFIRMED;
     // See comment about datarate above
     mcpsReq.Req.Unconfirmed.Datarate = getDataRate();
     mcpsReq.Req.Unconfirmed.fPort = this->tx_port;
     mcpsReq.Req.Unconfirmed.fBufferSize = size;
-    mcpsReq.Req.Unconfirmed.fBuffer = const_cast<uint8_t*>(payload);
+    mcpsReq.Req.Unconfirmed.fBuffer = const_cast<uint8_t *>(payload);
   }
 
   LoRaMacTxInfo_t txInfo;
-  if( LoRaMacQueryTxPossible( size, &txInfo ) == LORAMAC_STATUS_LENGTH_ERROR ) {
-    if (size > txInfo.CurrentPossiblePayloadSize)
+  if (LoRaMacQueryTxPossible(size, &txInfo) == LORAMAC_STATUS_LENGTH_ERROR) {
+    if (size > txInfo.CurrentPossiblePayloadSize) {
       return failure("Packet too long, only %u bytes of payload supported at current datarate\r\n", txInfo.CurrentPossiblePayloadSize);
+    }
 
     // If the packet would fit, but is still rejected, this means there
     // are pending MAC commands that do not fit in the header along with
@@ -452,8 +502,9 @@ bool STM32LoRaWAN::send(const uint8_t *payload, size_t size, bool confirmed) {
   }
 
   LoRaMacStatus_t res = LoRaMacMcpsRequest(&mcpsReq, /* allowDelayedTx */ true);
-  if (res != LORAMAC_STATUS_OK)
+  if (res != LORAMAC_STATUS_OK) {
     return failure("Failed to send packet: %s\r\n", toString(res));
+  }
 
   // TODO: Report mcpsReq.ReqReturn.DutyCycleWaitTime somewhere?
   return true;
@@ -461,30 +512,36 @@ bool STM32LoRaWAN::send(const uint8_t *payload, size_t size, bool confirmed) {
 
 // All these MIB get and set functions have quite a bit of boilerplate,
 // but at least they make their callers a lot less verbose.
-bool STM32LoRaWAN::mibGet(const char* name, Mib_t type, MibRequestConfirm_t& mibReq) {
+bool STM32LoRaWAN::mibGet(const char *name, Mib_t type, MibRequestConfirm_t &mibReq)
+{
   mibReq.Type = type;
   LoRaMacStatus_t res = LoRaMacMibGetRequestConfirm(&mibReq);
-  if (res != LORAMAC_STATUS_OK)
+  if (res != LORAMAC_STATUS_OK) {
     return failure("Failed to get %s: %s\r\n", name, toString(res));
+  }
 
   return true;
 }
 
-bool STM32LoRaWAN::mibSet(const char* name, Mib_t type, MibRequestConfirm_t& mibReq) {
+bool STM32LoRaWAN::mibSet(const char *name, Mib_t type, MibRequestConfirm_t &mibReq)
+{
   mibReq.Type = type;
   LoRaMacStatus_t res = LoRaMacMibSetRequestConfirm(&mibReq);
-  if (res != LORAMAC_STATUS_OK)
+  if (res != LORAMAC_STATUS_OK) {
     return failure("Failed to set %s: %s\r\n", name, toString(res));
+  }
 
   return true;
 }
 
-bool STM32LoRaWAN::mibGetBool(const char* name, Mib_t type, bool *value) {
+bool STM32LoRaWAN::mibGetBool(const char *name, Mib_t type, bool *value)
+{
   MibRequestConfirm_t mibReq;
-  if (!mibGet(name, type, mibReq))
+  if (!mibGet(name, type, mibReq)) {
     return false;
+  }
 
-  switch(type) {
+  switch (type) {
     case MIB_ADR: *value = mibReq.Param.AdrEnable; break;
     case MIB_PUBLIC_NETWORK: *value = mibReq.Param.EnablePublicNetwork; break;
     case MIB_REPEATER_SUPPORT: *value = mibReq.Param.EnableRepeaterSupport; break;
@@ -493,9 +550,10 @@ bool STM32LoRaWAN::mibGetBool(const char* name, Mib_t type, bool *value) {
   return true;
 }
 
-bool STM32LoRaWAN::mibSetBool(const char* name, Mib_t type, bool value) {
+bool STM32LoRaWAN::mibSetBool(const char *name, Mib_t type, bool value)
+{
   MibRequestConfirm_t mibReq;
-  switch(type) {
+  switch (type) {
     case MIB_ADR: mibReq.Param.AdrEnable = value; break;
     case MIB_PUBLIC_NETWORK: mibReq.Param.EnablePublicNetwork = value; break;
     case MIB_REPEATER_SUPPORT: mibReq.Param.EnableRepeaterSupport = value; break;
@@ -505,12 +563,14 @@ bool STM32LoRaWAN::mibSetBool(const char* name, Mib_t type, bool value) {
   return mibSet(name, type, mibReq);
 }
 
-bool STM32LoRaWAN::mibGetUint8(const char* name, Mib_t type, uint8_t *value) {
+bool STM32LoRaWAN::mibGetUint8(const char *name, Mib_t type, uint8_t *value)
+{
   MibRequestConfirm_t mibReq;
-  if (!mibGet(name, type, mibReq))
+  if (!mibGet(name, type, mibReq)) {
     return false;
+  }
 
-  switch(type) {
+  switch (type) {
     case MIB_CHANNELS_NB_TRANS: *value = mibReq.Param.ChannelsNbTrans; break;
     case MIB_MIN_RX_SYMBOLS: *value = mibReq.Param.MinRxSymbols; break;
     default: return failure("Internal error: Unknown MIB type: %s / %u\r\n", name, type);
@@ -518,9 +578,10 @@ bool STM32LoRaWAN::mibGetUint8(const char* name, Mib_t type, uint8_t *value) {
   return true;
 }
 
-bool STM32LoRaWAN::mibSetUint8(const char* name, Mib_t type, uint8_t value) {
+bool STM32LoRaWAN::mibSetUint8(const char *name, Mib_t type, uint8_t value)
+{
   MibRequestConfirm_t mibReq;
-  switch(type) {
+  switch (type) {
     case MIB_CHANNELS_NB_TRANS: mibReq.Param.ChannelsNbTrans = value; break;
     case MIB_MIN_RX_SYMBOLS: mibReq.Param.MinRxSymbols = value; break;
     default: return failure("Internal error: Unknown MIB type: %s / %u\r\n", name, type);
@@ -529,15 +590,17 @@ bool STM32LoRaWAN::mibSetUint8(const char* name, Mib_t type, uint8_t value) {
   return mibSet(name, type, mibReq);
 }
 
-bool STM32LoRaWAN::mibGetInt8(const char* name, Mib_t type, int8_t *value) {
+bool STM32LoRaWAN::mibGetInt8(const char *name, Mib_t type, int8_t *value)
+{
   MibRequestConfirm_t mibReq;
-  if (!mibGet(name, type, mibReq))
+  if (!mibGet(name, type, mibReq)) {
     return false;
+  }
 
-  switch(type) {
-    #if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000400 ))
+  switch (type) {
+#if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000400 ))
     case MIB_CHANNELS_MIN_TX_DATARATE: *value = mibReq.Param.ChannelsMinTxDatarate; break;
-    #endif /* LORAMAC_VERSION */
+#endif /* LORAMAC_VERSION */
     case MIB_CHANNELS_DEFAULT_DATARATE: *value = mibReq.Param.ChannelsDefaultDatarate; break;
     case MIB_CHANNELS_DATARATE: *value = mibReq.Param.ChannelsDatarate; break;
     case MIB_CHANNELS_DEFAULT_TX_POWER: *value = mibReq.Param.ChannelsDefaultTxPower; break;
@@ -548,12 +611,13 @@ bool STM32LoRaWAN::mibGetInt8(const char* name, Mib_t type, int8_t *value) {
   return true;
 }
 
-bool STM32LoRaWAN::mibSetInt8(const char* name, Mib_t type, int8_t value) {
+bool STM32LoRaWAN::mibSetInt8(const char *name, Mib_t type, int8_t value)
+{
   MibRequestConfirm_t mibReq;
-  switch(type) {
-    #if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000400 ))
+  switch (type) {
+#if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000400 ))
     case MIB_CHANNELS_MIN_TX_DATARATE: mibReq.Param.ChannelsMinTxDatarate = value; break;
-    #endif /* LORAMAC_VERSION */
+#endif /* LORAMAC_VERSION */
     case MIB_CHANNELS_DEFAULT_DATARATE: mibReq.Param.ChannelsDefaultDatarate = value; break;
     case MIB_CHANNELS_DATARATE: mibReq.Param.ChannelsDatarate = value; break;
     case MIB_CHANNELS_DEFAULT_TX_POWER: mibReq.Param.ChannelsDefaultTxPower = value; break;
@@ -565,12 +629,14 @@ bool STM32LoRaWAN::mibSetInt8(const char* name, Mib_t type, int8_t value) {
   return mibSet(name, type, mibReq);
 }
 
-bool STM32LoRaWAN::mibGetUint32(const char* name, Mib_t type, uint32_t *value) {
+bool STM32LoRaWAN::mibGetUint32(const char *name, Mib_t type, uint32_t *value)
+{
   MibRequestConfirm_t mibReq;
-  if (!mibGet(name, type, mibReq))
+  if (!mibGet(name, type, mibReq)) {
     return false;
+  }
 
-  switch(type) {
+  switch (type) {
     case MIB_NET_ID: *value = mibReq.Param.NetID; break;
     case MIB_DEV_ADDR: *value = mibReq.Param.DevAddr; break;
     case MIB_MAX_RX_WINDOW_DURATION: *value = mibReq.Param.MaxRxWindow; break;
@@ -597,9 +663,10 @@ bool STM32LoRaWAN::mibGetUint32(const char* name, Mib_t type, uint32_t *value) {
   return true;
 }
 
-bool STM32LoRaWAN::mibSetUint32(const char* name, Mib_t type, uint32_t value) {
+bool STM32LoRaWAN::mibSetUint32(const char *name, Mib_t type, uint32_t value)
+{
   MibRequestConfirm_t mibReq;
-  switch(type) {
+  switch (type) {
     case MIB_NET_ID: mibReq.Param.NetID = value; break;
     case MIB_DEV_ADDR: mibReq.Param.DevAddr = value; break;
     case MIB_MAX_RX_WINDOW_DURATION: mibReq.Param.MaxRxWindow = value; break;
@@ -627,43 +694,46 @@ bool STM32LoRaWAN::mibSetUint32(const char* name, Mib_t type, uint32_t value) {
   return mibSet(name, type, mibReq);
 }
 
-bool STM32LoRaWAN::mibGetUint64(const char* name, Mib_t type, uint64_t *value) {
+bool STM32LoRaWAN::mibGetUint64(const char *name, Mib_t type, uint64_t *value)
+{
   MibRequestConfirm_t mibReq;
   uint8_t buf[8];
 
-  switch(type) {
+  switch (type) {
     case MIB_DEV_EUI: mibReq.Param.DevEui = buf; break;
     case MIB_JOIN_EUI: mibReq.Param.JoinEui = buf; break;
     default: return failure("Internal error: Unknown MIB type: %s / %u\r\n", name, type);
   }
-  if (!mibGet(name, type, mibReq))
+  if (!mibGet(name, type, mibReq)) {
     return false;
-  *value = (uint64_t)buf[0] << 7*8 |
-           (uint64_t)buf[1] << 6*8 |
-           (uint64_t)buf[2] << 5*8 |
-           (uint64_t)buf[3] << 4*8 |
-           (uint64_t)buf[4] << 3*8 |
-           (uint64_t)buf[5] << 2*8 |
-           (uint64_t)buf[6] << 1*8 |
-           (uint64_t)buf[7] << 0*8;
+  }
+  *value = (uint64_t)buf[0] << 7 * 8 |
+           (uint64_t)buf[1] << 6 * 8 |
+           (uint64_t)buf[2] << 5 * 8 |
+           (uint64_t)buf[3] << 4 * 8 |
+           (uint64_t)buf[4] << 3 * 8 |
+           (uint64_t)buf[5] << 2 * 8 |
+           (uint64_t)buf[6] << 1 * 8 |
+           (uint64_t)buf[7] << 0 * 8;
 
   return true;
 }
 
-bool STM32LoRaWAN::mibSetUint64(const char* name, Mib_t type, uint64_t value) {
+bool STM32LoRaWAN::mibSetUint64(const char *name, Mib_t type, uint64_t value)
+{
   MibRequestConfirm_t mibReq;
   uint8_t buf[8] = {
-    (uint8_t)(value >> 7*8),
-    (uint8_t)(value >> 6*8),
-    (uint8_t)(value >> 5*8),
-    (uint8_t)(value >> 4*8),
-    (uint8_t)(value >> 3*8),
-    (uint8_t)(value >> 2*8),
-    (uint8_t)(value >> 1*8),
-    (uint8_t)(value >> 0*8),
+    (uint8_t)(value >> 7 * 8),
+    (uint8_t)(value >> 6 * 8),
+    (uint8_t)(value >> 5 * 8),
+    (uint8_t)(value >> 4 * 8),
+    (uint8_t)(value >> 3 * 8),
+    (uint8_t)(value >> 2 * 8),
+    (uint8_t)(value >> 1 * 8),
+    (uint8_t)(value >> 0 * 8),
   };
 
-  switch(type) {
+  switch (type) {
     case MIB_DEV_EUI: mibReq.Param.DevEui = buf; break;
     case MIB_JOIN_EUI: mibReq.Param.JoinEui = buf; break;
     default: return failure("Internal error: Unknown MIB type: %s / %u\r\n", name, type);
@@ -672,8 +742,9 @@ bool STM32LoRaWAN::mibSetUint64(const char* name, Mib_t type, uint64_t value) {
   return mibSet(name, type, mibReq);
 }
 
-size_t STM32LoRaWAN::mibHexSize(const char *name, Mib_t type) {
-  switch(type) {
+size_t STM32LoRaWAN::mibHexSize(const char *name, Mib_t type)
+{
+  switch (type) {
     case MIB_DEV_EUI:
     case MIB_JOIN_EUI:
       return SE_EUI_SIZE;
@@ -683,37 +754,37 @@ size_t STM32LoRaWAN::mibHexSize(const char *name, Mib_t type) {
 
     case MIB_APP_KEY:
     case MIB_NWK_KEY:
-    #if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01010100 ))
+#if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01010100 ))
     case MIB_J_S_INT_KEY:
     case MIB_J_S_ENC_KEY:
     case MIB_F_NWK_S_INT_KEY:
     case MIB_S_NWK_S_INT_KEY:
     case MIB_NWK_S_ENC_KEY:
-    #else /* ( LORAMAC_VERSION == 0x01010100 ) */
+#else /* ( LORAMAC_VERSION == 0x01010100 ) */
     case MIB_NWK_S_KEY:
-    #endif /* ( LORAMAC_VERSION == 0x01010100 ) */
+#endif /* ( LORAMAC_VERSION == 0x01010100 ) */
     case MIB_APP_S_KEY:
     case MIB_MC_KE_KEY:
-    #if ( LORAMAC_MAX_MC_CTX > 0 )
+#if ( LORAMAC_MAX_MC_CTX > 0 )
     case MIB_MC_KEY_0:
     case MIB_MC_APP_S_KEY_0:
     case MIB_MC_NWK_S_KEY_0:
-    #endif /* LORAMAC_MAX_MC_CTX > 0 */
-    #if ( LORAMAC_MAX_MC_CTX > 1 )
+#endif /* LORAMAC_MAX_MC_CTX > 0 */
+#if ( LORAMAC_MAX_MC_CTX > 1 )
     case MIB_MC_KEY_1:
     case MIB_MC_APP_S_KEY_1:
     case MIB_MC_NWK_S_KEY_1:
-    #endif /* LORAMAC_MAX_MC_CTX > 1 */
-    #if ( LORAMAC_MAX_MC_CTX > 2 )
+#endif /* LORAMAC_MAX_MC_CTX > 1 */
+#if ( LORAMAC_MAX_MC_CTX > 2 )
     case MIB_MC_KEY_2:
     case MIB_MC_APP_S_KEY_2:
     case MIB_MC_NWK_S_KEY_2:
-    #endif /* LORAMAC_MAX_MC_CTX > 2 */
-    #if ( LORAMAC_MAX_MC_CTX > 3 )
+#endif /* LORAMAC_MAX_MC_CTX > 2 */
+#if ( LORAMAC_MAX_MC_CTX > 3 )
     case MIB_MC_KEY_3:
     case MIB_MC_APP_S_KEY_3:
     case MIB_MC_NWK_S_KEY_3:
-    #endif /* LORAMAC_MAX_MC_CTX > 3 */
+#endif /* LORAMAC_MAX_MC_CTX > 3 */
       return SE_KEY_SIZE;
 
     default:
@@ -721,89 +792,95 @@ size_t STM32LoRaWAN::mibHexSize(const char *name, Mib_t type) {
   }
 }
 
-bool STM32LoRaWAN::mibGetHex(const char* name, Mib_t type, String* value) {
+bool STM32LoRaWAN::mibGetHex(const char *name, Mib_t type, String *value)
+{
   MibRequestConfirm_t mibReq;
   size_t size = mibHexSize(name, type);
 
-  if (!size)
+  if (!size) {
     return false;
+  }
 
   uint8_t dev_addr_buf[4];
   uint8_t buf_type[size];
   uint8_t *buf = buf_type;
 
-  switch(type) {
+  switch (type) {
     case MIB_DEV_EUI: mibReq.Param.DevEui = buf_type; break;
     case MIB_JOIN_EUI: mibReq.Param.JoinEui = buf_type; break;
-     case MIB_APP_KEY: mibReq.Param.AppKey = buf_type; break;
+    case MIB_APP_KEY: mibReq.Param.AppKey = buf_type; break;
     case MIB_NWK_KEY: mibReq.Param.NwkKey = buf_type; break;
-    #if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01010100 ))
+#if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01010100 ))
     case MIB_J_S_INT_KEY: mibReq.Param.JSIntKey = buf_type; break;
     case MIB_J_S_ENC_KEY: mibReq.Param.JSEncKey = buf_type; break;
     case MIB_F_NWK_S_INT_KEY: mibReq.Param.FNwkSIntKey = buf_type; break;
     case MIB_S_NWK_S_INT_KEY: mibReq.Param.SNwkSIntKey = buf_type; break;
     case MIB_NWK_S_ENC_KEY: mibReq.Param.NwkSEncKey = buf_type; break;
-    #else /* ( LORAMAC_VERSION == 0x01010100 ) */
+#else /* ( LORAMAC_VERSION == 0x01010100 ) */
     case MIB_NWK_S_KEY: mibReq.Param.NwkSKey = buf_type; break;
-    #endif /* ( LORAMAC_VERSION == 0x01010100 ) */
+#endif /* ( LORAMAC_VERSION == 0x01010100 ) */
     case MIB_APP_S_KEY: mibReq.Param.AppSKey = buf_type; break;
     case MIB_MC_KE_KEY: mibReq.Param.McKEKey = buf_type; break;
-    #if ( LORAMAC_MAX_MC_CTX > 0 )
+#if ( LORAMAC_MAX_MC_CTX > 0 )
     case MIB_MC_KEY_0: mibReq.Param.McKey0 = buf_type; break;
     case MIB_MC_APP_S_KEY_0: mibReq.Param.McAppSKey0 = buf_type; break;
     case MIB_MC_NWK_S_KEY_0: mibReq.Param.McNwkSKey0 = buf_type; break;
-    #endif /* LORAMAC_MAX_MC_CTX > 0 */
-    #if ( LORAMAC_MAX_MC_CTX > 1 )
+#endif /* LORAMAC_MAX_MC_CTX > 0 */
+#if ( LORAMAC_MAX_MC_CTX > 1 )
     case MIB_MC_KEY_1: mibReq.Param.McKey1 = buf_type; break;
     case MIB_MC_APP_S_KEY_1: mibReq.Param.McAppSKey1 = buf_type; break;
     case MIB_MC_NWK_S_KEY_1: mibReq.Param.McNwkSKey1 = buf_type; break;
-    #endif /* LORAMAC_MAX_MC_CTX > 1 */
-    #if ( LORAMAC_MAX_MC_CTX > 2 )
+#endif /* LORAMAC_MAX_MC_CTX > 1 */
+#if ( LORAMAC_MAX_MC_CTX > 2 )
     case MIB_MC_KEY_2: mibReq.Param.McKey2 = buf_type; break;
     case MIB_MC_APP_S_KEY_2: mibReq.Param.McAppSKey2 = buf_type; break;
     case MIB_MC_NWK_S_KEY_2: mibReq.Param.McNwkSKey2 = buf_type; break;
-    #endif /* LORAMAC_MAX_MC_CTX > 2 */
-    #if ( LORAMAC_MAX_MC_CTX > 3 )
+#endif /* LORAMAC_MAX_MC_CTX > 2 */
+#if ( LORAMAC_MAX_MC_CTX > 3 )
     case MIB_MC_KEY_3: mibReq.Param.McKey3 = buf_type; break;
     case MIB_MC_APP_S_KEY_3: mibReq.Param.McAppSKey3 = buf_type; break;
     case MIB_MC_NWK_S_KEY_3: mibReq.Param.McNwkSKey3 = buf_type; break;
-    #endif /* LORAMAC_MAX_MC_CTX > 3 */
+#endif /* LORAMAC_MAX_MC_CTX > 3 */
     default:
       return failure("Internal error: Unknown MIB type: %s / %u\r\n", name, type);
   }
 
 
-  if (!mibGet(name, type, mibReq))
+  if (!mibGet(name, type, mibReq)) {
     return false;
+  }
 
   if (type == MIB_DEV_ADDR) {
     // This assumes big endian, since that's the natural way to
     // write down a a number in hex
-    dev_addr_buf[0] = mibReq.Param.DevAddr >> (3*8);
-    dev_addr_buf[1] = mibReq.Param.DevAddr >> (2*8);
-    dev_addr_buf[2] = mibReq.Param.DevAddr >> (1*8);
-    dev_addr_buf[3] = mibReq.Param.DevAddr >> (0*8);
+    dev_addr_buf[0] = mibReq.Param.DevAddr >> (3 * 8);
+    dev_addr_buf[1] = mibReq.Param.DevAddr >> (2 * 8);
+    dev_addr_buf[2] = mibReq.Param.DevAddr >> (1 * 8);
+    dev_addr_buf[3] = mibReq.Param.DevAddr >> (0 * 8);
     buf = dev_addr_buf;
   }
 
   return toHex(value, buf, size);
 }
 
-bool STM32LoRaWAN::mibSetHex(const char* name, Mib_t type, const char* value) {
+bool STM32LoRaWAN::mibSetHex(const char *name, Mib_t type, const char *value)
+{
   // The buffer-passing API is a bit fragile, since the size of the
   // buffer to be passed is implicit, and also not very well
   // documented. So we need to derive the size here.
   size_t size = mibHexSize(name, type);
 
-  if (!size)
+  if (!size) {
     return false;
+  }
 
   uint8_t buf[size];
-  if (!parseHex(buf, value, size))
+  if (!parseHex(buf, value, size)) {
     return false;
+  }
 
   MibRequestConfirm_t mibReq;
-  switch(type) {
+  switch (type) {
     case MIB_DEV_EUI: mibReq.Param.DevEui = buf; break;
     case MIB_JOIN_EUI: mibReq.Param.JoinEui = buf; break;
     // This assumes big endian, since that's the natural way to
@@ -811,37 +888,37 @@ bool STM32LoRaWAN::mibSetHex(const char* name, Mib_t type, const char* value) {
     case MIB_DEV_ADDR: mibReq.Param.DevAddr = makeUint32(buf[0], buf[1], buf[2], buf[3]); break;
     case MIB_APP_KEY: mibReq.Param.AppKey = buf; break;
     case MIB_NWK_KEY: mibReq.Param.NwkKey = buf; break;
-    #if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01010100 ))
+#if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01010100 ))
     case MIB_J_S_INT_KEY: mibReq.Param.JSIntKey = buf; break;
     case MIB_J_S_ENC_KEY: mibReq.Param.JSEncKey = buf; break;
     case MIB_F_NWK_S_INT_KEY: mibReq.Param.FNwkSIntKey = buf; break;
     case MIB_S_NWK_S_INT_KEY: mibReq.Param.SNwkSIntKey = buf; break;
     case MIB_NWK_S_ENC_KEY: mibReq.Param.NwkSEncKey = buf; break;
-    #else /* ( LORAMAC_VERSION == 0x01010100 ) */
+#else /* ( LORAMAC_VERSION == 0x01010100 ) */
     case MIB_NWK_S_KEY: mibReq.Param.NwkSKey = buf; break;
-    #endif /* ( LORAMAC_VERSION == 0x01010100 ) */
+#endif /* ( LORAMAC_VERSION == 0x01010100 ) */
     case MIB_APP_S_KEY: mibReq.Param.AppSKey = buf; break;
     case MIB_MC_KE_KEY: mibReq.Param.McKEKey = buf; break;
-    #if ( LORAMAC_MAX_MC_CTX > 0 )
+#if ( LORAMAC_MAX_MC_CTX > 0 )
     case MIB_MC_KEY_0: mibReq.Param.McKey0 = buf; break;
     case MIB_MC_APP_S_KEY_0: mibReq.Param.McAppSKey0 = buf; break;
     case MIB_MC_NWK_S_KEY_0: mibReq.Param.McNwkSKey0 = buf; break;
-    #endif /* LORAMAC_MAX_MC_CTX > 0 */
-    #if ( LORAMAC_MAX_MC_CTX > 1 )
+#endif /* LORAMAC_MAX_MC_CTX > 0 */
+#if ( LORAMAC_MAX_MC_CTX > 1 )
     case MIB_MC_KEY_1: mibReq.Param.McKey1 = buf; break;
     case MIB_MC_APP_S_KEY_1: mibReq.Param.McAppSKey1 = buf; break;
     case MIB_MC_NWK_S_KEY_1: mibReq.Param.McNwkSKey1 = buf; break;
-    #endif /* LORAMAC_MAX_MC_CTX > 1 */
-    #if ( LORAMAC_MAX_MC_CTX > 2 )
+#endif /* LORAMAC_MAX_MC_CTX > 1 */
+#if ( LORAMAC_MAX_MC_CTX > 2 )
     case MIB_MC_KEY_2: mibReq.Param.McKey2 = buf; break;
     case MIB_MC_APP_S_KEY_2: mibReq.Param.McAppSKey2 = buf; break;
     case MIB_MC_NWK_S_KEY_2: mibReq.Param.McNwkSKey2 = buf; break;
-    #endif /* LORAMAC_MAX_MC_CTX > 2 */
-    #if ( LORAMAC_MAX_MC_CTX > 3 )
+#endif /* LORAMAC_MAX_MC_CTX > 2 */
+#if ( LORAMAC_MAX_MC_CTX > 3 )
     case MIB_MC_KEY_3: mibReq.Param.McKey3 = buf; break;
     case MIB_MC_APP_S_KEY_3: mibReq.Param.McAppSKey3 = buf; break;
     case MIB_MC_NWK_S_KEY_3: mibReq.Param.McNwkSKey3 = buf; break;
-    #endif /* LORAMAC_MAX_MC_CTX > 3 */
+#endif /* LORAMAC_MAX_MC_CTX > 3 */
     default:
       return failure("Internal error: Unknown MIB type: %s / %u\r\n", name, type);
   }
@@ -849,12 +926,14 @@ bool STM32LoRaWAN::mibSetHex(const char* name, Mib_t type, const char* value) {
   return mibSet(name, type, mibReq);
 }
 
-bool STM32LoRaWAN::mibGetRxChannelParams(const char* name, Mib_t type, RxChannelParams_t *value) {
+bool STM32LoRaWAN::mibGetRxChannelParams(const char *name, Mib_t type, RxChannelParams_t *value)
+{
   MibRequestConfirm_t mibReq;
-  if (!mibGet(name, type, mibReq))
+  if (!mibGet(name, type, mibReq)) {
     return false;
+  }
 
-  switch(type) {
+  switch (type) {
     case MIB_RX2_CHANNEL: *value = mibReq.Param.Rx2Channel; break;
     case MIB_RX2_DEFAULT_CHANNEL: *value = mibReq.Param.Rx2DefaultChannel; break;
     case MIB_RXC_CHANNEL: *value = mibReq.Param.RxCChannel; break;
@@ -864,9 +943,10 @@ bool STM32LoRaWAN::mibGetRxChannelParams(const char* name, Mib_t type, RxChannel
   return true;
 }
 
-bool STM32LoRaWAN::mibSetRxChannelParams(const char* name, Mib_t type, RxChannelParams_t value) {
+bool STM32LoRaWAN::mibSetRxChannelParams(const char *name, Mib_t type, RxChannelParams_t value)
+{
   MibRequestConfirm_t mibReq;
-  switch(type) {
+  switch (type) {
     case MIB_RX2_CHANNEL: mibReq.Param.Rx2Channel = value; break;
     case MIB_RX2_DEFAULT_CHANNEL: mibReq.Param.Rx2DefaultChannel = value; break;
     case MIB_RXC_CHANNEL: mibReq.Param.RxCChannel = value; break;
@@ -877,12 +957,14 @@ bool STM32LoRaWAN::mibSetRxChannelParams(const char* name, Mib_t type, RxChannel
   return mibSet(name, type, mibReq);
 }
 
-bool STM32LoRaWAN::mibGetPtr(const char* name, Mib_t type, void **value) {
+bool STM32LoRaWAN::mibGetPtr(const char *name, Mib_t type, void **value)
+{
   MibRequestConfirm_t mibReq;
-  if (!mibGet(name, type, mibReq))
+  if (!mibGet(name, type, mibReq)) {
     return false;
+  }
 
-  switch(type) {
+  switch (type) {
     case MIB_CHANNELS: *value = mibReq.Param.ChannelList; break;
     case MIB_CHANNELS_MASK: *value = mibReq.Param.ChannelsMask; break;
     case MIB_CHANNELS_DEFAULT_MASK: *value = mibReq.Param.ChannelsDefaultMask; break;
@@ -891,12 +973,13 @@ bool STM32LoRaWAN::mibGetPtr(const char* name, Mib_t type, void **value) {
   return true;
 }
 
-bool STM32LoRaWAN::mibSetPtr(const char* name, Mib_t type, void *value) {
+bool STM32LoRaWAN::mibSetPtr(const char *name, Mib_t type, void *value)
+{
   MibRequestConfirm_t mibReq;
-  switch(type) {
-    case MIB_CHANNELS: mibReq.Param.ChannelList = (ChannelParams_t*)value; break;
-    case MIB_CHANNELS_MASK: mibReq.Param.ChannelsMask = (uint16_t*)value; break;
-    case MIB_CHANNELS_DEFAULT_MASK: mibReq.Param.ChannelsDefaultMask = (uint16_t*)value; break;
+  switch (type) {
+    case MIB_CHANNELS: mibReq.Param.ChannelList = (ChannelParams_t *)value; break;
+    case MIB_CHANNELS_MASK: mibReq.Param.ChannelsMask = (uint16_t *)value; break;
+    case MIB_CHANNELS_DEFAULT_MASK: mibReq.Param.ChannelsDefaultMask = (uint16_t *)value; break;
     default: return failure("Internal error: Unknown MIB type: %s / %u\r\n", name, type);
   }
 
@@ -926,17 +1009,20 @@ bool STM32LoRaWAN::mibSetPtr(const char* name, Mib_t type, void *value) {
       case MIB_BEACON_STATE: *value = mibReq.Param.BeaconState; break;
 */
 
-bool STM32LoRaWAN::connected() {
+bool STM32LoRaWAN::connected()
+{
   MibRequestConfirm_t mibReq;
   return mibGet("MIB_NETWORK_ACTIVATION", MIB_NETWORK_ACTIVATION, mibReq)
          && (mibReq.Param.NetworkActivation != ACTIVATION_TYPE_NONE);
 }
 
-bool STM32LoRaWAN::busy() {
+bool STM32LoRaWAN::busy()
+{
   return LoRaMacIsBusy();
 }
 
-String STM32LoRaWAN::deviceEUI() {
+String STM32LoRaWAN::deviceEUI()
+{
   String res;
   // Do not check for error, a message will have been generated and the
   // return String will remain invalid to signal the error
@@ -944,7 +1030,8 @@ String STM32LoRaWAN::deviceEUI() {
   return res;
 }
 
-const char *STM32LoRaWAN::toString(LoRaMacStatus_t status) {
+const char *STM32LoRaWAN::toString(LoRaMacStatus_t status)
+{
   switch (status) {
     case LORAMAC_STATUS_OK:
       return "LORAMAC_STATUS_OK";
@@ -1001,8 +1088,9 @@ const char *STM32LoRaWAN::toString(LoRaMacStatus_t status) {
   }
 }
 
-const char *STM32LoRaWAN::toString(LoRaMacEventInfoStatus_t status) {
-  switch(status) {
+const char *STM32LoRaWAN::toString(LoRaMacEventInfoStatus_t status)
+{
+  switch (status) {
     case LORAMAC_EVENT_INFO_STATUS_OK:
       return "LORAMAC_EVENT_INFO_STATUS_OK";
     case LORAMAC_EVENT_INFO_STATUS_ERROR:
@@ -1023,10 +1111,10 @@ const char *STM32LoRaWAN::toString(LoRaMacEventInfoStatus_t status) {
       return "LORAMAC_EVENT_INFO_STATUS_DOWNLINK_REPEATED";
     case LORAMAC_EVENT_INFO_STATUS_TX_DR_PAYLOAD_SIZE_ERROR:
       return "LORAMAC_EVENT_INFO_STATUS_TX_DR_PAYLOAD_SIZE_ERROR";
-    #if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000300 ))
+#if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000300 ))
     case LORAMAC_EVENT_INFO_STATUS_DOWNLINK_TOO_MANY_FRAMES_LOSS:
       return "LORAMAC_EVENT_INFO_STATUS_DOWNLINK_TOO_MANY_FRAMES_LOSS";
-    #endif /* LORAMAC_VERSION */
+#endif /* LORAMAC_VERSION */
     case LORAMAC_EVENT_INFO_STATUS_ADDRESS_FAIL:
       return "LORAMAC_EVENT_INFO_STATUS_ADDRESS_FAIL";
     case LORAMAC_EVENT_INFO_STATUS_MIC_FAIL:
@@ -1044,8 +1132,9 @@ const char *STM32LoRaWAN::toString(LoRaMacEventInfoStatus_t status) {
   }
 }
 
-const char *STM32LoRaWAN::toString(Mlme_t mlme) {
-  switch(mlme) {
+const char *STM32LoRaWAN::toString(Mlme_t mlme)
+{
+  switch (mlme) {
     case MLME_UNKNOWN:
       return "MLME_UNKNOWN";
     case MLME_JOIN:
@@ -1060,10 +1149,10 @@ const char *STM32LoRaWAN::toString(Mlme_t mlme) {
       return "MLME_LINK_CHECK";
     case MLME_TXCW:
       return "MLME_TXCW";
-    #if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000300 ))
+#if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000300 ))
     case MLME_TXCW_1:
       return "MLME_TXCW_1";
-    #endif /* LORAMAC_VERSION */
+#endif /* LORAMAC_VERSION */
     case MLME_DERIVE_MC_KE_KEY:
       return "MLME_DERIVE_MC_KE_KEY";
     case MLME_DERIVE_MC_KEY_PAIR:
@@ -1087,8 +1176,9 @@ const char *STM32LoRaWAN::toString(Mlme_t mlme) {
   }
 }
 
-const char *STM32LoRaWAN::toString(Mcps_t mcps) {
-  switch(mcps) {
+const char *STM32LoRaWAN::toString(Mcps_t mcps)
+{
+  switch (mcps) {
     case MCPS_UNCONFIRMED:
       return "MCPS_UNCONFIRMED";
     case MCPS_CONFIRMED:
@@ -1102,12 +1192,14 @@ const char *STM32LoRaWAN::toString(Mcps_t mcps) {
   }
 }
 
-uint8_t STM32LoRaWAN::parseHex(char c) {
+uint8_t STM32LoRaWAN::parseHex(char c)
+{
   return (c >= 'A') ? (c >= 'a') ? (c - 'a' + 10) : (c - 'A' + 10) : (c - '0');
 }
 
 
-bool STM32LoRaWAN::parseHex(uint8_t *dest, const char *hex, size_t dest_len) {
+bool STM32LoRaWAN::parseHex(uint8_t *dest, const char *hex, size_t dest_len)
+{
   uint8_t *end = dest + dest_len;;
   const char *next = hex;
   while (dest != end) {
@@ -1132,13 +1224,16 @@ bool STM32LoRaWAN::parseHex(uint8_t *dest, const char *hex, size_t dest_len) {
   return true;
 }
 
-char STM32LoRaWAN::toHex(uint8_t b) {
+char STM32LoRaWAN::toHex(uint8_t b)
+{
   return (b < 0xa) ? '0' + b : 'A' + (b - 0xa);
 }
 
-bool STM32LoRaWAN::toHex(String *dest, const uint8_t *src, size_t src_len) {
-  if (!dest->reserve(src_len * 2))
+bool STM32LoRaWAN::toHex(String *dest, const uint8_t *src, size_t src_len)
+{
+  if (!dest->reserve(src_len * 2)) {
     return failure("Failed to allocate string for hex output");
+  }
 
   *dest = "";
   while (src_len--) {
@@ -1150,7 +1245,8 @@ bool STM32LoRaWAN::toHex(String *dest, const uint8_t *src, size_t src_len) {
   return true;
 }
 
-bool STM32LoRaWAN::failure(const char* fmt, ...) {
+bool STM32LoRaWAN::failure(const char *fmt, ...)
+{
   va_list ap;
   va_start(ap, fmt);
   vcore_debug(fmt, ap);
@@ -1158,66 +1254,80 @@ bool STM32LoRaWAN::failure(const char* fmt, ...) {
   return false;
 }
 
-void STM32LoRaWAN::beginPacket() {
+void STM32LoRaWAN::beginPacket()
+{
   tx_ptr = &tx_buf[0];
 }
 
-int STM32LoRaWAN::endPacketAsync(bool confirmed) {
+int STM32LoRaWAN::endPacketAsync(bool confirmed)
+{
   size_t len = tx_ptr - tx_buf;
   // MKRWAN has more error codes, but those are fairly
   // arbitrary and undocumented, so just return -1 for any error.
-  if (!send(tx_buf, len, confirmed))
+  if (!send(tx_buf, len, confirmed)) {
     return -1;
+  }
   return len;
 }
 
-int STM32LoRaWAN::endPacket(bool confirmed) {
+int STM32LoRaWAN::endPacket(bool confirmed)
+{
   size_t res = endPacketAsync(confirmed);
 
   maintainUntilIdle();
 
-  if (confirmed && !lastAck())
+  if (confirmed && !lastAck()) {
     return -1;
+  }
 
   return res;
 }
 
-size_t STM32LoRaWAN::write(uint8_t c) {
-  if (tx_ptr == &tx_buf[sizeof(tx_buf)])
+size_t STM32LoRaWAN::write(uint8_t c)
+{
+  if (tx_ptr == &tx_buf[sizeof(tx_buf)]) {
     return 0;
+  }
   *tx_ptr++ = c;
   return 1;
 }
 
-size_t STM32LoRaWAN::write(const uint8_t *buffer, size_t size) {
+size_t STM32LoRaWAN::write(const uint8_t *buffer, size_t size)
+{
   size_t room = &tx_buf[sizeof(tx_buf)] - tx_ptr;
-  if (size > room)
+  if (size > room) {
     size = room;
+  }
   memcpy(tx_ptr, buffer, size);
   tx_ptr += size;
   return size;
 }
 
-int STM32LoRaWAN::availableForWrite() {
+int STM32LoRaWAN::availableForWrite()
+{
   LoRaMacTxInfo_t txInfo;
   size_t avail = 0;
 
-  if( LoRaMacQueryTxPossible( 0, &txInfo ) == LORAMAC_STATUS_OK ) {
+  if (LoRaMacQueryTxPossible(0, &txInfo) == LORAMAC_STATUS_OK) {
     size_t written = tx_ptr - tx_buf;
     size_t max_payload = txInfo.MaxPossibleApplicationDataSize;
-    if (max_payload > sizeof(tx_buf))
+    if (max_payload > sizeof(tx_buf)) {
       max_payload = sizeof(tx_buf);
+    }
 
-    if (max_payload > written)
+    if (max_payload > written) {
       avail = max_payload - written;
+    }
   }
   return avail;
 }
 
-int STM32LoRaWAN::read(uint8_t *buf, size_t size) {
+int STM32LoRaWAN::read(uint8_t *buf, size_t size)
+{
   size_t avail = available();
-  if (size > avail)
+  if (size > avail) {
     size = avail;
+  }
 
   memcpy(buf, rx_ptr, size);
   rx_ptr += size;
@@ -1225,28 +1335,35 @@ int STM32LoRaWAN::read(uint8_t *buf, size_t size) {
   return size;
 }
 
-int STM32LoRaWAN::available() {
+int STM32LoRaWAN::available()
+{
   return rx_buf + sizeof(rx_buf) - rx_ptr;
 }
 
-int STM32LoRaWAN::read() {
-  if (rx_ptr >= rx_buf + sizeof(rx_buf))
+int STM32LoRaWAN::read()
+{
+  if (rx_ptr >= rx_buf + sizeof(rx_buf)) {
     return -1;
+  }
   return *rx_ptr++;
 }
 
-int STM32LoRaWAN::peek() {
-  if (rx_ptr >= rx_buf + sizeof(rx_buf))
+int STM32LoRaWAN::peek()
+{
+  if (rx_ptr >= rx_buf + sizeof(rx_buf)) {
     return -1;
+  }
   return *rx_ptr;
 }
 
-int STM32LoRaWAN::parsePacket() {
+int STM32LoRaWAN::parsePacket()
+{
   // This is what MKRWAN and MKRWAN_v2 also do
   return available();
 }
 
-void STM32LoRaWAN::add_rx(const uint8_t *buf, size_t len) {
+void STM32LoRaWAN::add_rx(const uint8_t *buf, size_t len)
+{
   size_t room = rx_ptr - rx_buf;
   if (len > room) {
     failure("RX buffer overflow (%u > %u)", len, room);
@@ -1270,27 +1387,30 @@ void STM32LoRaWAN::add_rx(const uint8_t *buf, size_t len) {
   rx_ptr -= len;;
 }
 
-uint64_t STM32LoRaWAN::builtinDevEUI() {
-  return (uint64_t)LL_FLASH_GetSTCompanyID() << (5*8) | (uint64_t)LL_FLASH_GetDeviceID() << (4*8) | (uint64_t)LL_FLASH_GetUDN();
+uint64_t STM32LoRaWAN::builtinDevEUI()
+{
+  return (uint64_t)LL_FLASH_GetSTCompanyID() << (5 * 8) | (uint64_t)LL_FLASH_GetDeviceID() << (4 * 8) | (uint64_t)LL_FLASH_GetUDN();
 }
 
-void STM32LoRaWAN::MacMcpsConfirm(McpsConfirm_t* c) {
+void STM32LoRaWAN::MacMcpsConfirm(McpsConfirm_t *c)
+{
   // Called after an Mcps request (data TX) when the stack becomes idle again (so after RX windows)
   core_debug(
     "McpsConfirm: req=%s, status=%s, datarate=%u, power=%d, ack=%u, %s=%u, airtime=%u, upcnt=%u, channel=%u\r\n",
-     toString(c->McpsRequest), toString(c->Status), c->Datarate, c->TxPower,
-     c->AckReceived,
-    #if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000300 ))
-      "retries", c->NbRetries,
-    #elif (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000400 ))
-      "trans", c->NbTrans,
-    #endif /* LORAMAC_VERSION */
+    toString(c->McpsRequest), toString(c->Status), c->Datarate, c->TxPower,
+    c->AckReceived,
+#if (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000300 ))
+    "retries", c->NbRetries,
+#elif (defined( LORAMAC_VERSION ) && ( LORAMAC_VERSION == 0x01000400 ))
+    "trans", c->NbTrans,
+#endif /* LORAMAC_VERSION */
     (unsigned)c->TxTimeOnAir, (unsigned)c->UpLinkCounter, (unsigned)c->Channel);
   instance->last_tx_acked = c->AckReceived;
   instance->fcnt_up = c->UpLinkCounter;
 }
 
-void STM32LoRaWAN::MacMcpsIndication(McpsIndication_t* i, LoRaMacRxStatus_t* status) {
+void STM32LoRaWAN::MacMcpsIndication(McpsIndication_t *i, LoRaMacRxStatus_t *status)
+{
   // Called on Mcps event (data received or rx aborted), after McpsConfirm
   core_debug(
     "McpsIndication: ind=%s, status=%s, multicast=%u, port=%u, datarate=%u, pending=%u, size=%u, rxdata=%u, ack=%u, dncnt=%u, devaddr=%08x, rssi=%d, snr=%d, slot=%u\r\n",
@@ -1309,15 +1429,17 @@ void STM32LoRaWAN::MacMcpsIndication(McpsIndication_t* i, LoRaMacRxStatus_t* sta
   }
 }
 
-void STM32LoRaWAN::MacMlmeConfirm(MlmeConfirm_t* c) {
+void STM32LoRaWAN::MacMlmeConfirm(MlmeConfirm_t *c)
+{
   // Called when a Mlme request is completed (e.g. join complete or
   // failed, link check answer received, etc.)
   core_debug(
     "MlmeConfirm: req=%s, status=%s, airtime=%u, margin=%u, gateways=%u\r\n",
-     toString(c->MlmeRequest), toString(c->Status), c->TxTimeOnAir, c->DemodMargin, c->NbGateways);
+    toString(c->MlmeRequest), toString(c->Status), c->TxTimeOnAir, c->DemodMargin, c->NbGateways);
 }
 
-void STM32LoRaWAN::MacMlmeIndication(MlmeIndication_t* i, LoRaMacRxStatus_t* status) {
+void STM32LoRaWAN::MacMlmeIndication(MlmeIndication_t *i, LoRaMacRxStatus_t *status)
+{
   // Called on join accept (and some class B events), after MlmeConfirm
   core_debug(
     "MlmeIndication: ind=%s, status=%s, datarate=%u, dncnt=%u, rssi=%d, snr=%d, slot=%u\r\n",

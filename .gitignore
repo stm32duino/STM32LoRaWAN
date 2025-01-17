@@ -1,5 +1,7 @@
 .clangd
+.development
 .gdb_history
 build
 sketch.json
 api-docs
+astyle.out
