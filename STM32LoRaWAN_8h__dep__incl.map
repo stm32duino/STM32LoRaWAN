@@ -1,4 +1,5 @@
 <map id="src/STM32LoRaWAN.h" name="src/STM32LoRaWAN.h">
-<area shape="rect" id="node1" title="Main header for the STM32LoRaWAN library." alt="" coords="13,5,177,32"/>
-<area shape="rect" id="node2" href="$STM32LoRaWAN_8cpp.html" title="Main implementation for the STM32LoRaWAN library." alt="" coords="5,80,184,107"/>
+<area shape="rect" id="Node000001" title="Main header for the STM32LoRaWAN library." alt="" coords="13,5,177,31"/>
+<area shape="rect" id="Node000002" href="$STM32LoRaWAN_8cpp.html" title="Main implementation for the STM32LoRaWAN library." alt="" coords="5,79,184,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,44,97,79,92,79,92,44"/>
 </map>

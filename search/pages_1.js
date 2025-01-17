@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['stm32lorawan_20library_323',['STM32LoRaWAN library',['../index.html',1,'']]]
+  ['differences_20to_20mkrwan_20api_0',['Differences to MKRWAN API',['../extensions.html',1,'']]]
 ];

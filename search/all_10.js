@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['read_119',['read',['../classSTM32LoRaWAN.html#ad3dcbfd834bcdfc34b6800e6a29c9134',1,'STM32LoRaWAN::read(uint8_t *buf, size_t size)'],['../classSTM32LoRaWAN.html#aa04eea06439708bf70cfa524325f427f',1,'STM32LoRaWAN::read()']]],
-  ['restart_120',['restart',['../classSTM32LoRaWAN.html#a8a715c4ec0ba3a9601a229a8c43d05be',1,'STM32LoRaWAN']]],
-  ['rfo_121',['RFO',['../STM32LoRaWAN_8h.html#a1fd3d2eb05358dae64890dff0448c69cafc5861c4f879b8c6b2bc7f4f35d5db41',1,'STM32LoRaWAN.h']]],
-  ['ru864_122',['RU864',['../STM32LoRaWAN_8h.html#a749dbc809ded9d6eaa98594e2ebcd24ba59f93d8706c7d314cd657d027721e36f',1,'STM32LoRaWAN.h']]],
-  ['rx_5fbuf_123',['rx_buf',['../classSTM32LoRaWAN.html#ac20a82fca09fe79a49b2efb14c3ddf35',1,'STM32LoRaWAN']]],
-  ['rx_5fport_124',['rx_port',['../classSTM32LoRaWAN.html#a1a8d94acf9cfb846f1b90aad4836ae63',1,'STM32LoRaWAN']]],
-  ['rx_5fptr_125',['rx_ptr',['../classSTM32LoRaWAN.html#ad8439dc88e0a8dd52e44f1914bf0a8c3',1,'STM32LoRaWAN']]],
-  ['rx_5frssi_126',['rx_rssi',['../classSTM32LoRaWAN.html#af2a2ed1d44742d0cc38729838b06f0f7',1,'STM32LoRaWAN']]],
-  ['rx_5fsnr_127',['rx_snr',['../classSTM32LoRaWAN.html#aeb7ee57f245b9000e21f3b83a84df0d6',1,'STM32LoRaWAN']]]
+  ['paboost_0',['PABOOST',['../STM32LoRaWAN_8h.html#a1fd3d2eb05358dae64890dff0448c69caa7f13c72b89a2345df433f97ff892a68',1,'STM32LoRaWAN.h']]],
+  ['parsehex_1',['parsehex',['../classSTM32LoRaWAN.html#ab12912607c006387f575234b47e8f481',1,'STM32LoRaWAN::parseHex(char c)'],['../classSTM32LoRaWAN.html#af9e4dbfb3c3536f1ac43b25b9cafb226',1,'STM32LoRaWAN::parseHex(uint8_t *dest, const char *hex, size_t dest_len)']]],
+  ['parsepacket_2',['parsePacket',['../classSTM32LoRaWAN.html#a56fcc5244fc0df45dbad61654c9ddcff',1,'STM32LoRaWAN']]],
+  ['peek_3',['peek',['../classSTM32LoRaWAN.html#a996f203e1738383edeaa35395e2ba77b',1,'STM32LoRaWAN']]],
+  ['poll_4',['poll',['../classSTM32LoRaWAN.html#a79634164ef1e9c2d8c4d4589cbeaf665',1,'STM32LoRaWAN']]],
+  ['power_5',['power',['../classSTM32LoRaWAN.html#ad3820664ad2ad9e0cfff299eab1ad786',1,'STM32LoRaWAN::power(uint8_t index)'],['../classSTM32LoRaWAN.html#a149bb7518e6756db8fa60848f2efd527',1,'STM32LoRaWAN::power(_rf_mode mode, uint8_t index)']]],
+  ['power_20applications_6',['Low power applications',['../index.html#autotoc_md8',1,'']]],
+  ['powerdb_7',['powerdB',['../classSTM32LoRaWAN.html#ac720f4ea2f3efe054908a8f8bdcfc7a5',1,'STM32LoRaWAN']]],
+  ['publicnetwork_8',['publicNetwork',['../classSTM32LoRaWAN.html#afc9939a198a3d0f243dd066a72ea2b81',1,'STM32LoRaWAN']]]
 ];

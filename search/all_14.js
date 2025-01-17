@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['version_160',['version',['../classSTM32LoRaWAN.html#ab3dd6a10e89c4e94474b85aa4da0a302',1,'STM32LoRaWAN']]]
+  ['us915_0',['US915',['../STM32LoRaWAN_8h.html#a749dbc809ded9d6eaa98594e2ebcd24ba10bdc64d98b87b1bd3371dbc224ec460',1,'STM32LoRaWAN.h']]],
+  ['used_20resources_1',['Used resources',['../index.html#autotoc_md9',1,'']]]
 ];

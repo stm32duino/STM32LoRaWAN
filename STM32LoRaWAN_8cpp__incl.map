@@ -1,11 +1,19 @@
 <map id="src/STM32LoRaWAN.cpp" name="src/STM32LoRaWAN.cpp">
-<area shape="rect" id="node1" title="Main implementation for the STM32LoRaWAN library." alt="" coords="498,5,677,32"/>
-<area shape="rect" id="node2" href="$STM32LoRaWAN_8h.html" title="Main header for the STM32LoRaWAN library." alt="" coords="329,87,470,114"/>
-<area shape="rect" id="node8" title=" " alt="" coords="494,80,681,121"/>
-<area shape="rect" id="node9" title=" " alt="" coords="705,87,814,114"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,177,89,203"/>
-<area shape="rect" id="node4" title=" " alt="" coords="114,169,301,211"/>
-<area shape="rect" id="node5" title=" " alt="" coords="325,177,473,203"/>
-<area shape="rect" id="node6" title=" " alt="" coords="497,177,611,203"/>
-<area shape="rect" id="node7" title=" " alt="" coords="635,177,737,203"/>
+<area shape="rect" id="Node000001" title="Main implementation for the STM32LoRaWAN library." alt="" coords="498,5,677,31"/>
+<area shape="rect" id="Node000002" href="$STM32LoRaWAN_8h.html" title="Main header for the STM32LoRaWAN library." alt="" coords="329,86,470,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="561,33,440,83,438,78,559,28"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="494,79,681,119"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="590,31,590,65,585,65,585,31"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="705,86,814,111"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="613,28,723,78,721,83,611,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,174,89,199"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="340,114,229,138,103,169,93,172,91,167,101,164,228,132,339,109"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="114,167,301,207"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="375,114,263,163,261,159,372,109"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="325,174,473,199"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="402,112,402,160,397,160,397,112"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="497,174,611,199"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="421,109,523,165,520,170,419,114"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="635,174,737,199"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="439,109,635,167,634,173,437,114"/>
 </map>
