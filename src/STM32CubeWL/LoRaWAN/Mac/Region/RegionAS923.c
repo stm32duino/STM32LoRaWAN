@@ -43,7 +43,6 @@
   */
 #include "../../../SubGHz_Phy/radio.h"
 #include "RegionAS923.h"
-#include "LmHandler.h"
 
 // Definitions
 #define CHANNELS_MASK_SIZE                1
@@ -1015,8 +1014,6 @@ uint8_t RegionAS923RxParamSetupReq( RxParamSetupReqParams_t* rxParamSetupReq )
 {
     uint8_t status = 0x07;
 #if defined( REGION_AS923 )
-    int8_t datarate;
-    LmHandlerGetTxDatarate( &datarate );
     // Verify radio frequency
     if( VerifyRfFreq( rxParamSetupReq->Frequency ) == false )
     {
@@ -1030,7 +1027,7 @@ uint8_t RegionAS923RxParamSetupReq( RxParamSetupReqParams_t* rxParamSetupReq )
     }
 
     // Verify datarate offset
-    if( RegionCommonValueInRange( rxParamSetupReq->DrOffset, AS923_MIN_RX1_DR_OFFSET, AS923_MAX_RX1_DR_OFFSET ) && (EffectiveRx1DrOffsetDownlinkDwell0AS923[datarate][rxParamSetupReq->DrOffset]<=AS923_RX_MAX_DATARATE) == false )
+    if( RegionCommonValueInRange( rxParamSetupReq->DrOffset, AS923_MIN_RX1_DR_OFFSET, AS923_MAX_RX1_DR_OFFSET ) == false )
     {
         status &= 0xFB; // Rx1DrOffset range KO
     }

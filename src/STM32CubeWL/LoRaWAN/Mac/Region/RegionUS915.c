@@ -991,7 +991,7 @@ LoRaMacStatus_t RegionUS915NextChannel( NextChanParams_t* nextChanParams, uint8_
     identifyChannelsParam.MaxBands = US915_MAX_NB_BANDS;
 
 #if (defined( REGION_VERSION ) && ( REGION_VERSION == 0x01010003 ))
-    identifyChannelsParam.ElapsedTimeSinceStartUp = nextChanParams->ElapsedTimeSinceStartUp;
+    identifyChannelsParam.ElapsedTimeSinceTxBackoffRefTime = nextChanParams->ElapsedTimeSinceTxBackoffRefTime;
     identifyChannelsParam.LastTxIsJoinRequest = nextChanParams->LastTxIsJoinRequest;
     identifyChannelsParam.ExpectedTimeOnAir = GetTimeOnAir( nextChanParams->Datarate, nextChanParams->PktLen );
 
