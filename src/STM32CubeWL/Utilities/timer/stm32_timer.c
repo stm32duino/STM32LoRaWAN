@@ -116,11 +116,11 @@ bool TimerExists( UTIL_TIMER_Object_t *TimerObject );
   *  @{
   */
 
-UTIL_TIMER_Status_t UTIL_TIMER_Init(RTC_HandleTypeDef *RtcHandle)
+UTIL_TIMER_Status_t UTIL_TIMER_Init(void)
 {
   UTIL_TIMER_INIT_CRITICAL_SECTION();
   TimerListHead = NULL;
-  return UTIL_TimerDriver.InitTimer(RtcHandle);
+  return UTIL_TimerDriver.InitTimer();
 }
 
 UTIL_TIMER_Status_t UTIL_TIMER_DeInit(void)

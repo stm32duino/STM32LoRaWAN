@@ -871,18 +871,6 @@ static void RadioSetRxConfig( RadioModems_t modem, uint32_t bandwidth,
 #if (RADIO_SIGFOX_ENABLE == 1)
     uint8_t modReg;
 #endif
-    //Disabled, too much influence on RX timing
-    /*
-    MW_LOG( TS_ON, VLEVEL_M,
-        "Setting RX Config: modem=%s, bandwidth=%u, datarate=%u, coderate=%u bandwithAfc=%u, preambleLen=%u, symbTimeout=%u, fixLen=%u, payloadLen=%u, crcOn=%u, freqHopOn=%u, hopPeriod=%u, iqInverted=%u, rxContinuous=%u\r\n",
-        modem == MODEM_FSK ? "MODEM_FSK" : (modem == MODEM_LORA ? "MODEM_LORA" : "?"),
-        (unsigned)bandwidth, (unsigned)datarate, (unsigned)coderate,
-        (unsigned)bandwidthAfc, (unsigned)preambleLen,
-        (unsigned)symbTimeout, (unsigned)fixLen, (unsigned)payloadLen,
-        (unsigned)crcOn, (unsigned)freqHopOn, (unsigned)hopPeriod,
-        (unsigned)iqInverted, (unsigned)rxContinuous
-    );
-    */
     SubgRf.RxContinuous = rxContinuous;
     RFW_DeInit();
     if( rxContinuous == true )
@@ -1072,15 +1060,6 @@ static void RadioSetTxConfig( RadioModems_t modem, int8_t power, uint32_t fdev,
     SubgRf.lr_fhss.is_lr_fhss_on = false;
 #endif /* RADIO_LR_FHSS_IS_ON == 1 */
     RFW_DeInit();
-    MW_LOG( TS_ON, VLEVEL_M,
-        "Setting TX Config: modem=%s, power=%u, fdev=%u, bandwidth=%u, datarate=%u, coderate=%u preambleLen=%u, fixLen=%u, crcOn=%u, freqHopOn=%u, hopPeriod=%u, iqInverted=%u, timeout=%u\r\n",
-        modem == MODEM_FSK ? "MODEM_FSK" : (modem == MODEM_LORA ? "MODEM_LORA" : "?"),
-        (int)power, (unsigned)fdev, (unsigned)bandwidth,
-        (unsigned)datarate, (unsigned)coderate, (unsigned)preambleLen,
-        (unsigned)fixLen, (unsigned)crcOn, (unsigned)freqHopOn,
-        (unsigned)hopPeriod, (unsigned)iqInverted, (unsigned)timeout
-    );
-
     switch( modem )
     {
         case MODEM_FSK:
@@ -1338,11 +1317,6 @@ static radio_status_t RadioSend( uint8_t *buffer, uint8_t size )
                             IRQ_TX_DONE | IRQ_RX_TX_TIMEOUT | IRQ_TX_DBG,
                             IRQ_RADIO_NONE,
                             IRQ_RADIO_NONE );
-
-    MW_LOG( TS_ON, VLEVEL_M, "TX:");
-    for (size_t i = 0; i < size; ++i)
-        MW_LOG( TS_ON, VLEVEL_M, " %02x", buffer[i]);
-    MW_LOG( TS_ON, VLEVEL_M, "\r\n");
 
     /* Set DBG pin */
     DBG_GPIO_RADIO_TX( SET );
@@ -2066,7 +2040,7 @@ static int32_t RadioSetRxGenericConfig( GenericModems_t modem, RxConfigGeneric_t
 
         if( config->lora.LengthMode == RADIO_LORA_PACKET_FIXED_LENGTH )
         {
-            MaxPayloadLength = config->fsk.MaxPayloadLength;
+            MaxPayloadLength = config->lora.MaxPayloadLength;
         }
         else
         {
