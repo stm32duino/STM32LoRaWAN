@@ -57,6 +57,7 @@
 #include <stddef.h>   
 #include <cmsis_compiler.h>
 #include "../../../BSP/utilities_conf.h"
+#include "rtc.h"
 
 /* Exported types ------------------------------------------------------------*/
 /** @defgroup TIMER_SERVER_exported_TypeDef TIMER_SERVER exported Typedef
@@ -103,7 +104,7 @@ typedef struct TimerEvent_s
   */
 typedef struct
 {
-    UTIL_TIMER_Status_t   (* InitTimer )( void );                  /*!< Initialisation of the low layer timer    */
+    UTIL_TIMER_Status_t   (* InitTimer )( RTC_HandleTypeDef * );                  /*!< Initialisation of the low layer timer    */
     UTIL_TIMER_Status_t   (* DeInitTimer )( void );                /*!< Un-Initialisation of the low layer timer */
       
     UTIL_TIMER_Status_t   (* StartTimerEvt )( uint32_t timeout );  /*!< Start the low layer timer */
@@ -156,9 +157,10 @@ extern const UTIL_TIMER_Driver_s UTIL_TimerDriver;
 /**
   * @brief Initialize the timer server
   *
+  * @param RtcHandle RTC_HandleTypeDef
   * @retval Status based on @ref UTIL_TIMER_Status_t
   */
-UTIL_TIMER_Status_t UTIL_TIMER_Init(void);
+UTIL_TIMER_Status_t UTIL_TIMER_Init(RTC_HandleTypeDef *RtcHandle);
 
 /**
   * @brief Un-Initialize the timer server
