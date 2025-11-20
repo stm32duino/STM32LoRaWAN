@@ -329,6 +329,19 @@ typedef struct sLoRaMacCtx
      * Buffer containing the MAC layer commands
      */
     uint8_t MacCommandsBuffer[LORA_MAC_COMMAND_MAX_LENGTH];
+    /*
+     * Stores the reference time at at 1st JoinReq or ReJoinReq.
+     *
+     * \remark Used for the BACKOFF_DC computation.
+     */
+    SysTime_t TxBackoffRefTime;
+    /*
+     * Indicates if \ref TxBackoffRefTime must be initialized or not.
+     * \ref TxBackoffRefTime must be initialized for 1st JoinReq or RejoinReq event.
+     *
+     * \remark Used for the BACKOFF_DC computation.
+     */
+    bool IsFirstJoinReqTx;
 }LoRaMacCtx_t;
 
 /*!
@@ -1076,7 +1089,7 @@ static void ProcessRadioTxDone( void )
     // Update last tx done time for the current channel
     txDone.Channel = MacCtx.Channel;
     txDone.LastTxDoneTime = TxDoneParams.CurTime;
-    txDone.ElapsedTimeSinceStartUp = SysTimeSub( SysTimeGetMcuTime( ), Nvm.MacGroup2.InitializationTime );
+    txDone.ElapsedTimeSinceTxBackoffRefTime = SysTimeSub( SysTimeGetMcuTime( ), MacCtx.TxBackoffRefTime );
     txDone.LastTxAirTime = MacCtx.TxTimeOnAir;
     txDone.Joined  = true;
     if( Nvm.MacGroup2.NetworkActivation == ACTIVATION_TYPE_NONE )
@@ -1398,6 +1411,9 @@ static void ProcessRadioRxDone( void )
                     ResetMacParameters( true );
                 }
 #endif /* LORAMAC_VERSION */
+                // Restarts the retransmission backoff algorithm by indicating that the next JoinReq or ReJoinReq
+                // is the first one.
+                MacCtx.IsFirstJoinReqTx = true;
             }
             else
             {
@@ -3471,6 +3487,13 @@ static LoRaMacStatus_t SendReJoinReq( JoinReqIdentifier_t joinReqType )
             break;
     }
 
+    if( MacCtx.IsFirstJoinReqTx == true )
+    {
+        MacCtx.IsFirstJoinReqTx = false;
+        // Store the current time as reference time for the retransmission backoff algorithm
+        MacCtx.TxBackoffRefTime = SysTimeGetMcuTime( );
+    }
+
     // Schedule frame
     status = ScheduleTx( allowDelayedTx );
     return status;
@@ -3618,7 +3641,7 @@ static LoRaMacStatus_t ScheduleTx( bool allowDelayedTx )
     nextChan.AggrTimeOff = Nvm.MacGroup1.AggregatedTimeOff;
     nextChan.Datarate = Nvm.MacGroup1.ChannelsDatarate;
     nextChan.DutyCycleEnabled = Nvm.MacGroup2.DutyCycleOn;
-    nextChan.ElapsedTimeSinceStartUp = SysTimeSub( SysTimeGetMcuTime( ), Nvm.MacGroup2.InitializationTime );
+    nextChan.ElapsedTimeSinceTxBackoffRefTime = SysTimeSub( SysTimeGetMcuTime( ), MacCtx.TxBackoffRefTime );
     nextChan.LastAggrTx = Nvm.MacGroup1.LastTxDoneTime;
     nextChan.LastTxIsJoinRequest = false;
     nextChan.Joined = true;
@@ -4698,8 +4721,8 @@ LoRaMacStatus_t LoRaMacInitialization( LoRaMacPrimitives_t* primitives, LoRaMacC
     TimerInit( &MacCtx.ForceRejoinReqCycleTimer, OnForceRejoinReqCycleTimerEvent );
 #endif /* LORAMAC_VERSION */
 
-    // Store the current initialization time
-    Nvm.MacGroup2.InitializationTime = SysTimeGetMcuTime( );
+    // At stack initialization no JoinReq has been transmitted yet
+    MacCtx.IsFirstJoinReqTx = true;
 
 #if (defined( LORAMAC_VERSION ) && (( LORAMAC_VERSION == 0x01000400 ) || ( LORAMAC_VERSION == 0x01010100 )))
     // Initialize MAC radio events

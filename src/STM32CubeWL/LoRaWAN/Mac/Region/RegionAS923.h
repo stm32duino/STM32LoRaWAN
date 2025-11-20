@@ -99,10 +99,10 @@ extern "C"
 #define CHANNEL_PLAN_GROUP_AS923_1_JP_CH24_CH38_DC  6
 
 /*!
- * Channel plan group AS923-1 for Japan - channels 37 to 61 Listen Before Talk + Duty Cycle
+ * Channel plan group AS923-1 for Japan - channels 33 to 61 Listen Before Talk + Duty Cycle
  * AS923_FREQ_OFFSET = 0
  */
-#define CHANNEL_PLAN_GROUP_AS923_1_JP_CH37_CH61_LBT_DC 7
+#define CHANNEL_PLAN_GROUP_AS923_1_JP_CH33_CH61_LBT_DC 7
 #endif
 
 /*!

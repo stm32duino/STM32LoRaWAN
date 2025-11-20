@@ -307,7 +307,7 @@ typedef struct sRegionCommonIdentifyChannelsParam
     /*!
      * Elapsed time since the start of the node.
      */
-    SysTime_t ElapsedTimeSinceStartUp;
+    SysTime_t ElapsedTimeSinceTxBackoffRefTime;
     /*!
      * Joined Set to true, if the last uplink was a join request
      */
