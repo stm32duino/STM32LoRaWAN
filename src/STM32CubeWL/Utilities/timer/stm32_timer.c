@@ -116,11 +116,11 @@ bool TimerExists( UTIL_TIMER_Object_t *TimerObject );
   *  @{
   */
 
-UTIL_TIMER_Status_t UTIL_TIMER_Init(RTC_HandleTypeDef *RtcHandle)
+UTIL_TIMER_Status_t UTIL_TIMER_Init(void)
 {
   UTIL_TIMER_INIT_CRITICAL_SECTION();
   TimerListHead = NULL;
-  return UTIL_TimerDriver.InitTimer(RtcHandle);
+  return UTIL_TimerDriver.InitTimer();
 }
 
 UTIL_TIMER_Status_t UTIL_TIMER_DeInit(void)
@@ -429,6 +429,11 @@ UTIL_TIMER_Time_t UTIL_TIMER_GetElapsedTime(UTIL_TIMER_Time_t past )
   uint32_t pastInTicks = UTIL_TimerDriver.ms2Tick( past );
   /* intentional wrap around. Works Ok if tick duation below 1ms */
   return UTIL_TimerDriver.Tick2ms( nowInTicks- pastInTicks );
+}
+
+UTIL_TIMER_Object_t *UTIL_TIMER_GetTimerList(void)
+{
+  return TimerListHead;
 }
 
 /**

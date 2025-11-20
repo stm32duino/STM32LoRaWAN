@@ -77,9 +77,7 @@ extern "C"
 /*!
  * Maximal datarate that can be used by the node
  */
-#ifndef EU868_TX_MAX_DATARATE
-  #define EU868_TX_MAX_DATARATE                     DR_7
-#endif
+#define EU868_TX_MAX_DATARATE                       DR_7
 
 /*!
  * Minimal datarate that can be used by the node
@@ -89,16 +87,12 @@ extern "C"
 /*!
  * Maximal datarate that can be used by the node
  */
-#ifndef EU868_RX_MAX_DATARATE
-  #define EU868_RX_MAX_DATARATE                     DR_7
-#endif
+#define EU868_RX_MAX_DATARATE                       DR_7
 
 /*!
  * Default datarate used by the node
  */
-#ifndef EU868_DEFAULT_DATARATE
-  #define EU868_DEFAULT_DATARATE                    DR_0
-#endif
+#define EU868_DEFAULT_DATARATE                      DR_0
 
 /*!
  * Minimal Rx1 receive datarate offset
@@ -133,9 +127,7 @@ extern "C"
 /*!
  * Default antenna gain
  */
-#ifndef EU868_DEFAULT_ANTENNA_GAIN
-  #define EU868_DEFAULT_ANTENNA_GAIN                2.15f
-#endif
+#define EU868_DEFAULT_ANTENNA_GAIN                  2.15f
 
 /*!
  * Enabled or disabled the duty cycle

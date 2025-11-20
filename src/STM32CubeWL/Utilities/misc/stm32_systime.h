@@ -133,7 +133,7 @@ typedef struct
   uint32_t (*BKUPRead_Seconds) ( void ); /*!< Get the timer differencebetween real time and rtc time */
   void     (*BKUPWrite_SubSeconds) ( uint32_t SubSeconds);  /*!< Set the timer differencebetween real time and rtc time */
   uint32_t (*BKUPRead_SubSeconds) ( void ); /*!< Get the timer differencebetween real time and rtc time */
-  uint32_t (*GetCalendarTime)( uint32_t* SubSeconds );          /*!< Set the rtc time */
+  uint32_t (*GetCalendarTime)( uint16_t* SubSeconds );          /*!< Set the rtc time */
 } UTIL_SYSTIM_Driver_s;
 
 /**

@@ -466,7 +466,7 @@ typedef struct sSetBandTxDoneParams
     /*!
      * Elapsed time since initialization.
      */
-    SysTime_t ElapsedTimeSinceStartUp;
+    SysTime_t ElapsedTimeSinceTxBackoffRefTime;
 }SetBandTxDoneParams_t;
 
 /*!
@@ -814,7 +814,7 @@ typedef struct sNextChanParams
     /*!
      * Elapsed time since the start of the node.
      */
-    SysTime_t ElapsedTimeSinceStartUp;
+    SysTime_t ElapsedTimeSinceTxBackoffRefTime;
     /*!
      * Joined Set to true, if the last uplink was a join request
      */

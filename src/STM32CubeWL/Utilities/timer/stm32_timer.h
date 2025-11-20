@@ -57,8 +57,7 @@
 #include <stddef.h>   
 #include <cmsis_compiler.h>
 #include "../../../BSP/utilities_conf.h"
-#include "rtc.h"
-
+   
 /* Exported types ------------------------------------------------------------*/
 /** @defgroup TIMER_SERVER_exported_TypeDef TIMER_SERVER exported Typedef
   *  @{
@@ -104,7 +103,7 @@ typedef struct TimerEvent_s
   */
 typedef struct
 {
-    UTIL_TIMER_Status_t   (* InitTimer )( RTC_HandleTypeDef * );                  /*!< Initialisation of the low layer timer    */
+    UTIL_TIMER_Status_t   (* InitTimer )( void );                  /*!< Initialisation of the low layer timer    */
     UTIL_TIMER_Status_t   (* DeInitTimer )( void );                /*!< Un-Initialisation of the low layer timer */
       
     UTIL_TIMER_Status_t   (* StartTimerEvt )( uint32_t timeout );  /*!< Start the low layer timer */
@@ -157,10 +156,9 @@ extern const UTIL_TIMER_Driver_s UTIL_TimerDriver;
 /**
   * @brief Initialize the timer server
   *
-  * @param RtcHandle RTC_HandleTypeDef
   * @retval Status based on @ref UTIL_TIMER_Status_t
   */
-UTIL_TIMER_Status_t UTIL_TIMER_Init(RTC_HandleTypeDef *RtcHandle);
+UTIL_TIMER_Status_t UTIL_TIMER_Init(void);
 
 /**
   * @brief Un-Initialize the timer server
@@ -265,9 +263,20 @@ UTIL_TIMER_Time_t UTIL_TIMER_GetCurrentTime(void);
   * @brief return the elapsed time
   *
   * @param past a value returned by the function UTIL_TIMER_GetCurrentTime
-  * @retval elasped time value
+  * @retval elapsed time value
   */
 UTIL_TIMER_Time_t UTIL_TIMER_GetElapsedTime(UTIL_TIMER_Time_t past );
+
+/**
+  * @brief return the list of the current timer
+  *
+  * @retval pointer on @ref UTIL_TIMER_Object_t
+  *
+  * @Note : the use of this function is dangerous and must be done with precaution, the risks are:
+  *         1 - an update of this data structure may affect the operation of timer server
+  *         2 - data structure is moving according the events, so read must be under critical section
+  */
+UTIL_TIMER_Object_t *UTIL_TIMER_GetTimerList(void);
 
 /**
  * @brief Timer IRQ event handler

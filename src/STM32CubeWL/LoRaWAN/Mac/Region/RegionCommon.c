@@ -65,7 +65,7 @@
  *         defined duty-cycle restrictions. In order to ensure that these restrictions never get violated we changed the
  *         default duty cycle observation time period to 1/2 hour (1800000 ms).
  */
-#if (defined( REGION_VERSION ) && ( REGION_VERSION == 0x02010003 ))
+#if (defined( REGION_VERSION ) && ( REGION_VERSION == 0x02010003 )) 
 #define DUTY_CYCLE_TIME_PERIOD              3600000
 #else
 #define DUTY_CYCLE_TIME_PERIOD              1800000
@@ -107,7 +107,7 @@ static uint16_t GetDutyCycle( Band_t* band, bool joined, SysTime_t elapsedTimeSi
 
     if( joined == false )
     {
-#if (defined( REGION_VERSION ) && ( REGION_VERSION == 0x02010003 ))
+#if (defined( REGION_VERSION ) && ( REGION_VERSION == 0x02010003 ))  
         uint16_t joinDutyCycle = BACKOFF_DC_1_HOUR;
 #else
         uint16_t joinDutyCycle = BACKOFF_DC_24_HOURS;
@@ -151,7 +151,7 @@ static uint16_t SetMaxTimeCredits( Band_t* band, bool joined, SysTime_t elapsedT
     if( joined == false )
     {
 #if (defined( REGION_VERSION ) && ( REGION_VERSION == 0x02010003 ))
-        if( elapsedTimeSinceStartup.Seconds < BACKOFF_DUTY_CYCLE_1_HOUR_IN_S )
+		if( elapsedTimeSinceStartup.Seconds < BACKOFF_DUTY_CYCLE_1_HOUR_IN_S )
         {
             maxCredits = DUTY_CYCLE_TIME_PERIOD;
         }
@@ -164,8 +164,8 @@ static uint16_t SetMaxTimeCredits( Band_t* band, bool joined, SysTime_t elapsedT
             maxCredits = DUTY_CYCLE_TIME_PERIOD_JOIN_BACKOFF_24H;
         }
 #else
-        TimerTime_t elapsedTime = SysTimeToMs( elapsedTimeSinceStartup );
-        SysTime_t timeDiff = { 0 };
+    	TimerTime_t elapsedTime = SysTimeToMs( elapsedTimeSinceStartup );
+    	SysTime_t timeDiff = { 0 };
         if( dutyCycle == BACKOFF_DC_1_HOUR )
         {
             maxCredits = DUTY_CYCLE_TIME_PERIOD;
@@ -218,7 +218,7 @@ static uint16_t SetMaxTimeCredits( Band_t* band, bool joined, SysTime_t elapsedT
     {
         band->TimeCredits = maxCredits;
     }
-#endif
+#endif 
 
     // Setup the maximum allowed credits. We can assign them
     // safely all the time.
@@ -228,7 +228,7 @@ static uint16_t SetMaxTimeCredits( Band_t* band, bool joined, SysTime_t elapsedT
 }
 
 
-#if (defined( REGION_VERSION ) && ( REGION_VERSION == 0x02010003 ))
+#if (defined( REGION_VERSION ) && ( REGION_VERSION == 0x02010003 ))  
 static uint16_t UpdateTimeCredits( Band_t* band, bool joined, bool dutyCycleEnabled,
                                    bool lastTxIsJoinRequest, SysTime_t elapsedTimeSinceStartup,
                                    TimerTime_t currentTime, TimerTime_t lastBandUpdateTime )
@@ -456,7 +456,7 @@ TimerTime_t RegionCommonUpdateBandTimeOff( bool joined, Band_t* bands,
                 // We calculate the minTimeToWait among the bands which are not
                 // ready for transmission and which are potentially available
                 // for a transmission in the future.
-#if (defined( REGION_VERSION ) && ( REGION_VERSION == 0x02010003 ))
+#if (defined( REGION_VERSION ) && ( REGION_VERSION == 0x02010003 ))  
                 TimerTime_t observationTimeDiff = 0;
                 if( bands[i].LastMaxCreditAssignTime >= elapsedTime )
                 {
@@ -659,7 +659,7 @@ void RegionCommonRxBeaconSetup( RegionCommonRxBeaconSetupParams_t* rxBeaconSetup
                        1, 0, 10, rxBeaconSetupParams->SymbolTimeout, true, rxBeaconSetupParams->BeaconSize, false, 0, 0, false, rxContinuous );
 
     Radio.Rx( rxBeaconSetupParams->RxTime );
-    MW_LOG(TS_ON, VLEVEL_M, "RX_BC on freq %u Hz at DR %d\r\n", (unsigned)rxBeaconSetupParams->Frequency, rxBeaconSetupParams->BeaconDatarate );
+    MW_LOG(TS_ON, VLEVEL_M, "RX_BC on freq %d Hz at DR %d\r\n", rxBeaconSetupParams->Frequency, rxBeaconSetupParams->BeaconDatarate );
 }
 
 void RegionCommonCountNbOfEnabledChannels( RegionCommonCountNbOfEnabledChannelsParams_t* countNbOfEnabledChannelsParams,
@@ -727,7 +727,7 @@ LoRaMacStatus_t RegionCommonIdentifyChannels( RegionCommonIdentifyChannelsParam_
                                                       identifyChannelsParam->MaxBands,
                                                       identifyChannelsParam->DutyCycleEnabled,
                                                       identifyChannelsParam->LastTxIsJoinRequest,
-                                                      identifyChannelsParam->ElapsedTimeSinceStartUp,
+                                                      identifyChannelsParam->ElapsedTimeSinceTxBackoffRefTime,
                                                       identifyChannelsParam->ExpectedTimeOnAir );
 
         RegionCommonCountNbOfEnabledChannels( identifyChannelsParam->CountNbOfEnabledChannelsParam, enabledChannels,
@@ -793,17 +793,17 @@ void RegionCommonRxConfigPrint(LoRaMacRxSlot_t rxSlot, uint32_t frequency, int8_
 {
     if ( rxSlot < RX_SLOT_NONE )
     {
-        MW_LOG(TS_ON, VLEVEL_M,  "RX_%s on freq %u Hz at DR %d\r\n", EventRXSlotStrings[rxSlot], (unsigned)frequency, dr );
+        MW_LOG(TS_ON, VLEVEL_M,  "RX_%s on freq %d Hz at DR %d\r\n", EventRXSlotStrings[rxSlot], frequency, dr );
     }
     else
     {
-        MW_LOG(TS_ON, VLEVEL_M,  "RX on freq %u Hz at DR %d\r\n", (unsigned)frequency, dr );
+        MW_LOG(TS_ON, VLEVEL_M,  "RX on freq %d Hz at DR %d\r\n", frequency, dr );
     }
 }
 
 void RegionCommonTxConfigPrint(uint32_t frequency, int8_t dr)
 {
-    MW_LOG(TS_ON, VLEVEL_M,  "TX on freq %u Hz at DR %d\r\n", (unsigned)frequency, dr );
+    MW_LOG(TS_ON, VLEVEL_M,  "TX on freq %d Hz at DR %d\r\n", frequency, dr );
 }
 
 #pragma GCC diagnostic pop
