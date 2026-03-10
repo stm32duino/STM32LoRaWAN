@@ -107,9 +107,10 @@
 #define __ROOT __root
 #endif
 #else
-#ifndef __NO_INIT
-#define __NO_INIT
+#ifdef __NO_INIT
+#undef __NO_INIT
 #endif
+#define __NO_INIT
 #ifndef __ROOT
 #define __ROOT
 #endif
