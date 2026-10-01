@@ -2,6 +2,7 @@
 .development
 .gdb_history
 build
+site
 sketch.json
 api-docs
 astyle.out

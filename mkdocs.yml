@@ -1,0 +1,13 @@
+site_name: STM32LoRaWAN
+site_description: STM32LoRaWAN API reference
+site_url: https://stm32duino.github.io/STM32LoRaWAN/
+repo_name: stm32duino/STM32LoRaWAN
+repo_url: https://github.com/stm32duino/STM32LoRaWAN
+docs_dir: api-docs/html
+
+theme:
+  name: material
+
+extra:
+  version:
+    provider: mike
