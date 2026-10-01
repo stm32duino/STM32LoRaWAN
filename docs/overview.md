@@ -82,7 +82,7 @@ with core logs enabled.
 
 ## Examples
 How to use this library is probably easiest learned from the examples.
-The library currently supplies these two examples:
+The library currently supplies these four examples:
 
  - Basic.ino has a very basic sketch that shows setting up the library,
    joining the network (using OTAA or ABP) and transmitting packets
@@ -98,7 +98,7 @@ The library currently supplies these two examples:
  - SimpleAsync is similar in structure as Basic.ino, but uses the
    asynchronous API instead of the regular blocking API. Because of
    this, it can do other work in parallel with the LoRaWAN operations,
-   in this case the example blinks a LED at the same time.
+  in this case the example blinks a LED at the same time.
 
  - ScheduledAsync is a more complete asynchronous example where the
    control flow of the code no longer follows the LoRaWAN flow, but the
@@ -107,7 +107,7 @@ The library currently supplies these two examples:
    attention, and the LoRaWAN flow is handled by a simple state machine
    run inside that scheduler.
 
-All examples default to the EU868 frequency plan, so if are in
+All examples default to the EU868 frequency plan, so if you are in
 a different region, be sure to change the argument to
 STM32LoRaWAN::begin() accordingly.
 
@@ -116,7 +116,7 @@ STM32LoRaWAN::begin() accordingly.
 In most regions, local regulations limit the amount of airtime that
 a device can use. This is typically expressed in a percentage, for
 example 1% duty cycle means that a device can be transmitting (in
-a given frequncye band) at most 1% of the time.
+a given frequency band) at most 1% of the time.
 
 The default The Things Network frequency plan in EU868 for example has
 channels enabled in two different 1% bands, making the total effective
@@ -127,7 +127,7 @@ intervals, meaning that you can never transmit more than (in this
 example) 2% × 30min = 36s in any given period of 30 minutes (sliding
 window). On startup, you get the full 30-minute budget, so you can do
 a big burst of packets, but if you do, the available airtime is reduced
-as soon as you initial budget is used up.
+as soon as your initial budget has been used.
 
 Also note that The Things Network has an additional fair use policy that
 is more strict than the official regulations, but this is not enforced
