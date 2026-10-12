@@ -62,8 +62,8 @@ the \ref stream "Stream methods" (e.g. `available()` and `read()`).
 ## Core logging
 This library uses the STM32Duino `core_debug()` mechanism for logging to
 the default serial port. This mechanism is disabled by default, but can
-be enabled in the board options in the Arduino IDE (Tools -> Debug
-Symbols and core logs").
+be enabled in the board options in the Arduino IDE under
+`Tools > Debug Symbols and core logs`.
 
 When enabled, the library prints informational messages and also error
 messages.
