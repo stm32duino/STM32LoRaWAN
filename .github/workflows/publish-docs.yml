@@ -35,7 +35,10 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Publish development documentation
         if: github.ref == 'refs/heads/main'
-        run: mike deploy --push dev
+        run: |
+          mike deploy --push dev
+          # Until a release creates "latest", the site root must redirect to dev.
+          mike list latest > /dev/null 2>&1 || mike set-default --push dev
       - name: Publish release documentation
         if: startsWith(github.ref, 'refs/tags/')
         env:
